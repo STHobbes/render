@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>multi-threading</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/multi-threading.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="multi-threading"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home" align="middle"></a> <a href="references_and_links.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Up" align="middle"></a> <a href="quadrics.htm"><img src="_derived/quadrics.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Quadrics" align="middle"></a> <a href="slope_distibution.htm"><img src="_derived/slope_distibution.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Slope Distibution" align="middle"></a> <img src="_derived/multi-threading.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="multi-threading" align="middle"></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Abstract</h3>
+<p>We have observed that the tracing of individual pixels is an isolated task 
+that walks through the environment using the environment in a mostly read-only 
+fashion.&nbsp; The traditional lore is that ray-tracing is highly 
+parallelizable, so we should be able to throw some extra threads at the problem 
+with a multi-processor machine and get a big performance win.&nbsp; This is a 
+short investigation of that.</p>
+<h3>The Investigation</h3>
+<p>Ray-tracing is computationally bound, so we would expect that running one 
+thread per processor would give us the best performance.&nbsp; With fewer 
+threads, some processors would be sitting idle.&nbsp; With more threads, there 
+would be added thread management and context switching overhead trying to give 
+all the threads equal processing time.&nbsp; Obviously, the OS and various 
+services are still running while we render, so we don't expect that we could 
+devote 100% of all processors to the rendering task.</p>
+<p>To test this I added sample-point dispatcher and sample point collector 
+functions to the renderer and started the same number of rendering threads as 
+processor threads on a 4 processor machine.&nbsp; The rendering threads actually 
+run the dispatcher and collector functions, locking global resources for a very 
+short time to perform that processing. The test machine had 4 700mhz pentium 
+processors and 1 gb memory.&nbsp; The renderer was implemented in Java.&nbsp; 
+This was the test scene:</p>
+<p>
+<img border="0" src="testImage.jpg" align="left" width="416" height="390"></p>
+<p>Here is some background on the Java implementation - in rendering you tend to 
+use zillions of temporary objects while computing the intersection of rays and 
+surfaces. In C++, you can allocate those temporary objects on the stack as local 
+variables. In Java you have to allocate them on the heap. I started out with two 
+basic techniques:</p>
+<p>1. Use new to allocate the objects as needed, let the garbage collector take 
+care of the cleanup.</p>
+<p>2. Use an object pool with 'borrow' and 'return' semantics so that temporary 
+objects can be reused. This reduces the number of objects that are created and 
+also avoids GC.</p>
+<p>Testing showed that object pooling gave about 20% better performance in a 
+single threaded program. Not terribly exciting, significant if you were on a 
+tight rendering schedule.</p>
+<p>Next, I add threading to the renderer as previously described. Imagine my 
+surprise when 
+adding threads actually reduced the overall performance with both memory schemes 
+described above.&nbsp; Notice that at this point we are using a single global 
+object pool accessed by all the threads, thus requiring synchronization between 
+threads when using either new or the global object cache.&nbsp; Hmmm, I thought
+threads would make things faster, especially if you have multiple processors.</p>
+<p>In the last part of this story, a discussion of this problem in class 
+resulted in an object cache per thread idea.&nbsp; In this case, the cache would 
+not need to be synchronized because only one thread would ever be using it.&nbsp; 
+Additionally, it would eliminate the wait condition if multiple threads were 
+actually trying to get objects at the same time.&nbsp; With this
+per-thread object pooling, performance showed a dramatic increase as threads 
+were added. With four threads on a four processor machine, the per-thread object 
+pool is almost 30 times faster than the simple implementation using 'new' with 
+four threads. </p>
+<p align="center">
+<img border="0" src="threadChart.gif" width="937" height="606"></p>
+<h3>Conclusion</h3>
+<p>Well, implementation details matter.&nbsp; Unfortunately, in this case we are 
+contorting the implementation to get around the lack of local stack objects in 
+Java.&nbsp; I think of it as a development effort tradeoff between the ease 
+of programming in Java, and the cost of some of the easy to program 
+abstractions.&nbsp; I can get the basic functionality up and running very 
+quickly, but often need to devote substantial effort to performance later in the 
+project.</p>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

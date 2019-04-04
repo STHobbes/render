@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Slope Distibution</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/slope_distibution.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="Slope Distibution"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home" align="middle"></a> <a href="references_and_links.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Up" align="middle"></a> <a href="quadrics.htm"><img src="_derived/quadrics.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Quadrics" align="middle"></a> <img src="_derived/slope_distibution.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="Slope Distibution" align="middle"> <a href="multi-threading.htm"><img src="_derived/multi-threading.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="multi-threading" align="middle"></a></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Slope Distribution Functions and Geometric Attenuation</h3>
+<p>We've talked about both slope distribution and geometric attenuation 
+functions in class.&nbsp; Here's a visual comparison and some observations you 
+might not find in the texts.&nbsp; The slope distribution function is a function 
+that predicts the percentage of the microfacets of a rough surface that are 
+oriented for reflection from some direction to some other direction.&nbsp; For 
+an isotropic surface (i.e. the rotational orientation of the surface about the 
+normal doesn't matter - it's the same regardless of orientation), this reduces 
+to the probability that microfacets will be oriented in some direction, <b>H</b>, 
+that deviates from the surface normal, <b>N</b>, by some angle.</p>
+<h3>There are several options presented in the literature:</h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Phong</b> - Phong looked not at <b>H</b>, but at the reflection of the light 
+vector, <b>R</b>, and used a cosine power function of the cosine between <b>V</b> 
+and<b> R</b>.&nbsp; This was a purely empirical formulation based on the 
+observation that highlights are focused around the reflected direction and this 
+function simulated something like that.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Blinn</b> - Blinn used a cosine power function of the cosine between <b>H</b> and
+<b>N</b>.&nbsp; In Blinn's 1977 article he refers to this as the Phong formulation -- but 
+it is distinctly different.&nbsp; Watt describes these as being basically the 
+same thing, the angle between <b>R</b> and <b>V</b> and the angle between <b>H</b> 
+and <b>L</b> differing by a factor of 2, requiring a slightly different exponent 
+to get the same result.&nbsp; He also suggests <b>H</b> is used because it is 
+easier to compute than <b>R</b> --- in my opinion, not true -- it <i>is</i> easier to 
+compute, is  more representative of the <i>real </i>world, and is visually way 
+  different.&nbsp; Once 
+you go out-of-plane, Phong and Blinn are very, very different.&nbsp; My 
+observation about the Blinn function is that it is easy to compute and visually 
+similar to the theoretically founded Gaussian and Trowbridge-Rietz functions.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Gaussian</b> - a typical function for deviation from some norm.&nbsp; A Gaussian 
+function to predict the probability of deviation of <b>N</b> from <b>H</b> was 
+discussed by Blinn in the same article as his cosine power function appeared.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Trowbridge and Rietz</b> - a statistically derived function for the probability 
+of deviation of <b>H</b> from <b>N</b>.&nbsp; An earlier work in optics, but, 
+introduced to computer graphics by Blinn in the article reference above.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Beckmann</b> - a statistically derived function for the probability of deviation 
+of <b>H</b> from <b>N</b>.&nbsp; Difficult to compute and based on energy 
+equilibrium formulations for predicting radar reflection from various terrains 
+(the same problem at a significantly different scale).&nbsp; This function is 
+  not for the computationally weak-at-heart.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Visual Comparisons</h3>
+<p>The Blinn, Gaussian, Trowbridge-Rietz, and Beckmann functions have a very 
+similar appearance when normalized similarly.&nbsp; The Phong model is 
+distinctly different - attributable, in my opinion, to its adoption as an 
+expedient and empirical approximation rather than being an approximation derived 
+from theory.&nbsp; The following images show the various models used in a 
+typical image and in an image with a lights an various angle above a horizon and 
+reflecting at near grazing angle.</p>
+<p>
+<center>
+<!--mstheme--></font><table border="1" width="614" bordercolordark="#999999" bordercolorlight="#FFFFFF">
+  <tr>
+    <td width="50%" align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">Phong</p>
+    <!--mstheme--></font></td>
+    <td width="50%" align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">Blinn</p>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">Gaussian</p>
+    <!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">Trowbridge-Rietz</p>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</center>
+</p><br><br><p>
+<center>
+<!--mstheme--></font><table border="1" bordercolordark="#999999" bordercolorlight="#FFFFFF">
+  <tr>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_1.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_2.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_3.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_4.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</center>
+</p><br><br><p>
+<center>
+<!--mstheme--></font><table border="1" bordercolordark="#999999" bordercolorlight="#FFFFFF">
+  <tr>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_13.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_14.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_15.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_16.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</center>
+</p><br><br>
+<p>Note that in the last image set, 3 lights at different heights above the 
+horizon.&nbsp; The Blinn, Gaussian, and Trowbridge-Rietz are similar to what we 
+expect when we see the sun set over the ocean, while the Phong generates 
+highlights that are not in the realm of our normal experience.&nbsp; The lights 
+are over the surface so the bright spot before the start of the highlight is the 
+diffuse illumination from the source.&nbsp; My conclusion - the Blinn cosine 
+distribution function is visually close enough to the theoretically derived 
+functions, and so much easier to calculate that I'll normally use it in images.</p>
+<h3>Geometric Attenuation</h3>
+<p>Geometric attenuation accounts for self shading of microfacets in a rough 
+surface.&nbsp; Below is an example without (left) and with (right) geometric 
+attenuation.&nbsp; The effects are quite subtle and are most visible as the 
+light angle approaches grazing.&nbsp; In my opinion, the computational expense 
+of geometric attenuation is quite high relative to its importance in image 
+appearance.</p>
+<br><br><p>
+<center>
+<!--mstheme--></font><table border="1" bordercolordark="#999999" bordercolorlight="#FFFFFF">
+  <tr>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_14.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+    <td align="center"><!--mstheme--><font face="Arial, Arial, Helvetica">
+      <p align="left">
+      <img border="0" src="slope_17.jpg" width="300" height="300"></p>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</center>
+</p><br><br>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

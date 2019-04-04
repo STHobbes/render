@@ -1,0 +1,235 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Assignment 3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>
+A.links:hover{color:black;}
+A	{text-decoration:none;}
+A:hover	{color:red;}
+</style>
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/assignment_3.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="Assignment 3"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home" align="middle"></a> <a href="assignments.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Up" align="middle"></a> <a href="assignment_1.htm"><img src="_derived/assignment_1.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 1" align="middle"></a> <a href="assignment_2.htm"><img src="_derived/assignment_2.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 2" align="middle"></a> <img src="_derived/assignment_3.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="Assignment 3" align="middle"> <a href="assignment_4.htm"><img src="_derived/assignment_4.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 4" align="middle"></a> <a href="assignment_5.htm"><img src="_derived/assignment_5.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 5" align="middle"></a> <a href="assignment_6.htm"><img src="_derived/assignment_6.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 6" align="middle"></a> <a href="assignment_7.htm"><img src="_derived/assignment_7.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 7" align="middle"></a> <a href="term_project.htm"><img src="_derived/term_project.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Term Project" align="middle"></a></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Adding Reflection and Refraction</h3>
+<p>This is where things start to get interesting.&nbsp; It is the step that
+takes us past the standard OpenGL or DirectX rendering packages.&nbsp; You've
+probably noticed that sending a ray into the scene has taken a back seat to
+lighting and shading as far as making the picture.&nbsp; This trend continues
+when we move into reflection and refraction.
+</p>
+<h3>Adding Reflection</h3>
+<p>Let's start with reflection.&nbsp; When a ray from the eye hits a reflective
+surface, there is a contribution of reflected light from the scene in addition
+to ambient reflection, and diffuse and specular from direct lights.&nbsp; The
+extreme is a perfect mirror - the only color seen is that from the reflected
+environment.&nbsp; Conceptually, adding reflection is simple - we compute the
+reflection of the view vector, treat this the same as a ray from the eye, and
+compute the colour it contributes.&nbsp; We factor that by the specular
+reflectance when we add it to the colour seen by the eye.
+</p>
+<p>I start by augment the <font face="Courier New">RayIntersection</font> to 
+include saving the <font face="Courier New">IRtGeometry</font> reference for the 
+intersected object.&nbsp; This will be useful to me in reflection testing, 
+shadow testing, and later in adding refraction.</p>
+<p>The reality of
+adding reflection is a little more complex that previously described because the surface the reflection
+ray intersects could, itself, be reflective.&nbsp; This requires that we spawn
+another reflective ray, and so on.&nbsp; In an extremely reflective environment,
+the reflections can go quite deep -- sometimes resulting in endless
+recursion.&nbsp; There are two ways to handle this.&nbsp; The first is to limit
+the number of reflections to some fixed limit.&nbsp; The other is to look at the
+contribution of the ray to the final colour and stop when the contribution drops
+below so threshold (known as adaptive ray-tracing depth control).&nbsp; It is 
+common to use a combination of both.</p>
+<p>For now,
+just use a fixed limit (you can use adaptive if&nbsp; you like).&nbsp; I shift a
+lot of the image generation work to the material at this point.&nbsp; As in 
+lights and geometry, I introduce an interface for a material so I can have 
+multiple material implementations in use by different objects simultaneously.&nbsp; 
+My interface to the material looks like this:</p>
+<blockquote>
+<p><font face="Courier New">interface IRtMaterial {<br>
+&nbsp;&nbsp;&nbsp; public void getColor (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGBf rgb,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // the computed surface colour<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RayIntersection intersection,&nbsp;// 
+the surface geometry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IRtLight[] lights,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the lights<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IRtGeometry[] objects,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the objects in the scene<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int nMaxBounce);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+maximum additional bounces<br>
+}<br>
+</font>
+</p>
+</blockquote>
+<p>You will notice that I pass in the light array,
+the object array, and the intersection.&nbsp; The lights are used for looping 
+through the lights to compute the direct lighting contribution.&nbsp; The
+objects are used for shadow testing (I don't check against the intersected
+object because the objects are currently all convex).&nbsp; I can also use the objects to do the
+testing for an intersection with the reflected ray.&nbsp; Within the <font face="Courier New">getColor&nbsp;</font>
+function, I spawn a reflected ray if <font face="Courier New">nMaxBounce</font>&nbsp; &gt; 0 
+and this is a reflective matrial.&nbsp; Once I've obtained the intersection for 
+the spawned ray I call the <font face="Courier New">getColor</font>
+function , with a decremented <font face="Courier New">nMaxBounce</font>, for the material of the object the ray hits.
+</p>
+<p> As I look
+at my implementation, I'm thinking that a number of things, like lighting, max
+depth, background colour, etc. could be passed in as part of the intersection
+description to make things a little more flexible (this is one of the challenges
+in figuring out where to partition the algorithmic work and data for maximum
+flexibility).
+<p>Adding reflection should produce a scene something like this:
+</p>
+<p align="center"><img border="0" src="assign3a.jpg" width="580" height="509"></p>
+<p>In this scene, I made the two spheres reflective.&nbsp; In the last homework, I
+suggested a relationship between Ns, Kd, and Ks given ß.&nbsp; In the case of a
+reflective material, the reflection replaces a large portion of what would have been
+ambient illumination.&nbsp; In the model this is manifest as re-balancing Kd and 
+Ks for a reflective material.&nbsp; Here are my revised emperical relationships for a reflective
+surface:
+</p>
+<blockquote>
+<p><font face="Courier New">	float	fNs = -(float)(Math.log(2.0) / Math.log(Math.cos(aBeta)));<br>
+float	fR = (fNs - 5.0f) / 100.0f;<br>
+if (fR &lt; 0.0f) fR = 0.0f;<br>
+	if (fR > 1.0f) fR = 1.0f;<br>
+	if (<i>the surface is reflective</i>) {<br>
+&nbsp;&nbsp;&nbsp;
+Kd = 0.40f - (0.20f * (float)Math.sqrt(fR));<br>
+&nbsp;&nbsp;&nbsp;
+Ks = 0.20f + (0.65f * (float)Math.sqrt(fR));<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;
+Kd = 0.65f - (0.30f * (float)Math.sqrt(fR));<br>
+&nbsp;&nbsp;&nbsp;
+Ks = 0.05f + (0.90f * (float)Math.sqrt(fR));<br>
+}<br>
+</font>
+</p>
+</blockquote>
+<p>I'm not really happy with the appearance yet, so I will probably be modifying
+these in the future.&nbsp; As I noted in the previous assignment, and in
+lecture, these relationships have been empirically tuned for best appearance,
+and are not a result of any physical or theoretical derivation.
+</p>
+<h3>Adding Refraction</h3>
+<p>Adding refraction is a little more difficult - mostly because there are some
+interesting special cases, and there is a bit more bookkeeping in keeping track
+of the various vectors and colours contributing to the scene.&nbsp; Similarly to
+adding reflection, we spawn a refracted ray at the surface for which we are
+evaluating the colour, and get a colour for that ray, factor it by the
+transmittance and add it to the colour of the surface.
+</p>
+<p>The thing about the refracted ray is that it is a different type of ray from 
+the ones we have been dealing with until now.&nbsp; All out rays have been rays 
+that are moving through the empty space between objects, and need to be tested 
+against all objects for intersection.&nbsp; In the refracted case (the first 
+refraction anyway) the ray is starting on the surface of a specific object and 
+we are looking for the intersection where it <i>leaves</i> that object - there 
+is only one object to test - the object that the ray is inside of.</p>
+<p>The first thing to do as adjust the intersectors so they can handle rays 
+inside the object.&nbsp; I did this by modifying the definition of the <font face="Courier New">
+rayIntersection</font> function in the <font face="Courier New">IRtGeometry</font> 
+interface to add a <font face="Courier New">boolean</font>&nbsp; <font face="Courier New">
+bStartsInside</font> argument so I can use the same function to get the 
+intersection going in (<font face="Courier New">bStartsInside == false</font>) 
+or the intersection for a ray in the object going out (<font face="Courier New">bStartsInside 
+== true</font>).</p>
+<p>The difficulty is that the refracted ray doesn't get a colour until it leaves
+the object it is inside of.&nbsp; This means we have a couple additional
+steps.&nbsp; First we compute the refracted ray, then we intersect it with the
+object we are inside of.&nbsp; At this new intersection, we spawn a transmitted
+(refracted) ray that is now on the outside, and a reflected ray which is an 
+internal reflection still on the inside.&nbsp;&nbsp; We compute a colour for 
+each of the spawned ray and combine them to get the colour for this refracted 
+ray as:</p>
+<blockquote>
+<p>RGB<sub><i>this internal ray</i></sub> = Kt(RGB<sub><i>spawned outside 
+refracted ray</i></sub>) + Ks(RGB<sub><i>spawned internal reflected ray</i></sub>)</p>
+</blockquote>
+<p>One consideration is that there may not be a refracted ray if there is 
+complete internal reflection.&nbsp; It may be the case that we reach the limit 
+of internal rays before any leave the object.&nbsp; Whenever I reach the limit 
+for internal reflection, I'm just setting the ray colour to black -- we'll 
+revisit this in a future class.</p>
+<p>The image below is my image with refraction added.&nbsp; In this image, the
+maximum bounces was 4, and the maximum internal reflections I allowed was
+10.&nbsp; The black spot in the polyhedra is where the ray didn't emerge after
+10 internal reflections, and I just set the colour to black.
+</p>
+<p align="center"><img border="0" src="assign3c.jpg" width="589" height="525">
+</p>
+<p>To get a material that looks like glass, we use some observations about real
+glass to help us out here.&nbsp; First, glass is a non-conductor with no
+pigment, so the material color is white (1,1,1), and the beta is very low if the
+glass is polished - like 2 degrees.&nbsp; For real glass, the index of
+refraction is about 1.5 (it depends on the type of glass) which will give the
+correct geometric appearance of the refraction.&nbsp; Real glass has a
+transmission of about .95, however, if you use this the glass stuff will look
+too transparent because we are not including the Fresnel effects that decrease
+transmission and increase reflectance as we get near grazing angle.&nbsp; I find
+a transmission around .8 or .85 works better with the Whitted illumination
+model.</p>
+<h3>Hints</h3>
+<p>These are a few of the things I ran into as I was writing the solutions for
+this assignment, and preparing for lecture:
+</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Be really careful about ray direction for the view vector in computing
+    colour, reflection vector, and refraction vector.&nbsp; The ray we use for
+    intersection testing is going towards the surface.&nbsp; The ray we use for
+    computing colour, reflection vector, and refraction vector is going in the opposite
+    direction (i.e. away from the surface and towards the eye).&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">The limit to a displayable colour component is 1.0.&nbsp; It is very
+    likely that as you add multiple lights, reflections, and refractions, that
+    the colour components will exceed 1.0 before you get light levels set
+    properly - and in the highlight areas event when you get lights set the way
+    you want.&nbsp; Before you return the colour, clip (clamp) the red, green, and blue
+    colour components to 1.0.&nbsp; There are other ways to clip colours, as
+    described in class, that give better colour fidelity - but clipping works
+    pretty well.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Watch out for complete internal reflection.&nbsp; I had some large areas
+    of the polyhedra show up black when I first rendered it transparent.&nbsp;
+    When I was trying to figure out why it looked wrong, I tried assigning a
+    yellow colour whenever there was complete internal reflection - this was the
+    result.&nbsp; All the areas in yellow required tracing the internal
+    reflection until the ray left the object.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p align="center"><br>
+    <img border="0" src="assign3b.jpg" width="528" height="490"></p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">The appearance of transparent objects is not intuitive.&nbsp; Try to find
+    a real example of a glass sphere or cube so that you can observe and
+    understand what is really happening and how the image should look -- ray
+    tracing is, after all, a simulation of the optics of the real world.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">When you are debugging transparent object code, try an index of refraction
+    of 1.0 for the transparent objects - this will result in no refraction
+    (bending) of the transmitted ray, and no internal reflection.&nbsp; You
+    should see through the reflected objects as though they were not there.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body></html>

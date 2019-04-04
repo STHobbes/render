@@ -1,0 +1,321 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Assignment 2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>
+A.links:hover{color:black;}
+A	{text-decoration:none;}
+A:hover	{color:red;}
+</style>
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/assignment_2.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="Assignment 2"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center">
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home" align="middle"></a> <a href="assignments.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Up" align="middle"></a> <a href="assignment_1.htm"><img src="_derived/assignment_1.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 1" align="middle"></a> <img src="_derived/assignment_2.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="Assignment 2" align="middle"> <a href="assignment_3.htm"><img src="_derived/assignment_3.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 3" align="middle"></a> <a href="assignment_4.htm"><img src="_derived/assignment_4.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 4" align="middle"></a> <a href="assignment_5.htm"><img src="_derived/assignment_5.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 5" align="middle"></a> <a href="assignment_6.htm"><img src="_derived/assignment_6.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 6" align="middle"></a> <a href="assignment_7.htm"><img src="_derived/assignment_7.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 7" align="middle"></a> <a href="term_project.htm"><img src="_derived/term_project.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Term Project" align="middle"></a></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Assignment 2 - Adding Shading and Shadows to a Ray Tracer</h3>
+<p>Well, this week's lecture was a little meaty, with a lot of material you were
+probably not familiar with from any previous experience.&nbsp; In this
+assignment we will use that unfamiliar material to add shading and shadows to
+our ray-traced geometry.
+</p>
+<p>I don't want you to get bogged down in picky details, I want you to have some
+immediate success and build a platform in which you can play with material
+settlings, lighting, etc.&nbsp; So, let's start with something that will give us
+all some immediate visual gratification, and then we will get down to
+details.&nbsp; With the framework you built in the first assignment, let's start
+by adding trivial
+shading and shadows.
+</p>
+<h3>Trivial Shading and Shadows</h3>
+<p>
+Here are a few more things
+for your environment: an ambient light level (the global light floating around
+in the environment in all directions); and a point light source (kind of like a
+bare lightbulb).
+</p>
+<pre>
+    <font color="lime"><i>// ambient light</i></font>
+    <font color="DodgerBlue"><b>final</b></font> RGBf <font color="Violet">m_rgbAmbientLgt</font> = <font color="DodgerBlue"><b>new</b></font> RGBf(0.1f,0.1f,0.1f);
+    <font color="lime"><i>// point light</i></font>
+    <font color="DodgerBlue"><b>final</b></font> Point3f <font color="Violet">m_ptPointLgt</font> = <font color="DodgerBlue"><b>new</b></font> Point3f(-12.0f,-24.0f,12.0f);
+    <font color="DodgerBlue"><b>final</b></font> RGBf <font color="Violet">m_rgbPointLgt</font> = <font color="DodgerBlue"><b>new</b></font> RGBf(0.8f,0.8f,0.8f);
+</pre>
+<p>The point light source is just a light intensity (the <font face="Courier New">
+RGBf</font>) from a
+point in space (the <font face="Courier New">Poinf3f</font>).&nbsp; To get the colour of an object at a pixel,
+compute the vector from the the surface (<font face="Courier New">ptSurface</font>) to the light:
+</p>
+<pre>
+    Vector3f vLight = <font color="DodgerBlue"><b>new</b></font> Vector3f(ptSurface,m_ptPointLgt).normalize();
+</pre>
+<p>The ambient color is the
+object color times the ambient light, the diffuse colour is the object color
+times the dot product between the surface normal (<font face="Courier New">vtNormal</font>) and the vector to
+the light:
+</p>
+<pre>
+    <font color="lime"><i>// compute the ambient</i></font>
+    RGBf rgb = <font color="DodgerBlue"><b>new</b></font> RGBf(<i>surfaceMaterialColor</i>).mult(m_rgbAmbientLgt);
+    <font color="lime"><i>// add the diffuse</i></font>
+    <font color="DodgerBlue"><b>float</b></font> NdotL = vtLight.dot(vtNormal);
+    <font color="DodgerBlue"><b>if</b></font> (NdotL &gt; 0.0f) {
+        RGBf rgbDiffuse = <font color="DodgerBlue"><b>new </b></font>RGBf.setValue(<i>surfaceMaterialColor</i>).mult(m_rgbPointLgt).scale(NdotL);
+        rgb.add(rgbDiffuse);
+    }
+</pre>
+<p>This should give you an image that looks something like this:
+<p align="center"><img border="0" src="assign2a.jpg" width="411" height="405">
+<p>Play around a little with light position and the intensity of the ambient and
+diffuse lights to get a feel for how this shading works.
+<p>For shadows. create a ray that goes from the surface point to the light and
+intersect it with the objects in the scene.&nbsp; If it intersects any objects,
+before it reaches the light, then the surface is in shadow.&nbsp; It still has
+ambient illumination, but the direct diffuse illumination from the light is
+blocked.&nbsp; You can use the intersector for each object that you've already 
+written - you might note, however, that the shadow test is a bit simpler.&nbsp; 
+In the normal intersection computation, you compute the point on the surface and 
+it's normal.&nbsp; In the case of shadow testing, you just need to know there is 
+an intersection, and, you can stop as soon as there is an intersection rather 
+than always traversing the entire object tree looking for the closest 
+intersection.<p>The scene now looks something like this:
+<p align="center"><img border="0" src="assign2b.jpg" width="405" height="384">
+<h3>Something A Little More Interesting</h3>
+<p>For the next step, we will start to formalize the structure of our
+ray-tracer so we will be able to use better reflection models, and to add reflection, refraction, texturing,
+etc.&nbsp; I've wrapped up a library of
+shading models and spectral curves so we can describe materials and lights
+easily, and I'm going to suggest a little more structure for handling the
+intersection computations so that we can easily add objects and modify the
+environments we are rendering.&nbsp; This library will be available next week
+when we start to work with reflection and refraction.&nbsp; These next steps will prepare for using that library.
+<p>The first step is to describe the environment a little more generally, so
+that it is easy to add objects.&nbsp; I'll suggest a really simple interface
+that your sphere and polyhedra implement (this should be pretty similar to what 
+you already have implemented).&nbsp; This
+interface provides 2 intersection functions - the first is for
+getting the ray intersection with the object; the second just tests for
+shadow.&nbsp; I put all the objects into an array and loop through the
+object array whenever I'm ray intersecting or testing shadows -- our ray tracer 
+is suddenly generalized for geometry because we can handle any geometry that 
+implements the interface just by adding it to the geometry array.
+<pre>
+    <font color="DodgerBlue"><b>public class</b></font> RayIntersection {
+        <font color="DodgerBlue"><b>public float</b></font> <font color="Violet">m_fDistance</font>;    <font color="lime"><i>// the distance to the intersection</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Point3f <font color="Violet">m_ptLocation</font>; <font color="lime"><i>// the location of the  intersection</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Vector3f <font color="Violet">m_vNormal</font>;   <font color="lime"><i>// the surface normal at the intersection</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Vector3f <font color="Violet">m_vToEve</font>;    <font color="lime"><i>// the direction to the eye</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Material <font color="Violet">m_mtl</font>;       <font color="lime"><i>// the material of the surface</i></font>
+    }
+
+    <font color="DodgerBlue"><b>interface</b></font> IRtGeometry {
+        <font color="lime"><i>/**
+         * Test for a ray intersection closer than intersection.m_fDistance< and if there is a closer intersection
+         * save in information about that intersection in the intersection
+         * @param ray The ray being intersected.
+         * @param intersection The intersection.
+         * @return true if there is a closer intersection, false otherwise.
+         */</i></font>
+        <font color="DodgerBlue"><b>public boolean</b></font> rayIntersection(Line3f ray, RayIntersection intersection);
+
+        <font color="lime"><i>/**
+         * Test for this object blocking the light to <tt>intersection</tt>
+         * @param rayToLight The ray to the light.
+         * @param fDistLight The distance to the light.
+         * @return true if this object casts a shadow, false otherwise.
+        */</i></font>
+        <font color="DodgerBlue"><b>public boolean</b></font> testShadow(Line3f rayToLight, <font color="DodgerBlue"><b>float</b></font> fDistLight);
+    }
+</pre>
+
+</pre>
+<p>The first function, <font face="Courier New">rayIntersection()</font>, fills
+in a <font face="Courier New">RayIntersection
+</font>structure if there is
+an intersection.&nbsp;&nbsp; The second function, <font face="Courier New">testShadow()</font>,
+returns <font face="Courier New">true</font> if the object is intersected somewhere
+between the intersection and <font face="Courier New">fDistLight</font> from the
+intersection.&nbsp; We could use the <font face="Courier New">rayIntersection()</font>
+to do the shadow test, but generally, there is a lot less work to do if we just
+need to confirm whether there is or isn't an intersection.&nbsp; Now, when we
+get the colour for a pixel, we loop through the object array, keep the
+closest intersection, and then apply the illumination model to the
+material.&nbsp; You can define the material any way you want for now.<p>The next
+thing is to do something similar with lights, so you can add multiple
+lights.&nbsp; This is the interface that I use for lights:
+<pre>
+    <font color="DodgerBlue"><b>class</b></font> LightInfo {
+        <font color="DodgerBlue"><b>static public final int</b></font>    AMBIENT = 0;
+        <font color="DodgerBlue"><b>static public final int</b></font>    DIRECTIONAL = 1;
+        <font color="DodgerBlue"><b>static public final int</b></font>    LOCAL = 2;
+        <font color="DodgerBlue"><b>public int</b></font>          <font color="Violet">m_nType</font>;    <font color="lime"><i>// type from the constants</i></font>
+        <font color="DodgerBlue"><b>public</b></font> RGBf         <font color="Violet">m_rgb</font>;      <font color="lime"><i>// colour (intensity)</i></font>
+        <font color="DodgerBlue"><b>public float</b></font>        <font color="Violet">m_fDist</font>;    <font color="lime"><i>// distance (LOCAL lights only)</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Vector3f     <font color="Violet">m_vDir</font>;     <font color="lime"><i>// direction (DIRECTIONAL and LOCAL)</i></font>
+        <font color="DodgerBlue"><b>public</b></font> Point3f      <font color="Violet">m_ptFrom</font>;   <font color="lime"><i>// pt the light comes from (LOCAL only)</i></font>
+    }
+
+    <font color="DodgerBlue"><b>interface</b></font> IRtLight
+    {
+        <font color="lime"><i>/**
+         * Set a dimmer value for the light, which is a scalar multiplier for the light intensity.
+         * @param fDimmer (float) The dimming factor - usually in the range 0 to 1
+         */</i></font>
+        <font color="DodgerBlue"><b>public void</b></font> setDimmer(<font color="DodgerBlue"><b>float</b></font> fDimmer);
+        <font color="lime"><i>/**
+         * Get the lighting information describing how this light illuminates the ray intersection.  The light
+         * should check the ray intersection to make sure the intersection actually faces the light, and return
+         * false if the intersection cannot be illuminated by the light.
+         * @param lightInfo    (LightInfo, modified) The description of the illumination of the intersection by this light.
+         * @param intersection (RayIntersection, constant) The description of the ray intersection.
+         * @return Returns true if this light illuminates the ray intersection and the lightInfo
+         *     has been filled in with lighting information, otherwise false is returned and the lightInfo
+         *     is meaningless (probably unchanged).
+         */</i></font>
+        <font color="DodgerBlue"><b>public boolean</b></font> getLight(LightInfo lightInfo, RayIntersection intersection);
+    }
+</pre>
+<p>The dimmer is part of addressing the control of lighting.&nbsp; As
+more lights are added, it gets difficult to predict what light intensities will
+give you the image brightness you want.&nbsp; I've found it useful to introduce
+a global dimmer.&nbsp; The global dimmer is a multiplier applied to all of the
+light sources (except ambient).&nbsp; This lets you change overall image brightness by
+manipulating a single parameter rather than editing the brightness of every
+light.
+<p>The <font face="Courier New">getLight()</font>  function gives you the <font face="Courier New">LightInfo</font>
+for the surface intersection point.&nbsp; It also returns a <font face="Courier New">boolean</font> telling
+you whether the light even affects (i.e. sends light to) the surface - this is
+useful for cases like a spotlight, or a light that has a distance attenuation
+function where they only affect a small part of the environment.
+<p>By the way,
+in class we talked about using the angle &beta;, where the intensity drops to half,
+to describe a spotlight.&nbsp; We also talked about using a cosine power
+function, (<b>A</b> &middot; <b>L</b>)<sup>Ns</sup>
+, where <b>A</b> is the Axis of the light and <b>L</b> is the direction of light
+is leaving the spotlight as the spotlight intensity function.&nbsp; In this
+case, Ns is related to &beta; as:
+</p>
+<p align="center">Ns = -(ln(2.0) / ln(cos &beta;))
+</p>
+<p>And finally, here is a scene I ray-traced using the Blinn illumination
+model with the cosine-power roughness function, no geometric attenuation, and no
+Fresnel effects.&nbsp; For your work, play around with the values for material
+properties discussed in class.&nbsp; Try using more that one light so you
+understand some of the image contrast and brightness issues we discussed in
+class.
+<p align="center"><img border="0" src="assign2c.jpg" width="416" height="390">
+<p>As we discussed in class, the specular function is represented as (<b>N</b> &middot;
+<b>H</b>)<sup>Ns</sup> where the exponent Ns gives the sharpness of the
+hightlight.&nbsp; More correctly Ns is really a way of describing the roughness
+of the surface.&nbsp; We also described a diffuse coefficient Kd, and a specular
+coefficient, Ks, that are related to surface roughness and describe the balance
+between the magnitudes of specular and diffuse reflectance as the roughness
+changes.&nbsp; Once again, we use &beta;, which is the angle of deviation from
+the normal at which the slope distribution function drops to .5 to describe
+roughness (so we can apply it to other expressions of the slope distribution
+function).&nbsp; Here is the code I use to initialized Ns, Kd, and Ks given &beta;.&nbsp; The
+relationship between Ns and &beta; is derived from the cosine power
+slope distribution function (as shown above).&nbsp; The relationship
+between Kd, Ks, and Ns is something that I extrapolated from lots of observations
+and testing, and is purely empirical.
+<pre>
+    <font color="DodgerBlue"><b>float</b></font> fNs = -(<font color="DodgerBlue"><b>float</b></font>)(Math.log(2.0) / Math.log(Math.cos(aBeta)));
+    <font color="DodgerBlue"><b>float</b></font> fR = (fNs - 5.0f) / 100.0f;
+    <font color="DodgerBlue"><b>if</b></font> (fR &lt; 0.0f) { fR = 0.0f; }
+    <font color="DodgerBlue"><b>if</b></font> (fR > 1.0f) { fR = 1.0f; }
+    Kd = 0.65f - (0.30f * (<font color="DodgerBlue"><b>float</b></font>)Math.sqrt(fR));
+    Ks = 0.05f + (0.90f * (<font color="DodgerBlue"><b>float</b></font>)Math.sqrt(fR));
+</pre>
+
+<p><b>The Environment</b>
+<p>Here's the description of the environment for the last image:
+<pre>
+    <font color="lime"><i>// ----------------------------------------------------------------------------------------------------------------</i></font>
+    <font color="lime"><i>// the camera in world space</i></font>
+    <font color="lime"><i>// ----------------------------------------------------------------------------------------------------------------</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> Point3f <font color="Violet">m_ptEye</font> = <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,-6.0f,0.0f);
+    <font color="DodgerBlue"><b>private final</b></font> Vector3f <font color="Violet">m_vtUp</font> = <font color="DodgerBlue"><b>new</b></font> Vector3f(0.0f,0.0f,1.0f);
+    <font color="DodgerBlue"><b>private final</b></font> Vector3f <font color="Violet">m_vtSide</font> = <font color="DodgerBlue"><b>new</b></font> Vector3f(1.0f,0.0f,0.0f);
+    <font color="DodgerBlue"><b>private final</b></font> Point3f <font color="Violet">m_ptTarget</font> = <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f);  <font color="lime"><i>// center of the image plane</i></font>
+    <font color="DodgerBlue"><b>private final float</b></font> <font color="Violet">m_fTargetWidth</font> = 4.0f;  <font color="lime"><i>// width of the image plane</i></font>
+
+    <font color="lime"><i>// ----------------------------------------------------------------------------------------------------------------</i></font>
+    <font color="lime"><i>// the environment</i></font>
+    <font color="lime"><i>// ----------------------------------------------------------------------------------------------------------------</i></font>
+    <font color="lime"><i>// background colour</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> RGBf <font color="Violet">m_rgbBkg</font> = <font color="DodgerBlue"><b>new</b></font> RGBf(0.25f,0.25f,0.25f);
+
+    <font color="lime"><i>// the base block</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> Material <font color="Violet">m_mtlBase</font> = <font color="DodgerBlue"><b>new</b></font> Material(<font color="DodgerBlue"><b>new</b></font> RGBf(0.0f,1.0f,0.0f), <font color="DodgerBlue"><b>false</b></font>, <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,45.0f));
+    <font color="DodgerBlue"><b>private final</b></font> Plane3f[] <font color="Violet">m_plnBase</font> = {
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( 0.0f, 0.0f, 1.0f, 1.0f),   <font color="lime"><i>// top</i></font>
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( 0.0f,-1.0f, 0.0f,-2.0f),   <font color="lime"><i>// front</i></font>
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( 1.0f, 0.0f, 0.0f,-2.0f),   <font color="lime"><i>// right</i></font>
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( 0.0f, 1.0f, 0.0f,-2.0f),   <font color="lime"><i>// back</i></font>
+            <font color="DodgerBlue"><b>new</b></font> Plane3f(-1.0f, 0.0f, 0.0f,-2.0f),   <font color="lime"><i>// left</i></font>
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( 0.0f, 0.0f,-1.0f,-1.5f)    <font color="lime"><i>// bottom</i></font>
+    };
+    <font color="DodgerBlue"><b>private final</b></font> ImplicitPolyhedra <font color="Violet">m_basePolyhedra</font> = <font color="DodgerBlue"><b>new</b></font> ImplicitPolyhedra(<font color="Violet">m_plnBase</font>, <font color="Violet">m_mtlBase</font>);
+
+    <font color="lime"><i>// the gem block</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> Material <font color="Violet">m_mtlGem </font>= <font color="DodgerBlue"><b>new</b></font> Material(<font color="DodgerBlue"><b>new</b></font> RGBf(1.0f,0.0f,0.0f), <font color="DodgerBlue"><b>true</b></font>, <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,10.0f));
+    <font color="DodgerBlue"><b>private final float</b></font> <font color="Violet">m_fRoot3</font> = 1.0f / (<font color="DodgerBlue"><b>float</b></font>)Math.sqrt(3.0);
+    <font color="DodgerBlue"><b>private final</b></font> Plane3f[] <font color="Violet">m_plnGem</font> = {
+            <font color="DodgerBlue"><b>new</b></font> Plane3f(  m_fRoot3,  m_fRoot3,  m_fRoot3,  (0.0f)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f(  m_fRoot3, -m_fRoot3,  m_fRoot3, -(2.0f * m_fRoot3)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( -m_fRoot3,  m_fRoot3,  m_fRoot3,  (2.0f * m_fRoot3)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( -m_fRoot3, -m_fRoot3,  m_fRoot3,  (0.0f)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f(  m_fRoot3,  m_fRoot3, -m_fRoot3, -(m_fRoot3)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f(  m_fRoot3, -m_fRoot3, -m_fRoot3, -(3.0f * m_fRoot3)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( -m_fRoot3,  m_fRoot3, -m_fRoot3,  (m_fRoot3)),
+            <font color="DodgerBlue"><b>new</b></font> Plane3f( -m_fRoot3, -m_fRoot3, -m_fRoot3, -(m_fRoot3))
+    };
+    <font color="DodgerBlue"><b>private final</b></font> ImplicitPolyhedra <font color="Violet">m_gemPolyhedra</font> = <font color="DodgerBlue"><b>new</b></font> ImplicitPolyhedra(<font color="Violet">m_plnGem</font>, <font color="Violet">m_mtlGem</font>);
+
+    <font color="lime"><i>// center sphere</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> Material <font color="Violet">m_mtlSphere1</font> = <font color="DodgerBlue"><b>new</b></font> Material(new RGBf(0.0f,0.0f,1.0f), <font color="DodgerBlue"><b>true</b></font>, <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,9.0f));
+    <font color="DodgerBlue"><b>private final</b></font> Sphere3f <font color="Violet">m_sphere1</font> = <font color="DodgerBlue"><b>new</b></font> Sphere3f(<font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f), 1.0f, <font color="Violet">m_mtlSphere1</font>);
+
+    <font color="lime"><i>// little sphere</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> Material <font color="Violet">m_mtlSphere2</font> = <font color="DodgerBlue"><b>new</b></font> Material(<font color="DodgerBlue"><b>new</b></font> RGBf(1.0f,0.0f,1.0f), <font color="DodgerBlue"><b>false</b></font>, <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,5.0f));
+    <font color="DodgerBlue"><b>private final</b></font> Sphere3f <font color="Violet">m_sphere2</font> = <font color="DodgerBlue"><b>new</b></font> Sphere3f(<font color="DodgerBlue"><b>new</b></font> Point3f(-0.6f,-1.25f,0.6f), 0.25f, <font color="Violet">m_mtlSphere2</font>);
+
+    <font color="lime"><i>// the global scene lighting dimmer</i></font>
+    <font color="DodgerBlue"><b>private final float</b></font> <font color="Violet">m_fDimmer/font> = 0.85f;
+
+    <font color="lime"><i>// the ambient light</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> AmbientLight <font color="Violet">m_lgtAmbient/font> = <font color="DodgerBlue"><b>new</b></font> AmbientLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.1f,0.1f,0.1f));
+
+    <font color="lime"><i>// a local light</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> PointLight <font color="Violet">m_lgtPoint/font> = <font color="DodgerBlue"><b>new</b></font> PointLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.8f,0.8f,0.8f), <font color="DodgerBlue"><b>new</b></font> Point3f(-12.0f,-24.0f, 12.0f));
+
+    <font color="lime"><i>// a spot light</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot1/font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 12.0f,-10.0f, 48.0f),
+            <font color="DodgerBlue"><b>new</b></font> Vector3f(<font color="DodgerBlue"><b>new</b></font> Point3f(12.0f,-10.0f,48.0f), <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f)).normalizeThis(),
+            <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,5.0f) );
+
+    <font color="lime"><i>// another spot light</i></font>
+    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot2/font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 20.0f,-10.0f,10.0f),
+            <font color="DodgerBlue"><b>new</b></font> Vector3f(<font color="DodgerBlue"><b>new</b></font> Point3f(20.0f,-10.0f,10.0f), <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f)).normalizeThis(),
+            <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,5.0f) );
+</pre>
+<p> 
+<p>&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body></html>

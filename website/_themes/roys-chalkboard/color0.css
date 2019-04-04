@@ -1,0 +1,85 @@
+A:link
+{
+    COLOR: #99ccff;
+    TEXT-DECORATION: none
+}
+A:visited
+{
+    COLOR: #6699ff;
+    TEXT-DECORATION: none
+}
+BODY
+{
+    COLOR: #ffffff;
+    BACKGROUND-COLOR: #000000
+}
+TABLE
+{
+    table-border-color-light: rgb(255, 255, 255);
+    table-border-color-dark: rgb(153, 153, 153)
+}
+H1
+{
+    COLOR: #ffffff
+}
+H2
+{
+    COLOR: #ffffff
+}
+H3
+{
+    COLOR: #ffffff
+}
+H4
+{
+    COLOR: #ffffff
+}
+H5
+{
+    COLOR: #ffffff
+}
+H6
+{
+    COLOR: #ffffff
+}
+BUTTON
+{
+    COLOR: #000000;
+    BACKGROUND-COLOR: #ffffff
+}
+LABEL
+{
+    COLOR: #ffffff
+}
+.mstheme-text
+{
+}
+TEXTAREA
+{
+    COLOR: #000000
+}
+FIELDSET
+{
+    COLOR: #ffffff
+}
+LEGEND
+{
+    COLOR: #ffffff
+}
+SELECT
+{
+    COLOR: #000000
+}
+CAPTION
+{
+    COLOR: #ffffff
+}
+TH
+{
+    COLOR: #ffffff
+}
+A:hover
+{
+    COLOR: red;
+    TEXT-DECORATION: none
+}

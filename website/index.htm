@@ -1,0 +1,97 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSE506 - 3D Rendering</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>
+A.links:hover{color:black;}
+A	{text-decoration:none;}
+A:hover	{color:red;}
+</style>
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/index.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="CSE506 - 3D Rendering"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+</p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+<nobr><a href="syllabus.htm">Syllabus&nbsp;-&nbsp;winter&nbsp;2004</a></nobr><br><nobr><a href="assignments.htm">Assignments</a></nobr><br><nobr><a href="references_and_links.htm">References&nbsp;and&nbsp;Links</a></nobr><br><nobr><a href="student_work.htm">Student&nbsp;Work</a></nobr><br><nobr><a href="sid:1022">Notes&nbsp;and&nbsp;Comments</a></nobr>
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>3D Rendering Techniques and Algorithms - winter 2004</h3>
+<p>&quot;<i><font color="#99CCFF">All it takes is for the rendered image to look right.</font></i>&quot; -
+Jim Blinn (1983)</p>
+<p>&quot;<i><font color="#99CCFF">It is important that we can understand the true physical behaviour
+so when we make approximations we recognize the consequences.</font></i>&quot; - Donald
+P. Greenberg (1988)</p>
+<p>&quot;<i><font color="#99CCFF">Nothing is less real than realism.&nbsp; Details are
+confusing.&nbsp; It is only by selection, by elimination, by emphasis that we
+get at the real meaning of things.</font></i>&quot; - Georgia O'Keeffe (1922)</p>
+<p>&quot;<i><font color="#99CCFF">We all know that art is not truth.&nbsp; Art is a lie that makes
+us
+realize the truth.</font></i>&quot; - Pablo Picasso</p>
+<p>This course is an exploration of realistically rendering 3D scenes by
+computer.&nbsp; Realistically rendering 3D scenes is a very challenging endeavor.&nbsp;
+It requires an understanding of a variety of disciplines - mathematics,
+geometry, physics, optics, colour science, and perceptual psychology - and the
+reduction of this understanding to a computationally tractable algorithmic form.</p>
+<p>There are two basic parts to the problem:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">what do we see;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">and how does it look.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p>To determine what we see, we need to:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">build a mathematical/algorithmic representation of the geometry of the
+    scene;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">build a mathematical model of the observer;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">project the description of the scene into the viewing space of the
+    observer, determining which parts a visible, and which are obscured.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p>To determine how it looks, we need to:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">build a mathematical/algorithmic model of the materials and surface
+    finishes of all the objects in the scene;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">build a mathematical/algorithmic model of the lighting in the scene;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">model the physics/optics of the interaction of light with the geometry and
+    surface finishes of the scene;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">filter the result through the perceptual mechanism of the observer to
+    determine how to reproduce the perceptual experience of viewing the scene;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">and factor in the technology for image display/reproduction.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p>Taking all of this into account, and accounting for the fact that
+computational resources are not infinite, but the complexity of the scenes we
+wish to render is essentially infinite, we have a very interesting problem to
+solve.</p>
+<h3>Course Objectives</h3>
+<p>Upon completion of this course, each student should have
+sufficient understanding of realistic image generation to be a productive
+participant in any project that has a 3D rendering component.&nbsp; This would
+range from hardware design, through graphics API implementation, through
+realistic image production for film or video.</p>
+<h3>Homework and Term Project</h3>
+<p>There will be weekly programming assignments supporting the
+term project of writing a realistic 3D renderer.  The
+term project will be extending the renderer written in the first
+part of the course to include advanced rendering features of  the student&apos;s choice.</p>
+<h3>Prerequisites</h3>
+<p>It is assumed the student can skillfully program in some computer language -
+i.e. C, C++,
+or Java, VB, Fortan, etc.&nbsp; All the libraries I post will be in Java (see <a href="assignments.htm">Assignments</a>).&nbsp; A basic knowledge of
+linear algebra is helpful.&nbsp; While Java is my language of choice for the
+class, rendering as discussed in this class, is primarily a computational exercise that
+is easily written in any language.&nbsp; I've chosen Java as the language of
+choice because the object model makes it easy to build aan extensible framework supporting student extensions.</p>

@@ -1,0 +1,115 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Quadrics</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/quadrics.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="Quadrics"></strong></font></p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home" align="middle"></a> <a href="references_and_links.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Up" align="middle"></a> <img src="_derived/quadrics.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="Quadrics" align="middle"> <a href="slope_distibution.htm"><img src="_derived/slope_distibution.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Slope Distibution" align="middle"></a> <a href="multi-threading.htm"><img src="_derived/multi-threading.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="multi-threading" align="middle"></a></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>
+
+
+</p>
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Understanding Quadrics</h3>
+<p>Let's start with the basic formula for a quadric:</p>
+<p align="center">q<sub>1</sub>x<sup>2</sup> + q<sub>2</sub>y<sup>2</sup> + q<sub>3</sub>z<sup>2</sup>
++ q<sub>4</sub>xy + q<sub>5</sub>yz + q<sub>6</sub>zx + q<sub>7</sub>x + q<sub>8</sub>y
++ q<sub>9</sub>z +q<sub>0</sub> = 0</p>
+<p>The various quadrics are determined by the q coefficients.&nbsp; For example
+q<sub>1</sub>, q<sub>2</sub>, and q<sub>3</sub> equal 1/r<sup>2</sup> and q<sub>0</sub>
+= -1 for a sphere of radius r.&nbsp; All the other coefficients are 0.&nbsp; We
+intersect a ray starting at point (x<sub>o</sub>,y<sub>o</sub>,z<sub>o</sub>)
+and extending in direction (i,j,k) the points along which are expressed as (x<sub>t</sub>,y<sub>t</sub>,x<sub>t</sub>)
+= (x<sub>o</sub>,y<sub>o</sub>,z<sub>o</sub>) + t(i,j,k) where t is the distance
+from the origin of the ray (our standard parametric representation of a ray) by
+doing a bunch of algebraic gymnastics until we can express the combined
+equations as:</p>
+<blockquote>
+  <p>t<sup>2</sup>(q<sub>1</sub>i<sup>2</sup> + q<sub>2</sub>j<sup>2</sup> + q<sub>3</sub>k<sup>2</sup>
+  + q<sub>4</sub> ij + q<sub>5</sub>jk + q<sub>6</sub>ki) +</p>
+  <p>&nbsp;t(2(q<sub>1</sub>x<sub>o</sub>i + q<sub>2</sub>y<sub>o</sub>j + q<sub>3</sub>z<sub>o</sub>k)+
+  q<sub>4</sub>(x<sub>o</sub>j + y<sub>o</sub>i) + q<sub>5</sub>(y<sub>o</sub>k
+  + z<sub>o</sub>j) + q<sub>6</sub>(z<sub>o</sub>i + x<sub>o</sub>k) + q<sub>7</sub>i
+  + q<sub>8</sub>j + q<sub>9</sub>k) +</p>
+  <p>(q<sub>1</sub>x<sub>o</sub><sup>2</sup> + q<sub>2</sub>y<sub>o</sub><sup>2</sup>
+  + q<sub>3</sub>z<sub>o</sub><sup>2</sup> + q<sub>4</sub> x<sub>o</sub>y<sub>o</sub>+
+  q<sub>5</sub>y<sub>o</sub>z<sub>o</sub> + q<sub>6</sub>z<sub>o</sub>x<sub>o</sub>
+  + q<sub>7</sub>x<sub>o</sub> + q<sub>8</sub>y<sub>o</sub> + q<sub>9</sub>z<sub>o</sub>
+  + q<sub>0</sub>) = 0</p>
+</blockquote>
+<p>or, put another way:</p>
+<blockquote>
+  <p align="left">at2 + bt + c = 0&nbsp;</p>
+</blockquote>
+<p>where</p>
+<blockquote>
+  <p>a = q<sub>1</sub>i<sup>2</sup> + q<sub>2</sub>j<sup>2</sup> + q<sub>3</sub>k<sup>2</sup>
+  + q<sub>4</sub> ij + q<sub>5</sub>jk + q<sub>6</sub>ki</p>
+  <p>b = 2(q<sub>1</sub>x<sub>o</sub>i + q<sub>2</sub>y<sub>o</sub>j + q<sub>3</sub>z<sub>o</sub>k)+
+  q<sub>4</sub>(x<sub>o</sub>j + y<sub>o</sub>i) + q<sub>5</sub>(y<sub>o</sub>k
+  + z<sub>o</sub>j) + q<sub>6</sub>(z<sub>o</sub>i + x<sub>o</sub>k) + q<sub>7</sub>i
+  + q<sub>8</sub>j + q<sub>9</sub>k</p>
+  <p>c = q<sub>1</sub>x<sub>o</sub><sup>2</sup> + q<sub>2</sub>y<sub>o</sub><sup>2</sup>
+  + q<sub>3</sub>z<sub>o</sub><sup>2</sup> + q<sub>4</sub> x<sub>o</sub>y<sub>o</sub>+
+  q<sub>5</sub>y<sub>o</sub>z<sub>o</sub> + q<sub>6</sub>z<sub>o</sub>x<sub>o</sub>
+  + q<sub>7</sub>x<sub>o</sub> + q<sub>8</sub>y<sub>o</sub> + q<sub>9</sub>z<sub>o</sub>
+  + q<sub>0</sub></p>
+</blockquote>
+<p>and we can use the quadratic formula to find the roots for t.&nbsp;&nbsp; To
+find the normal at a point on the surface, we can take the partials of the
+formula and express the normal (i<sub>n</sub>,,j<sub>n</sub>,k<sub>n</sub>) as:</p>
+<blockquote>
+  <p>u = 2q<sub>1</sub>x + q<sub>4</sub>y + q<sub>6</sub>z + q<sub>7</sub>&nbsp;</p>
+  <p>v = 2q<sub>2</sub>y + q<sub>4</sub>x + q<sub>5</sub>z + q<sub>8</sub></p>
+  <p>w = 2q<sub>3</sub>z + q<sub>5</sub>y + q<sub>6</sub>x + q<sub>9</sub></p>
+  <p>i<sub>n</sub> = u / sqrt(u<sup>2</sup> + v<sup>2</sup> + w<sup>2</sup>)
+  ;&nbsp; j<sub>n</sub> = v / sqrt(u<sup>2</sup> + v<sup>2</sup> + w<sup>2</sup>)
+  ;&nbsp; k<sub>n</sub> = w / sqrt(u<sup>2</sup> + v<sup>2</sup> + w<sup>2</sup>)</p>
+</blockquote>
+<h3>Quadric Shapes</h3>
+<p>There are a number of ways we could cast the quadric shapes, but since our 
+class convention is to use XY as the ground or plan plane, and Z as the vertical 
+axis, we will cast the shapes Z is the primary axis of rotation (used loosely 
+since most of the shapes are elliptical):</p>
+<blockquote>
+  <p>Elliptical Cylinder about z:&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup>
+  ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>0</sub>
+  = -1</p>
+  <p>Ellipsoid:&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup> ;&nbsp;&nbsp;
+  q<sub>2</sub> = 1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub> = 1/r<sub>z</sub><sup>2</sup>
+  ;&nbsp;&nbsp; q<sub>0</sub> = -1</p>
+  <p>Elliptic Paraboloid about z:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup>
+  ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>9</sub>
+  = -1/height</p>
+  <p>Elliptic Cone about z:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup>
+  ;&nbsp;&nbsp; q<sub>2</sub> =  1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub> 
+  = -1/height<sup>2</sup> </p>
+<p>Hyperboloid about z:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup>
+;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub>
+= -1/r<sub>z</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>0</sub> = -1</p>
+  <p>Hyperbolic Paraboloid about z:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>x</sub><sup>2</sup>
+  ;&nbsp;&nbsp; q<sub>2</sub> = -1/r<sub>y</sub><sup>2</sup> ;&nbsp;&nbsp;&nbsp;
+  q<sub>9</sub> = -1/r<sub>z</sub></p>
+</blockquote>
+<p>&nbsp;</p>
+<p align="center"><img border="0" src="assign5a.jpg" width="628" height="582"></p>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,94 @@
+.mstheme
+{
+	separator-image: url(acharule.gif);
+	list-image-1: url(chabul1e.gif);
+	list-image-2: url(chabul2e.gif);
+	list-image-3: url(chabul3e.gif);
+	nav-banner-image: url(chabane.gif);
+	navbutton-horiz-normal: url(chbtnne.gif);
+	navbutton-horiz-hovered: url(chbtnhe.gif);
+	navbutton-horiz-pushed: url(chbtnse.gif);
+	navbutton-vert-normal: url(cvbtnne.gif);
+	navbutton-vert-hovered: url(cvbtnhe.gif);
+	navbutton-vert-pushed: url(cvbtnse.gif);
+	navbutton-home-normal: url(chmbtnne.gif);
+	navbutton-home-hovered: url(chmbtnhe.gif);
+	navbutton-home-pushed: url(chmbtnne.gif);
+	navbutton-next-normal: url(cnbtnne.gif);
+	navbutton-next-hovered: url(cnbtnhe.gif);
+	navbutton-next-pushed: url(cnbtnne.gif);
+	navbutton-prev-normal: url(cpbtnne.gif);
+	navbutton-prev-hovered: url(cpbtnhe.gif);
+	navbutton-prev-pushed: url(cpbtnne.gif);
+	navbutton-up-normal: url(cubtnne.gif);
+	navbutton-up-hovered: url(cubtnhe.gif);
+	navbutton-up-pushed: url(cubtnne.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 6;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 2;
+	font-style: normal;
+	font-weight: bold;
+}
+.mstheme-vert-navtxt
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 2;
+	font-style: normal;
+	font-weight: bold;
+}
+.mstheme-navtxthome
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtnext
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtprev
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtup
+{
+	font-family: Arial, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+ul
+{
+	list-style-image: url(chabul1e.gif);
+}
+ul ul
+{
+	list-style-image: url(chabul2e.gif);
+}
+ul ul ul
+{
+	list-style-image: url(chabul3e.gif);
+}
