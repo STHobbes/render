@@ -1,4 +1,4 @@
-package cip.CSE581.assign2c;
+package cip.CSE581.assign3b;
 
 import cip.render.IRenderScene;
 import cip.render.util.AngleF;
@@ -9,22 +9,21 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 
 /**
- * This is the third part of assignment 2 - using some common interfaces so you can build a more flexible system. The intent is
- * to promote thinking about the rendering components: lights, materials, geometries, etc. as components that can be added to
- * the rendering environment simply by making objects that implement common interfaces.
+ * This is the second part of assignment 3 - Adding transparency and refraction. The intent is
+ * to to modify the code from Assignment2c to include transparency and refraction.
  * <p>
  * <b>Usage:</b>
  * <pre>
- *     RenderWindow -r cip.CSE581.assign2c.Assignment2c
+ *     RenderWindow -r cip.CSE581.assign3b.Assignment3b
  * </pre>
  * <p>
- * As in the other assignment 1 and 2 solutions, the code base is small enough that it is in a single file.
+ * As in other assignment 1, 2, and 3 solutions, the code base is small enough that it is in a single file.
  *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since fall 2002
  */
-public class Assignment2c implements IRenderScene {
+public class Assignment3b implements IRenderScene {
     // -----------------------------------------------------------------------------------------------------------------------------
     // the camera in world space
     // -----------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ public class Assignment2c implements IRenderScene {
     // the base block
     private final Material m_mtlBase = new Material(new RGBf(0.0f,1.0f,0.0f), false, new AngleF(AngleF.DEGREES,45.0f));
     private final Plane3f[] m_plnBase = {new Plane3f(0.0f, 0.0f, 1.0f, 1.0f),      // top
-            new Plane3f( 0.0f, -1.0f,  0.0f, -2.0f),      // front
+            new Plane3f (0.0f, -1.0f,  0.0f, -2.0f),      // front
             new Plane3f( 1.0f,  0.0f,  0.0f, -2.0f),      // right
             new Plane3f( 0.0f,  1.0f,  0.0f, -2.0f),      // back
             new Plane3f(-1.0f,  0.0f,  0.0f, -2.0f),      // left
@@ -52,7 +51,8 @@ public class Assignment2c implements IRenderScene {
     final ImplicitPolyhedra m_basePolyhedra = new ImplicitPolyhedra(m_plnBase, m_mtlBase);
 
     // the gem block
-    private final Material m_mtlGem = new Material(new RGBf(1.0f,0.0f,0.0f), true, new AngleF(AngleF.DEGREES,10.0f));
+    private final Material m_mtlGem = new Material(new RGBf(1.0f,1.0f,1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
+            1.5f, 0.85f);
     private final float m_fRoot3 = 1.0f / (float) Math.sqrt(3.0);
     private final Plane3f[] m_plnGem = {new Plane3f(m_fRoot3, m_fRoot3, m_fRoot3, 0.0f),
             new Plane3f(m_fRoot3, -m_fRoot3, m_fRoot3, -(2.0f * m_fRoot3)),
@@ -73,8 +73,13 @@ public class Assignment2c implements IRenderScene {
     private final Material m_mtlSphere2 = new Material(new RGBf(1.0f,0.0f,1.0f), false, new AngleF(AngleF.DEGREES,5.0f));
     private final Sphere3f m_sphere2 = new Sphere3f(new Point3f(-0.6f, -1.25f, 0.6f), 0.25f, m_mtlSphere2);
 
+    // transparent little sphere
+    private final Material m_mtlSphere3 = new Material(new RGBf(1.0f,1.0f,1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
+            1.5f, 0.75f);
+    private final Sphere3f m_sphere3 = new Sphere3f(new Point3f(0.2f, -2.5f, 0.5f), 0.20f, m_mtlSphere3);
+
     // the global scene lighting dimmer
-    private final float m_fDimmer = 0.85f;
+    private final float m_fDimmer = 0.70f;
 
     // the ambient light
     private final AmbientLight m_lgtAmbient = new AmbientLight(new RGBf(0.1f,0.1f,0.1f));
@@ -93,41 +98,37 @@ public class Assignment2c implements IRenderScene {
             new AngleF(AngleF.DEGREES,5.0f) );
 
     // Put together the object and light lists
-    private final IRtGeometry[] m_geometry = {m_basePolyhedra, m_gemPolyhedra, m_sphere1, m_sphere2};
+    private final IRtGeometry[] m_geometry = {m_basePolyhedra, m_gemPolyhedra, m_sphere1, m_sphere2, m_sphere3};
     private final IRtLight[] m_lights = {m_lgtAmbient, m_lgtPoint, m_lgtSpot1, m_lgtSpot2};
 
     //------------------------------------------------------------------------------------------------------------------------------
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
      * @param ray The ray we want the colour for.
+     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
+     * @param bkg            (RGBf, readonly) The background color.
+     * @param nMaxBounce
+     * @param nMaxInternal
      * @return Returns the colour seen by this ray.
      */
-    Color getPixelColor(Line3f ray) {
+    static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
+                              @NotNull IRtGeometry[] rtObjects, IRtGeometry lastHit, @NotNull RGBf bkg,
+                              int nMaxBounce, int nMaxInternal) {
         boolean bIntersectObj = false;
-        Color clr;
-        final RayIntersection intersection = new RayIntersection();
-
-        try {
-            intersection.m_vToEye.setValue(ray.m_vDir).reverse();
-            for (IRtGeometry geometry : m_geometry) {
-                if (geometry.rayIntersection(ray, intersection)) {
-                    bIntersectObj = true;
-                }
+        intersection.m_vToEye.setValue(ray.m_vDir).reverse();
+        for (IRtGeometry geometry : rtObjects) {
+            if ((geometry != lastHit) && geometry.rayIntersection(ray, false, intersection)) {
+                bIntersectObj = true;
             }
-            final RGBf rgb = new RGBf(m_rgbBkg);
-            if (bIntersectObj) {
-                intersection.m_mtl.getColor(rgb, intersection, m_lights,
-                        m_geometry, m_rgbBkg);
-            }
-            rgb.clamp();
-            clr = new Color(rgb.r, rgb.g, rgb.b);
-        } catch (Throwable t) {
-            // something bad happened - color code this pixel yellow
-            t.printStackTrace();
-            clr = Color.YELLOW;
         }
-
-        return clr;
+        final RGBf rgb = new RGBf(bkg);
+        if (bIntersectObj) {
+            intersection.m_mtl.getColor(rgb, intersection, lights,
+                    rtObjects, bkg, nMaxBounce, nMaxInternal);
+        }
+        return rgb.clamp();
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +175,9 @@ public class Assignment2c implements IRenderScene {
                             addVector(m_vUp.cloneVector3f().scale((float) (iy) * fIncY));
                     ray.setValue(m_ptEye, ptPixel);
                     // get the colour of the pixel
-                    gc.setColor(getPixelColor(ray));
+                    final RayIntersection intersection = new RayIntersection();
+                    RGBf rgb = getPixelColor(ray, intersection, m_lights, m_geometry, null, m_rgbBkg, 5, 15);
+                    gc.setColor(new Color(rgb.r, rgb.g, rgb.b));
                 } catch (final Throwable t) {
                     // something bad happened - color code this pixel yellow
                     t.printStackTrace();
@@ -194,40 +197,74 @@ public class Assignment2c implements IRenderScene {
 interface IRtMaterial {
     /**
      * Compute the colour of a surface as seen from a specific direction.
-     * @param rgb            (modified) The computed colour at the surface.
-     * @param intersection   (readonly) The description of the surface - location, orientation, material, etc.
-     * @param lights         (readonly) The light in the scene that may affect the intersection.
-     * @param rtObjects      (readonly) The objects in the scene.
-     * @param bkg            (readonly) The background color.
+     * @param rgb            (RGBf, modified) The computed colour at the surface.
+     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
+     * @param bkg            (RGBf, readonly) The background color.
+     * @param nMaxBounce     (int, readonly) The maximum reflective bounces.
+     * @param nMaxInternal   (int, readonly) The maximum internal reflections in an object.
      */
     void getColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtLight[] lights,
-                  @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg);
+                  @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce, int nMaxInternal);
 }
 
-class Material implements IRtMaterial{
-    public final RGBf m_clr;
-    private final float m_Kd;
-    private final float m_Ks;
-    private final float m_Ns;
-    private final boolean m_conductor;
+class Material implements IRtMaterial {
+    private RGBf m_clr;
+    private float m_Kd;
+    private float m_Ks;
+    private float m_Ns;
+    private boolean m_conductor;
+    private boolean m_isTransparent = false;     // opaque by default
+    private float m_indexOfRefraction = 1.5f;    // index of refraction for glass
+    private float m_Kt = 0.95f;                  // transmission for glass
+
+    Material(final RGBf color, final boolean conductor, final AngleF beta,
+             final float fIndexOfRefraction, final float fKt) {
+        // transparent material
+        m_isTransparent = true;
+        m_indexOfRefraction = fIndexOfRefraction;
+        m_Kt = fKt;
+        initForRender(color, conductor, beta);
+    }
 
     Material(RGBf color, boolean conductor, AngleF beta) {
+        initForRender(color, conductor, beta);
+    }
+
+    void initForRender(RGBf color, boolean conductor, AngleF beta) {
         m_clr = color;
+        m_conductor = conductor;
         m_Ns = -(float)(Math.log(2.0) / Math.log(beta.cos()));
         float fR = (m_Ns - 5.0f) / 100.0f;
         if (fR < 0.0f) { fR = 0.0f; }
         if (fR > 1.0f) { fR = 1.0f; }
-        m_Kd = 0.65f - (0.30f * (float)Math.sqrt(fR));
-        m_Ks = 0.05f + (0.90f * (float)Math.sqrt(fR));
-        m_conductor = conductor;
+        if (fR > 0.0f ) {
+            // If there is recursive reflection/refraction then that is the primary source of illumination for
+            //  all surfaces.  For the diffuse surfaces to look correct, some sort of reflected ray distribution or
+            //  reflection filtering needs to be used to soften the reflection.
+            m_Kd = 0.40f - (0.20f * (float) Math.sqrt(fR));
+            m_Ks = 0.20f + (0.65f * (float) Math.sqrt(fR));
+        } else {
+            // If there is no recursive reflection, then the primary lighting is the only illumination.
+            //  The diffuse and specular coefficients are higher in this case than they are when there is
+            //  recursive reflection/refraction
+            m_Kd = 0.65f - (0.30f * (float) Math.sqrt(fR));
+            m_Ks = 0.05f + (0.90f * (float) Math.sqrt(fR));
+        }
+        if (m_isTransparent) {
+            m_Kd *= (1.0f - m_Kt);
+            m_Ks *= (1.0f - m_Kt);
+        }
     }
 
     @Override
     public void getColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtLight[] lights,
-                         @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg) {
+                         @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce, int nMaxInternal) {
 
         final LightInfo lightInfo = new LightInfo();
         rgb.setValue(0.0f,0.0f,0.0f);
+        // Compute the light contributions to the color
         for (IRtLight light : lights) {
             if (light.getLight(lightInfo, intersection)) {
                 if (lightInfo.m_nType == LightInfo.AMBIENT) {
@@ -265,23 +302,101 @@ class Material implements IRtMaterial{
                 }
             }
         }
+        // If the material is reflective, add the reflected component
+        if ((nMaxBounce > 0) && (m_Ks > 0.2f)) {
+            Vector3f vRfl = new Vector3f().setToReflection(intersection.m_vNormal, intersection.m_vToEye);
+            if (vRfl.dot(intersection.m_vNormal) <= 0.0f) {
+                System.out.println("cip.raytrace.material.Whitted(): unexpected negative R.N");
+            }
+            Line3f reflectedRay = new Line3f().setValue(intersection.m_ptLocation, vRfl);
+            RayIntersection intRfl = new RayIntersection();
+            rgb.add(Assignment3b.getPixelColor(reflectedRay, intRfl, lights, rtObjects, intersection.m_obj,
+                    bkg, nMaxBounce-1,nMaxInternal).scale(m_Ks));
+        }
+        // If the material is transparent add the refracted color
+        if (m_isTransparent) {
+            Vector3f vRfr = new Vector3f();
+            RGBf rgbRfr = new RGBf().setValue(bkg);
+            if ((nMaxInternal > 0) &&
+                    vRfr.setToRefraction(intersection.m_vNormal, intersection.m_vToEye, 1.0f, m_indexOfRefraction)) {
+                Line3f refractedRay = new Line3f().setValue(intersection.m_ptLocation, vRfr);
+                RayIntersection intRfr = new RayIntersection();
+                intRfr.m_vToEye.setValue(vRfr).reverse();
+                if (intersection.m_obj.rayIntersection(refractedRay, true, intRfr)) {
+                    // OK, we have the 'goes out' intersection, get the color coming from that point
+                    getInternalColor(rgbRfr, intRfr, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal-1);
+                    rgb.add(rgbRfr).scale(m_Kt);
+                } else {
+                    // if this happens there is a problem with to object intersected. There was a ray that way logically
+                    // intersected with this object. The logic in the object must allow this ray to go out of the object
+                    rgb.setValue(1.0f, 1.0f, 0.0f);
+                }
+             }
+        }
+    }
+
+    public void getInternalColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtGeometry insideObj,
+                                 @NotNull IRtLight[] lights, @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg,
+                                 int nMaxBounce, int nMaxInternal) {
+        // The intersection is an internal intersection.  The refracted ray goes outside the object, the reflected ray stays
+        //  inside the object. Since the material of the inside has a greater index of refraction than 1, there could be
+        //  complete internal reflection, and no refracted ray.
+        Vector3f vRfr = new Vector3f();
+        float Ks = m_Ks;
+        if (vRfr.setToRefraction(intersection.m_vNormal, intersection.m_vToEye, m_indexOfRefraction, 1.0f)) {
+            // There is a refracted ray to the outside
+            Line3f rayRefracted = new Line3f().setValue(intersection.m_ptLocation, vRfr);
+            RayIntersection intRfr = new RayIntersection();
+            rgb.setValue(Assignment3b.getPixelColor(rayRefracted, intRfr, lights, rtObjects, intersection.m_obj,
+                    bkg, nMaxBounce-1,nMaxInternal).scale(m_Kt));
+        } else {
+            // Complete internal reflection - no contribution from the outside
+            Ks = m_Kt;
+            rgb.setValue(0.0f,0.0f,0.0f);
+        }
+        // Now we worry about the internal reflection part
+        if (nMaxInternal > 0) {
+            // we continue to recurse the internal refraction into the current object
+            Vector3f vRfl = new Vector3f();
+            RGBf rgbRfl = new RGBf().setValue(bkg);
+            vRfl.setToReflection(intersection.m_vNormal, intersection.m_vToEye);
+            Line3f reflectedRay = new Line3f().setValue(intersection.m_ptLocation, vRfl);
+            RayIntersection intRfl = new RayIntersection();
+            intRfl.m_vToEye.setValue(vRfl).reverse();
+            if (intersection.m_obj.rayIntersection(reflectedRay, true, intRfl)) {
+                // OK, we have the 'goes out' intersection, get the color coming from that point
+                getInternalColor(rgbRfl, intRfl, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal-1);
+                rgb.add(rgbRfl.scale(Ks));
+            } else {
+                // if this happens there is a problem with the object intersection code. There was a ray that way logically
+                // intersected with this object. The logic in the object must allow this ray to go out of the object
+                rgb.setValue(1.0f, 1.0f, 0.0f);
+            }
+
+        } else {
+            // this is kind of a conundrum. Things can reflect internally forever, so we need to decide to do something
+            // when we decide we've traced enough bounces. My choice is to just call this black and assume it really will
+            // not affect image fidelity. So do nothing here.
+        }
     }
 }
 
 class RayIntersection {
-    public float       m_fDistance;   // the distance to the intersection
-    public Point3f     m_ptLocation;  // the location of the intersection
-    public Vector3f    m_vNormal;     // the surface normal at the intersection
-    public Vector3f    m_vToEye;      // the direction to the eye
-    public Material    m_mtl;         // the material of the surface
+    public float        m_fDistance;    // the distance to the intersection
+    public Point3f      m_ptLocation;   // the location of the intersection
+    public Vector3f     m_vNormal;      // the surface normal at the intersection
+    public Vector3f     m_vToEye;       // the direction to the eye or the previous intersection.
+    public Material     m_mtl;          // the material of the surface
+    public IRtGeometry  m_obj;          // the object at this intersection
 
     // All of the objects used by the intersection are created at construction
     public RayIntersection() {
-        m_fDistance = Float.MAX_VALUE;
+        m_fDistance = Float.POSITIVE_INFINITY;
         m_ptLocation = new Point3f();
         m_vNormal = new Vector3f();
         m_vToEye = new Vector3f();
         m_mtl = null;
+        m_obj = null;
     }
 }
 
@@ -290,10 +405,11 @@ interface IRtGeometry {
      * Test for a ray intersection closer than <tt>intersection.m_fDistance</tt> and if there is a closer intersection
      * save in information about that intersection in the <tt>intersection</tt>
      * @param ray The ray being intersected.
+     * @param bStartsInside <tt>true</tt> if this ray is inside an object, <tt>false</tt> if this is an
      * @param intersection The intersection.
      * @return <tt>true</tt> if there is a closer intersection, <tt>false</tt> otherwise.
      */
-    boolean rayIntersection(Line3f ray,  RayIntersection intersection);
+    boolean rayIntersection(Line3f ray, boolean bStartsInside, RayIntersection intersection);
 
     /**
      * Test for this object blocking the light to <tt>intersection</tt>
@@ -321,7 +437,7 @@ interface IRtLight
      * Set a dimmer value for the light, which is a scalar multiplier for the light intensity.
      * @param fDimmer (float) The dimming factor - usually in the range 0 to 1
      */
-    void setDimmer( float fDimmer);
+    void setDimmer(float fDimmer);
 
     /**
      * Get the lighting information describing how this light illuminates the ray intersection.  The light
@@ -351,11 +467,11 @@ class Sphere3f implements IRtGeometry {
     }
 
     @Override
-    public boolean rayIntersection(Line3f ray, RayIntersection intersection) {
+    public boolean rayIntersection(Line3f ray, boolean bStartsInside, RayIntersection intersection) {
         // see if the ray intersects the sphere from the outside - this uses the sphere intersection formula from Watt, p18, with
         //  a=0 since the ray is normalized.
-        float fDistTmp = intersect(ray);
-        if ((fDistTmp < 0.0f) || (fDistTmp > intersection.m_fDistance)) {
+        float fDistTmp = intersect(ray, bStartsInside);
+        if (!bStartsInside && ((fDistTmp < 0.0f) || (fDistTmp > intersection.m_fDistance))) {
             return false;
         }
 
@@ -366,17 +482,18 @@ class Sphere3f implements IRtGeometry {
         intersection.m_vNormal.j = (intersection.m_ptLocation.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_ptLocation.z - m_ptCtr.z) / m_fRad;
         intersection.m_mtl = m_mtl;
+        intersection.m_obj = this;
         return true;
     }
 
     @Override
     public boolean testShadow(Line3f rayToLight, float fDistLight) {
-        float fDistTmp = intersect(rayToLight);
+        float fDistTmp = intersect(rayToLight, false);
         return (fDistTmp > 0.0f) && (fDistTmp < fDistLight);
     }
 
 
-    private float intersect(Line3f ray) {
+    private float intersect(Line3f ray, boolean bStartsInside) {
         float fB = 2.0f * ((ray.m_vDir.i * (ray.m_ptOrg.x - m_ptCtr.x)) +
                 (ray.m_vDir.j * (ray.m_ptOrg.y - m_ptCtr.y)) +
                 (ray.m_vDir.k * (ray.m_ptOrg.z - m_ptCtr.z)));
@@ -390,7 +507,9 @@ class Sphere3f implements IRtGeometry {
         float fDet = (fB * fB) - (4.0f * fC);
         if (fDet < 0.0f) return -1.0f;  // no intersection - no solution to the quadratic equation
 
-        return 0.5f * (-fB - (float) Math.sqrt((double)fDet));
+        return bStartsInside ?
+                (0.5f * (-fB + (float) Math.sqrt((double)fDet))) :
+                (0.5f * (-fB - (float) Math.sqrt((double)fDet)));
     }
 }
 
@@ -405,11 +524,11 @@ class ImplicitPolyhedra implements IRtGeometry {
     }
 
     @Override
-    public boolean rayIntersection(final Line3f ray, final RayIntersection intersection) {
-        Plane3fIntersection plnInt = intersect(ray);
+    public boolean rayIntersection(final Line3f ray, boolean bStartsInside, final RayIntersection intersection) {
+        Plane3fIntersection plnInt = intersect(ray, bStartsInside);
         // We got here if the ray intersects the object.  Test the intersection distance - if
         //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-        if ((null == plnInt) || (plnInt.m_fDist > intersection.m_fDistance)) {
+        if ((null == plnInt) || (!bStartsInside && (plnInt.m_fDist < 0.0f)) || (plnInt.m_fDist > intersection.m_fDistance)) {
             return false;
         }
 
@@ -418,23 +537,25 @@ class ImplicitPolyhedra implements IRtGeometry {
         ray.pointAtDistace(intersection.m_ptLocation, plnInt.m_fDist);
         plnInt.m_plane.getNormal(intersection.m_vNormal);
         intersection.m_mtl = m_mtl;
+        intersection.m_obj = this;
         return true;
     }
 
     @Override
     public boolean testShadow(Line3f rayToLight, float fDistLight) {
-        Plane3fIntersection plnInt = intersect(rayToLight);
+        Plane3fIntersection plnInt = intersect(rayToLight, false);
         return (null != plnInt) && (plnInt.m_fDist > 0.0f) && (plnInt.m_fDist < fDistLight);
     }
 
 
-    private Plane3fIntersection intersect(Line3f ray) {
+    private Plane3fIntersection intersect(Line3f ray, boolean bStartsInside) {
         //  This is the convex polyhedra test where we compute the distance to intersections
         //  into the planes of the polyhedra, and out of the planes of the polyhedra.  If
         //  the furthest in-to is closer than the furthest out-of, then the ray is is
         //  intersecting the polyhedra.
-        float fDistIn = -Float.MAX_VALUE;
-        float fDistOut = Float.MAX_VALUE;
+        float fDistIn = Float.NEGATIVE_INFINITY;
+        float fDistOut = Float.POSITIVE_INFINITY;
+        int nOut = -1;
         final Plane3fIntersection plnIntTmp = new Plane3fIntersection();
         Plane3fIntersection plnInt = null;
         for (int ix = 0; ix < m_planes.length; ix++) {
@@ -451,26 +572,34 @@ class ImplicitPolyhedra implements IRtGeometry {
                 //  encountered so far.
                 if (plnIntTmp.m_fDist < fDistOut) {
                     fDistOut = plnIntTmp.m_fDist;
-                    if ((fDistOut < 0.0f) || (fDistIn > fDistOut)) {
+                    if (bStartsInside) {
+                        if (null == plnInt) {
+                            plnInt = plnIntTmp.clonePlane3fIntersection();
+                        } else {
+                            plnInt.setValue(plnIntTmp);
+                        }
+                    } else if ((fDistOut < 0.0f) || (fDistIn > fDistOut)) {
                         // if this test is true, an intersection is not possible - we don't
                         //  need to do anymore testing.
                         return null;
                     }
-                }
+                 }
             } else {
                 // going into the plane - this is important if it is the furthest 'goes into' we've
                 //  encountered so far.
                 if (plnIntTmp.m_fDist > fDistIn) {
                     fDistIn = plnIntTmp.m_fDist;
-                    if (fDistIn > fDistOut) {
-                        // if this test is true, an intersection is not possible - we don't
-                        //  need to do anymore testing.
-                        return null;
-                    }
-                    if (null == plnInt) {
-                        plnInt = plnIntTmp.clonePlane3fIntersection();
-                    } else {
-                        plnInt.setValue(plnIntTmp);
+                    if (!bStartsInside) {
+                        if (fDistIn > fDistOut) {
+                            // if this test is true, an intersection is not possible - we don't
+                            //  need to do anymore testing.
+                            return null;
+                        }
+                        if (null == plnInt) {
+                            plnInt = plnIntTmp.clonePlane3fIntersection();
+                        } else {
+                            plnInt.setValue(plnIntTmp);
+                        }
                     }
                 }
             }

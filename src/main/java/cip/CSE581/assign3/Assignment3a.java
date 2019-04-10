@@ -1,4 +1,4 @@
-package cip.CSE581.assign2c;
+package cip.CSE581.assign3;
 
 import cip.render.IRenderScene;
 import cip.render.util.AngleF;
@@ -9,22 +9,21 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 
 /**
- * This is the third part of assignment 2 - using some common interfaces so you can build a more flexible system. The intent is
- * to promote thinking about the rendering components: lights, materials, geometries, etc. as components that can be added to
- * the rendering environment simply by making objects that implement common interfaces.
+ * This is the first part of assignment 3 - Adding reflection. The intent is
+ * to to modify the code from Assignment2c to include inter-object reflection.
  * <p>
  * <b>Usage:</b>
  * <pre>
- *     RenderWindow -r cip.CSE581.assign2c.Assignment2c
+ *     RenderWindow -r cip.CSE581.assign3.Assignment3a
  * </pre>
  * <p>
- * As in the other assignment 1 and 2 solutions, the code base is small enough that it is in a single file.
+ * As in other assignment 1 and 2 solutions, the code base is small enough that it is in a single file.
  *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since fall 2002
  */
-public class Assignment2c implements IRenderScene {
+public class Assignment3a implements IRenderScene {
     // -----------------------------------------------------------------------------------------------------------------------------
     // the camera in world space
     // -----------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ public class Assignment2c implements IRenderScene {
     // the base block
     private final Material m_mtlBase = new Material(new RGBf(0.0f,1.0f,0.0f), false, new AngleF(AngleF.DEGREES,45.0f));
     private final Plane3f[] m_plnBase = {new Plane3f(0.0f, 0.0f, 1.0f, 1.0f),      // top
-            new Plane3f( 0.0f, -1.0f,  0.0f, -2.0f),      // front
+            new Plane3f (0.0f, -1.0f,  0.0f, -2.0f),      // front
             new Plane3f( 1.0f,  0.0f,  0.0f, -2.0f),      // right
             new Plane3f( 0.0f,  1.0f,  0.0f, -2.0f),      // back
             new Plane3f(-1.0f,  0.0f,  0.0f, -2.0f),      // left
@@ -100,34 +99,27 @@ public class Assignment2c implements IRenderScene {
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
      * @param ray The ray we want the colour for.
+     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
+     * @param bkg            (RGBf, readonly) The background color.
      * @return Returns the colour seen by this ray.
      */
-    Color getPixelColor(Line3f ray) {
+    static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
+                               @NotNull IRtGeometry[] rtObjects, IRtGeometry lastHit, @NotNull RGBf bkg, int nMaxBounce) {
         boolean bIntersectObj = false;
-        Color clr;
-        final RayIntersection intersection = new RayIntersection();
-
-        try {
-            intersection.m_vToEye.setValue(ray.m_vDir).reverse();
-            for (IRtGeometry geometry : m_geometry) {
-                if (geometry.rayIntersection(ray, intersection)) {
-                    bIntersectObj = true;
-                }
+        intersection.m_vToEye.setValue(ray.m_vDir).reverse();
+        for (IRtGeometry geometry : rtObjects) {
+            if ((geometry != lastHit) && geometry.rayIntersection(ray, intersection)) {
+                bIntersectObj = true;
             }
-            final RGBf rgb = new RGBf(m_rgbBkg);
-            if (bIntersectObj) {
-                intersection.m_mtl.getColor(rgb, intersection, m_lights,
-                        m_geometry, m_rgbBkg);
-            }
-            rgb.clamp();
-            clr = new Color(rgb.r, rgb.g, rgb.b);
-        } catch (Throwable t) {
-            // something bad happened - color code this pixel yellow
-            t.printStackTrace();
-            clr = Color.YELLOW;
         }
-
-        return clr;
+        final RGBf rgb = new RGBf(bkg);
+        if (bIntersectObj) {
+            intersection.m_mtl.getColor(rgb, intersection, lights,
+                    rtObjects, bkg, nMaxBounce);
+        }
+        return rgb.clamp();
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +166,9 @@ public class Assignment2c implements IRenderScene {
                             addVector(m_vUp.cloneVector3f().scale((float) (iy) * fIncY));
                     ray.setValue(m_ptEye, ptPixel);
                     // get the colour of the pixel
-                    gc.setColor(getPixelColor(ray));
+                    final RayIntersection intersection = new RayIntersection();
+                    RGBf rgb = getPixelColor(ray, intersection, m_lights, m_geometry, null, m_rgbBkg, 5);
+                    gc.setColor(new Color(rgb.r, rgb.g, rgb.b));
                 } catch (final Throwable t) {
                     // something bad happened - color code this pixel yellow
                     t.printStackTrace();
@@ -194,17 +188,18 @@ public class Assignment2c implements IRenderScene {
 interface IRtMaterial {
     /**
      * Compute the colour of a surface as seen from a specific direction.
-     * @param rgb            (modified) The computed colour at the surface.
-     * @param intersection   (readonly) The description of the surface - location, orientation, material, etc.
-     * @param lights         (readonly) The light in the scene that may affect the intersection.
-     * @param rtObjects      (readonly) The objects in the scene.
-     * @param bkg            (readonly) The background color.
+     * @param rgb            (RGBf, modified) The computed colour at the surface.
+     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
+     * @param bkg            (RGBf, readonly) The background color.
+     * @param nMaxBounce     (int, readonly) The maximum reflective bounces.
      */
     void getColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtLight[] lights,
-                  @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg);
+                  @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce);
 }
 
-class Material implements IRtMaterial{
+class Material implements IRtMaterial {
     public final RGBf m_clr;
     private final float m_Kd;
     private final float m_Ks;
@@ -217,17 +212,29 @@ class Material implements IRtMaterial{
         float fR = (m_Ns - 5.0f) / 100.0f;
         if (fR < 0.0f) { fR = 0.0f; }
         if (fR > 1.0f) { fR = 1.0f; }
-        m_Kd = 0.65f - (0.30f * (float)Math.sqrt(fR));
-        m_Ks = 0.05f + (0.90f * (float)Math.sqrt(fR));
+        if (fR > 0.0f ) {
+            // If there is recursive reflection/refraction then that is the primary source of illumination for
+            //  all surfaces.  For the diffuse surfaces to look correct, some sort of reflected ray distribution or
+            //  reflection filtering needs to be used to soften the reflection.
+            m_Kd = 0.40f - (0.20f * (float) Math.sqrt(fR));
+            m_Ks = 0.20f + (0.65f * (float) Math.sqrt(fR));
+        } else {
+            // If there is no recursive reflection, then the primary lighting is the only illumination.
+            //  The diffuse and specular coefficients are higher in this case than they are when there is
+            //  recursive reflection/refraction
+            m_Kd = 0.65f - (0.30f * (float) Math.sqrt(fR));
+            m_Ks = 0.05f + (0.90f * (float) Math.sqrt(fR));
+        }
         m_conductor = conductor;
     }
 
     @Override
     public void getColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtLight[] lights,
-                         @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg) {
+                         @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce) {
 
         final LightInfo lightInfo = new LightInfo();
         rgb.setValue(0.0f,0.0f,0.0f);
+        // Compute the light contributions to the color
         for (IRtLight light : lights) {
             if (light.getLight(lightInfo, intersection)) {
                 if (lightInfo.m_nType == LightInfo.AMBIENT) {
@@ -265,15 +272,27 @@ class Material implements IRtMaterial{
                 }
             }
         }
+        // If the material is reflective, add the reflected component
+        if ((nMaxBounce > 0) && (m_Ks > 0.2f)) {
+            Vector3f vRflRfr = new Vector3f().setToReflection(intersection.m_vNormal, intersection.m_vToEye);
+            if (vRflRfr.dot(intersection.m_vNormal) <= 0.0f) {
+                System.out.println("cip.raytrace.material.Whitted(): unexpected negative R.N");
+            }
+            Line3f reflectedRay = new Line3f().setValue(intersection.m_ptLocation, vRflRfr);
+            RayIntersection intRflRfr = new RayIntersection();
+            rgb.add(Assignment3a.getPixelColor(reflectedRay, intRflRfr, lights, rtObjects, intersection.m_obj,
+                    bkg, nMaxBounce-1).scale(m_Ks));
+        }
     }
 }
 
 class RayIntersection {
-    public float       m_fDistance;   // the distance to the intersection
-    public Point3f     m_ptLocation;  // the location of the intersection
-    public Vector3f    m_vNormal;     // the surface normal at the intersection
-    public Vector3f    m_vToEye;      // the direction to the eye
-    public Material    m_mtl;         // the material of the surface
+    public float        m_fDistance;    // the distance to the intersection
+    public Point3f      m_ptLocation;   // the location of the intersection
+    public Vector3f     m_vNormal;      // the surface normal at the intersection
+    public Vector3f     m_vToEye;       // the direction to the eye or the previous intersection.
+    public Material     m_mtl;          // the material of the surface
+    public IRtGeometry  m_obj;          // the object at this intersection
 
     // All of the objects used by the intersection are created at construction
     public RayIntersection() {
@@ -282,6 +301,7 @@ class RayIntersection {
         m_vNormal = new Vector3f();
         m_vToEye = new Vector3f();
         m_mtl = null;
+        m_obj = null;
     }
 }
 
@@ -293,7 +313,7 @@ interface IRtGeometry {
      * @param intersection The intersection.
      * @return <tt>true</tt> if there is a closer intersection, <tt>false</tt> otherwise.
      */
-    boolean rayIntersection(Line3f ray,  RayIntersection intersection);
+    boolean rayIntersection(Line3f ray, RayIntersection intersection);
 
     /**
      * Test for this object blocking the light to <tt>intersection</tt>
@@ -321,7 +341,7 @@ interface IRtLight
      * Set a dimmer value for the light, which is a scalar multiplier for the light intensity.
      * @param fDimmer (float) The dimming factor - usually in the range 0 to 1
      */
-    void setDimmer( float fDimmer);
+    void setDimmer(float fDimmer);
 
     /**
      * Get the lighting information describing how this light illuminates the ray intersection.  The light
@@ -366,6 +386,7 @@ class Sphere3f implements IRtGeometry {
         intersection.m_vNormal.j = (intersection.m_ptLocation.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_ptLocation.z - m_ptCtr.z) / m_fRad;
         intersection.m_mtl = m_mtl;
+        intersection.m_obj = this;
         return true;
     }
 
@@ -409,7 +430,7 @@ class ImplicitPolyhedra implements IRtGeometry {
         Plane3fIntersection plnInt = intersect(ray);
         // We got here if the ray intersects the object.  Test the intersection distance - if
         //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-        if ((null == plnInt) || (plnInt.m_fDist > intersection.m_fDistance)) {
+        if ((null == plnInt) || (plnInt.m_fDist < 0.0f) || (plnInt.m_fDist > intersection.m_fDistance)) {
             return false;
         }
 
@@ -418,6 +439,7 @@ class ImplicitPolyhedra implements IRtGeometry {
         ray.pointAtDistace(intersection.m_ptLocation, plnInt.m_fDist);
         plnInt.m_plane.getNormal(intersection.m_vNormal);
         intersection.m_mtl = m_mtl;
+        intersection.m_obj = this;
         return true;
     }
 

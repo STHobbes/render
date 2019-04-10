@@ -47,9 +47,11 @@ public class Assignment2b extends Assignment2a {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
-    //  Here we do the work of getting the pixel colour.  The RayIntersection object is a cached object so that
-    //  we could use this function in a multi-threaded environment without the need to create a new intersection
-    //  object at every invocation.
+    /**
+     * Get the colour for a pixel (really, get the color for a view ray).
+     * @param ray The ray we want the colour for.
+     * @return Returns the colour seen by this ray.
+     */
     @Override
     Color getPixelColor(final Line3f ray) {
         boolean bIntersectObj = false;

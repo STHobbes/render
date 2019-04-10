@@ -10,31 +10,50 @@
 package cip.render.util3d;
 
 /**
+ * Geometric computations for graphics are fraught with corner cases, particularly around vector normalization, matrix inversion
+ * singularities, and ray intersection when the intersection is near the origin of the ray. These are rooted in numerical issues
+ * such as round-off errors in computing intersections, and numerical limitations in the precision of the digital mathematics
+ * when near 0.
+ *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0
  */
 public class PackageConstants {
-    // the range for testing closeness to zero - single precision
-    public static final float ZERO_TOLERANCE_MAX_FLOAT = 1.0e-15f;
-    public static final float ZERO_TOLERANCE_MIN_FLOAT = -1.0e-15f;
+    /**
+     * The maximum positive <tt>float</tt> value that is considered to be 0.0f for graphics.
+     */
+    public static final float ZERO_TOLERANCE_MAX_FLOAT = 1.0e-10f;
+    /**
+     * The minimum negative <tt>float</tt> value that is considered to be 0.0f for graphics.
+     */
+    public static final float ZERO_TOLERANCE_MIN_FLOAT = -ZERO_TOLERANCE_MAX_FLOAT;
 
+    /**
+     * Test whether a <tt>float</tt> value should be considered to be 0.0f for graphics.
+     * @param fVal (float) The value to be tested.
+     * @return <tt>true</tt> if the value should be considered to be 0.0f, <tt>false</tt> otherwise.
+     */
     public static final boolean isZero(final float fVal) {
-        if ((fVal < ZERO_TOLERANCE_MAX_FLOAT) && (fVal > ZERO_TOLERANCE_MIN_FLOAT)) {
-            return true;
-        }
-        return false;
+        return (fVal < ZERO_TOLERANCE_MAX_FLOAT) && (fVal > ZERO_TOLERANCE_MIN_FLOAT);
     }
 
-    // the range for testing closeness to zero - double precision
-    public static final double ZERO_TOLERANCE_MAX_DOUBLE = 1.0e-140;
-    public static final double ZERO_TOLERANCE_MIN_DOUBLE = -1.0e-140;
+    /**
+     * The maximum positive <tt>double</tt> value that is considered to be 0.0 for graphics.
+     */
+    public static final double ZERO_TOLERANCE_MAX_DOUBLE = 1.0e-100;
+    /**
+     * The minimum negative <tt>double</tt> value that is considered to be 0.0 for graphics.
+     */
+    public static final double ZERO_TOLERANCE_MIN_DOUBLE = -ZERO_TOLERANCE_MAX_DOUBLE;
 
+    /**
+     * Test whether a <tt>double</tt> value should be considered to be 0.0 for graphics.
+     * @param dVal (double) The value to be tested.
+     * @return <tt>true</tt> if the value should be considered to be 0.0, <tt>false</tt> otherwise.
+     */
     public static final boolean isZero(final double dVal) {
-        if ((dVal < ZERO_TOLERANCE_MAX_DOUBLE) && (dVal > ZERO_TOLERANCE_MIN_DOUBLE)) {
-            return true;
-        }
-        return false;
+        return (dVal < ZERO_TOLERANCE_MAX_DOUBLE) && (dVal > ZERO_TOLERANCE_MIN_DOUBLE);
     }
 
 }

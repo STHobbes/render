@@ -299,21 +299,21 @@ and testing, and is purely empirical.
     <font color="DodgerBlue"><b>private final</b></font> Sphere3f <font color="Violet">m_sphere2</font> = <font color="DodgerBlue"><b>new</b></font> Sphere3f(<font color="DodgerBlue"><b>new</b></font> Point3f(-0.6f,-1.25f,0.6f), 0.25f, <font color="Violet">m_mtlSphere2</font>);
 
     <font color="lime"><i>// the global scene lighting dimmer</i></font>
-    <font color="DodgerBlue"><b>private final float</b></font> <font color="Violet">m_fDimmer/font> = 0.85f;
+    <font color="DodgerBlue"><b>private final float</b></font> <font color="Violet">m_fDimmer</font> = 0.85f;
 
     <font color="lime"><i>// the ambient light</i></font>
-    <font color="DodgerBlue"><b>private final</b></font> AmbientLight <font color="Violet">m_lgtAmbient/font> = <font color="DodgerBlue"><b>new</b></font> AmbientLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.1f,0.1f,0.1f));
+    <font color="DodgerBlue"><b>private final</b></font> AmbientLight <font color="Violet">m_lgtAmbient</font> = <font color="DodgerBlue"><b>new</b></font> AmbientLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.1f,0.1f,0.1f));
 
     <font color="lime"><i>// a local light</i></font>
-    <font color="DodgerBlue"><b>private final</b></font> PointLight <font color="Violet">m_lgtPoint/font> = <font color="DodgerBlue"><b>new</b></font> PointLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.8f,0.8f,0.8f), <font color="DodgerBlue"><b>new</b></font> Point3f(-12.0f,-24.0f, 12.0f));
+    <font color="DodgerBlue"><b>private final</b></font> PointLight <font color="Violet">m_lgtPoint</font> = <font color="DodgerBlue"><b>new</b></font> PointLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.8f,0.8f,0.8f), <font color="DodgerBlue"><b>new</b></font> Point3f(-12.0f,-24.0f, 12.0f));
 
     <font color="lime"><i>// a spot light</i></font>
-    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot1/font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 12.0f,-10.0f, 48.0f),
+    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot1</font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 12.0f,-10.0f, 48.0f),
             <font color="DodgerBlue"><b>new</b></font> Vector3f(<font color="DodgerBlue"><b>new</b></font> Point3f(12.0f,-10.0f,48.0f), <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f)).normalizeThis(),
             <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,5.0f) );
 
     <font color="lime"><i>// another spot light</i></font>
-    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot2/font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 20.0f,-10.0f,10.0f),
+    <font color="DodgerBlue"><b>private final</b></font> SpotLight <font color="Violet">m_lgtSpot2</font> = <font color="DodgerBlue"><b>new</b></font> SpotLight(<font color="DodgerBlue"><b>new</b></font> RGBf(0.7f,0.7f,0.7f), <font color="DodgerBlue"><b>new</b></font> Point3f( 20.0f,-10.0f,10.0f),
             <font color="DodgerBlue"><b>new</b></font> Vector3f(<font color="DodgerBlue"><b>new</b></font> Point3f(20.0f,-10.0f,10.0f), <font color="DodgerBlue"><b>new</b></font> Point3f(0.0f,0.0f,0.0f)).normalizeThis(),
             <font color="DodgerBlue"><b>new</b></font> AngleF(AngleF.DEGREES,5.0f) );
 </pre>

@@ -192,7 +192,7 @@ public class Vector3f {
      * inside or the outside (i.e. the dot product between the normal and the vector
      * from the surface may be either positive or negative.
      * <p>
-     * This computation is  performed as described in <i>Illumination and Color in
+     * This computation is performed as described in <i>Illumination and Color in
      * Computer Generated Imagery</i> by Roy Hall, Appendix III.1 Geometry utilities.
      * <p>
      * Although the math should produce a normalized vector if the input vectors are normalized, the
