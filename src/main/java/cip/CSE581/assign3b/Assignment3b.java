@@ -356,10 +356,8 @@ class Material implements IRtMaterial {
                     bkg, nMaxBounce-1,nMaxInternal).scale(m_Kt));
         } else {
             // Complete internal reflection - no contribution from the outside
-//            Ks = m_Kt;
-//            rgb.setValue(0.0f,0.0f,0.0f);
-            rgb.setValue(1.0f, 1.0f, 0.0f);
-            return;
+            Ks = m_Kt;
+            rgb.setValue(0.0f,0.0f,0.0f);
         }
         // Now we worry about the internal reflection part
         if (nMaxInternal > 0) {
