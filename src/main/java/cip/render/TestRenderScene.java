@@ -50,6 +50,11 @@ public class TestRenderScene implements IRenderScene {
     public void loadScene(final String strSceneDesc) {
     }
 
+    @Override
+    public String getTitle() {
+        return "CSE581 - test scene";
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------
     @Override
     public void renderImage(final Image image) {

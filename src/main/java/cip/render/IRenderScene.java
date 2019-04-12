@@ -35,7 +35,6 @@ public interface IRenderScene {
     /**
      * Load a scene from the specified scene description file.  The scene description is an XML file that describes the camera,
      * materials, objects, and lighting for a scene along with specifics about rendering the scene.
-     *
      * @param strSceneDesc The scene description file.
      * @throws Exception The exception that may be thrown is specific to the loader. If an exception is thrown the caller is
      *      expected to try an create a meaningful message for the user, and then to exit.
@@ -43,8 +42,14 @@ public interface IRenderScene {
     void loadScene(String strSceneDesc) throws Exception;
 
     /**
+     * Get the title that should be used for the displayed rendering window. This method will be called after the
+     * {@link #loadScene(String)} method is called. This allows the title to be part of the loaded scene description.
+     * @return (nullable) The title for the disp[layed rendering window.
+     */
+    String getTitle();
+
+    /**
      * Renders the scene, or a part of the scene, to the an {@link Image}.
-     *
      * @param image The {@link Image} the scene should be rendered to.
      */
     void renderImage(Image image);
@@ -55,7 +60,6 @@ public interface IRenderScene {
      * component needs to be redrawn. If the component is re-sized, the clipBounds will be the component canvas.  If the
      * exposure of the window changes, the clipBounds may only
      * be a small part of the entire component.
-     *
      * @param component The component the scene is being rendered into.
      * @param gc        The {@link Graphics} context of the component the scene should be rendered to.
      */

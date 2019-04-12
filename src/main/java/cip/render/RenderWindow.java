@@ -75,10 +75,10 @@ import javax.swing.*;
  * @since fall 2002
  */
 public class RenderWindow extends Frame implements ActionListener, WindowListener {
-    private int m_nSizeX = 1190;         // the initial X size of the app window
-    private int m_nSizeY = 1216;         // the initial Y size of the app window
-//    private int m_nSizeX = 96;         // the initial X size of the app window
-//    private int m_nSizeY = 108;         // the initial Y size of the app window
+//    private int m_nSizeX = 1190;         // the initial X size of the app window
+//    private int m_nSizeY = 1216;         // the initial Y size of the app window
+    private int m_nSizeX = 565;         // the initial X size of the app window
+    private int m_nSizeY = 574;         // the initial Y size of the app window
     private final GraphicsConfiguration m_graphicsConfig;       // the graphics configuration of the device the window is on
     private final IRenderScene m_renderScene;          // the renderer implementation
     private final MenuItem m_menuItem_File_Exit;   // the menu file-exit button
@@ -159,6 +159,10 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
         final long startTime = System.currentTimeMillis();
         if (null != m_strRenderSceneDesc) {
             m_renderScene.loadScene(m_strRenderSceneDesc);
+        }
+        String title = m_renderScene.getTitle();
+        if (null != title) {
+            this.setTitle(title);
         }
         System.out.println(String.format("Frame load time: %dms", (System.currentTimeMillis() - startTime)));
 

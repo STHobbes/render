@@ -143,6 +143,11 @@ public class Assignment3b implements IRenderScene {
     }
 
     @Override
+    public String getTitle() {
+        return "CSE581 - assignment 3b";
+    }
+
+    @Override
     public void renderImage(Image image) {
 
     }
@@ -351,8 +356,10 @@ class Material implements IRtMaterial {
                     bkg, nMaxBounce-1,nMaxInternal).scale(m_Kt));
         } else {
             // Complete internal reflection - no contribution from the outside
-            Ks = m_Kt;
-            rgb.setValue(0.0f,0.0f,0.0f);
+//            Ks = m_Kt;
+//            rgb.setValue(0.0f,0.0f,0.0f);
+            rgb.setValue(1.0f, 1.0f, 0.0f);
+            return;
         }
         // Now we worry about the internal reflection part
         if (nMaxInternal > 0) {

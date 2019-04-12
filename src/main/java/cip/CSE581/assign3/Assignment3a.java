@@ -134,6 +134,11 @@ public class Assignment3a implements IRenderScene {
     }
 
     @Override
+    public String getTitle() {
+        return "CSE581 - assignment 3a";
+    }
+
+    @Override
     public void renderImage(Image image) {
 
     }

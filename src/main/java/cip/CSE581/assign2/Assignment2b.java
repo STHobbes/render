@@ -46,6 +46,11 @@ public class Assignment2b extends Assignment2a {
     public Assignment2b() {
     }
 
+    @Override
+    public String getTitle() {
+        return "CSE581 - assignment 2b";
+    }
+
     //------------------------------------------------------------------------------------------------------------------------------
     /**
      * Get the colour for a pixel (really, get the color for a view ray).

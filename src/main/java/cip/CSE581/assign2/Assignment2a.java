@@ -147,6 +147,11 @@ public class Assignment2a implements IRenderScene {
         // there is no loading, this method has nothing to do.
     }
 
+    @Override
+    public String getTitle() {
+        return "CSE581 - assignment 2a";
+    }
+
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void renderImage(final Image image) {

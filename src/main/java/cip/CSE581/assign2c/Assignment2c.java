@@ -142,6 +142,11 @@ public class Assignment2c implements IRenderScene {
     }
 
     @Override
+    public String getTitle() {
+        return "CSE581 - assignment 2c";
+    }
+
+    @Override
     public void renderImage(Image image) {
 
     }

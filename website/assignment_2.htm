@@ -45,7 +45,7 @@ details.&nbsp; With the framework you built in the first assignment, let's start
 by adding trivial
 shading and shadows.
 </p>
-<h3>Trivial Shading and Shadows</h3>
+<h3>Trivial Shading</h3>
 <p>
 Here are a few more things
 for your environment: an ambient light level (the global light floating around
@@ -61,15 +61,15 @@ bare lightbulb).
 </pre>
 <p>The point light source is just a light intensity (the <font face="Courier New">
 RGBf</font>) from a
-point in space (the <font face="Courier New">Poinf3f</font>).&nbsp; To get the colour of an object at a pixel,
-compute the vector from the the surface (<font face="Courier New">ptSurface</font>) to the light:
+point in space (the <tt>Point3f</tt>).&nbsp; To get the colour of an object at a pixel,
+compute the vector from the the surface (<tt>ptSurface</tt>) to the light:
 </p>
 <pre>
     Vector3f vLight = <font color="DodgerBlue"><b>new</b></font> Vector3f(ptSurface,m_ptPointLgt).normalize();
 </pre>
 <p>The ambient color is the
 object color times the ambient light, the diffuse colour is the object color
-times the dot product between the surface normal (<font face="Courier New">vtNormal</font>) and the vector to
+times the dot product between the surface normal (<tt>vtNormal</tt>) and the vector to
 the light:
 </p>
 <pre>
@@ -83,10 +83,12 @@ the light:
     }
 </pre>
 <p>This should give you an image that looks something like this:
-<p align="center"><img border="0" src="assign2a.jpg" width="411" height="405">
+<p align="center"><img border="0" src="assign2a.jpg" width="564" height="574">
 <p>Play around a little with light position and the intensity of the ambient and
 diffuse lights to get a feel for how this shading works.
-<p>For shadows. create a ray that goes from the surface point to the light and
+</p>
+<h3>Adding Shadows</h3>
+<p>For shadows, create a ray that goes from the surface point to the light and
 intersect it with the objects in the scene.&nbsp; If it intersects any objects,
 before it reaches the light, then the surface is in shadow.&nbsp; It still has
 ambient illumination, but the direct diffuse illumination from the light is
@@ -97,7 +99,7 @@ it's normal.&nbsp; In the case of shadow testing, you just need to know there is
 an intersection, and, you can stop as soon as there is an intersection rather 
 than always traversing the entire object tree looking for the closest 
 intersection.<p>The scene now looks something like this:
-<p align="center"><img border="0" src="assign2b.jpg" width="405" height="384">
+<p align="center"><img border="0" src="assign2b.jpg" width="566" height="573">
 <h3>Something A Little More Interesting</h3>
 <p>For the next step, we will start to formalize the structure of our
 ray-tracer so we will be able to use better reflection models, and to add reflection, refraction, texturing,
@@ -221,7 +223,7 @@ Fresnel effects.&nbsp; For your work, play around with the values for material
 properties discussed in class.&nbsp; Try using more that one light so you
 understand some of the image contrast and brightness issues we discussed in
 class.
-<p align="center"><img border="0" src="assign2c.jpg" width="416" height="390">
+<p align="center"><img border="0" src="assign2c.jpg" width="567 height="574">
 <p>As we discussed in class, the specular function is represented as (<b>N</b> &middot;
 <b>H</b>)<sup>Ns</sup> where the exponent Ns gives the sharpness of the
 hightlight.&nbsp; More correctly Ns is really a way of describing the roughness

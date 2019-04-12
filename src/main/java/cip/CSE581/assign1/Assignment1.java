@@ -135,7 +135,12 @@ public class Assignment1 implements IRenderScene {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void loadScene(final String strSceneDesc) {
-        // there is no loading, this method has nothing to do.
+        // there is no loading, this method has nothing to do, but return the title for the window
+    }
+
+    @Override
+    public String getTitle() {
+        return "CSE581 - assignment 1";
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
