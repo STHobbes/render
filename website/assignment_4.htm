@@ -1,0 +1,322 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Assignment 4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>
+A.links:hover {
+color: black;
+}
+
+A {
+font-weight: bold;
+text-decoration: none;
+}
+
+A:hover {
+color: red;
+}
+</style>
+<meta name="Microsoft Theme" content="roys-chalkboard 000, default">
+<meta name="Microsoft Border" content="tl, default">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFCC99" vlink="#FF9966"><!--msnavigation-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p align="center"><font size="6"><strong>
+<img src="_derived/assignment_4.htm_cmp_roys-chalkboard000_bnr.gif" width="600" height="60" border="0" alt="Assignment 4"></strong></font>
+</p>
+<h3 align="center"><strong><i><font size="5">3D Rendering Techniques and Algorithms</font></i></strong></h3>
+<p align="center"><br>
+<a href="index.htm"><img src="_derived/home_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Home"
+                         align="middle"></a> <a href="assignments.htm"><img src="_derived/up_cmp_roys-chalkboard000_hbtn.gif"
+                                                                            width="140" height="40" border="0" alt="Up"
+                                                                            align="middle"></a> <a href="assignment_1.htm"><img
+src="_derived/assignment_1.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 1"
+align="middle"></a> <a href="assignment_2.htm"><img src="_derived/assignment_2.htm_cmp_roys-chalkboard000_hbtn.gif" width="140"
+                                                    height="40" border="0" alt="Assignment 2" align="middle"></a> <a
+href="assignment_3.htm"><img src="_derived/assignment_3.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0"
+                             alt="Assignment 3" align="middle"></a> <img
+src="_derived/assignment_4.htm_cmp_roys-chalkboard000_hbtn_p.gif" width="140" height="40" border="0" alt="Assignment 4"
+align="middle"> <a href="assignment_5.htm"><img src="_derived/assignment_5.htm_cmp_roys-chalkboard000_hbtn.gif" width="140"
+                                                height="40" border="0" alt="Assignment 5" align="middle"></a> <a
+href="assignment_6.htm"><img src="_derived/assignment_6.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0"
+                             alt="Assignment 6" align="middle"></a> <a href="assignment_7.htm"><img
+src="_derived/assignment_7.htm_cmp_roys-chalkboard000_hbtn.gif" width="140" height="40" border="0" alt="Assignment 7"
+align="middle"></a> <a href="term_project.htm"><img src="_derived/term_project.htm_cmp_roys-chalkboard000_hbtn.gif" width="140"
+                                                    height="40" border="0" alt="Term Project" align="middle"></a></p>
+<p align="center">&nbsp;</p>
+
+<!--mstheme--></font></td>
+</tr><!--msnavigation--></table><!--msnavigation-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td valign="top" width="1%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font></td>
+<td valign="top" width="24"></td><!--msnavigation-->
+<td valign="top"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Multi-threading, Getting on the Same 'Platform', and Adding some New Geometry</h3>
+<p>The first three assignments were pretty strenuous, but have given us a clear
+appreciation for three major parts of 3D realistic image synthesis.&nbsp; In
+assignment 1, we focused on determining what we saw at a pixel; in assignment 2,
+on what it should look like; and in assignment 3, on adding
+reflection and refraction.</p>
+<p>In this assignment, we take one step forward - looking at multi-threading with out current renderer; and one step back - getting
+on the same page in terms of
+the rendering 'platform' we have for future work in the class.
+
+By the same platform,
+I mean that we have articulated the problem in a common way to facilitate the
+explorations we do for the rest of this course.&nbsp; Specifically - we are all
+using the same interfaces on dynamically loaded objects so we can easily extend
+all aspects of our renderer simply by writing new objects that use those
+interfaces.</p>
+<p>The assignment for this week has several parts:</p>
+<!--mstheme--></font><!--msthemelist-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Finish anything outstanding in your past
+assignments.&nbsp;<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Add multithreading to your renderer.&nbsp;<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Download and familiarize yourself with the more
+complete platform we will
+use for the rest of the class.<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Pick a geometry or test environment to add to our
+framework and do a
+little background research.<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Deliverables for this Week</h3>
+<!--mstheme--></font><!--msthemelist-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Your assignment 3 with multi-threading<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">A couple new environments from each of you as xml
+files I can render in the
+comfort of my home.<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Research on an object or environment you will write
+as NEXT week's assignment
+so that you can do a SHORT (like 5 or 10 minute) presentation to the class on your
+object/environment.&nbsp; The short presentation includes a description and a
+discussion of fine points -- like all the cases that need to be handled (similar
+to my discussion of convex polyhedra in the first class).&nbsp; The idea here is
+not to put you on the spot, but, to provide feedback and discussion that will
+help you get it right the first time so you don't get all those pesky little bug
+reports from your classmates for the rest of the semester.<br><br>
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<h3>Multi-threading</h3>
+The deal with multi-threading is that the environment is static during the rendering of the frame (image), so, we should be able
+to do all image computations (intersecting objects, ray geometry, color computations) simultaneously on different
+threads.&nbsp; One way to do this is to dedicate a rendering thread-per-processor (and almost every current CPU is
+multi-core).&nbsp; More threads than this would slow down rendering as your threads would be competing for CPU.&nbsp; Thus,
+if there are 4 processors, the image computation should take about a quarter of the time; and if there are 8
+processors, about an eighth of the time.&nbsp; You might ask about competition with other processes on the
+computer.&nbsp; I find my computer is using ver little CPU most of the time, so this is not really an issue.</p>
+<p>
+So, how do we use a thread per processor within the assignment 3 program?&nbsp; There are many approaches one could
+take.&nbsp; I find that thinking of computing the color for a pixel as a unit of work is quite natural and all I need
+to do is create a pixel color computation class that can run in a thread.</p>
+<p>
+<b>The Pixel Rendering Class</b></p>
+<p>
+The pixel rendering class looks something like this:
+<pre>
+    <font color="DodgerBlue"><b>class</b></font> RenderPixel <font color="DodgerBlue"><b>implements</b></font> Runnable {
+        <font color="DodgerBlue"><b>private</b></font> Assignment4 m_parent;
+        <font color="DodgerBlue"><b>private int</b></font> m_nX;
+        <font color="DodgerBlue"><b>private int</b></font> m_nY;
+        <font color="DodgerBlue"><b>private</b></font> Line3f m_ray = <font color="DodgerBlue"><b>new</b></font> Line3f();
+        <font color="DodgerBlue"><b>private</b></font> RayIntersection m_intersection = <font color="DodgerBlue"><b>null</b></font>;
+
+        RenderPixel(<font color="DodgerBlue"><b>final</b></font> Assignment4 parent) {
+            m_parent = parent;
+        }
+
+        <font color="DodgerBlue"><b>public void</b></font> run() {
+            <font color="lime"><i>// render pixels while there are pixels to render</i></font>
+            <font color="DodgerBlue"><b>while</b></font> (m_parent.dispatchPixel(<font color="DodgerBlue"><b>this</b></font>)) {
+                m_intersection = <font color="DodgerBlue"><b>new</b></font> RayIntersection();
+                RGBf rgb  = m_parent.getPixelColor(m_ray, m_intersection, m_parent.m_lights, m_parent.m_geometry, <font color="DodgerBlue"><b>null</b></font>,
+                        m_parent.m_rgbBkg, 5, 15);
+                m_parent.setPixel(m_nX, m_nY, <font color="DodgerBlue"><b>new</b></font> Color(rgb.r, rgb.g, rgb.b));
+            }
+
+            <font color="lime"><i>// let the main thread know we are done</i></font>
+            <font color="DodgerBlue"><b>synchronized</b></font> (m_parent.m_threadLock) {
+                m_parent.m_threadCt--;
+                <font color="DodgerBlue"><b>if</b></font> (m_parent.m_threadCt <= 0) {
+                    <font color="lime"><i>// this is the last thread still running - the image is</i></font>
+                    <font color="lime"><i>//  done - release the main thread</i></font>
+                    m_parent.m_threadLock.notify();
+                }
+            }
+        }
+    }
+
+</pre>
+<p>
+The class must implement <tt>Runnable</tt> so it can be run by a thread.&nbsp; The member variables for the class contain
+the location of the pixel, the ray for the pixel and the ray intersection.&nbsp; The information for a pixel is obtained by
+alling the <tt>dispatchPixel</tt> method on the parent class, and once the pixel color it computed, it is set by calling the
+<tt>setPixel</tt> method of the parent class.&nbsp; Note that when there are no more pixels, the thread will do a little
+cleanup with the parent.</p>
+<p>
+<b>Starting the Rendering Threads</b></p>
+<p>
+Within the <tt>RenderScene</tt> method, we replace the pixel rendering loop with a loop that starts the pixel rendering
+threads:</p>
+<pre>
+    <font color="lime"><i>// now start the threads</i></font>
+    <font color="DodgerBlue"><b>final int</b></font> nProcessors = Runtime.getRuntime().availableProcessors();
+    System.out.println("Starting " + nProcessors + " rendering threads on " + nProcessors + " processors");
+
+    <font color="lime"><i>// The deal here is we start the threads and keep a count of the running threads.  This count is</i></font>
+    <font color="lime"><i>//  protected by the thread lock.  Once the threads are started, they run till there are no</i></font>
+    <font color="lime"><i>//  more pixels, acquire the lock, and decrement the thread count.  If the count drops to 0, then</i></font>
+    <font color="lime"><i>//  the last thread (the one that dropped the count to 0) notifies the thread lock so this thread</i></font>
+    <font color="lime"><i>//  catch (exit the redraw function.</i></font>
+    <font color="lime"><i>//</i></font>
+    <font color="lime"><i>// This thread (the one we are in right now) needs to stop here because we lose the gc after it</i></font>
+    <font color="lime"><i>//  returns.  There are alternate ways to implement this -- this thread could also be computung pixels.</i></font>
+    <font color="lime"><i>//  I find it hard (as in needlessly confusing - especially when reviewing code later) to implement the</i></font>
+    <font color="lime"><i>//  multiple use for this thread, so I just block this thread while the rendering threads do their stuff.</i></font>
+    <font color="DodgerBlue"><b>synchronized</b></font> (m_threadLock) {
+        m_threadCt = 0;
+        <font color="DodgerBlue"><b>for</b></font> (<font color="DodgerBlue"><b>int</b></font> iThread = 0; iThread < nProcessors; iThread++) {
+            m_threadCt++;
+            <font color="DodgerBlue"><b>new</b></font> Thread(<font color="DodgerBlue"><b>new</b></font> RenderPixel(<font color="DodgerBlue"><b>this</b></font>)).start();
+        }
+        <font color="lime"><i>// wait for the threads to complete rendering the image.</i></font>
+        <font color="DodgerBlue"><b>try</b></font> {
+            m_threadLock.wait();
+        } <font color="DodgerBlue"><b>catch</b></font> (<font color="DodgerBlue"><b>final</b></font> Throwable t) {
+            <font color="lime"><i>// the wait was interrupted, probably because the window closed</i></font>
+        }
+    }
+</pre>
+<p>
+In this example each thread starts rendering pixels when it is created.&nbsp; After all rendering threads are created, the
+main thread waits until the last rendering thread finishes.&nbsp; Note that a rendering thread count is incremented for each
+thread that is started.&nbsp; In the <tt>RenderPixel.run</tt> method, when there are nom more pixels the thread count is
+decremented; and when it drops to <tt>0</tt> the main thread is notified so it can continue.</p>
+<p>
+<b>Dispatching Pixels</b></p>
+<p>
+Within the <tt>Assignment45</tt> class and <tt>RenderScene</tt> method, the screen parameters are made global so they can
+be referenced by the pixel dispatcher.&nbsp; The pixel dispatcher method looks like:
+</p>
+<pre>
+    <font color="DodgerBlue"><b>synchronized boolean</b></font> dispatchPixel(<font color="DodgerBlue"><b>final</b></font> RenderPixel renderThread) {
+        <font color="lime"><i>// this function is synchronized because we want to limit the access to the current pixel position to a single</i></font>
+        <font color="lime"><i>//  thread.  The thread comes in, pixel positions are computed and the pixel indices incremented and then</i></font>
+        <font color="lime"><i>//  the function returns.</i></font>
+        <font color="DodgerBlue"><b>while</b></font> (m_nYcur < m_nYmax) {
+            <font color="DodgerBlue"><b>try</b></font> {
+                <font color="lime"><i>// setup the ray and intersection for this pixel</i></font>
+                <font color="DodgerBlue"><b>final</b></font> Point3f ptPixel = <font color="DodgerBlue"><b>new</b></font> Point3f();
+                ptPixel.setValue(m_ptTargetUL).
+                        addVector(m_vSide.cloneVector3f().scale((float) (m_nXcur - m_nXmin) * m_fIncX)).
+                        addVector(m_vUp.cloneVector3f().scale((float) (m_nYcur - m_nYmin) * m_fIncY));
+                renderThread.m_ray.setValue(m_ptEye, ptPixel);
+                renderThread.m_nX = m_nXcur;
+                renderThread.m_nY = m_nYcur;
+            } <font color="DodgerBlue"><b>catch</b></font> (<font color="DodgerBlue"><b>final</b></font> Throwable t) {
+                <font color="lime"><i>// something bad happened - color code this pixel yellow</i></font>
+                t.printStackTrace();
+                setPixel(m_nXcur, m_nYcur, Color.YELLOW);
+            }
+            m_nXcur++;
+            <font color="DodgerBlue"><b>if </b></font>(m_nXcur >= m_nXmax) {
+                m_nXcur = m_nXmin;
+                m_nYcur++;
+            }
+            <font color="DodgerBlue"><b>return true</b></font>;
+        }
+        System.out.println("no more pixels for this thread: " + renderThread.toString());
+        <font color="DodgerBlue"><b>return false</b></font>;
+    }
+</pre>
+<p>
+Note that the dispatch looks very much like the previous loop through pixels, except the increment is triggered by a call
+to the dispatcher.</p>
+<p>
+<b>Collecting Colors into the Image</b></p>
+<p>
+This is pretty simple, once the <tt>RenderPixel</tt> has determined a color for the pixel, it calls this method to
+set the color for the pixel.&nbsp; Setting the color looks something like this:
+</p>
+<pre>
+    <font color="DodgerBlue"><b>void</b></font> setPixel(<font color="DodgerBlue"><b>final int</b></font> nX, <font color="DodgerBlue"><b>final int</b></font> nY, <font color="DodgerBlue"><b>final</b></font> Color clr) {
+        <font color="lime"><i>// this function is synchronized on m_gc so access to the gc is thread safe</i></font>
+        <font color="DodgerBlue"><b>synchronized</b></font> (m_gc) {
+            m_bi.setRGB(nX, nY, clr.getRGB());
+            m_gc.setColor(clr);
+            m_gc.drawRect(nX, nY, 1, 1);
+        }
+    }
+</pre>
+<p>
+Note the synchronization on the graphics context so that only one thread can be setting the color at any time.
+</p>
+<p>
+<b>Performance</b></p>
+<p>
+I'm running on an older iMac 3.4 GHz Intel Core i7, 4 core hyper-threaded (8 simultaneous threads).&nbsp; Running Assignment3b to
+generate the test image took on average 916ms.&nbsp; Rendering this with 8 threads, I would expect a rendering time of
+115ms.&nbsp; When I did render with 8 threads the average rendering time was 633ms. I tried this again at full-screen resolution
+and the average fame times were 4558ms and 6539ms for multi-thread and single thread respectively.&nbsp;
+The multi-threaded performance was much worse than expected, very disappointing - reducing rendering time to 69% of single
+threaded rendering time instead of the expected 12.5%</p>
+<p>
+Turns out this disappointment is largely related
+to Java memory allocation and garbage collection - and gets far worse for complex high-resolution images with lots of
+transparency and reflection.&nbsp;  The short explanation is that Java completely manages memory and does not put method-local
+objects on the stack.&nbsp; Rendering uses a lot of method-local temporary objects; and each time one is created, it synchronizes
+the memory allocator between all of the threads.&nbsp; Thus, the threads are spending most of their time waiting for the memory
+allocator to become available rather than on the rendering task at hand.&nbsp; For a detailed discussion of this
+see <a href="multi-threading.htm">multi-threading</a>.</p>
+
+
+
+<!--mstheme--></font><!--msnavigation--></td>
+</tr><!--msnavigation--></table>
+</body>
+</html>

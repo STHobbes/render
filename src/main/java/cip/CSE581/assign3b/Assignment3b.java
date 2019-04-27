@@ -109,8 +109,8 @@ public class Assignment3b implements IRenderScene {
      * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
      * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
      * @param bkg            (RGBf, readonly) The background color.
-     * @param nMaxBounce
-     * @param nMaxInternal
+     * @param nMaxBounce     (int) The maximum number of external reflections.
+     * @param nMaxInternal   (int) The maximum internal reflections before black is returned.
      * @return Returns the colour seen by this ray.
      */
     static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
