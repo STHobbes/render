@@ -5,6 +5,17 @@ cip.CSE581.assign3
 cip.CSE581.assign3b
 cip.CSE581.assign4
 cip.render
+cip.render.raytrace
+cip.render.raytrace.background
+cip.render.raytrace.camera
+cip.render.raytrace.geometry
+cip.render.raytrace.interfaces
+cip.render.raytrace.light
+cip.render.raytrace.material
+cip.render.raytrace.material.D
+cip.render.raytrace.material.G
+cip.render.raytrace.material.texture
 cip.render.util
+cip.render.util2d
 cip.render.util3d
 cip.render.utilColour

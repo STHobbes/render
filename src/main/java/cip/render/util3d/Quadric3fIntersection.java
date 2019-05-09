@@ -13,8 +13,8 @@ package cip.render.util3d;
  * The quadric intersection describes the results of a quadric intersection test.  For any quadric there are either two,
  * one, or no intersections for a given ray.  The intersection test provides a code that characterizes the
  * ray as either a non-intersecting ray or an intersecting ray.  For a non-intersecting ray, the ray is either fully
- * outside the quadic or fully inside the quadic.  For an intersecting ray, the two intersection distances are given
- * and the first intersection (the one with the least distance) is clasified as a going in or a going out.  In the
+ * outside the quadric or fully inside the quadric.  For an intersecting ray, the two intersection distances are given
+ * and the first intersection (the one with the least distance) is classified as a going in or a going out.  In the
  * case of a single intersection, it is reported as the first intersection distance and the second intersection distance
  * is set to Float.POSITIVE_INFINITY.
  * <p>
@@ -71,8 +71,8 @@ public class Quadric3fIntersection {
      * {@link cip.render.util3d.Quadric3fIntersection#GOING_INTO} or
      * {@link cip.render.util3d.Quadric3fIntersection#GOING_OUT_OF}.  Otherwise, this field is
      * meaningless.  NOTE: if the distance is negative, it means the intersection is effectively behind the start
-     * of the ray.  Also, if the distance is infinite, it means there was only one root (a wierd case for specific
-     * quadics like cones where the ray is parallel to the cone surface and there is only one intersection).
+     * of the ray.  Also, if the distance is infinite, it means there was only one root (a weird case for specific
+     * quadrics like cones where the ray is parallel to the cone surface and there is only one intersection).
      */
     public float m_fDist2;
 
@@ -86,7 +86,7 @@ public class Quadric3fIntersection {
     /**
      * Creates a new uninitialized instance of <tt>Quadric3fIntersection</tt>.
      */
-    public void Quadric3fIntersection() {
+    public Quadric3fIntersection() {
     }
 
 }

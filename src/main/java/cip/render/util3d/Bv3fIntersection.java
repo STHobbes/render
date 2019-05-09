@@ -39,7 +39,7 @@ public class Bv3fIntersection {
      */
     public static final int INTERSECTS_INSIDE = 2;
     /**
-     * The ray starts outside the bounding volume and intersects it.<
+     * The ray starts outside the bounding volume and intersects it.
      */
     public static final int INTERSECTS_OUTSIDE = 3;
 

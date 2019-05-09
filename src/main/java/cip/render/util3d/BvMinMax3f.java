@@ -163,12 +163,12 @@ public class BvMinMax3f {
 
     /**
      * Get the intersection of the ray with the bounding volume.  In this case, the relevant information is whether the
-     * ray hits the vouding volume and the distances to entry and exit.  The distances allow for bounding volume sorting
+     * ray hits the bounding volume and the distances to entry and exit.  The distances allow for bounding volume sorting
      * before object intersections are processed.  Intersection points and normals are unimportant because the volume
      * is never actually rendered.
      *
      * @param bvInt The bounding volume intersection that will be filled with intersection information.
-     * @param ray   The ray to be intersected wuith the bounding volume
+     * @param ray   The ray to be intersected with the bounding volume
      * @return Returns <tt>true</tt> if the ray intersects or starts inside the bounding volume, and <tt>false</tt>
      * if the ray does not intersect the bounding volume.
      */
@@ -257,7 +257,7 @@ public class BvMinMax3f {
         if (bvInt.m_fDistIn > bvInt.m_fDistOut) {
             return false;
         }
-        // This is an intersecion, check starts inside or starts outside.
+        // This is an intersection, check starts inside or starts outside.
         bvInt.m_nCode = (bvInt.m_fDistIn < 0.0f) ? Bv3fIntersection.INTERSECTS_INSIDE : Bv3fIntersection.INTERSECTS_OUTSIDE;
         return true;
     }

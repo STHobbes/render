@@ -58,6 +58,7 @@ public class AngleF {
         setValue(type, fAngle);
     }
 
+    @SuppressWarnings("CopyConstructorMissesField")
     public AngleF(final AngleF aInit) {
         setValue(aInit);
     }
@@ -151,11 +152,7 @@ public class AngleF {
         if (this == angle) {
             return true;
         }
-        if ((null == angle) ||
-                (m_fDegrees != angle.m_fDegrees)) {
-            return false;
-        }
-        return true;
+        return (null != angle) && (m_fDegrees == angle.m_fDegrees);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------

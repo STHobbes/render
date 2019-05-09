@@ -245,7 +245,7 @@ class Sphere3f {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDist = fDistTmp;
-        ray.pointAtDistace(intersection.m_pt, fDistTmp);
+        ray.pointAtDistance(intersection.m_pt, fDistTmp);
         intersection.m_vNormal.i = (intersection.m_pt.x - m_ptCtr.x) / m_fRad;
         intersection.m_vNormal.j = (intersection.m_pt.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_pt.z - m_ptCtr.z) / m_fRad;
@@ -314,7 +314,7 @@ class ImplicitPolyhedra {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDist = fDistIn;
-        ray.pointAtDistace(intersection.m_pt, fDistIn);
+        ray.pointAtDistance(intersection.m_pt, fDistIn);
         m_planes[nIn].getNormal(intersection.m_vNormal);
         intersection.m_rgb.setValue(m_rgb);
         return true;

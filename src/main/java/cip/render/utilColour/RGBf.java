@@ -18,7 +18,7 @@ import org.w3c.dom.Element;
  * hence the name <tt>RGBf</tt>.
  * <p>
  * This class implements the basic functionality for an RGB colour as required for rendering and 3D graphics use.  This class is
- * patterend after and most code adapted from the <tt>CRGBf</tt> class of the <b><i>JOEY</i></b> toolkit written and
+ * patterned after and most code adapted from the <tt>CRGBf</tt> class of the <b><i>JOEY</i></b> toolkit written and
  * distributed by Crisis in Perspective, Inc.  Additionally, the normalized RGB sampling for spectral curves as described in
  * Hall, "Comparing Spectral Computation Methods", IEEE Computer Graphics and Applications, July 1999 is implemented as
  * part of this class.
@@ -111,6 +111,7 @@ public class RGBf {
      *
      * @param rgbInit A colour that the newly instantiated colour should be set to.
      */
+    @SuppressWarnings("CopyConstructorMissesField")
     public RGBf(final RGBf rgbInit) {
         setValue(rgbInit);
     }

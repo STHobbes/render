@@ -41,7 +41,7 @@ import javax.swing.*;
  * <caption style="text-align:left">where:</caption>
  * <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
  * <td style="width:5%" border="1">-r</td>
  * <td>Specify the implementation of the {@link IRenderScene} interface, <i>IRenderSceneImpl</i>,
@@ -75,10 +75,10 @@ import javax.swing.*;
  * @since fall 2002
  */
 public class RenderWindow extends Frame implements ActionListener, WindowListener {
-//    private int m_nSizeX = 1190;         // the initial X size of the app window
-//    private int m_nSizeY = 1216;         // the initial Y size of the app window
-    private int m_nSizeX = 565;         // the initial X size of the app window
-    private int m_nSizeY = 574;         // the initial Y size of the app window
+//    private int m_nSizeX = 1190;         // the initial X size of the app window (my preferred default, adjust to your needs).
+//    private int m_nSizeY = 1216;         // the initial Y size of the app window (my preferred default, adjust to your needs).
+    private int m_nSizeX = 565;         // the initial X size of the app window (for images for class website).
+    private int m_nSizeY = 574;         // the initial Y size of the app window (for images for class website).
     private final GraphicsConfiguration m_graphicsConfig;       // the graphics configuration of the device the window is on
     private final IRenderScene m_renderScene;          // the renderer implementation
     private final MenuItem m_menuItem_File_Exit;   // the menu file-exit button
@@ -405,11 +405,8 @@ class MyFileFilter extends javax.swing.filechooser.FileFilter {
         }
 
         final String extension = getExtension(f);
-        if ((null != extension) && extension.equalsIgnoreCase(m_strExt)) {
-            return true;
-        }
+        return (null != extension) && extension.equalsIgnoreCase(m_strExt);
 
-        return false;
     }
 
     public String getDescription() {

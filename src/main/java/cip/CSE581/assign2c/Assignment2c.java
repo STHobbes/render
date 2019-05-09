@@ -366,7 +366,7 @@ class Sphere3f implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = fDistTmp;
-        ray.pointAtDistace(intersection.m_ptLocation, fDistTmp);
+        ray.pointAtDistance(intersection.m_ptLocation, fDistTmp);
         intersection.m_vNormal.i = (intersection.m_ptLocation.x - m_ptCtr.x) / m_fRad;
         intersection.m_vNormal.j = (intersection.m_ptLocation.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_ptLocation.z - m_ptCtr.z) / m_fRad;
@@ -420,7 +420,7 @@ class ImplicitPolyhedra implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = plnInt.m_fDist;
-        ray.pointAtDistace(intersection.m_ptLocation, plnInt.m_fDist);
+        ray.pointAtDistance(intersection.m_ptLocation, plnInt.m_fDist);
         plnInt.m_plane.getNormal(intersection.m_vNormal);
         intersection.m_mtl = m_mtl;
         return true;

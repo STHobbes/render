@@ -82,7 +82,7 @@ package cip.render.util3d;
  * + q<sub>0</sub>
  * </blockquote><p>
  * and we can use the quadratic formula to find the roots for t. Note that for our special case of
- * location and orientation, these simlify considerably to:
+ * location and orientation, these simplify considerably to:
  * <blockquote><p>
  * a = q<sub>1</sub>i<sup>2</sup> + q<sub>2</sub>j<sup>2</sup> + q<sub>3</sub>k<sup>2</sup>
  * <p>
@@ -166,7 +166,7 @@ public class Quadric3f {
      * elliptical cylinder about k as:&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup>
      * ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>0</sub>  = -1
      * <p>
-     * The eliptical cone is an ellipse of radius <tt>fRx</tt>, <tt>fRy</tt> centered at 0,0 where it cuts through
+     * The elliptical cone is an ellipse of radius <tt>fRx</tt>, <tt>fRy</tt> centered at 0,0 where it cuts through
      * the XY plane.  It extends infinitely in Z.
      *
      * @param fRx The i radius.
@@ -341,7 +341,7 @@ public class Quadric3f {
 
         if (PackageConstants.isZero(fA)) {
             // This is the case where there is only one root and the quadratic equation breaks down due to
-            //  divide by zero.  The qudratic reduces to bt + c = 0 and the root is t = -c/b
+            //  divide by zero.  The quadratic reduces to bt + c = 0 and the root is t = -c/b
             if (PackageConstants.isZero(fB)) {
                 // this can only happen at 0,0,0
                 quadInt.m_nCode = Quadric3fIntersection.NONE_INSIDE;

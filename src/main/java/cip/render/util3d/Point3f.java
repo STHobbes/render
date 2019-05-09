@@ -62,6 +62,7 @@ public class Point3f {
      *
      * @param ptInit The location of the instantiated point.
      */
+    @SuppressWarnings("CopyConstructorMissesField")
     public Point3f(final Point3f ptInit) {
         setValue(ptInit);
     }

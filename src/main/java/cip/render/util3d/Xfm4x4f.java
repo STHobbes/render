@@ -24,17 +24,16 @@ import java.util.StringTokenizer;
  * patterned after and most code adapted from the <tt>CXfm4x4f</tt> class of the <b><i>JOEY</i></b> toolkit written and
  * distributed by Crisis in Perspective, Inc.
  * <p>
- * NOTE: For compatibility with Java3d, this <tt>Xfm4x4f</tt> class extends <tt>javax.vecmath.Matrix4f</tt> class.  Also
- * note that the transformation conventions as described int the OpenGL reference manuals are used so that the translation components
- * are in the <tt>m03</tt>, <tt>m13</tt>, and <tt>m23</tt> locations (the transposed representations that put the
- * translations in <tt>m30</tt>, <tt>m31</tt>, and <tt>m32</tt> locations were used in <b>JOEY</b>).
+ * NOTE: the transformation conventions as described int the OpenGL reference manuals are used so that the translation components
+ * are in the <tt>xfm[0][3]</tt>, <tt>xfm[1][3]</tt>, and <tt>xfm[2][3]</tt> locations (the transposed representations that put the
+ * translations in <tt>xfm[3][0]</tt>, <tt>xfm[3][1]</tt>, and <tt>xfm[3][2]</tt> locations were used in <b>JOEY</b>).
  * <p>
  * Specifically, point transformation is of the form:<br><br>
  * <pre>
- *     [ m00 m01 m02 m03 ] [ X ]   [ Xt ]
- *     | m10 m11 m12 m13 | | Y | = | Yt |
- *     | m20 m21 m22 m23 | | Z |   | Zt |
- *     [ m30 m31 m32 m33 ] [ H ]   [ Ht ]
+ *     [ xfm[0][0] xfm[0][1] xfm[0][2] xfm[0][3] ] [ X ]   [ Xt ]
+ *     | xfm[1][0] xfm[1][1] xfm[1][2] xfm[1][3] | | Y | = | Yt |
+ *     | xfm[2][0] xfm[2][1] xfm[2][2] xfm[2][3] | | Z |   | Zt |
+ *     [ xfm[3][0] xfm[3][1] xfm[3][2] xfm[3][3] ] [ H ]   [ Ht ]
  * </pre>
  * Where <tt>[X,Y,Z,H]</tt> is the un-transformed point or vector and <tt>[Xt,Yt,Zt,Ht]</tt> is the transformed point or
  * vector.  Normally, <tt>H = 1</tt> for a point transformation and <tt>H = 0</tt> for a vector transformation.
@@ -62,29 +61,15 @@ public class Xfm4x4f {
      */
     public Xfm4x4f m_next = null;
 
-    public float m00;
-    public float m01;
-    public float m02;
-    public float m03;
-    public float m10;
-    public float m11;
-    public float m12;
-    public float m13;
-    public float m20;
-    public float m21;
-    public float m22;
-    public float m23;
-    public float m30;
-    public float m31;
-    public float m32;
-    public float m33;
+    private float[][] xfm = new float[4][4];
 
     //-------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Creates a new instance of <tt>Xfm4x4f</tt> that is initialized to all zeros.
+     * Creates a new instance of <tt>Xfm4x4f</tt> that is initialized to an identity.
      */
     public Xfm4x4f() {
+        this.identity();
     }
 
     /**
@@ -92,6 +77,7 @@ public class Xfm4x4f {
      *
      * @param xfmInit The trans formation this transformation should be set equal to.
      */
+    @SuppressWarnings("CopyConstructorMissesField")
     public Xfm4x4f(final Xfm4x4f xfmInit) {
         this.setValue(xfmInit);
     }
@@ -106,22 +92,28 @@ public class Xfm4x4f {
      * @return Returns this transformation after it have been set equal to <tt>xfmInit</tt>.
      */
     public Xfm4x4f setValue(final Xfm4x4f xfmInit) {
-        m00 = xfmInit.m00;
-        m01 = xfmInit.m01;
-        m02 = xfmInit.m02;
-        m03 = xfmInit.m03;
-        m10 = xfmInit.m10;
-        m11 = xfmInit.m11;
-        m12 = xfmInit.m12;
-        m13 = xfmInit.m13;
-        m20 = xfmInit.m20;
-        m21 = xfmInit.m21;
-        m22 = xfmInit.m22;
-        m23 = xfmInit.m23;
-        m30 = xfmInit.m30;
-        m31 = xfmInit.m31;
-        m32 = xfmInit.m32;
-        m33 = xfmInit.m33;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                xfm[row][col] = xfmInit.xfm[row][col];
+            }
+        }
+
+//        xfm[0][0] = xfmInit.xfm[0][0];
+//        xfm[0][1] = xfmInit.xfm[0][1];
+//        xfm[0][2] = xfmInit.xfm[0][2];
+//        xfm[0][3] = xfmInit.xfm[0][3];
+//        xfm[1][0] = xfmInit.xfm[1][0];
+//        xfm[1][1] = xfmInit.xfm[1][1];
+//        xfm[1][2] = xfmInit.xfm[1][2];
+//        xfm[1][3] = xfmInit.xfm[1][3];
+//        xfm[2][0] = xfmInit.xfm[2][0];
+//        xfm[2][1] = xfmInit.xfm[2][1];
+//        xfm[2][2] = xfmInit.xfm[2][2];
+//        xfm[2][3] = xfmInit.xfm[2][3];
+//        xfm[3][0] = xfmInit.xfm[3][0];
+//        xfm[3][1] = xfmInit.xfm[3][1];
+//        xfm[3][2] = xfmInit.xfm[3][2];
+//        xfm[3][3] = xfmInit.xfm[3][3];
         return this;
     }
 
@@ -136,7 +128,16 @@ public class Xfm4x4f {
         compose(aAzimuth, aAltitude, aRoll, new Vector3f(ptOrigin.x, ptOrigin.y, ptOrigin.z));
         return this;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Get the value of an element of the transformation.
+     * @param row (int) The row of the element.
+     * @param col (int) The column of the element.
+     * @return (float) Returns the eelment.
+     */
+    public float get(final int row, final int col) {
+        return xfm[row][col];
+    }
 
     /**
      * Sets the value of this 4x4 transform from the attributes of an XML DOM Element.  transforms are specified through
@@ -156,7 +157,7 @@ public class Xfm4x4f {
      * <caption style="text-align:left">where:</caption>
      * <tr>
      * <td style="width:5%"></td>
-     * <td><table>
+     * <td><table border="1" summary="">
      * <tr>
      * <td><tt>originAt</tt></td>
      * <td>Specify the new location of the origin (the translation of the origin).  The default
@@ -210,9 +211,9 @@ public class Xfm4x4f {
      *
      * @param xmlElement  The XML DOM Element.
      * @param bAllowScale If <tt>true</tt> then scale specification will be processed, if <tt>false</tt>, then
-     *                    scale specification will be ignored.  This should be <tt>false</tt> for ridgid-body transformation.
+     *                    scale specification will be ignored.  This should be <tt>false</tt> for rigid-body transformation.
      * @param bAllowShear If <tt>true</tt> then shear specification will be processed, if <tt>false</tt>, then
-     *                    shear specification will be ignored.  This should be <tt>false</tt> for ridgid-body transformation.
+     *                    shear specification will be ignored.  This should be <tt>false</tt> for rigid-body transformation.
      * @return Returns this 4x4 transform after its value has been set.
      * @throws ZeroLengthVectorException Thrown if an <tt>originAt</tt> and <tt>aimedAt</tt> specification is used
      *                                   and the points are so close together that the direction vector is undefined.
@@ -326,9 +327,9 @@ public class Xfm4x4f {
      *
      * @param element     The element the transform attributes should be added to.
      * @param bAllowScale If <tt>true</tt> then scale specification will be included, if <tt>false</tt>, then
-     *                    scale specification will not be included.  This should be <tt>false</tt> for ridgid-body transformation.
+     *                    scale specification will not be included.  This should be <tt>false</tt> for rigid-body transformation.
      * @param bAllowShear If <tt>true</tt> then shear specification will be included, if <tt>false</tt>, then
-     *                    shear specification will not be included.  This should be <tt>false</tt> for ridgid-body transformation.
+     *                    shear specification will not be included.  This should be <tt>false</tt> for rigid-body transformation.
      * @throws ZeroLengthVectorException Thrown if the transformation is singular and cannot be uniquely decomposed.
      */
     public void toXmlAttr(final Element element, final boolean bAllowScale, final boolean bAllowShear) throws ZeroLengthVectorException {
@@ -379,22 +380,27 @@ public class Xfm4x4f {
      * @return Returns this transform after it has been set to an identity transform.
      */
     public Xfm4x4f identity() {
-        m00 = 1.0f;
-        m01 = 0.0f;
-        m02 = 0.0f;
-        m03 = 0.0f;
-        m10 = 0.0f;
-        m11 = 1.0f;
-        m12 = 0.0f;
-        m13 = 0.0f;
-        m20 = 0.0f;
-        m21 = 0.0f;
-        m22 = 1.0f;
-        m23 = 0.0f;
-        m30 = 0.0f;
-        m31 = 0.0f;
-        m32 = 0.0f;
-        m33 = 1.0f;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                xfm[row][col] = (row == col) ? 1.0f : 0.0f;
+            }
+        }
+//        xfm[0][0] = 1.0f;
+//        xfm[0][1] = 0.0f;
+//        xfm[0][2] = 0.0f;
+//        xfm[0][3] = 0.0f;
+//        xfm[1][0] = 0.0f;
+//        xfm[1][1] = 1.0f;
+//        xfm[1][2] = 0.0f;
+//        xfm[1][3] = 0.0f;
+//        xfm[2][0] = 0.0f;
+//        xfm[2][1] = 0.0f;
+//        xfm[2][2] = 1.0f;
+//        xfm[2][3] = 0.0f;
+//        xfm[3][0] = 0.0f;
+//        xfm[3][1] = 0.0f;
+//        xfm[3][2] = 0.0f;
+//        xfm[3][3] = 1.0f;
         return this;
     }
 
@@ -420,25 +426,25 @@ public class Xfm4x4f {
     public Xfm4x4f translate(final float fTx, final float fTy, final float fTz) {
         // The revised implementation taking advantage of the form of the transformation matrix to
         //  optimize the operations and do the premultiply locally.
-        if (0.0f != m30) {
-            m00 += m30 * fTx;
-            m10 += m30 * fTy;
-            m20 += m30 * fTz;
+        if (0.0f != xfm[3][0]) {
+            xfm[0][0] += xfm[3][0] * fTx;
+            xfm[1][0] += xfm[3][0] * fTy;
+            xfm[2][0] += xfm[3][0] * fTz;
         }
-        if (0.0f != m31) {
-            m01 += m31 * fTx;
-            m11 += m31 * fTy;
-            m21 += m31 * fTz;
+        if (0.0f != xfm[3][1]) {
+            xfm[0][1] += xfm[3][1] * fTx;
+            xfm[1][1] += xfm[3][1] * fTy;
+            xfm[2][1] += xfm[3][1] * fTz;
         }
-        if (0.0f != m32) {
-            m02 += m32 * fTx;
-            m12 += m32 * fTy;
-            m22 += m32 * fTz;
+        if (0.0f != xfm[3][2]) {
+            xfm[0][2] += xfm[3][2] * fTx;
+            xfm[1][2] += xfm[3][2] * fTy;
+            xfm[2][2] += xfm[3][2] * fTz;
         }
-        if (0.0f != m33) {
-            m03 += m33 * fTx;
-            m13 += m33 * fTy;
-            m23 += m33 * fTz;
+        if (0.0f != xfm[3][3]) {
+            xfm[0][3] += xfm[3][3] * fTx;
+            xfm[1][3] += xfm[3][3] * fTy;
+            xfm[2][3] += xfm[3][3] * fTz;
         }
         return this;
     }
@@ -455,7 +461,7 @@ public class Xfm4x4f {
      * If you want to set this transformation to be the translation transformation,
      * set this transformation to be an identity transformation before applying the translate.
      *
-     * @param vTranslate The translation vector (direction and magnmitude of translation).
+     * @param vTranslate The translation vector (direction and magnitude of translation).
      * @return Returns this transform after it has been premultiplied by a translation transformation.
      */
     public Xfm4x4f translate(final Vector3f vTranslate) {
@@ -528,7 +534,7 @@ public class Xfm4x4f {
      * @return Returns the transformation with the rotation applied.
      */
     public Xfm4x4f rotate(final Vector3f vAxis, final AngleF aRot) {
-        // rotation for an arbitaty axis (from Rogers and Adams) -
+        // rotation for an arbitrary axis (from Rogers and Adams) -
         //  > Check length of the input vector (0,0,0 vector provides no axis info, and an identity is returned)
         //  > Rotate the axis to be coincident with the Z axis by an i and j rotation.
         //      Apply the rotation in Z
@@ -587,11 +593,11 @@ public class Xfm4x4f {
      * Build up a transformation that include combined scale, shear, rotation, and translation - in that order.  Rotation is
      * applied as roll (rotation around Z) followed by altitude (rotation about X) followed by azimuth (rotation about Z).  To
      * follow the geographic conventions of azimuth specification, this is a clockwise rotation when looking down the positive
-     * Z axis towards the origin in a right handed coordinate system (which is a -azimuth rotation aropund Z using standard
+     * Z axis towards the origin in a right handed coordinate system (which is a -azimuth rotation around Z using standard
      * graphics conventions).
      * <p>
      * If a composed transformation is decomposed, the scale, shear, rotation, and translation that create this transformation
-     * will be returned.  It may be the case that these vary from the original specification due to numerical and roundoff
+     * will be returned.  It may be the case that these vary from the original specification due to numerical and round off
      * error, and that the angles will be set the their -180 degree to +180 degree equivalents.
      *
      * @param fSx       The X scale factor.
@@ -606,7 +612,7 @@ public class Xfm4x4f {
      * @param aAzimuth  The azimuth angle.
      * @param aAltitude The altitude angle.
      * @param aRoll     The roll angle.
-     * @param vTrans    The translation vector (direction and magnmitude of translation).
+     * @param vTrans    The translation vector (direction and magnitude of translation).
      * @return Returns this transformation after it has been set as specified.
      */
     public Xfm4x4f compose(final float fSx, final float fSy, final float fSz,
@@ -625,17 +631,17 @@ public class Xfm4x4f {
      * Build up a rigid body transformation that include combined rotation and translation - in that order.  Rotation is applied
      * as roll (rotation around Z) followed by altitude (rotation about X) followed by azimuth (rotation about Z).  To follow
      * the geographic conventions of azimuth specification, this is a clockwise rotation when looking down the positive Z axis
-     * towards the origin in a right handed coordinate system (which is a -azimuth rotation aropund Z using standard graphics
+     * towards the origin in a right handed coordinate system (which is a -azimuth rotation around Z using standard graphics
      * conventions).
      * <p>
      * If a composed transformation is decomposed, the scale, shear, rotation, and translation that create this transformation
-     * will be returned.  It may be the case that these vary from the original specification due to numerical and roundoff
+     * will be returned.  It may be the case that these vary from the original specification due to numerical and round off
      * error, and that the angles will be set the their -180 degree to +180 degree equivalents.
      *
      * @param aAzimuth  The azimuth angle.
      * @param aAltitude The altitude angle.
      * @param aRoll     The roll angle.
-     * @param vTrans    The translation vector (direction and magnmitude of translation).
+     * @param vTrans    The translation vector (direction and magnitude of translation).
      * @return Returns this transformation after it has been set as specified.
      */
     public Xfm4x4f compose(final AngleF aAzimuth, final AngleF aAltitude, final AngleF aRoll, final Vector3f vTrans) {
@@ -671,20 +677,20 @@ public class Xfm4x4f {
         final float fSy;
         final float fSz;
         // first back out the translation part of the transform
-        translate.i = m03;
-        translate.j = m13;
-        translate.k = m23;
+        translate.i = xfm[0][3];
+        translate.j = xfm[1][3];
+        translate.k = xfm[2][3];
         // this is the easiest way to visualize what is happening - think of passing the axis vectors (1,0,0),
         //  (0,1,0), (0,0,1) through this transform.  This produces the transformed axis system i',j',k' (almost).
         //  If there is no scale or shear, we can look at the rotations of these axis and build the rotation
         //  angles.  If there is scale and shear, we need to compute  and undo those before we compute the
         //  rotation angles.
-        final Vector3f vXrot = new Vector3f(m00, m10, m20);
-        final Vector3f vYxfm = new Vector3f(m01, m11, m21);
-        final Vector3f vZxfm = new Vector3f(m02, m12, m22);
+        final Vector3f vXrot = new Vector3f(xfm[0][0], xfm[1][0], xfm[2][0]);
+        final Vector3f vYxfm = new Vector3f(xfm[0][1], xfm[1][1], xfm[2][1]);
+        final Vector3f vZxfm = new Vector3f(xfm[0][2], xfm[1][2], xfm[2][2]);
         fSx = vXrot.getLength();
         vXrot.normalize();
-        // Assume X transforms to i'.  Y tansforms to be on the i'j' plane - though if there was shear, it may not be
+        // Assume X transforms to i'.  Y transforms to be on the i'j' plane - though if there was shear, it may not be
         //  perpendicular to i' and the shear factored in.  the transformed k needs to be scaled and sheared to be
         //  perpendicular to the i'j' plane and of length 1
         final Vector3f vZrot = new Vector3f(vXrot).cross(vYxfm).normalize();   // true k'
@@ -737,29 +743,29 @@ public class Xfm4x4f {
     public final void transpose() {
         float temp;
 
-        temp = this.m10;
-        this.m10 = this.m01;
-        this.m01 = temp;
+        temp = this.xfm[1][0];
+        this.xfm[1][0] = this.xfm[0][1];
+        this.xfm[0][1] = temp;
 
-        temp = this.m20;
-        this.m20 = this.m02;
-        this.m02 = temp;
+        temp = this.xfm[2][0];
+        this.xfm[2][0] = this.xfm[0][2];
+        this.xfm[0][2] = temp;
 
-        temp = this.m30;
-        this.m30 = this.m03;
-        this.m03 = temp;
+        temp = this.xfm[3][0];
+        this.xfm[3][0] = this.xfm[0][3];
+        this.xfm[0][3] = temp;
 
-        temp = this.m21;
-        this.m21 = this.m12;
-        this.m12 = temp;
+        temp = this.xfm[2][1];
+        this.xfm[2][1] = this.xfm[1][2];
+        this.xfm[1][2] = temp;
 
-        temp = this.m31;
-        this.m31 = this.m13;
-        this.m13 = temp;
+        temp = this.xfm[3][1];
+        this.xfm[3][1] = this.xfm[1][3];
+        this.xfm[1][3] = temp;
 
-        temp = this.m32;
-        this.m32 = this.m23;
-        this.m23 = temp;
+        temp = this.xfm[3][2];
+        this.xfm[3][2] = this.xfm[2][3];
+        this.xfm[2][3] = temp;
     }
 
     /**
@@ -777,29 +783,29 @@ public class Xfm4x4f {
         final double[] result = new double[16];
         final int[] row_perm = new int[4];
         int i;
-        // Use LU decomposition and backsubstitution code specifically
+        // Use LU decomposition and back-substitution code specifically
         // for floating-point 4x4 matrices.
 
         // Copy source matrix to t1tmp
-        temp[0] = xfm.m00;
-        temp[1] = xfm.m01;
-        temp[2] = xfm.m02;
-        temp[3] = xfm.m03;
+        temp[0] = xfm.xfm[0][0];
+        temp[1] = xfm.xfm[0][1];
+        temp[2] = xfm.xfm[0][2];
+        temp[3] = xfm.xfm[0][3];
 
-        temp[4] = xfm.m10;
-        temp[5] = xfm.m11;
-        temp[6] = xfm.m12;
-        temp[7] = xfm.m13;
+        temp[4] = xfm.xfm[1][0];
+        temp[5] = xfm.xfm[1][1];
+        temp[6] = xfm.xfm[1][2];
+        temp[7] = xfm.xfm[1][3];
 
-        temp[8] = xfm.m20;
-        temp[9] = xfm.m21;
-        temp[10] = xfm.m22;
-        temp[11] = xfm.m23;
+        temp[8] = xfm.xfm[2][0];
+        temp[9] = xfm.xfm[2][1];
+        temp[10] = xfm.xfm[2][2];
+        temp[11] = xfm.xfm[2][3];
 
-        temp[12] = xfm.m30;
-        temp[13] = xfm.m31;
-        temp[14] = xfm.m32;
-        temp[15] = xfm.m33;
+        temp[12] = xfm.xfm[3][0];
+        temp[13] = xfm.xfm[3][1];
+        temp[14] = xfm.xfm[3][2];
+        temp[15] = xfm.xfm[3][3];
 
         // Calculate LU decomposition: Is the matrix singular?
         if (!luDecomposition(temp, row_perm)) {
@@ -813,33 +819,33 @@ public class Xfm4x4f {
         result[5] = 1.0;
         result[10] = 1.0;
         result[15] = 1.0;
-        luBacksubstitution(temp, row_perm, result);
+        luBackSubstitution(temp, row_perm, result);
 
-        this.m00 = (float) result[0];
-        this.m01 = (float) result[1];
-        this.m02 = (float) result[2];
-        this.m03 = (float) result[3];
+        this.xfm[0][0] = (float) result[0];
+        this.xfm[0][1] = (float) result[1];
+        this.xfm[0][2] = (float) result[2];
+        this.xfm[0][3] = (float) result[3];
 
-        this.m10 = (float) result[4];
-        this.m11 = (float) result[5];
-        this.m12 = (float) result[6];
-        this.m13 = (float) result[7];
+        this.xfm[1][0] = (float) result[4];
+        this.xfm[1][1] = (float) result[5];
+        this.xfm[1][2] = (float) result[6];
+        this.xfm[1][3] = (float) result[7];
 
-        this.m20 = (float) result[8];
-        this.m21 = (float) result[9];
-        this.m22 = (float) result[10];
-        this.m23 = (float) result[11];
+        this.xfm[2][0] = (float) result[8];
+        this.xfm[2][1] = (float) result[9];
+        this.xfm[2][2] = (float) result[10];
+        this.xfm[2][3] = (float) result[11];
 
-        this.m30 = (float) result[12];
-        this.m31 = (float) result[13];
-        this.m32 = (float) result[14];
-        this.m33 = (float) result[15];
+        this.xfm[3][0] = (float) result[12];
+        this.xfm[3][1] = (float) result[13];
+        this.xfm[3][2] = (float) result[14];
+        this.xfm[3][3] = (float) result[15];
     }
 
     /**
      * Given a 4x4 array "matrix0", this function replaces it with the
      * LU decomposition of a row-wise permutation of itself.  The input
-     * parameters are "matrix0" and "dimen".  The array "matrix0" is also
+     * parameters are "matrix0" and "row_perm".  The array "matrix0" is also
      * an output parameter.  The vector "row_perm[4]" is an output
      * parameter that contains the row permutations resulting from partial
      * pivoting.  The output parameter "even_row_xchg" is 1 when the
@@ -1012,7 +1018,7 @@ public class Xfm4x4f {
     //        _Numerical_Recipes_in_C_, Cambridge University Press,
     //        1988, pp 44-45.
     //
-    private static void luBacksubstitution(final double[] matrix1,
+    private static void luBackSubstitution(final double[] matrix1,
                                            final int[] row_perm,
                                            final double[] matrix2) {
         int i, ii, ip, j, k;
@@ -1047,7 +1053,7 @@ public class Xfm4x4f {
                 matrix2[cv + 4 * i] = sum;
             }
 
-            // Backsubstitution
+            // Back substitution
             //      rv = &(matrix1[3][0]);
             rv = 3 * 4;
             matrix2[cv + 4 * 3] /= matrix1[rv + 3];
@@ -1090,50 +1096,50 @@ public class Xfm4x4f {
      */
     public Xfm4x4f preMul(final Xfm4x4f xfm) {
         final Xfm4x4f xfmTmp = new Xfm4x4f(this);
-        m00 = (xfm.m00 * xfmTmp.m00) + (xfm.m01 * xfmTmp.m10) + (xfm.m02 * xfmTmp.m20) + (xfm.m03 * xfmTmp.m30);
-        m01 = (xfm.m00 * xfmTmp.m01) + (xfm.m01 * xfmTmp.m11) + (xfm.m02 * xfmTmp.m21) + (xfm.m03 * xfmTmp.m31);
-        m02 = (xfm.m00 * xfmTmp.m02) + (xfm.m01 * xfmTmp.m12) + (xfm.m02 * xfmTmp.m22) + (xfm.m03 * xfmTmp.m32);
-        m03 = (xfm.m00 * xfmTmp.m03) + (xfm.m01 * xfmTmp.m13) + (xfm.m02 * xfmTmp.m23) + (xfm.m03 * xfmTmp.m33);
-        m10 = (xfm.m10 * xfmTmp.m00) + (xfm.m11 * xfmTmp.m10) + (xfm.m12 * xfmTmp.m20) + (xfm.m13 * xfmTmp.m30);
-        m11 = (xfm.m10 * xfmTmp.m01) + (xfm.m11 * xfmTmp.m11) + (xfm.m12 * xfmTmp.m21) + (xfm.m13 * xfmTmp.m31);
-        m12 = (xfm.m10 * xfmTmp.m02) + (xfm.m11 * xfmTmp.m12) + (xfm.m12 * xfmTmp.m22) + (xfm.m13 * xfmTmp.m32);
-        m13 = (xfm.m10 * xfmTmp.m03) + (xfm.m11 * xfmTmp.m13) + (xfm.m12 * xfmTmp.m23) + (xfm.m13 * xfmTmp.m33);
-        m20 = (xfm.m20 * xfmTmp.m00) + (xfm.m21 * xfmTmp.m10) + (xfm.m22 * xfmTmp.m20) + (xfm.m23 * xfmTmp.m30);
-        m21 = (xfm.m20 * xfmTmp.m01) + (xfm.m21 * xfmTmp.m11) + (xfm.m22 * xfmTmp.m21) + (xfm.m23 * xfmTmp.m31);
-        m22 = (xfm.m20 * xfmTmp.m02) + (xfm.m21 * xfmTmp.m12) + (xfm.m22 * xfmTmp.m22) + (xfm.m23 * xfmTmp.m32);
-        m23 = (xfm.m20 * xfmTmp.m03) + (xfm.m21 * xfmTmp.m13) + (xfm.m22 * xfmTmp.m23) + (xfm.m23 * xfmTmp.m33);
-        m30 = (xfm.m30 * xfmTmp.m00) + (xfm.m31 * xfmTmp.m10) + (xfm.m32 * xfmTmp.m20) + (xfm.m33 * xfmTmp.m30);
-        m31 = (xfm.m30 * xfmTmp.m01) + (xfm.m31 * xfmTmp.m11) + (xfm.m32 * xfmTmp.m21) + (xfm.m33 * xfmTmp.m31);
-        m32 = (xfm.m30 * xfmTmp.m02) + (xfm.m31 * xfmTmp.m12) + (xfm.m32 * xfmTmp.m22) + (xfm.m33 * xfmTmp.m32);
-        m33 = (xfm.m30 * xfmTmp.m03) + (xfm.m31 * xfmTmp.m13) + (xfm.m32 * xfmTmp.m23) + (xfm.m33 * xfmTmp.m33);
+        this.xfm[0][0] = (xfm.xfm[0][0] * xfmTmp.xfm[0][0]) + (xfm.xfm[0][1] * xfmTmp.xfm[1][0]) + (xfm.xfm[0][2] * xfmTmp.xfm[2][0]) + (xfm.xfm[0][3] * xfmTmp.xfm[3][0]);
+        this.xfm[0][1] = (xfm.xfm[0][0] * xfmTmp.xfm[0][1]) + (xfm.xfm[0][1] * xfmTmp.xfm[1][1]) + (xfm.xfm[0][2] * xfmTmp.xfm[2][1]) + (xfm.xfm[0][3] * xfmTmp.xfm[3][1]);
+        this.xfm[0][2] = (xfm.xfm[0][0] * xfmTmp.xfm[0][2]) + (xfm.xfm[0][1] * xfmTmp.xfm[1][2]) + (xfm.xfm[0][2] * xfmTmp.xfm[2][2]) + (xfm.xfm[0][3] * xfmTmp.xfm[3][2]);
+        this.xfm[0][3] = (xfm.xfm[0][0] * xfmTmp.xfm[0][3]) + (xfm.xfm[0][1] * xfmTmp.xfm[1][3]) + (xfm.xfm[0][2] * xfmTmp.xfm[2][3]) + (xfm.xfm[0][3] * xfmTmp.xfm[3][3]);
+        this.xfm[1][0] = (xfm.xfm[1][0] * xfmTmp.xfm[0][0]) + (xfm.xfm[1][1] * xfmTmp.xfm[1][0]) + (xfm.xfm[1][2] * xfmTmp.xfm[2][0]) + (xfm.xfm[1][3] * xfmTmp.xfm[3][0]);
+        this.xfm[1][1] = (xfm.xfm[1][0] * xfmTmp.xfm[0][1]) + (xfm.xfm[1][1] * xfmTmp.xfm[1][1]) + (xfm.xfm[1][2] * xfmTmp.xfm[2][1]) + (xfm.xfm[1][3] * xfmTmp.xfm[3][1]);
+        this.xfm[1][2] = (xfm.xfm[1][0] * xfmTmp.xfm[0][2]) + (xfm.xfm[1][1] * xfmTmp.xfm[1][2]) + (xfm.xfm[1][2] * xfmTmp.xfm[2][2]) + (xfm.xfm[1][3] * xfmTmp.xfm[3][2]);
+        this.xfm[1][3] = (xfm.xfm[1][0] * xfmTmp.xfm[0][3]) + (xfm.xfm[1][1] * xfmTmp.xfm[1][3]) + (xfm.xfm[1][2] * xfmTmp.xfm[2][3]) + (xfm.xfm[1][3] * xfmTmp.xfm[3][3]);
+        this.xfm[2][0] = (xfm.xfm[2][0] * xfmTmp.xfm[0][0]) + (xfm.xfm[2][1] * xfmTmp.xfm[1][0]) + (xfm.xfm[2][2] * xfmTmp.xfm[2][0]) + (xfm.xfm[2][3] * xfmTmp.xfm[3][0]);
+        this.xfm[2][1] = (xfm.xfm[2][0] * xfmTmp.xfm[0][1]) + (xfm.xfm[2][1] * xfmTmp.xfm[1][1]) + (xfm.xfm[2][2] * xfmTmp.xfm[2][1]) + (xfm.xfm[2][3] * xfmTmp.xfm[3][1]);
+        this.xfm[2][2] = (xfm.xfm[2][0] * xfmTmp.xfm[0][2]) + (xfm.xfm[2][1] * xfmTmp.xfm[1][2]) + (xfm.xfm[2][2] * xfmTmp.xfm[2][2]) + (xfm.xfm[2][3] * xfmTmp.xfm[3][2]);
+        this.xfm[2][3] = (xfm.xfm[2][0] * xfmTmp.xfm[0][3]) + (xfm.xfm[2][1] * xfmTmp.xfm[1][3]) + (xfm.xfm[2][2] * xfmTmp.xfm[2][3]) + (xfm.xfm[2][3] * xfmTmp.xfm[3][3]);
+        this.xfm[3][0] = (xfm.xfm[3][0] * xfmTmp.xfm[0][0]) + (xfm.xfm[3][1] * xfmTmp.xfm[1][0]) + (xfm.xfm[3][2] * xfmTmp.xfm[2][0]) + (xfm.xfm[3][3] * xfmTmp.xfm[3][0]);
+        this.xfm[3][1] = (xfm.xfm[3][0] * xfmTmp.xfm[0][1]) + (xfm.xfm[3][1] * xfmTmp.xfm[1][1]) + (xfm.xfm[3][2] * xfmTmp.xfm[2][1]) + (xfm.xfm[3][3] * xfmTmp.xfm[3][1]);
+        this.xfm[3][2] = (xfm.xfm[3][0] * xfmTmp.xfm[0][2]) + (xfm.xfm[3][1] * xfmTmp.xfm[1][2]) + (xfm.xfm[3][2] * xfmTmp.xfm[2][2]) + (xfm.xfm[3][3] * xfmTmp.xfm[3][2]);
+        this.xfm[3][3] = (xfm.xfm[3][0] * xfmTmp.xfm[0][3]) + (xfm.xfm[3][1] * xfmTmp.xfm[1][3]) + (xfm.xfm[3][2] * xfmTmp.xfm[2][3]) + (xfm.xfm[3][3] * xfmTmp.xfm[3][3]);
         return this;
     }
 
     // This is a local pre-multiply by the scale-rotation-shear 3x3 transform.  It is used to minimize wasted work and to
-    //  eliminate the need to borow an intermediate transformation when performing a scale, rotate, or shear operation.
+    //  eliminate the need to borrow an intermediate transformation when performing a scale, rotate, or shear operation.
     private Xfm4x4f preMul(final float srs00, final float srs01, final float srs02,
                            final float srs10, final float srs11, final float srs12,
                            final float srs20, final float srs21, final float srs22) {
         float c0, c1, c2;     // the temporary column - we process this transform by column - these are the untransformed
         // state of the column
-        c0 = m00;
-        c1 = m10;
-        c2 = m20;
-        m00 = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
-        m10 = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
-        m20 = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
-        c0 = m01;
-        c1 = m11;
-        c2 = m21;
-        m01 = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
-        m11 = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
-        m21 = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
-        c0 = m02;
-        c1 = m12;
-        c2 = m22;
-        m02 = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
-        m12 = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
-        m22 = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
+        c0 = xfm[0][0];
+        c1 = xfm[1][0];
+        c2 = xfm[2][0];
+        xfm[0][0] = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
+        xfm[1][0] = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
+        xfm[2][0] = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
+        c0 = xfm[0][1];
+        c1 = xfm[1][1];
+        c2 = xfm[2][1];
+        xfm[0][1] = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
+        xfm[1][1] = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
+        xfm[2][1] = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
+        c0 = xfm[0][2];
+        c1 = xfm[1][2];
+        c2 = xfm[2][2];
+        xfm[0][2] = (srs00 * c0) + (srs01 * c1) + (srs02 * c2);
+        xfm[1][2] = (srs10 * c0) + (srs11 * c1) + (srs12 * c2);
+        xfm[2][2] = (srs20 * c0) + (srs21 * c1) + (srs22 * c2);
         return this;
     }
 
@@ -1147,9 +1153,9 @@ public class Xfm4x4f {
         final float fX;
         final float fY;
         final float fZ;
-        fX = (m00 * pt.x) + (m01 * pt.y) + (m02 * pt.z) + m03;
-        fY = (m01 * pt.x) + (m11 * pt.y) + (m12 * pt.z) + m13;
-        fZ = (m02 * pt.x) + (m21 * pt.y) + (m22 * pt.z) + m23;
+        fX = (xfm[0][0] * pt.x) + (xfm[0][1] * pt.y) + (xfm[0][2] * pt.z) + xfm[0][3];
+        fY = (xfm[0][1] * pt.x) + (xfm[1][1] * pt.y) + (xfm[1][2] * pt.z) + xfm[1][3];
+        fZ = (xfm[0][2] * pt.x) + (xfm[2][1] * pt.y) + (xfm[2][2] * pt.z) + xfm[2][3];
         return xfmPt.setValue(fX, fY, fZ);
     }
 
@@ -1172,9 +1178,9 @@ public class Xfm4x4f {
         final float fI;
         final float fJ;
         final float fK;
-        fI = (m00 * v.i) + (m01 * v.j) + (m02 * v.k);
-        fJ = (m01 * v.i) + (m11 * v.j) + (m12 * v.k);
-        fK = (m02 * v.i) + (m21 * v.j) + (m22 * v.k);
+        fI = (xfm[0][0] * v.i) + (xfm[0][1] * v.j) + (xfm[0][2] * v.k);
+        fJ = (xfm[0][1] * v.i) + (xfm[1][1] * v.j) + (xfm[1][2] * v.k);
+        fK = (xfm[0][2] * v.i) + (xfm[2][1] * v.j) + (xfm[2][2] * v.k);
         return xfmV.setValue(fI, fJ, fK);
     }
 

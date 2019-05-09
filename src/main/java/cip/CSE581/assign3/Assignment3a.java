@@ -102,7 +102,10 @@ public class Assignment3a implements IRenderScene {
      * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
      * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
      * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
+     * @param lastHit        (IRtGeometry, readonly) The last-hit geometry - since all our geometries are convex, the last hit
+     *                       geometry does NOT need to be tested.
      * @param bkg            (RGBf, readonly) The background color.
+     * @param nMaxBounce     (int) The maximum number of bounces for reflective rays.
      * @return Returns the colour seen by this ray.
      */
     static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
@@ -386,7 +389,7 @@ class Sphere3f implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = fDistTmp;
-        ray.pointAtDistace(intersection.m_ptLocation, fDistTmp);
+        ray.pointAtDistance(intersection.m_ptLocation, fDistTmp);
         intersection.m_vNormal.i = (intersection.m_ptLocation.x - m_ptCtr.x) / m_fRad;
         intersection.m_vNormal.j = (intersection.m_ptLocation.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_ptLocation.z - m_ptCtr.z) / m_fRad;
@@ -441,7 +444,7 @@ class ImplicitPolyhedra implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = plnInt.m_fDist;
-        ray.pointAtDistace(intersection.m_ptLocation, plnInt.m_fDist);
+        ray.pointAtDistance(intersection.m_ptLocation, plnInt.m_fDist);
         plnInt.m_plane.getNormal(intersection.m_vNormal);
         intersection.m_mtl = m_mtl;
         intersection.m_obj = this;

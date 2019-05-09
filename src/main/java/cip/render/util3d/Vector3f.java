@@ -61,10 +61,11 @@ public class Vector3f {
     }
 
     /**
-     * Creates a new instance of <tt>Vector3f</tt> iset equal to another vector.
+     * Creates a new instance of <tt>Vector3f</tt> set equal to another vector.
      *
      * @param v The vector to make this new vector equal to.
      */
+    @SuppressWarnings("CopyConstructorMissesField")
     public Vector3f(final Vector3f v) {
         setValue(v);
     }
@@ -137,7 +138,7 @@ public class Vector3f {
     /**
      * Gets the dot product between this vector and another vector, <tt>v</tt>.
      *
-     * @param v The vector agains which we take the dot product.  The value of this vector is unchanged.
+     * @param v The vector against which we take the dot product.  The value of this vector is unchanged.
      * @return Returns the dot product between this vector and vector <tt>v</tt>.
      */
     public float dot(final Vector3f v) {
@@ -172,7 +173,7 @@ public class Vector3f {
 
     /**
      * Cross this vector with another vector, <tt>v</tt>.  The cross product produces a vector perpendicular to the 2 vectors
-     * crossed.  Specifically, the X axis crossed with the Y axis will produce the Z axis, while the croos of the Y axis with the
+     * crossed.  Specifically, the X axis crossed with the Y axis will produce the Z axis, while the cross of the Y axis with the
      * X axis will produce the -Z axis.  NOTE: i cross j = k; j cross k = i; and k cross i = j regardless of the handedness of
      * the coordinate system being used.
      *
@@ -196,7 +197,7 @@ public class Vector3f {
      * Computer Generated Imagery</i> by Roy Hall, Appendix III.1 Geometry utilities.
      * <p>
      * Although the math should produce a normalized vector if the input vectors are normalized, the
-     * reflection vector is re-normalized after computation to minimize the buildup of roundoff
+     * reflection vector is re-normalized after computation to minimize the buildup of round off
      * errors.
      *
      * @param vNormal The surface normal.  The value of this vector is unchanged.
@@ -212,7 +213,7 @@ public class Vector3f {
 
     /**
      * Sets this vector to the the refraction of the <tt>vFrom</tt> vector at the surface
-     * given by thenormal <tt>vNormal</tt>.  NOTE: it does not matter which side of the surface is the
+     * given by the normal <tt>vNormal</tt>.  NOTE: it does not matter which side of the surface is the
      * inside or the outside (i.e. the dot product between the normal and the vector
      * from the surface may be either positive or negative.
      * <p>
@@ -221,7 +222,7 @@ public class Vector3f {
      *
      * @param vNormal The surface normal.  The value of this vector is unchanged.
      * @param vFrom   The vector from the surface for which we want the refraction (by convention, all
-     *                vectors are fromthe surface when the computations are made).  The value of this vector is unchanged.
+     *                vectors are from the surface when the computations are made).  The value of this vector is unchanged.
      * @param fN_in   The index of refraction of the material the <tt>vFrom</tt> vector is
      *                traveling through.
      * @param fN_out  The index of refraction of the material the refracted vector will be traveling
@@ -237,7 +238,7 @@ public class Vector3f {
         final float fLenNt = dot(this);
         boolean bRet = false;
         if (fLenNt < 1.0f) {
-            // if vSprime >= 1.0 then there is total internal reflection.  Ths above condition must be met for a refracted
+            // if fLenNt >= 1.0 then there is total internal reflection.  Ths above condition must be met for a refracted
             //  ray to be spawned from this intersection.
             float fNormalScale = (float) Math.sqrt(1.0f - fLenNt);
             if (fNdotV > 0.0f) fNormalScale = -fNormalScale;
@@ -336,13 +337,7 @@ public class Vector3f {
         if (this == v) {
             return true;
         }
-        if ((null == v) ||
-                (i != v.i) ||
-                (j != v.j) ||
-                (k != v.k)) {
-            return false;
-        }
-        return true;
+        return (null != v) && (i == v.i) && (j == v.j) && (k == v.k);
     }
 
     /**

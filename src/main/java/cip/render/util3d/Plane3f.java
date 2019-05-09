@@ -14,7 +14,7 @@ package cip.render.util3d;
  * hence the name <tt>Plane3f</tt>.
  * <p>
  * The plane is implicitly represented by the formula: <b>A</b><i>i</i> + <b>B</b><i>j</i> + <b>C</b><i>k</i> + <b>D</b> = <i>distance</i>.
- * Where <i>distance</i> is the perpencular distance of the point <i>i</i>,<i>j</i>,<i>k</i> from the plane if the plane is normalized, and
+ * Where <i>distance</i> is the perpendicular distance of the point <i>i</i>,<i>j</i>,<i>k</i> from the plane if the plane is normalized, and
  * the normal of the plane is <b>A</b>,<b>B</b>,<b>C</b>.  A point is on the plane when <i>distance</i> = 0.
  * <p>
  * This class implements the basic functionality for a 3D plane required for rendering and 3D graphics use.  This class is
@@ -123,7 +123,7 @@ public final class Plane3f {
      * Normalizes the plane equation coefficients so that the normal, <b>A</b>,<b>B</b>,<b>C</b>, is a unit vector.
      *
      * @return Returns this plane after normalization.
-     * @throws ZeroLengthVectorException If the current lenght of the normal is so close to zero that a meaningful
+     * @throws ZeroLengthVectorException If the current length of the normal is so close to zero that a meaningful
      *                                   normal cannot be generated.
      */
     public Plane3f normalize() throws ZeroLengthVectorException {
@@ -169,14 +169,7 @@ public final class Plane3f {
         if (this == pln) {
             return true;
         }
-        if ((null == pln) ||
-                (m_fA != pln.m_fA) ||
-                (m_fB != pln.m_fB) ||
-                (m_fC != pln.m_fC) ||
-                (m_fD != pln.m_fD)) {
-            return false;
-        }
-        return true;
+        return (null != pln) && (m_fA == pln.m_fA) &&  (m_fB == pln.m_fB) && (m_fC == pln.m_fC) && (m_fD == pln.m_fD);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------

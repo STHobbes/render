@@ -18,7 +18,7 @@ import cip.render.util3d.Vector3f;
  */
 public class FresnelConductor extends Fresnel {
     protected RGBf m_rgb;          // the material RGB
-    protected float m_Ro;           // the average reflectannce
+    protected float m_Ro;           // the average reflectance
     protected float m_n;            // the index of refraction
     protected float m_k;            // the coefficient of extinction
     protected float m_n2_k2;        // precomputed n squared + k squared

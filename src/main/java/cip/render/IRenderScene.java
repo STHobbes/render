@@ -44,7 +44,7 @@ public interface IRenderScene {
     /**
      * Get the title that should be used for the displayed rendering window. This method will be called after the
      * {@link #loadScene(String)} method is called. This allows the title to be part of the loaded scene description.
-     * @return (nullable) The title for the disp[layed rendering window.
+     * @return (nullable) The title for the displayed rendering window.
      */
     String getTitle();
 

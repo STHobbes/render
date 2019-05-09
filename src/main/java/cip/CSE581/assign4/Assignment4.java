@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * This is the first part of assignment 4 - Here we add multi-threading to show both how it is added, and to explore the
- * performance implications of multi-threading..
+ * performance implications of multi-threading.
  * <p>
  * <b>Usage:</b>
  * <pre>
@@ -133,14 +133,17 @@ public class Assignment4 implements IRenderScene {
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
      *
-     * @param ray          The ray we want the colour for.
+     * @param ray          (line3f, readonly) The ray we want the colour for.
      * @param intersection (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
      * @param lights       (IRtLight[], readonly) The light in the scene that may affect the intersection.
      * @param rtObjects    (IRtGeometry[], readonly) The objects in the scene.
+     * @param lastHit      (IRtGeometry, nullable, readonly) The geometry (object) that was last hit - i.e. the ray is coming
+     *                     from this geometry. If this is a convex geometry, it should not be tested for intersection - unless
+     *                     the ray is inside, and then this is the only geometry that should be tested.
      * @param bkg          (RGBf, readonly) The background color.
      * @param nMaxBounce   (int) The maximum number of external reflections.
      * @param nMaxInternal (int) The maximum internal reflections before black is returned.
-     * @return Returns the colour seen by this ray.
+     * @return (RGBf) Returns the colour seen by this ray.
      */
     static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
                               @NotNull IRtGeometry[] rtObjects, IRtGeometry lastHit, @NotNull RGBf bkg,
@@ -334,7 +337,7 @@ public class Assignment4 implements IRenderScene {
             }
             return true;
         }
-        System.out.println("no more pixels for this thread: " + renderThread.toString());
+        System.out.println("no more pixels for this thread: " + renderThread);
         return false;
     }
 
@@ -648,7 +651,7 @@ class Sphere3f implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = fDistTmp;
-        ray.pointAtDistace(intersection.m_ptLocation, fDistTmp);
+        ray.pointAtDistance(intersection.m_ptLocation, fDistTmp);
         intersection.m_vNormal.i = (intersection.m_ptLocation.x - m_ptCtr.x) / m_fRad;
         intersection.m_vNormal.j = (intersection.m_ptLocation.y - m_ptCtr.y) / m_fRad;
         intersection.m_vNormal.k = (intersection.m_ptLocation.z - m_ptCtr.z) / m_fRad;
@@ -705,7 +708,7 @@ class ImplicitPolyhedra implements IRtGeometry {
 
         // Update the intersection structure with information for this intersection
         intersection.m_fDistance = plnInt.m_fDist;
-        ray.pointAtDistace(intersection.m_ptLocation, plnInt.m_fDist);
+        ray.pointAtDistance(intersection.m_ptLocation, plnInt.m_fDist);
         plnInt.m_plane.getNormal(intersection.m_vNormal);
         intersection.m_mtl = m_mtl;
         intersection.m_obj = this;
