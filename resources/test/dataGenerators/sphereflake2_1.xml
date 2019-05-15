@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RenderedFrame>
+    <LibraryObjects>
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="sphereMat">
+            <colour rgb="1.0,0.9,0.7"/>
+            <beta>14.0</beta>
+            <conductor/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.D.Blinn"/>
+            <opaque/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
+            <radius>0.5</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere0">
+            <radius>0.16666667</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+    </LibraryObjects>
+    <DynamicallyLoadedObject class="cip.render.raytrace.camera.PinHole" name="&lt;unspecified&gt;">
+        <position originAt="2.1,1.3,1.7" azimuth="58.24051" altitude="34.540024"/>
+        <targetDist>2.9983327</targetDist>
+        <targetWidth>2.45</targetWidth>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.background.ConstantColour" name="&lt;unspecified&gt;">
+        <colour rgb="0.078,0.361,0.753"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.Ambient" name="&lt;unspecified&gt;">
+        <intensity rgb="0.35,0.35,0.35"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="4.0,3.0,2.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="1.0,-4.0,4.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="-3.0,1.0,5.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="floor">
+        <position originAt="0.0,0.0,0.5"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra" name="&lt;unspecified&gt;">
+            <face plane="0.0,0.0,1.0,1.0"/>
+            <face plane="0.0,-1.0,0.0,-10.0"/>
+            <face plane="1.0,0.0,0.0,-8.0"/>
+            <face plane="0.0,1.0,0.0,-8.0"/>
+            <face plane="-1.0,0.0,0.0,-10.0"/>
+            <face plane="0.0,0.0,-1.0,-1.5"/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="floorMat">
+                <colour rgb="1.0,0.75,0.33"/>
+                <beta>37.0</beta>
+                <dielectric/>
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.D.Blinn"/>
+            </DynamicallyLoadedObject>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.27216554,0.27216554,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.64395046,0.172546,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.172546,0.64395046,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.37178504,0.09961947,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.4714045,0.4714045,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.64395046,-0.17254607,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.09961953,-0.371785,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.17254595,-0.64395046,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.47140455,-0.4714044,0.0"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+</RenderedFrame>

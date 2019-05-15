@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : assignment4.xml
+    Created on : October 10, 2002, 11:30 AM
+    Author     : roy
+    Description:
+        This is the environment for assignment 3 & 4 put into XML form for the rendering
+        framework.  In this example, the local geometries are defined around a local
+        object coordinate system, and transformed to the final location.
+-->
+<RenderedFrame>
+
+    <LibraryObjects>
+        <!-- These are library objects that can be referenced anywhere in the scene -->
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="red">
+            <colour rgb="1.0f,0.0f,0.0f"/>
+            <conductor/>
+            <beta>10</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="blue">
+            <colour rgb="0.0f,0.0f,1.0f"/>
+            <conductor/>
+            <beta>9</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="green">
+            <colour rgb="0.0f,1.0f,0.0f"/>
+            <dielectric/>
+            <beta>45</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="magenta">
+            <colour rgb="1.0f,0.0f,1.0f"/>
+            <dielectric/>
+            <beta>5</beta>
+        </DynamicallyLoadedObject>
+
+    </LibraryObjects>
+
+    <!-- This is the scene description -->
+    <DynamicallyLoadedObject class="cip.render.raytrace.background.ConstantColour">
+        <colour rgb="0.25f,0.25f,0.25f"/>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.Ambient" name="ambient light">
+        <intensity rgb="0.1f,0.1f,0.1f"/>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm point light">
+        <position originAt="-12.0f,-24.0f, 12.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="point light">
+            <intensity rgb="0.8f,0.8f,0.8f"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 1 light">
+        <position originAt="12.0f, -10.0f, 48.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Spot" name="spot 1">
+            <intensity rgb="0.7f,0.7f,0.7f"/>
+            <beta>5</beta>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 2 light">
+        <position originAt="20.0f, -10.0f, 10.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <!--<position originAt="20.0f, -10.0f, 10.0f"/>-->
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="spot 2">
+            <intensity rgb="0.7f,0.7f,0.7f"/>
+            <!--<beta>5</beta>-->
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
+        <radius>1.0f</radius>
+        <MaterialByRef name="blue"/>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="sphere2">
+        <position originAt="-0.6f,-1.25f,0.6f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere">
+            <radius>0.25</radius>
+            <MaterialByRef name="magenta"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="base">
+        <position originAt="0.0f,0.0f,-1.25f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">
+            <face plane=" 0.0f, 0.0f, 1.0f,-0.25f"/>
+            <face plane=" 0.0f,-1.0f, 0.0f,-2.0f"/>
+            <face plane=" 1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 1.0f, 0.0f,-2.0f"/>
+            <face plane="-1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.25f"/>
+            <MaterialByRef name="green"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="gem">
+        <position originAt="1.0f,-1.0f,-0.5f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">
+            <face plane=" 1.0f, 1.0f, 1.0f,-0.5f"/>
+            <face plane=" 1.0f,-1.0f, 1.0f,-0.5f"/>
+            <face plane="-1.0f, 1.0f, 1.0f,-0.5f"/>
+            <face plane="-1.0f,-1.0f, 1.0f,-0.5f"/>
+            <face plane=" 1.0f, 1.0f,-1.0f,-0.5f"/>
+            <face plane=" 1.0f,-1.0f,-1.0f,-0.5f"/>
+            <face plane="-1.0f, 1.0f,-1.0f,-0.5f"/>
+            <face plane="-1.0f,-1.0f,-1.0f,-0.5f"/>
+            <MaterialByRef name="red"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+</RenderedFrame>

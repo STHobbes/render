@@ -12,8 +12,8 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
   is on understanding the basics of 3D vector math, geometry, materials, and lighting; without worrying about rendering
   system design.
   * **Instructor's Notes:**
-    * The only framework code required for assignments 1-3 are the `cip.render.util`, `cip.render.util`,
-      and `cip.render.util` libraries.
+    * The only framework code required for assignments 1-3 are the `cip.render.util`, `cip.render.util2d`,
+      and `cip.render.util3d` libraries.
     * Assignment 4 is started with the above libraries, but them transitions to using the ray-tracing framework. In the class
       there was an initial framework that included lights, geometry, materials, and textures that I had written; and a final
       framework that included all of the student-contributed lights, geometry, textures, etc. This is all now in
@@ -35,7 +35,7 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
 * **Do an Independent Project**
 
 The intent was to build an easily extensible system where students could experiment with, test, debug, and prepare for release any
-extension that they thought were interesting - and these extensions to the base could be carried into the next year's
+extensions that they thought were interesting - and these extensions to the base could be carried into the next year's
 classes. I was blown away by the creativity of my students in this environment. Packaging this
 for open source distribution has been a bit of a challenge because I cannot walk you through the course lectures.
 

@@ -310,10 +310,9 @@ public class RenderXml implements IRenderScene {
         if (m_bNewScene) {
             // now start the threads
             final int nProcessors = Runtime.getRuntime().availableProcessors();
-            int nThreads = nProcessors;     // start a rendering thread for each processor
-//            nThreads = nProcessors;
-            nThreads = 1;
-            System.out.println("Starting " + nThreads + " threads on " + nProcessors + " processors");
+            final int nThreads = nProcessors;     // start a rendering thread for each processor
+//            nThreads = 1;   // Use this to manually set trhe thread count for testing.
+            System.out.println(String.format("Starting %d threads on %d processors", nThreads, nProcessors));
 
             // The deal here is we start the threads and keep a count of the running threads.  This count is
             //  protected by the thread lock.  Once the threads are started, they run till there are no
@@ -322,7 +321,7 @@ public class RenderXml implements IRenderScene {
             //  catch (exit the redraw function.
             //
             // This thread (the one we are in right now) needs to stop here because we lose the gc after it
-            //  returns.  There are alternate ways to implement this -- this thread could also be computung pixels.
+            //  returns.  There are alternate ways to implement this -- this thread could also be computing pixels.
             //  I find it hard (as in needlessly confusing - especially when reviewing code later) to implement the
             //  multiple use for this thread, so I just block this thread while the rendering threads do their stuff.
             synchronized (m_threadLock) {
@@ -337,8 +336,8 @@ public class RenderXml implements IRenderScene {
                     // the wait was interrupted, probably because the window closed
                 }
             }
-
             m_bNewScene = false;
+
         } else {
             gc.drawImage(m_bi, m_nXmin, m_nYmin, m_nXmax, m_nYmax, m_nXmin, m_nYmin, m_nXmax, m_nYmax, null);
         }
@@ -378,7 +377,7 @@ public class RenderXml implements IRenderScene {
                 }
             }
         }
-        System.out.println("no more pixels for this thread: " + renderThread.toString());
+        System.out.println(String.format("no more pixels for this thread: %s", renderThread.toString()));
         return false;
     }
 

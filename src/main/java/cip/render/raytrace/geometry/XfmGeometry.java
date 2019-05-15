@@ -310,16 +310,19 @@ public class XfmGeometry extends AGeometry {
         // transform the ray to object space.  Do the intersection - if this is a closer intersection,
         //  then transform the relevant intersection info back to world space.
         final Line3f rayObj = intersection.borrowLine();
-        m_xfmWldObj.transform(ray.m_ptOrg, rayObj.m_ptOrg);
-        m_xfmWldObjNormal.transform(ray.m_vDir, rayObj.m_vDir);
-        final boolean bRet = m_obj.getRayIntersection(intersection, rayObj, bStartsInside, nSample, nRandom);
-        if (bRet) {
-            m_xfm.transform(intersection.m_pt);
-            m_xfmNormal.transform(intersection.m_vNormal);
-            intersection.m_rtObj = this;
+        try {
+            m_xfmWldObj.transform(ray.m_ptOrg, rayObj.m_ptOrg);
+            m_xfmWldObjNormal.transform(ray.m_vDir, rayObj.m_vDir);
+            final boolean bRet = m_obj.getRayIntersection(intersection, rayObj, bStartsInside, nSample, nRandom);
+            if (bRet) {
+                m_xfm.transform(intersection.m_pt);
+                m_xfmNormal.transform(intersection.m_vNormal);
+                intersection.m_rtObj = this;
+            }
+            return bRet;
+        } finally {
+            intersection.returnLine(rayObj);
         }
-        intersection.returnLine(rayObj);
-        return bRet;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
@@ -331,12 +334,16 @@ public class XfmGeometry extends AGeometry {
         // transform the intersection and light vector into object space and do the intersection calculation
         final RayIntersection intersectionObj = intersection.borrowIntersection();
         final Vector3f vLightObj = intersection.borrowVector().setValue(vLight);
-        m_xfmWldObj.transform(intersection.m_pt, intersectionObj.m_pt);
-        m_xfmWldObjNormal.transform(intersection.m_vNormal, intersectionObj.m_vNormal);
-        m_xfmWldObj.transform(vLightObj);
-        final boolean bRet = m_obj.testShadow(intersectionObj, vLightObj, fDistLight, light, nSample, nRandom);
-        intersection.returnIntersection(intersectionObj);
-        intersection.returnVector(vLightObj);
-        return bRet;
+        try {
+            m_xfmWldObj.transform(intersection.m_pt, intersectionObj.m_pt);
+            m_xfmWldObjNormal.transform(intersection.m_vNormal, intersectionObj.m_vNormal);
+            m_xfmWldObj.transform(vLightObj);
+            final boolean bRet = m_obj.testShadow(intersectionObj, vLightObj, fDistLight, light, nSample, nRandom);
+            return bRet;
+        } finally {
+            intersection.returnIntersection(intersectionObj);
+            intersection.returnVector(vLightObj);
+
+        }
     }
 }

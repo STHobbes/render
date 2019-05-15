@@ -1,0 +1,3354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RenderedFrame>
+    <LibraryObjects>
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="sphereMat">
+            <colour rgb="1.0,0.9,0.7"/>
+            <beta>14.0</beta>
+            <conductor/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.D.Blinn"/>
+            <opaque/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere3">
+            <radius>0.5</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere2">
+            <radius>0.16666667</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
+            <radius>0.05555556</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere0">
+            <radius>0.01851852</radius>
+            <MaterialByRef name="sphereMat"/>
+        </DynamicallyLoadedObject>
+    </LibraryObjects>
+    <DynamicallyLoadedObject class="cip.render.raytrace.camera.PinHole" name="&lt;unspecified&gt;">
+        <position originAt="2.1,1.3,1.7" azimuth="58.24051" altitude="34.540024"/>
+        <targetDist>2.9983327</targetDist>
+        <targetWidth>2.45</targetWidth>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.background.ConstantColour" name="&lt;unspecified&gt;">
+        <colour rgb="0.078,0.361,0.753"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.Ambient" name="&lt;unspecified&gt;">
+        <intensity rgb="0.35,0.35,0.35"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="4.0,3.0,2.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="1.0,-4.0,4.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="&lt;unspecified&gt;">
+        <position originAt="-3.0,1.0,5.0"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="&lt;unspecified&gt;">
+            <intensity rgb="0.6,0.6,0.6"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="floor">
+        <position originAt="0.0,0.0,0.5"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra" name="&lt;unspecified&gt;">
+            <face plane="0.0,0.0,1.0,1.0"/>
+            <face plane="0.0,-1.0,0.0,-10.0"/>
+            <face plane="1.0,0.0,0.0,-8.0"/>
+            <face plane="0.0,1.0,0.0,-8.0"/>
+            <face plane="-1.0,0.0,0.0,-10.0"/>
+            <face plane="0.0,0.0,-1.0,-1.5"/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="floorMat">
+                <colour rgb="1.0,0.75,0.33"/>
+                <beta>37.0</beta>
+                <dielectric/>
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.D.Blinn"/>
+            </DynamicallyLoadedObject>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx3_0">
+        <position/>
+        <GeometryByRef name="sphere3"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_0">
+        <position originAt="0.27216554,0.27216554,0.5443311"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="0.4203137,0.4203137,0.61840516"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.47071472,0.47071472,0.5982447"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.46162313,0.40924487,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.40924487,0.46162313,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.42940524,0.48178354,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.36793542,0.47269195,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.37900424,0.4313825,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.48178354,0.42940524,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.4313825,0.37900424,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.47269195,0.36793542,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.46184403,0.30470923,0.43321997"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.49208462,0.33494985,0.37273872"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.42434505,0.30517113,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.43519294,0.36839733,0.40637755"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.52958363,0.33448792,0.43661818"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.47269192,0.36793542,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.499343,0.3042473,0.4970994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.5187357,0.27126172,0.39958113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.48849508,0.24102113,0.46006238"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.45099613,0.24148305,0.39618292"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="0.30470923,0.46184403,0.43321997"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.33494985,0.49208462,0.37273872"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.36839733,0.43519294,0.40637755"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.30517113,0.42434505,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.27126172,0.5187357,0.39958113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.24148305,0.45099613,0.39618292"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.24102113,0.4884951,0.46006238"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.33448792,0.52958363,0.43661818"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.30424732,0.499343,0.4970994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.36793542,0.47269192,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="0.23063514,0.38776997,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.25060016,0.4466138,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.3018388,0.407906,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.253236,0.4497748,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.17939651,0.42647776,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.18203235,0.42963874,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.15943149,0.3676339,0.726118"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.2279993,0.38460895,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.20803428,0.32576513,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.27923793,0.3459012,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="0.11503072,0.42930037,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.10250465,0.50230765,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.16039163,0.4746613,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.16039164,0.4746613,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.05714372,0.45694673,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.11503072,0.42930037,0.47025698"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.0696698,0.38393945,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.057143725,0.45694676,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.069669805,0.38393945,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.11503073,0.42930037,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="0.08248703,0.23962183,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.043895695,0.25805274,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.11768742,0.25255698,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.08638453,0.30855125,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.008695304,0.24511759,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.05118414,0.2956161,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.04728665,0.22668667,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.039998204,0.18912333,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.07858954,0.17069241,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.11378993,0.18362759,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="0.38777,0.23063515,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.44661385,0.2506002,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.44977483,0.25323603,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.40790603,0.30183882,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.38460898,0.22799931,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.34590122,0.27923793,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.32576516,0.20803428,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.4264778,0.17939653,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.36763397,0.1594315,0.726118"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.4296388,0.18203238,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="0.23962186,0.08248703,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.2580528,0.043895695,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.30855128,0.08638453,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.25255704,0.11768742,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.18912336,0.039998196,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.18362762,0.113789916,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.17069244,0.07858953,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.24511762,0.008695304,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.2266867,0.047286645,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.29561612,0.051184148,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.42930037,0.115030736,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.50230765,0.10250466,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.4746613,0.16039166,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.4746613,0.16039166,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.45694676,0.057143733,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.42930037,0.115030736,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.38393945,0.06966981,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.45694676,0.057143737,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.38393945,0.06966981,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.42930037,0.11503074,0.47025698"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_1">
+        <position originAt="0.64395046,0.172546,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="0.8026084,0.28147125,-0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.82403463,0.30566046,-0.17776522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.787796,0.24135163,-0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.75215596,0.3052214,-0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.83884704,0.34578007,-0.11728398"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.7669683,0.34534103,-0.09938904"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.8174207,0.32159087,-0.050629903"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.8744871,0.2819103,-0.12900609"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.8530608,0.2577211,-0.062352013"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.83824843,0.21760148,-0.122833245"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.64395046,0.172546,-0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.61370987,0.20278662,-0.28270343"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.5724004,0.19171777,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.6247787,0.24409606,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.68525994,0.18361484,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.69632876,0.22492428,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.71550053,0.15337421,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.63288164,0.13123655,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.66312224,0.10099594,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.59157217,0.12016773,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="0.5941407,0.35843852,-0.111111104"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.61912644,0.4082906,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.6656908,0.3776103,-0.111111104"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.63821733,0.33704233,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.54757637,0.3891188,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.5666673,0.31787056,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.52259064,0.33926675,-0.1111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.5750498,0.42968678,-0.10431466"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.5500641,0.3798347,-0.055555534"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.6216141,0.3990065,-0.055555537"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="0.8026084,0.28147125,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.85869837,0.32945853,0.104938276"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.84537095,0.28087923,0.050629888"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.79857206,0.33708802,0.06235199"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.8159358,0.33005056,0.16541952"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.7558095,0.33768004,0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.7598458,0.28206328,0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.8627347,0.27384177,0.15369742"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.8066447,0.22585449,0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.84940726,0.22526248,0.09938901"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="0.5941407,0.35843852,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.613592,0.4289453,0.12283321"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.6656908,0.3776103,0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.6216141,0.3990065,0.055555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.54204196,0.40977353,0.122833215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.550064,0.3798347,0.05555555"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.52259064,0.33926675,0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.58611864,0.38837734,0.17838879"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.5666673,0.31787056,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.6382174,0.33704233,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="0.64395046,0.17254598,0.22222222"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.67419106,0.2027866,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.71550053,0.19171776,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.66312224,0.24409604,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.602641,0.18361482,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.59157217,0.22492427,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.5724004,0.1533742,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.6550193,0.13123654,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.6247787,0.10099593,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.69632876,0.12016772,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="0.8524181,0.09557872,-2.1176634E-8"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.92260915,0.11106946,-0.017894961"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.8672305,0.13569833,-0.06048125"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.8779657,0.16477482,0.006796406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.9077968,0.07094984,0.042586274"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.8631533,0.1246552,0.06727763"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.8376058,0.0554591,0.0604812"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.8970616,0.04187335,-0.024691386"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.82687056,0.026382625,-0.006796452"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.841683,0.06650224,-0.067277685"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="0.6937602,-0.013346523,0.11111109"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.74032456,-0.0440268,0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.7653103,0.005825255,0.11111109"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.7212336,0.027221452,0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.6687745,-0.06319858,0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.64968354,0.008049671,0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.62221014,-0.032518305,0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.7128511,-0.08459478,0.104314655"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.6662868,-0.0539145,0.05555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.7378369,-0.034742713,0.05555553"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.6937602,-0.013346493,-0.11111115"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.74585897,-0.0646815,-0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.7653103,0.005825296,-0.11111116"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.7378369,-0.034742687,-0.0555556"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.6743089,-0.08385328,-0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.6662868,-0.053914472,-0.055555597"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.62221014,-0.032518283,-0.11111115"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.7017823,-0.043285303,-0.1783888"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.64968354,0.0080497,-0.1666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.7212336,0.027221493,-0.1666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_2">
+        <position originAt="0.172546,0.64395046,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="0.28147125,0.8026084,-0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.30566046,0.82403463,-0.17776522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.3052214,0.75215596,-0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.24135163,0.787796,-0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.2819103,0.8744871,-0.12900607"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.21760148,0.83824843,-0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.2577211,0.8530608,-0.062352005"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.34578007,0.83884704,-0.117283985"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.32159087,0.8174207,-0.05062991"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.34534103,0.7669683,-0.09938905"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.35843852,0.5941407,-0.111111104"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.4082906,0.61912644,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.33704233,0.63821733,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.3776103,0.6656908,-0.111111104"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.42968678,0.5750498,-0.10431466"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.3990065,0.6216141,-0.05555553"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.3798347,0.550064,-0.055555534"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.3891188,0.54757637,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.33926675,0.52259064,-0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.31787056,0.5666673,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="0.172546,0.64395046,-0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.14230537,0.67419106,-0.28270343"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.10099594,0.66312224,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.15337422,0.71550053,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.21385545,0.6550193,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.22492428,0.69632876,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.24409606,0.6247787,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.16147715,0.602641,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.19171777,0.5724004,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.12016771,0.59157217,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="0.09557874,0.8524181,2.0029522E-9"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.11106948,0.92260915,-0.01789494"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.16477484,0.8779656,0.0067964243"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.13569835,0.8672305,-0.060481224"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.041873362,0.8970616,-0.024691358"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.06650225,0.841683,-0.06727765"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.026382633,0.8268706,-0.0067964117"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.07094986,0.9077968,0.0425863"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.05545913,0.8376058,0.06048123"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.12465524,0.86315334,0.06727765"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.013346523,0.6937602,-0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.06468152,0.74585897,-0.122833215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.03474272,0.73783684,-0.05555556"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.005825257,0.7653103,-0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.043285325,0.7017823,-0.17838879"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.027221452,0.7212336,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.008049671,0.64968354,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.083853304,0.6743089,-0.122833215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.032518305,0.62221014,-0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.0539145,0.6662868,-0.05555555"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.013346508,0.6937602,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.044026785,0.74032456,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.027221471,0.7212336,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.0058252756,0.7653103,0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.08459477,0.7128511,0.1043147"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.034742706,0.7378369,0.055555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.053914487,0.6662868,0.055555563"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.06319857,0.6687745,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.032518286,0.62221014,0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.008049695,0.6496836,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="0.28147125,0.8026084,0.111111104"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.32945853,0.85869837,0.10493826"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.33708802,0.79857206,0.062351976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.28087923,0.84537095,0.050629873"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.27384177,0.8627346,0.1536974"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.22526248,0.84940726,0.099389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.2258545,0.8066447,0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.33005056,0.8159358,0.16541949"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.28206328,0.7598458,0.17159232"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.33768004,0.7558095,0.12283319"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="0.17254601,0.64395046,0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.20278662,0.67419106,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.24409607,0.66312224,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.19171779,0.71550053,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.13123655,0.6550193,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.12016773,0.69632876,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.10099596,0.6247787,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.18361485,0.602641,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.15337424,0.5724004,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.2249243,0.59157217,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.35843852,0.5941407,0.11111108"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.4289453,0.613592,0.12283318"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.3990065,0.6216141,0.055555526"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.3776103,0.6656908,0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.38837734,0.58611864,0.17838874"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.33704233,0.6382174,0.16666664"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.31787056,0.5666673,0.16666664"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.40977353,0.54204196,0.12283318"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.33926675,0.52259064,0.111111075"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.3798347,0.5500641,0.055555515"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_3">
+        <position originAt="-0.37178504,0.09961947,0.5443311"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="-0.39362088,0.22050105,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.36860082,0.27964228,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.3218887,0.23866454,0.726118"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.37246403,0.2810619,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.44033304,0.26147878,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.44419622,0.2628984,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.46535307,0.20233755,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.38975766,0.21908146,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.41477773,0.15994021,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.34304553,0.17810372,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="-0.19124678,0.16627505,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.13008915,0.20793039,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.15429477,0.17267306,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.19213481,0.23041895,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.16704115,0.20153236,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.22908682,0.22402093,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.22819878,0.15987703,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.12920111,0.14378649,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.19035874,0.102131166,0.6924792"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.15340674,0.10852919,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="-0.31426972,0.31426963,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.2779613,0.3671556,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.25230554,0.29766637,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.31426972,0.31426963,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.33992547,0.38375887,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.37623388,0.33087286,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.37623388,0.3308729,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.2779613,0.3671556,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.31426972,0.31426963,0.6184051"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.25230554,0.2976664,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="-0.57415915,0.15384544,0.61840516"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.61276764,0.20253411,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.54391855,0.18408605,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.5549874,0.2253955,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.64300823,0.1722935,0.5982448"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.58522797,0.19515489,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.60439974,0.12360483,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.6319394,0.13098404,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.5933309,0.08229539,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5630903,0.112536,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.494808,0.24761406,0.43321997"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.49428746,0.31360745,0.39958113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.45297801,0.3025386,0.46006238"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.43462855,0.2698326,0.39618292"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.53611743,0.25868288,0.37273872"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.47645855,0.21490803,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.53663796,0.1926895,0.40637755"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.5544669,0.2913889,0.43661818"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.55498743,0.22539552,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5131574,0.28032008,0.4970994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.55232334,0.032963857,0.43321997"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6258769,0.024883164,0.43661818"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.5845674,0.013814338,0.4970994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.593331,0.08229539,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.5936328,0.04403268,0.37273875"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.5610869,0.1014449,0.40637758"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.52007926,0.05211337,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.58486927,-0.024448372,0.39958113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.5113157,-0.016367678,0.39618295"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5435598,-0.035517186,0.46006238"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="-0.45113623,0.0058508515,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.4470808,0.0051486515,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.38613805,0.017280344,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.4391782,0.06887649,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.512079,-0.006280848,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.5041764,0.057446994,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.5161344,-0.005578649,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.45903885,-0.057876997,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.46309426,-0.057174787,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.39809608,-0.045745287,0.726118"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="-0.42930037,-0.1150307,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.42429933,-0.1789855,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.36733618,-0.13163395,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.42930037,-0.115030706,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.4862635,-0.16238225,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.49126452,-0.09842745,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.49126452,-0.09842745,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.42429933,-0.1789855,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.42930037,-0.1150307,0.47025698"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.36733618,-0.13163394,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="-0.2487621,-0.048375092,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.1837847,-0.059922248,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.18711874,-0.01728572,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.2159211,0.0067311265,0.6924792"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.24542807,-0.09101163,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.27756447,-0.024358246,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.31040546,-0.07946447,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.21662569,-0.11502848,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.2816031,-0.10348131,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.21995972,-0.07239193,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_4">
+        <position originAt="-0.4714045,0.4714045,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="-0.5089827,0.6904264,-7.931156E-9"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.48479423,0.75594145,-0.024691371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.43628338,0.70289963,-0.0067964285"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.47843415,0.6956677,-0.06727766"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.5574936,0.7434682,-0.017894946"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.5511335,0.68319446,-0.06048124"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.5816821,0.6779532,0.0067964215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.51534283,0.7507002,0.04258629"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.5395313,0.68518513,0.06727765"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.46683192,0.69765836,0.060481217"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="-0.33532175,0.60748726,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.2831644,0.6596446,0.1043147"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.28645214,0.6039786,0.05555557"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.33883044,0.6563569,0.055555563"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.33203402,0.6631533,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.38770002,0.65986556,0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.38419136,0.61099595,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.27965572,0.610775,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.33181307,0.55861765,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.28294346,0.55510896,0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="-0.33532172,0.6074872,-0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.313405,0.62940395,-0.17838877"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.33181307,0.5586176,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.38419133,0.6109959,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.31691366,0.67827356,-0.12283321"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.3877,0.6598655,-0.111111104"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.33883038,0.6563568,-0.055555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.2645354,0.62589526,-0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.2864521,0.6039785,-0.055555575"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.28294346,0.5551089,-0.11111114"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="-0.6450655,0.55434364,-0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6813851,0.6163729,-0.12900607"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.6497235,0.6099118,-0.062352005"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6075727,0.6171437,-0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.6767271,0.5608047,-0.17776522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.6029147,0.5615756,-0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.6404075,0.49877548,-0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.7188779,0.55357283,-0.11728398"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6825583,0.49154356,-0.09938903"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.6872163,0.54711175,-0.050629906"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.4714045,0.4714045,-0.22222222"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.5016451,0.5016451,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.54295456,0.49057627,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.49057627,0.54295456,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.43009505,0.4824733,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.4190262,0.5237828,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.39985442,0.45223272,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.48247334,0.43009505,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.45223272,0.39985442,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5237828,0.41902623,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.60748726,0.33532172,-0.1111111"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6596446,0.28316438,-0.104314655"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.6039786,0.28645214,-0.055555526"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6563569,0.3388304,-0.055555526"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.6631533,0.33203396,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.65986556,0.3877,-0.1111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.61099595,0.3841913,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.610775,0.2796557,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.55861765,0.33181304,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.55510896,0.28294343,-0.11111109"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="-0.6450655,0.55434364,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6685213,0.61022925,0.15369742"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.5989181,0.5856475,0.15987025"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6197867,0.622977,0.099389024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.7146687,0.5789254,0.104938276"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.6659341,0.59167314,0.05062989"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.6912129,0.52303976,0.06235199"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.6938001,0.5415959,0.16541952"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6703443,0.48571026,0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.6241969,0.51701415,0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="-0.6074872,0.33532175,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.62940395,0.313405,0.17838877"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.5586176,0.33181307,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6109959,0.38419136,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.67827356,0.3169137,0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.6598655,0.38770002,0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.6563568,0.33883044,0.055555567"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.62589526,0.26453543,0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6039785,0.28645214,0.055555567"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5551089,0.2829435,0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="-0.47140446,0.47140452,0.22222224"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.4411491,0.5016599,0.2826887"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.39985442,0.4905763,0.2222001"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.4522327,0.54295456,0.2222001"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.5126991,0.48248813,0.28271085"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.52378273,0.5237828,0.22222224"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.5429545,0.45223275,0.22224438"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.46032086,0.43010986,0.28271085"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.49057624,0.39985448,0.22224438"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.41902617,0.41902626,0.22222224"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_5">
+        <position originAt="-0.64395046,-0.17254607,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="-0.8358149,-0.157543,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.8716464,-0.122135796,0.16541952"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.7990774,-0.13564901,0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.8233903,-0.08546535,0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.9083839,-0.1440298,0.104938276"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.86012775,-0.107359335,0.06235199"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.8725524,-0.17943701,0.050629888"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.88407105,-0.19421346,0.15369742"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.8482395,-0.22962067,0.099389024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.81150204,-0.20772666,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="-0.64395046,-0.1725461,0.22222222"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.61370987,-0.1423055,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.5724004,-0.15337433,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6247787,-0.10099605,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.68525994,-0.16147727,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.69632876,-0.12016782,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.71550053,-0.1917179,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.63288164,-0.21385555,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.66312224,-0.24409616,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.59157217,-0.22492437,0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="-0.6937602,0.013346419,0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6743089,0.08385321,0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.62221014,0.0325182,0.11111114"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6662868,0.053914413,0.05555559"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.74585897,0.064681426,0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.7378369,0.03474263,0.055555586"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.7653103,-0.0058253687,0.111111134"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.7017823,0.043285213,0.1783888"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.7212336,-0.027221572,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.64968354,-0.008049788,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="-0.8358149,-0.157543,-0.11111115"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.8993529,-0.119969256,-0.117283985"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.8687026,-0.13020459,-0.050629914"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.8368846,-0.08441014,-0.09938905"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.8664652,-0.14730768,-0.17776524"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.8039969,-0.11174856,-0.15987028"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.8029272,-0.18488142,-0.17159238"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.8982832,-0.19310212,-0.12900609"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.83474517,-0.23067588,-0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.86763287,-0.20333745,-0.062352005"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.6937602,0.013346449,-0.11111109"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.6687745,0.063198514,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.62221014,0.03251823,-0.11111109"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.6496836,-0.008049734,-0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.74032456,0.044026732,-0.15987022"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.7212336,-0.02722152,-0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.7653103,-0.0058253296,-0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.7128511,0.084594704,-0.10431465"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.73783684,0.03474263,-0.05555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.6662868,0.053914417,-0.055555522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.64395046,-0.17254607,-0.22222222"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.67419106,-0.14230546,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.71550053,-0.1533743,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.66312224,-0.10099602,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.602641,-0.16147724,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.59157217,-0.12016779,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.5724004,-0.19171786,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.6550193,-0.21385552,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6247787,-0.24409613,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.69632876,-0.22492434,-0.22222222"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="-0.78600514,-0.34343553,-7.931156E-9"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.82165,-0.3924541,0.04258629"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.75311744,-0.37077397,0.06048122"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.8098403,-0.32362214,0.06727764"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.8545377,-0.36511564,-0.017894953"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.842728,-0.29628372,0.0067964126"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.81889284,-0.3160971,-0.06048124"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.79781485,-0.41226748,-0.024691364"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.76216996,-0.3632489,-0.067277655"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.72928226,-0.39058733,-0.0067964173"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="-0.5941407,-0.35843855,-0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.54204196,-0.40977356,-0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.52259064,-0.33926678,-0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.550064,-0.37983474,-0.055555563"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.613592,-0.42894533,-0.12283322"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.6216141,-0.39900655,-0.055555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.6656908,-0.37761033,-0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.58611864,-0.38837737,-0.17838879"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6382174,-0.33704236,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.5666673,-0.31787056,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="-0.5941407,-0.35843855,0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.54757637,-0.38911882,0.15987028"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.52259064,-0.33926678,0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.5666673,-0.31787056,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.61912644,-0.4082906,0.1598703"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.6382174,-0.33704233,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.6656908,-0.37761033,0.111111134"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.57504976,-0.4296868,0.10431473"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.6216141,-0.39900655,0.055555582"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.550064,-0.37983477,0.055555582"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_6">
+        <position originAt="0.09961953,-0.371785,0.5443311"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="0.22050114,-0.39362085,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.27964237,-0.3686008,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.28106198,-0.372464,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.23866463,-0.32188866,0.726118"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.21908155,-0.38975766,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.1781038,-0.3430455,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.15994032,-0.4147777,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.2614789,-0.44033298,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.20233765,-0.46535304,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.26289847,-0.44419616,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.3142697,-0.31426966,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.36715567,-0.27796125,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.3142697,-0.31426966,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.29766643,-0.2523055,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.36715567,-0.27796122,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.29766643,-0.2523055,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.3142697,-0.31426966,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.3837589,-0.3399254,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.33087295,-0.37623382,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.33087295,-0.37623382,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="0.16627511,-0.19124675,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.20793045,-0.13008912,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.23041901,-0.19213478,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.17267312,-0.15429474,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.14378655,-0.12920108,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.10852924,-0.15340671,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.102131225,-0.19035873,0.6924792"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.20153242,-0.16704112,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.1598771,-0.22819875,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.22402099,-0.22908679,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="0.005850926,-0.45113623,0.72951627"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.0051487326,-0.44708082,0.8034759"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.06887657,-0.4391782,0.7665533"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.017280422,-0.38613805,0.7631551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.057876922,-0.45903885,0.7664389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.045745227,-0.39809608,0.7261181"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.05717472,-0.46309426,0.69247925"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.006280764,-0.512079,0.7698371"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.0055785654,-0.51613444,0.69587743"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.057447087,-0.5041764,0.7329145"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.048375048,-0.24876207,0.6554422"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.0599222,-0.18378466,0.689081"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.006731171,-0.21592107,0.6924792"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.017285675,-0.18711871,0.62859976"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.11502843,-0.21662568,0.65204394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.0723919,-0.2199597,0.59156275"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.10348127,-0.28160307,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.09101158,-0.24542804,0.7159234"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.07946442,-0.31040543,0.6822846"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.024358192,-0.27756444,0.7193216"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.11503064,-0.42930037,0.5443311"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.17898545,-0.42429933,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.11503064,-0.42930037,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.1316339,-0.3673362,0.5813681"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.17898545,-0.42429933,0.507294"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.1316339,-0.3673362,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.11503064,-0.42930037,0.47025698"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.16238219,-0.4862635,0.5443311"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.098427385,-0.49126452,0.50729406"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.09842739,-0.49126452,0.58136815"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="0.15384553,-0.57415915,0.61840516"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.20253421,-0.6127676,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.22539559,-0.5549874,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.18408614,-0.54391855,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.13098414,-0.6319394,0.658726"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.11253609,-0.5630903,0.6788864"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.08229548,-0.5933309,0.61840516"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.1722936,-0.64300823,0.5982447"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.12360492,-0.60439974,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.195155,-0.58522797,0.5579239"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="0.03296394,-0.5523233,0.43322"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.024883257,-0.62587684,0.43661824"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.08229548,-0.5933309,0.47025704"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.013814425,-0.58456737,0.49709946"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.024448287,-0.5848692,0.39958116"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.035517104,-0.54355973,0.4600624"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.016367596,-0.51131564,0.39618295"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.04403277,-0.59363276,0.37273878"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.05211346,-0.5200792,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.10144499,-0.56108683,0.4063776"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.24761415,-0.4948079,0.43321997"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.31360754,-0.49428734,0.39958113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.26983264,-0.4346285,0.39618292"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.3025387,-0.4529779,0.46006235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.29138905,-0.5544668,0.43661818"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.2803202,-0.5131573,0.4970994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.22539563,-0.5549873,0.470257"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.258683,-0.5361174,0.37273875"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.1926896,-0.5366379,0.40637758"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.21490811,-0.47645846,0.36934054"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_7">
+        <position originAt="-0.17254595,-0.64395046,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="-0.15754284,-0.8358149,0.11111111"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.122135624,-0.8716464,0.16541952"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.08546518,-0.82339025,0.1228332"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.13564885,-0.7990774,0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.19421329,-0.88407105,0.15369742"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.20772651,-0.81150204,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.2296205,-0.84823954,0.09938902"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.14402962,-0.9083839,0.10493826"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.17943683,-0.8725524,0.050629877"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.10735917,-0.86012775,0.06235197"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.013346568,-0.6937602,0.11111109"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.08385336,-0.6743089,0.12283318"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.053914543,-0.6662868,0.055555522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.032518346,-0.62221014,0.11111109"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.04328537,-0.7017823,0.17838876"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.008049626,-0.64968354,0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.027221408,-0.7212336,0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.064681575,-0.74585897,0.12283318"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.0058252085,-0.7653103,0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.034742765,-0.73783684,0.055555515"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="-0.17254595,-0.64395046,0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.14230534,-0.61370987,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.1009959,-0.6247787,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.15337418,-0.5724004,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.21385542,-0.63288164,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.22492424,-0.59157217,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.24409601,-0.66312224,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.16147712,-0.68525994,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.19171773,-0.71550053,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.120167665,-0.69632876,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="-0.34343538,-0.78600514,-7.931156E-9"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.39245394,-0.82165,0.04258629"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.323622,-0.8098403,0.06727763"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.3707738,-0.75311744,0.06048122"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.41226733,-0.79781485,-0.02469137"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.3905872,-0.72928226,-0.0067964196"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.36324877,-0.76216996,-0.067277655"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.3651155,-0.8545377,-0.017894948"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.31609693,-0.81889284,-0.060481235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.29628354,-0.842728,0.006796419"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="-0.35843846,-0.5941407,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.38911873,-0.54757637,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.3178705,-0.5666673,0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.3392667,-0.52259064,0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.42968673,-0.5750498,0.1043147"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.37983465,-0.550064,0.055555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.39900643,-0.6216141,0.055555563"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.40829054,-0.61912644,0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.37761024,-0.6656908,0.11111113"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.33704227,-0.63821733,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="-0.35843846,-0.5941407,-0.11111111"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.40977347,-0.54204196,-0.122833215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.37983465,-0.550064,-0.055555556"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.33926666,-0.52259064,-0.11111112"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.38837728,-0.58611864,-0.17838877"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.3178705,-0.5666673,-0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.33704227,-0.6382174,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.42894524,-0.613592,-0.12283321"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.37761027,-0.6656908,-0.111111104"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.39900646,-0.6216141,-0.055555545"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="-0.15754285,-0.83581483,-0.111111134"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.119969085,-0.89935285,-0.11728398"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.08440999,-0.8368845,-0.09938905"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.13020442,-0.86870253,-0.050629906"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.19310197,-0.8982831,-0.12900607"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.20333728,-0.8676328,-0.062351994"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.23067573,-0.83474517,-0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.14730752,-0.86646515,-0.17776522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.18488128,-0.80292714,-0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.11174841,-0.80399686,-0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="-0.17254595,-0.64395046,-0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="-0.20278658,-0.61370987,-0.28270343"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.24409601,-0.6247787,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="-0.19171773,-0.5724004,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="-0.13123651,-0.63288164,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="-0.12016767,-0.59157217,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="-0.1009959,-0.66312224,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="-0.18361479,-0.68525994,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.15337418,-0.71550053,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.22492424,-0.69632876,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.013346568,-0.6937602,-0.11111109"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.06319863,-0.6687745,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="-0.008049615,-0.6496836,-0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.03251835,-0.62221014,-0.11111109"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.08459482,-0.7128511,-0.10431465"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.053914536,-0.6662868,-0.055555515"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.034742747,-0.7378369,-0.05555552"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.04402685,-0.74032456,-0.15987024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="-0.005825216,-0.7653103,-0.1111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="-0.0272214,-0.7212336,-0.16666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx2_8">
+        <position originAt="0.47140455,-0.4714044,0.0"/>
+        <GeometryByRef name="sphere2"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_0">
+        <position originAt="0.69042647,-0.5089826,-2.779937E-8"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.7559415,-0.4847941,-0.024691403"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.69566774,-0.47843403,-0.067277685"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.7028997,-0.43628326,-0.0067964573"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.75070024,-0.51534265,0.042586267"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.6976584,-0.4668318,0.060481198"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.6851852,-0.5395312,0.067277625"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.7434683,-0.55749345,-0.017894974"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.67795324,-0.58168197,0.006796397"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.6831945,-0.5511334,-0.060481258"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_1">
+        <position originAt="0.60748726,-0.33532164,-0.11111115"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.629404,-0.31340492,-0.1783888"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.61099595,-0.38419124,-0.1666667"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.55861765,-0.33181298,-0.16666672"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.6258953,-0.2645353,-0.12283325"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.55510896,-0.28294337,-0.111111164"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.6039786,-0.28645203,-0.055555597"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.6782736,-0.31691357,-0.122833245"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.6563569,-0.3388303,-0.05555559"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.65986556,-0.3876999,-0.11111115"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_2">
+        <position originAt="0.6074873,-0.3353216,0.11111108"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.65964466,-0.28316426,0.104314655"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.65635693,-0.3388303,0.05555553"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.60397863,-0.28645203,0.055555522"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.61077505,-0.27965558,0.15987022"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.555109,-0.28294334,0.111111075"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.5586177,-0.33181292,0.16666664"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.66315335,-0.33203384,0.15987022"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.610996,-0.3841912,0.16666664"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.6598656,-0.38769987,0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_3">
+        <position originAt="0.55434376,-0.64506537,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.6102294,-0.66852117,0.15369742"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.62297714,-0.61978656,0.099389"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.58564764,-0.59891796,0.15987025"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.541596,-0.6938,0.16541953"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.51701427,-0.62419677,0.17159237"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.48571038,-0.6703442,0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.5789255,-0.7146686,0.104938276"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.5230399,-0.6912128,0.06235199"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.59167325,-0.66593397,0.050629873"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_4">
+        <position originAt="0.47140458,-0.47140437,0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.5016452,-0.44116375,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.5429546,-0.4522326,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.49057636,-0.3998543,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.43009514,-0.46033555,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.41902632,-0.41902608,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.39985454,-0.49057615,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.48247343,-0.51271385,0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.4522328,-0.54295444,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.52378285,-0.5237827,0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_5">
+        <position originAt="0.33532184,-0.6074872,0.11111112"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.31340513,-0.62940395,0.17838877"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.38419145,-0.6109959,0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.33181316,-0.5586176,0.16666669"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.26453552,-0.62589526,0.12283323"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.28294355,-0.5551089,0.11111114"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.28645223,-0.6039785,0.055555567"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.3169138,-0.67827356,0.122833215"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.33883053,-0.6563568,0.05555556"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.38770014,-0.6598655,0.11111111"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_6">
+        <position originAt="0.5543437,-0.6450654,-0.11111111"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.61637294,-0.68138504,-0.12900603"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.61714375,-0.6075726,-0.12283321"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.60991186,-0.6497234,-0.062351964"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.5535729,-0.71887785,-0.11728394"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.54711175,-0.6872162,-0.050629865"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.49154362,-0.68255824,-0.099389024"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.5608048,-0.67672706,-0.17776519"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.49877557,-0.64040744,-0.15987027"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.56157565,-0.60291463,-0.17159235"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_7">
+        <position originAt="0.3353218,-0.6074872,-0.11111108"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.2831645,-0.65964454,-0.10431464"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.33883053,-0.6563568,-0.05555553"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.28645223,-0.6039785,-0.05555551"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.27965578,-0.61077493,-0.1598702"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.28294352,-0.55510896,-0.11111107"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.33181313,-0.5586176,-0.16666664"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.33203408,-0.66315323,-0.15987022"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.3841914,-0.6109959,-0.16666666"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.3877001,-0.6598655,-0.11111108"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx1_8">
+        <position originAt="0.47140455,-0.4714044,-0.22222221"/>
+        <GeometryByRef name="sphere1"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_0">
+        <position originAt="0.44116393,-0.44116378,-0.28270343"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_1">
+        <position originAt="0.39985448,-0.45223263,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_2">
+        <position originAt="0.45223278,-0.39985436,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_3">
+        <position originAt="0.512714,-0.46033558,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_4">
+        <position originAt="0.52378285,-0.41902614,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_5">
+        <position originAt="0.5429546,-0.49057618,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_6">
+        <position originAt="0.4603357,-0.51271385,-0.28270346"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_7">
+        <position originAt="0.49057633,-0.54295444,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="xx0_8">
+        <position originAt="0.41902626,-0.5237827,-0.22222221"/>
+        <GeometryByRef name="sphere0"/>
+    </DynamicallyLoadedObject>
+</RenderedFrame>

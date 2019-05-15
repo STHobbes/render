@@ -23,7 +23,7 @@ public class PackageConstants {
     /**
      * The maximum positive <tt>float</tt> value that is considered to be 0.0f for graphics.
      */
-    public static final float ZERO_TOLERANCE_MAX_FLOAT = 1.0e-10f;
+    public static final float ZERO_TOLERANCE_MAX_FLOAT = 1.0e-7f;
     /**
      * The minimum negative <tt>float</tt> value that is considered to be 0.0f for graphics.
      */
@@ -41,7 +41,7 @@ public class PackageConstants {
     /**
      * The maximum positive <tt>double</tt> value that is considered to be 0.0 for graphics.
      */
-    public static final double ZERO_TOLERANCE_MAX_DOUBLE = 1.0e-100;
+    public static final double ZERO_TOLERANCE_MAX_DOUBLE = 1.0e-35;
     /**
      * The minimum negative <tt>double</tt> value that is considered to be 0.0 for graphics.
      */

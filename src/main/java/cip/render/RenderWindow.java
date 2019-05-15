@@ -216,18 +216,18 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
     private void loadEnvironment() {
 
         if (JFileChooser.APPROVE_OPTION == m_dlgFileLoad.showOpenDialog(this)) {
-            System.out.println("Open environment dialog returned filename <" + m_dlgFileLoad.getCurrentDirectory() +
-                    java.io.File.separatorChar + m_dlgFileLoad.getSelectedFile().getName() + ">");
+            System.out.println(String.format("Open environment dialog returned filename <%s%c%s>",
+                    m_dlgFileLoad.getCurrentDirectory(), java.io.File.separatorChar ,m_dlgFileLoad.getSelectedFile().getName()));
             m_strRenderSceneDesc = m_dlgFileLoad.getCurrentDirectory().toString() + java.io.File.separatorChar
                     + m_dlgFileLoad.getSelectedFile().getName();
             try {
                 final long startTime = System.currentTimeMillis();
                 m_renderScene.loadScene(m_strRenderSceneDesc);
-                System.out.println("Frame load time: " + (System.currentTimeMillis() - startTime) + "ms");
+                System.out.println(String.format("Frame load time: %dms",System.currentTimeMillis() - startTime));
                 m_canvas.repaint(0, 0, m_canvas.getWidth(), m_canvas.getHeight());
             } catch (final Throwable t) {
-                System.out.println("error opening scene description <" + m_dlgFileLoad.getCurrentDirectory() +
-                        java.io.File.separatorChar + m_dlgFileLoad.getSelectedFile().getName() + ">");
+                System.out.println(String.format("error opening scene description <%s%c%s>", m_dlgFileLoad.getCurrentDirectory(),
+                        java.io.File.separatorChar, m_dlgFileLoad.getSelectedFile().getName()));
                 t.printStackTrace();
             }
         }
@@ -243,7 +243,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
             if ((null == strExt) || !strExt.equalsIgnoreCase(".jpg")) {
                 strFileName += ".jpg";
             }
-            System.out.println("Save image dialog returned filename <" + strFileName + ">");
+            System.out.println(String.format("Save image dialog returned filename <%s>", strFileName));
             // get the image - NOTE: it's really important that the format be TYPE_INT_RGB;
             final java.awt.image.BufferedImage bi = new java.awt.image.BufferedImage(
                     m_canvas.getWidth(), m_canvas.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
@@ -253,7 +253,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
                 final java.io.File file = new java.io.File(strFileName);
                 javax.imageio.ImageIO.write(bi, "jpg", file);
             } catch (final Throwable t) {
-                System.out.println("Error writing image file <" + strFileName + ">");
+                System.out.println(String.format("Error writing image file <%s>",strFileName));
                 t.printStackTrace();
             }
         }
@@ -351,7 +351,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
 class RenderCanvas extends Canvas {
     private class MouseHandler extends MouseAdapter {
         public void mousePressed(final MouseEvent event) {
-            System.out.println("mouse at: " + event.getPoint());
+            System.out.println(String.format("mouse at: %s", event.getPoint().toString()));
         }
     }
 
@@ -367,7 +367,7 @@ class RenderCanvas extends Canvas {
     public void paint(final Graphics g) {
         final long startTime = System.currentTimeMillis();
         m_renderScene.renderScene(this, g);
-        System.out.println("Frame render time: " + (System.currentTimeMillis() - startTime) + "ms");
+        System.out.println(String.format("Frame render time: %dms", (System.currentTimeMillis() - startTime)));
     }
 
 }

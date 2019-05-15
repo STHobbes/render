@@ -118,10 +118,10 @@ public class XfmLight extends ALight {
 
     // The instance definition
     private final Xfm4x4f m_xfm = new Xfm4x4f().identity();         // the positioning transform for the light (light->world)
-    private final Xfm4x4f m_xfmNormal = new Xfm4x4f();              // the light->world normal transform (transpose of m_xfxWldObj)
+    private final Xfm4x4f m_xfmNormal = new Xfm4x4f();              // the light->world normal transform (transpose of m_xfm)
     //  This transforms both position and direction vectors
     private final Xfm4x4f m_xfxWldLgt = new Xfm4x4f();              // the world-light transform (inverse of m_xfm)
-    private final Xfm4x4f m_xfxWldLgtNormal = new Xfm4x4f();        // the world-light normal transform (inverse of m_xfm)
+    private final Xfm4x4f m_xfxWldLgtNormal = new Xfm4x4f();        // the world-light normal transform (transpose of m_xfxWldLgt)
     private IRtLight m_lgt = null;                                  // the transformed light
 
     /**
@@ -240,16 +240,19 @@ public class XfmLight extends ALight {
         if (null != m_lgt) {
             // transform the intersection into the space of the light
             final RayIntersection rayIntTmp = intersection.borrowIntersection();
-            m_xfxWldLgt.transform(intersection.m_pt, rayIntTmp.m_pt);
-            m_xfxWldLgtNormal.transform(intersection.m_vNormal, rayIntTmp.m_vNormal);
-            // test whether the intersection is illuminated
-            if (bRet = m_lgt.getLight(lightInfo, rayIntTmp, nSample, nRandom)) {
-                // the intersection is illuminated, back transform the illumination info
-                m_xfm.transform(lightInfo.m_ptFrom);
-                m_xfmNormal.transform(lightInfo.m_vDir);
+            try {
+                m_xfxWldLgt.transform(intersection.m_pt, rayIntTmp.m_pt);
+                m_xfxWldLgtNormal.transform(intersection.m_vNormal, rayIntTmp.m_vNormal);
+                // test whether the intersection is illuminated
+                if (bRet = m_lgt.getLight(lightInfo, rayIntTmp, nSample, nRandom)) {
+                    // the intersection is illuminated, back transform the illumination info
+                    m_xfm.transform(lightInfo.m_ptFrom);
+                    m_xfmNormal.transform(lightInfo.m_vDir);
+                }
+            } finally {
+                    // return the temporary ray intersection.
+                    intersection.returnIntersection(rayIntTmp);
             }
-            // return the temporary ray intersection.
-            intersection.returnIntersection(rayIntTmp);
         }
         return bRet;
     }

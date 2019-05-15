@@ -267,7 +267,7 @@ public class RayIntersection {
     /**
      * Returns a borrowed ray intersection object.  This function <b>is not</b> thread-safe.
      *
-     * @param intersection The ay intersection object being returned.
+     * @param intersection The ray intersection object being returned.
      */
     public void returnIntersection(final RayIntersection intersection) {
         intersection.m_next = m_cacheIntersection;
