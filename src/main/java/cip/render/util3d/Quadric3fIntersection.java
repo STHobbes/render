@@ -48,12 +48,10 @@ public class Quadric3fIntersection {
     public static final int GOING_INTO = 3;
 
     /**
-     * The first intersection (at distance <tt>m_fDist1</tt>) is going out of the quadric.
+     * The second intersection (at distance <tt>m_fDist2</tt>) is going out of the quadric.
      */
     public static final int GOING_OUT_OF = 4;
 
-
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * The smallest distance to the intersection (the first intersection for an infinite directed line) from the origin

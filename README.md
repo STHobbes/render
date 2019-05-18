@@ -5,6 +5,7 @@ version: 0.5
 progress: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted.  
 TODO: see [TODO list](./TODO.md)
 
+
 ## Overview
 This is the Java implementation of a ray-tracing renderer framework that supported teaching *3D Rendering Techniques and
 Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004. The basic class outline is:

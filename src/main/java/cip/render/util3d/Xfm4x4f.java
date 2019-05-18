@@ -1084,19 +1084,21 @@ public class Xfm4x4f {
     }
 
     /**
+     * Transform a point in place.
      *
-     * @param pt
-     * @return
+     * @param pt (Point3f, modified) The point to be transformed by this transformation.
+     * @return Returns the transformed point <tt>pt</tt>.
      */
     public Point3f transform(final Point3f pt) {
         return transform(pt, pt);
     }
 
     /**
+     * Transform a point into a target point.
      *
-     * @param pt
-     * @param xfmPt
-     * @return
+     * @param pt (Point3f, readonly) The point to be transformed.
+     * @param xfmPt (Point3f, modified) The point to receive the transformed point (the target point).
+     * @return Returns the transformed point, <tt>xfmPt</tt>.
      */
     public Point3f transform(final Point3f pt, final Point3f xfmPt) {
         return xfmPt.setValue(
@@ -1106,6 +1108,7 @@ public class Xfm4x4f {
     }
 
     /**
+     * Transform an array of points in place.
      *
      * @param pts
      * @return
@@ -1119,9 +1122,10 @@ public class Xfm4x4f {
     }
 
     /**
+     * Transform an vector in place.
      *
-     * @param v
-     * @return
+     * @param v (Vector3f, modified) The vector to be transformed by this transformation.
+     * @return Returns the transformed vector <tt>v</tt>.
      */
     public Vector3f transform(final Vector3f v) {
         return transform(v, v);
@@ -1130,8 +1134,8 @@ public class Xfm4x4f {
     /**
      * Transform an vector into a target vector.
      *
-     * @param v (Vector3f, readonly)
-     * @param xfmV (Vector3f, modified)
+     * @param v (Vector3f, readonly) The vector to be transformed.
+     * @param xfmV (Vector3f, modified) The vector to receive the transformed vector (the target vector).
      * @return Returns the transformed vector, <tt>xfmV</tt>.
      */
     public Vector3f transform(final Vector3f v, final Vector3f xfmV) {
@@ -1144,9 +1148,9 @@ public class Xfm4x4f {
     /**
      * Transform an array of vectors into a target vector array.
      *
-     * @param vs
-     * @param xfmVs
-     * @return
+     * @param vs (Vector3f[], readonly) An array of vectors to be transformed.
+     * @param xfmVs (Vector3f[], modified) An array of vectors to receive the transformed vectors.
+     * @return Returns the transformed vector array, <tt>xfmVs</tt>.
      */
     public Vector3f[] transform(final Vector3f[] vs,  final Vector3f[] xfmVs) {
         for (int iV = vs.length; --iV >= 0; ) {

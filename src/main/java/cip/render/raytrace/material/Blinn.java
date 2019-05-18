@@ -492,7 +492,7 @@ public class Blinn implements IDynXmlObject, INamedObject, IRtMaterial {
                             for (IRtGeometry rtObject : rtObjects) {
                                 // break on the first object that casts a shadow, otherwise they all need testing.  Note,
                                 //  we do not need to test the object this intersection is on if it is a convex object.
-                                if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                                if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                                         rtObject.testShadow(intersection, vL, lightInfo.m_fDist, light, nSample, nRandom)) {
                                     bInShadow = true;
                                     break;

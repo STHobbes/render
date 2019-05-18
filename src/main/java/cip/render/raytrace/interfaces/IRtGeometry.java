@@ -74,7 +74,7 @@ public interface IRtGeometry {
      * @return Returns <tt>true</tt> if the object is convex and <tt>false</tt> if the object is not convex
      * or the convexity cannot be verified.
      */
-    boolean IsConvex();
+    boolean isConvex();
 
     //-------------------------------------------------------------------------------------------------------------------------
 

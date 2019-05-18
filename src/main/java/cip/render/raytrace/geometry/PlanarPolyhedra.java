@@ -43,26 +43,24 @@ import org.w3c.dom.Node;
 /**
  * A convex planar polyhedra described by the plane equations of the faces.
  * <p>
- * The sphere is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.PlanarPolyhedra" name="<font style="color:magenta"><i>polyhedraName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta"><i>materialName</i></font>&lt;/<b>MaterialByRef</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>material specific nodes and attributes</i><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * There are methods to programmatically initialize a planar polyhedra, but, it is most common to load the  planar polyhedra
+ * from a scene description file. The planar polyhedra is specified as a node in an XML scene description file as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.PlanarPolyhedra" name="<font style="color:magenta"><i>polyhedraName</i></font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font>
+ *           <font style="color:gray"><b>.</b>
+ *           <b>.</b></font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta"><i>materialName</i></font>&lt;/<b>MaterialByRef</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *               <font style="color:gray"><b>.</b>
+ *             <i>material specific nodes and attributes</i>
+ *               <b>.</b></font>
+ *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <caption style="text-align:left">where:</caption>
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
  * <td><table border="1" summary="">
  * <tr>
@@ -93,19 +91,18 @@ import org.w3c.dom.Node;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a unit cube or material <i>red</i> centered on the origin:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.PlanarPolyhedra" name="<font style="color:magenta">unitCube</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 0.0f, 1.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f,-1.0f, 0.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 1.0f, 0.0f, 0.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 1.0f, 0.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta">-1.0f, 0.0f, 0.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 0.0f,-1.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta">red</font>&lt;/<b>MaterialByRef</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * The following specifies a unit cube of material <i>red</i> centered on the origin:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.PlanarPolyhedra" name="<font style="color:magenta">unitCube</font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 0.0f, 1.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f,-1.0f, 0.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 1.0f, 0.0f, 0.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 1.0f, 0.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta">-1.0f, 0.0f, 0.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"> 0.0f, 0.0f,-1.0f,-0.5f</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta">red</font>&lt;/<b>MaterialByRef</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -277,7 +274,7 @@ public class PlanarPolyhedra extends AGeometry {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IRtGeometry interface implementation                                                                                  //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public boolean IsConvex() {
+    public boolean isConvex() {
         return true;
     }
 

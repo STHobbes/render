@@ -525,7 +525,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
                                 for (IRtGeometry rtObject : rtObjects) {
                                     // break on the first object that casts a shadow, otherwise they all need testing.  Note,
                                     //  we do not need to test the object this intersection is on if it is a convex object.
-                                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                                             rtObject.testShadow(intersection, vL, lightInfo.m_fDist, light, nSample, nRandom)) {
                                         bInShadow = true;
                                         break;
@@ -602,7 +602,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
                 intRflRfr.initialize(vR);
                 intRflRfr.m_fMaxContribution = intersection.m_fMaxContribution * fAveAtten;
                 for (IRtGeometry rtObject : rtObjects) {
-                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                             rtObject.getRayIntersection(intRflRfr, lnRflRfr, false, nSample, nRandom)) {
                         bIntersectObj = true;
                     }
@@ -699,7 +699,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
                                 for (IRtGeometry rtObject : rtObjects) {
                                     // break on the first object that casts a shadow, otherwise they all need testing.  Note,
                                     //  we do not need to test the object this intersection is on if it is a convex object.
-                                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                                             rtObject.testShadow(intersection, vL, lightInfo.m_fDist, light, nSample, nRandom)) {
                                         bInShadow = true;
                                         break;
@@ -740,7 +740,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
                 intRflRfr.initialize(vT);
                 lnRflRfr.setValue(intersection.m_pt, vT);
                 for (IRtGeometry rtObject : rtObjects) {
-                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                             rtObject.getRayIntersection(intRflRfr, lnRflRfr, false, nSample, nRandom)) {
                         bIntersectObj = true;
                     }

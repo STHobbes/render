@@ -64,9 +64,8 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
 
     // Turns on/off debug output to System.out.  Debug output is limited to object load and/or instantiation.  There is NEVER
     //  any printed output for operations that would occur inside the rendering loop.
-    //
     protected static final boolean DEBUG = true;
-    // The instance definition
+    /** The name for this geometry instance */
     protected String m_strName = DEFAULT_NAME;  // the geometry name
 
     /**
@@ -82,7 +81,8 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     /**
      * The geometry implementation must override this function to load the geometry from the XML node.
      */
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
     }
 
     /**
@@ -184,7 +184,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * or the convexity cannot be verified.
      */
     @Override
-    public boolean IsConvex() {
+    public boolean isConvex() {
         return false;
     }
 

@@ -50,7 +50,7 @@ import org.w3c.dom.Node;
  * {@link cip.render.DynXmlObjLoader}.  The <tt>FrameLoader</tt> queries the interfaces of the loaded objects
  * to determine object capabilities and how they should be used in the scene.
  * <p>
- * The general form of the XML file for a rendered frame is:<br><br>
+ * The general form of the XML file for a rendered frame is:
  * <pre>
  *     <font style="color:blue">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</font>
  *

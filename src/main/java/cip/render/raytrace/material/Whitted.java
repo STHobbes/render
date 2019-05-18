@@ -367,7 +367,7 @@ public class Whitted extends Blinn {
                 intRflRfr.initialize(vRflRfr);
                 intRflRfr.m_fMaxContribution = intersection.m_fMaxContribution * m_fKs;
                 for (IRtGeometry rtObject : rtObjects) {
-                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                             rtObject.getRayIntersection(intRflRfr, lnRflRfr, false, nSample, nRandom)) {
                         bIntersectObj = true;
                     }
@@ -432,7 +432,7 @@ public class Whitted extends Blinn {
                 intRflRfr.initialize(vRflRfr);
                 intRflRfr.m_fMaxContribution = intersection.m_fMaxContribution * m_fKt;
                 for (IRtGeometry rtObject : rtObjects) {
-                    if (((intersection.m_rtObj != rtObject) || (!rtObject.IsConvex())) &&
+                    if (((intersection.m_rtObj != rtObject) || (!rtObject.isConvex())) &&
                             rtObject.getRayIntersection(intRflRfr, lnRflRfr, false, nSample, nRandom)) {
                         bIntersectObj = true;
                     }

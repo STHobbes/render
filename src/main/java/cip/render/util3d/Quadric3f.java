@@ -63,7 +63,7 @@ package cip.render.util3d;
  * </blockquote><p>
  * or, put another way:
  * <blockquote><p>
- * at2 + bt + c = 0
+ * at<sup>2</sup> + bt + c = 0
  * </blockquote><p>
  * where
  * <blockquote><p>
@@ -99,7 +99,7 @@ package cip.render.util3d;
  * u = 2q<sub>1</sub>i + q<sub>4</sub>j + q<sub>6</sub>k + q<sub>7</sub>
  * <p>
  * v = 2q<sub>2</sub>j + q<sub>4</sub>i + q<sub>5</sub>k + q<sub>8</sub>
- * <P>
+ * <p>
  * w = 2q<sub>3</sub>k + q<sub>5</sub>j + q<sub>6</sub>i + q<sub>9</sub>
  * <p>
  * i<sub>n</sub> = u / sqrt(u<sup>2</sup> + v<sup>2</sup> + w<sup>2</sup>)
@@ -112,10 +112,9 @@ package cip.render.util3d;
  * u = 2q<sub>1</sub>i
  * <p>
  * v = 2q<sub>2</sub>j
- * <P>
+ * <p>
  * w = 2q<sub>3</sub>k + q<sub>9</sub>
  * </blockquote>
- *
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -129,27 +128,32 @@ public class Quadric3f {
     /**
      * The q<sub>0</sub> coefficient of the quadric formulation.
      */
-    public float m_q0 = -1.0f;
+    private float m_q0 = -1.0f;
 
     /**
      * The q<sub>1</sub> coefficient of the quadric formulation.
      */
-    public float m_q1 = 1.0f;
+    private float m_q1 = 1.0f;
 
     /**
      * The q<sub>2</sub> coefficient of the quadric formulation.
      */
-    public float m_q2 = 1.0f;
+    private float m_q2 = 1.0f;
 
     /**
      * The q<sub>3</sub> coefficient of the quadric formulation.
      */
-    public float m_q3 = 1.0f;
+    private float m_q3 = 1.0f;
 
     /**
      * The q<sub>9</sub> coefficient of the quadric formulation.
      */
-    public float m_q9 = 0.0f;
+    private float m_q9 = 0.0f;
+
+    /*
+     * <tt>true</tt> if this representation is convex, <tt>false</tt> otherwise.
+     */
+    private boolean isConvex = true;
 
     //-------------------------------------------------------------------------------------------------------------------------
 
@@ -158,8 +162,6 @@ public class Quadric3f {
      */
     public Quadric3f() {
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for an
@@ -182,9 +184,9 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = 0.0f;
         m_q9 = 0.0f;
+        isConvex = true;
         return this;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for an
@@ -207,9 +209,9 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = 1.0f / (fRz * fRz);
         m_q9 = 0.0f;
+        isConvex = true;
         return this;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for an
@@ -234,9 +236,9 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = 0.0f;
         m_q9 = -1.0f / fHeight;
+        isConvex = false;
         return this;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for an
@@ -261,9 +263,9 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = -1.0f / (fHeight * fHeight);
         m_q9 = 0.0f;
+        isConvex = false;
         return this;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for a
@@ -289,10 +291,9 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = -1.0f / (fRz * fRz);
         m_q9 = 0.0f;
+        isConvex = false;
         return this;
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the coefficients of the quadric formula for a
@@ -313,45 +314,96 @@ public class Quadric3f {
         m_q2 = -1.0f / (fRy * fRy);
         m_q3 = 0.0f;
         m_q9 = -1.0f / fRz;
+        isConvex = false;
         return this;
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    /**
+     * Get the quadric coefficient at the specified index.
+     *
+     * @param index The index, from 0 to 9 as described in the class documentation.
+     * @return Returns the value of the rquested quadric coefficient.`
+     */
+    public float getQ(int index) {
+        switch (index) {
+            case 0:
+                return m_q0;
+            case 1:
+                return m_q1;
+            case 2:
+                return m_q2;
+            case 3:
+                return m_q3;
+            case 9:
+                return m_q9;
+            default:
+                return 0.0f;
+        }
+    }
+    /**
+     * Inquire whether this quadric is convex.
+     *
+     * @return Returns <tt>true</tt> if the object is quadric and <tt>false</tt> if the quadric is not convex
+     * or the convexity cannot be verified.
+     */
+    public boolean isConvex() {
+        return isConvex;
+    }
+    /**
+     * Tests whether a point is inside ot outside a quadric. This might be interesting, for example, for a travelling camera that
+     * passes into a crystal ball.
+     *
+     * @param pt (readonly) The point to be tested.
+     * @return <tt>true</tt> if the point is inside the quadic, <tt>false</tt> otherwise.
+     */
+    public boolean isInside(final Point3f pt) {
+        final float fC = (m_q1 * pt.x * pt.x) + (m_q2 * pt.y * pt.y) + (m_q3 * pt.z * pt.z) + (m_q9 * pt.z) + m_q0;
+        return fC < 0.0f;
+    }
 
     /**
      * Get the intersection of a ray starting at point <tt>pt</tt> in the direction <tt>v</tt> with this quadric.
      * The ray direction should be normalized for the correct intersection distance to be reported.
      *
-     * @param quadInt The intersection.
-     * @param pt      The origin of the ray.
-     * @param v       The direction of the ray.
+     * @param quadInt       (modified) The intersection.
+     * @param pt            {readonly} The origin of the ray.
+     * @param v             {readnoly} The direction of the ray.
+     * @param bStartsInside <tt>false</tt> if this is an outside ray, <tt>true</tt> if this is a ray
+     *                      spawned from an intersection with this object and on the inside of the object. NOTE: this is a logic
+     *                      decision and must be respected - specifically, if the ray starts inside it was because a previous call
+     *                      to this method reported the intersection from the outside. Thus, the only possible next intersection
+     *                      is going out.
      * @return Returns <tt>quadInt</tt> with the intersection information set.
      */
-    public Quadric3fIntersection getIntersection(final Quadric3fIntersection quadInt, final Point3f pt, final Vector3f v) {
+    public Quadric3fIntersection getIntersection(final Quadric3fIntersection quadInt, final Point3f pt, final Vector3f v,
+                                                 final boolean bStartsInside) {
         // compute the coefficients of the quadratic equation describing the intersections.  NOTE: c is also
-        //  the .'distance' from the surface: >0 outside; <= 0 inside.
+        //  the 'distance' from the surface: >0 outside; <= 0 inside.
         final float fA = (m_q1 * v.i * v.i) + (m_q2 * v.j * v.j) + (m_q3 * v.k * v.k);
         final float fB = (2.0f * ((m_q1 * pt.x * v.i) + (m_q2 * pt.y * v.j) + (m_q3 * pt.z * v.k))) + (m_q9 * v.k);
         final float fC = (m_q1 * pt.x * pt.x) + (m_q2 * pt.y * pt.y) + (m_q3 * pt.z * pt.z) + (m_q9 * pt.z) + m_q0;
 
-        // Recall, the quadratic equations is that the roots of:
+        // Recall, the in quadratic solution that the roots of:
         //      a t^2 + b t + c = 0
         // are:
         //      t = -b +- sqrt(b^2 - 4ac) / 2a 
-
-        if (PackageConstants.isZero(fA)) {
+       if (PackageConstants.isZero(fA)) {
             // This is the case where there is only one root and the quadratic equation breaks down due to
             //  divide by zero.  The quadratic reduces to bt + c = 0 and the root is t = -c/b
             if (PackageConstants.isZero(fB)) {
                 // this can only happen at 0,0,0
                 quadInt.m_nCode = Quadric3fIntersection.NONE_INSIDE;
             } else {
-                quadInt.m_fDist1 = -fC / fB;
-                quadInt.m_fDist2 = Float.POSITIVE_INFINITY;
-                if (fC > 0.0f) { // start is outside
-                    quadInt.m_nCode = (quadInt.m_fDist1 > 0.0f) ? Quadric3fIntersection.GOING_INTO : Quadric3fIntersection.GOING_OUT_OF;
-                } else { // start is inside
-                    quadInt.m_nCode = (quadInt.m_fDist1 > 0.0f) ? Quadric3fIntersection.GOING_OUT_OF : Quadric3fIntersection.GOING_INTO;
+                // OK there is only one, it is either going in or out as specified by the bStartsInside logic. This would be the
+                // case for something like a cone (which has upper and lower halves) when the major axis of the ray is k and it
+                // is pareallel to the surface of the cone - this is a rare case.
+                if (bStartsInside) {
+                    quadInt.m_fDist1 = Float.POSITIVE_INFINITY;
+                    quadInt.m_fDist2 = -fC / fB;
+                } else {
+                    quadInt.m_fDist1 = -fC / fB;
+                    quadInt.m_fDist2 = Float.POSITIVE_INFINITY;
+                    quadInt.m_nCode = Quadric3fIntersection.GOING_INTO;
                 }
             }
         } else {
@@ -370,39 +422,30 @@ public class Quadric3f {
                 final float fDist2 = ((-fB) + fDet) / (2.0f * fA);
                 quadInt.m_fDist1 = (fDist1 <= fDist2) ? fDist1 : fDist2;
                 quadInt.m_fDist2 = (fDist1 < fDist2) ? fDist2 : fDist1;
-                if (fC > 0.0f) {  // start is outside
-                    if ((quadInt.m_fDist1 > 0.0f) || (quadInt.m_fDist2 <= 0.0f)) {
-                        quadInt.m_nCode = Quadric3fIntersection.GOING_INTO;
-                    } else if (quadInt.m_fDist2 <= 0.0f) {
-                        quadInt.m_nCode = Quadric3fIntersection.GOING_OUT_OF;
-                    }
-                } else { // start is inside
-                    if ((quadInt.m_fDist1 > 0.0f) || (quadInt.m_fDist2 <= 0.0f)) {
-                        quadInt.m_nCode = Quadric3fIntersection.GOING_OUT_OF;
-                    } else if (quadInt.m_fDist2 <= 0.0f) {
-                        quadInt.m_nCode = Quadric3fIntersection.GOING_INTO;
-                    }
+                if (bStartsInside) {
+                    quadInt.m_nCode = Quadric3fIntersection.GOING_OUT_OF;
+                } else {
+                    quadInt.m_nCode = Quadric3fIntersection.GOING_INTO;
                 }
             }
         }
         return quadInt;
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-
     /**
      * Get the intersection of a ray, <tt>ray</tt>, with this quadric.
      * The ray direction should be normalized for the correct intersection distance to be reported.
      *
-     * @param quadInt The intersection.
-     * @param ray     The ray.
+     * @param quadInt       The intersection.
+     * @param ray           The ray.
+     * @param bStartsInside <tt>false</tt> if this is an outside ray, <tt>true</tt> if this is a ray
+     *                      spawned from an intersection with this object and on the inside of the object.
      * @return Returns <tt>quadInt</tt> with the intersection information set.
      */
-    public Quadric3fIntersection getIntersection(final Quadric3fIntersection quadInt, final Line3f ray) {
-        return getIntersection(quadInt, ray.m_ptOrg, ray.m_vDir);
+    public Quadric3fIntersection getIntersection(final Quadric3fIntersection quadInt, final Line3f ray,
+                                                 final boolean bStartsInside) {
+        return getIntersection(quadInt, ray.m_ptOrg, ray.m_vDir, bStartsInside);
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Computes the normal for a point on the surface of the quadric.

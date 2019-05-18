@@ -311,7 +311,7 @@ public class RenderXml implements IRenderScene {
             // now start the threads
             final int nProcessors = Runtime.getRuntime().availableProcessors();
             final int nThreads = nProcessors;     // start a rendering thread for each processor
-//            nThreads = 1;   // Use this to manually set trhe thread count for testing.
+//            nThreads = 1;   // Use this to manually set the thread count for performance testing.
             System.out.println(String.format("Starting %d threads on %d processors", nThreads, nProcessors));
 
             // The deal here is we start the threads and keep a count of the running threads.  This count is

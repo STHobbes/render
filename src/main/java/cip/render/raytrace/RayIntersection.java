@@ -207,6 +207,7 @@ public class RayIntersection {
      *
      * @param vFromEye The <i>normalized</i> direction vector for the ray being tested.  The reverse of this will be set as
      *                 the <b>V</b> vector leaving the intersection.
+     * @return Returns this <tt>RayIntersection</tt>.
      */
     public RayIntersection initialize(final Vector3f vFromEye) {
         m_fDist = Float.MAX_VALUE;

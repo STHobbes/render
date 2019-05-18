@@ -50,27 +50,24 @@ import org.w3c.dom.Node;
  * points for any intersection or shadow query are transformed into object space, the object operator is
  * called, and the result is back-transformed to world space if required.
  * <p>
- * The transformed geometry is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;D<b>ynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.XfmGeometry" name="<font style="color:magenta"><i>xfmGeomName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>GeometryByRef</b> name="<font style="color:magenta"><i>geomName</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>transformedGeomClass</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>transformed geometry specific node content</i><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * where:<br>
+ * The transformed geometry is specified as a node in an XML file as:
+ * <pre>
+ *     <font style="color:blue">&lt;D<b>ynamicallyLoadedObject</b> class="cip.raytrace.geometry.XfmGeometry" name="<font style="color:magenta"><i>xfmGeomName</i></font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>GeometryByRef</b> name="<font style="color:magenta"><i>geomName</i></font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>transformedGeomClass</i></font>"&gt;</font>
+ *               <font style="color:gray"><b>.</b>
+ *               <b>.</b>
+ *             <i>transformed geometry specific node content</i>
+ *               <b>.</b>
+ *               <b>.</b></font>
+ *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
  * <td><tt>position</tt></td>
  * <td>The geometry position as specified by the <tt><i>Xfm4x4f_attributes</i></tt> which are described in
@@ -102,16 +99,14 @@ import org.w3c.dom.Node;
  * <b>Example of XML Specification</b>
  * <p>
  * The following specifies a {@link cip.render.raytrace.geometry.Sphere} geometry of radius 6 centered at (10,20,30):<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;D<b>ynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.XfmGeometry" name="<font style="color:magenta">sphere1</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b> originAt="<font style="color:magenta">10,20,30</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta">cip.raytrace.geometry.Sphere</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">6</font>&lt/<b>radius</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * <pre>
+ *     <font style="color:blue">&lt;D<b>ynamicallyLoadedObject</b> class="cip.raytrace.geometry.XfmGeometry" name="<font style="color:magenta">sphere1</font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>position</b> originAt="<font style="color:magenta">10,20,30</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta">cip.raytrace.geometry.Sphere</font>"&gt;</font>
+ *             <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">6</font>&lt;<b>radius</b>&gt;</font>
+ *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -234,11 +229,11 @@ public class XfmGeometry extends AGeometry {
      * @return Returns <tt>true</tt> if the object is convex and <tt>false</tt> if the object is not convex
      * or the convexity cannot be verified.
      */
-    public boolean IsConvex() {
+    public boolean isConvex() {
         if (null == m_obj) {
             return true;
         }
-        return m_obj.IsConvex();
+        return m_obj.isConvex();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------

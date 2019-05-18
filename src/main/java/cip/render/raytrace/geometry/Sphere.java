@@ -24,13 +24,10 @@ import cip.render.IDynXmlObject;
 import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.raytrace.RayIntersection;
-import cip.render.util3d.PackageConstants;
+import cip.render.util3d.*;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.util.AngleF;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Point3f;
-import cip.render.util3d.Vector3f;
 
 import java.util.LinkedList;
 
@@ -42,25 +39,23 @@ import org.w3c.dom.Node;
 /**
  * This is the implementation of a sphere of some radius centered at 0,0,0 in the object coordinate system.
  * <p>
- * The sphere is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.Sphere" name="<font style="color:magenta"><i>sphereName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>radius</i></font>&lt;/<b>radius</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>material specific nodes and attributes</i><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * where:<br>
+ * There are methods to programmatically initialize a sphere, but, it is most common to load the sphere from a
+ * scene description file. The sphere is specified as a node in an XML scene description file as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Sphere" name="<font style="color:magenta"><i>sphereName</i></font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>radius</i></font>&lt;/<b>radius</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *             <font style="color:gray"><b>.</b>
+ *             <i>material specific nodes and attributes</i>
+ *             <b>.</b></font>
+ *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
  * <td><tt>radius</tt></td>
  * <td>The radius of the sphere.  The default radius is 1 if not specified.
@@ -68,7 +63,7 @@ import org.w3c.dom.Node;
  * </tr>
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>A material specfied by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
+ * <td>A material specified by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  If no material
  * is specified, the material defaults to matte green material.
  * </td>
@@ -89,13 +84,12 @@ import org.w3c.dom.Node;
  * <b>Example of XML Specification</b>
  * <p>
  * The following specifies a sphere of radius 5:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.geometry.Sphere" name="<font style="color:magenta">sphere</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">5</font>&lt;/<b>radius</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Sphere" name="<font style="color:magenta">sphere</font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">5</font>&lt;/<b>radius</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -106,7 +100,7 @@ public class Sphere extends AGeometry {
 
     // The instance definition
     private IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the sphere material
-    private float m_fRadius = 1.0f;                           // the radius of the sphere
+    protected Quadric3f m_quadric = new Quadric3f();
 
     /**
      * Creates a new instance of <tt>Sphere</tt>.
@@ -124,17 +118,18 @@ public class Sphere extends AGeometry {
     }
 
     public float getRadius() {
-        return m_fRadius;
+        return m_quadric.getQ(1);
     }
 
     public void setRadius(final float fRadius) {
-        m_fRadius = fRadius;
+        m_quadric.setEllipsoid(fRadius, fRadius, fRadius);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {
@@ -144,7 +139,7 @@ public class Sphere extends AGeometry {
                         Node textNode = element.getFirstChild();
                         while (null != textNode) {
                             if (textNode.getNodeType() == Node.TEXT_NODE) {
-                                m_fRadius = Float.parseFloat(textNode.getNodeValue().trim());
+                                setRadius(Float.parseFloat(textNode.getNodeValue().trim()));
                                 break;
                             }
                             textNode = textNode.getNextSibling();
@@ -182,7 +177,7 @@ public class Sphere extends AGeometry {
         // The radius
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);
-        elRadius.appendChild(element.getOwnerDocument().createTextNode(Float.toString(m_fRadius)));
+        elRadius.appendChild(element.getOwnerDocument().createTextNode(Float.toString(getRadius())));
         // The material
         if ((m_mtl != DEFAULT_MATERIAL) && (m_mtl instanceof IDynXmlObject)) {
             ((IDynXmlObject) m_mtl).toChildXmlElement(element);
@@ -196,8 +191,8 @@ public class Sphere extends AGeometry {
     /**
      * Returns <tt>true</tt> since a sphere is convex.
      */
-    public boolean IsConvex() {
-        return true;
+    public boolean isConvex() {
+        return m_quadric.isConvex();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
@@ -207,14 +202,14 @@ public class Sphere extends AGeometry {
      * trimmed by planes that are perpendicular to the diagonals of the 8 quadrants of a 3D axis system.
      */
     public Point3f[] getConvexHullVertices() {
-        final float fEdge = (float) (2.0 - Math.sqrt(3.0)) * m_fRadius;
+        final float fEdge = (float) (2.0 - Math.sqrt(3.0)) * getRadius();
         final Point3f[] ptHull = new Point3f[24];
         int ii;
 
         // do the points for one quadrant
-        ptHull[0] = new Point3f().setValue(m_fRadius, m_fRadius, fEdge);
-        ptHull[1] = new Point3f().setValue(fEdge, m_fRadius, m_fRadius);
-        ptHull[2] = new Point3f().setValue(m_fRadius, fEdge, m_fRadius);
+        ptHull[0] = new Point3f().setValue(getRadius(), getRadius(), fEdge);
+        ptHull[1] = new Point3f().setValue(fEdge, getRadius(), getRadius());
+        ptHull[2] = new Point3f().setValue(getRadius(), fEdge, getRadius());
         // flip on i
         for (ii = 0; ii < 3; ii++) {
             ptHull[ii + 3] = new Point3f().setValue(-ptHull[ii].x, ptHull[ii].y, ptHull[ii].z);
@@ -235,49 +230,36 @@ public class Sphere extends AGeometry {
      * Tests a ray for an intersection with a sphere.  See {@link cip.render.raytrace.interfaces.IRtGeometry}
      * description of getRayIntersection().
      */
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside, final int nSample, final int nRandom) {
-        // see if the ray intersects the sphere from the outside - this uses the sphere intersection formula from Watt, p18, with
-        //  a=1 since the ray is normalized, and the computation of B and C simplified because the center of the sphere as at
-        //  0,0,0
-        final float fB = 2.0f * ((ray.m_vDir.i * ray.m_ptOrg.x) + (ray.m_vDir.j * ray.m_ptOrg.y) + (ray.m_vDir.k * ray.m_ptOrg.z));
-        final float fC = (ray.m_ptOrg.x * ray.m_ptOrg.x) + (ray.m_ptOrg.y * ray.m_ptOrg.y) + (ray.m_ptOrg.z * ray.m_ptOrg.z) -
-                (m_fRadius * m_fRadius);
-
-        // solve for the intersection distance using the quadratic formula.  First check the determinant to make sure
-        // it is greater than 0 - otherwise, there is no intersection.
-        final float fDet = (fB * fB) - (4.0f * fC);
-
-        final float fDistTmp;
-        if (bStartsInside) {
-            if (fDet < 0.0f) return false;  // no intersection - no solution to the quadratic equation
-            // the ray started inside this sphere -- get the far intersection which should be where the ray leaves the sphere
-            fDistTmp = 0.5f * (-fB + (float) Math.sqrt((double) fDet));
-        } else {
-            if (fDet < PackageConstants.ZERO_TOLERANCE_MAX_FLOAT)
-                return false;  // no intersection - no solution to the quadratic equation
-            // the ray started outside the sphere - get the closest intersection which should be where the ray entered the sphere
-            fDistTmp = 0.5f * (-fB - (float) Math.sqrt((double) fDet));
+    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside,
+                                      final int nSample, final int nRandom) {
+        Quadric3fIntersection qInt = intersection.borrowQuadricInt();
+        try {
+            m_quadric.getIntersection(qInt, ray, bStartsInside);
+            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE ) {
+                return false;
+            }
             // We got here if the ray intersects the object.  Test the intersection distance - if
             //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
+            final float fDistTmp = bStartsInside ? qInt.m_fDist2 : qInt.m_fDist1;
             if ((fDistTmp < 0.0f) || (fDistTmp > intersection.m_fDist)) {
                 return false;
             }
-        }
 
-        // Update the intersection structure with information for this intersection
-        intersection.m_fDist = fDistTmp;
-        ray.pointAtDistance(intersection.m_pt, fDistTmp);
-        intersection.m_vNormal.i = intersection.m_pt.x / m_fRadius;
-        intersection.m_vNormal.j = intersection.m_pt.y / m_fRadius;
-        intersection.m_vNormal.k = intersection.m_pt.z / m_fRadius;
-        intersection.m_ptObject.setValue(intersection.m_pt);
-        intersection.m_vObjNormal.setValue(intersection.m_vNormal);
-        intersection.m_bNatural = false;
-        intersection.m_xfmObjToWorldNormal.identity();
-        intersection.m_mtl = m_mtl;
-        intersection.m_rtObj = this;
-        return true;
-    }
+            // Update the intersection structure with information for this intersection
+            intersection.m_fDist = fDistTmp;
+            ray.pointAtDistance(intersection.m_pt, fDistTmp);
+            m_quadric.getNormal(intersection.m_vNormal,intersection.m_pt);
+            intersection.m_bNatural = false;
+            intersection.m_ptObject.setValue(intersection.m_pt);
+            intersection.m_vObjNormal.setValue(intersection.m_vNormal);
+            intersection.m_xfmObjToWorldNormal.identity();
+            intersection.m_mtl = m_mtl;
+            intersection.m_rtObj = this;
+            return true;
+        } finally {
+            intersection.returnQuadricInt(qInt);
+        }
+     }
     //-------------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -323,23 +305,17 @@ public class Sphere extends AGeometry {
      */
     public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight, final IRtLight light,
                               final int nSample, final int nRandom) {
-        final float fB = 2.0f * ((vLight.i * intersection.m_pt.x) + (vLight.j * intersection.m_pt.y) +
-                (vLight.k * intersection.m_pt.z));
-        final float fC = (intersection.m_pt.x * intersection.m_pt.x) + (intersection.m_pt.y * intersection.m_pt.y) +
-                (intersection.m_pt.z * intersection.m_pt.z) - (m_fRadius * m_fRadius);
-
-        // solve for the intersection distance using the quadratic formula.  First check the determinant to make sure
-        // it is greater than 0 - otherwise, there is no intersection.
-        final float fDet = (fB * fB) - (4.0f * fC);
-        if (fDet < PackageConstants.ZERO_TOLERANCE_MAX_FLOAT)
-            return false;  // no intersection - no solution to the quadratic equation
-
-        final float fDistTmp = 0.5f * (-fB - (float) Math.sqrt((double) fDet));
-        // We got here if the ray intersects the object.  Test the intersection distance - if
-        //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-        if ((fDistTmp < 0.0f) || (fDistTmp > fDistLight)) {
-            return false;
+        Quadric3fIntersection qInt = intersection.borrowQuadricInt();
+        try {
+            m_quadric.getIntersection(qInt, intersection.m_pt, vLight, false);
+            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE ) {
+                return false;
+            }
+            // We got here if the ray intersects the object.  Test the intersection distance - if
+            //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
+            return (!(qInt.m_fDist1 < 0.0f)) && (!(qInt.m_fDist1 > fDistLight));
+        } finally {
+            intersection.returnQuadricInt(qInt);
         }
-        return true;
     }
 }
