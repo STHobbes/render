@@ -20,22 +20,21 @@
  */
 package cip.render.raytrace.material;
 
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjParseException;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtBackground;
+import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util.AngleF;
 import cip.render.util3d.Line3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * An implementation of the Whitted illumination model as described in Whitted, Turner (1980), "An Improved Illumination

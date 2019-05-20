@@ -22,10 +22,10 @@ package cip.render.raytrace;
 
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.util.*;
-import cip.render.util2d.*;
+import cip.render.util.AngleF;
+import cip.render.util2d.Point2f;
 import cip.render.util3d.*;
-import cip.render.utilColour.*;
+import cip.render.utilColour.RGBf;
 
 /**
  * This is the description of the surface at the intersection of a ray with a geometric object.  Because ray intersections
@@ -373,7 +373,7 @@ public class RayIntersection {
     public void returnVector(final Vector3f v) {
         v.m_next = m_cacheVector;
         m_cacheVector = v;
-   }
+    }
 
     /**
      * Borrow a plane.  The borrowed plane should be returned to the <tt>RayIntersection</tt> from which it
@@ -499,7 +499,7 @@ public class RayIntersection {
     public void returnXfm(final Xfm4x4f xfm) {
         xfm.m_next = m_cacheXfm;
         m_cacheXfm = xfm;
-}
+    }
 
     /**
      * Borrow an RGB colour.  The borrowed colour should be returned to the <tt>RayIntersection</tt> from which it

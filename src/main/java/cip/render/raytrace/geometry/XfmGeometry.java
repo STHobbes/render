@@ -20,24 +20,19 @@
  */
 package cip.render.raytrace.geometry;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
-import cip.render.util3d.Bv3fIntersection;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Point3f;
-import cip.render.util3d.Vector3f;
-import cip.render.util3d.Xfm4x4f;
-
-import java.util.LinkedList;
-
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.IRtLight;
+import cip.render.util3d.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is a transformed geometry implementation.  It applies a transform to a geometry to reposition the

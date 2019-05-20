@@ -169,7 +169,7 @@ public final class Plane3f {
         if (this == pln) {
             return true;
         }
-        return (null != pln) && (m_fA == pln.m_fA) &&  (m_fB == pln.m_fB) && (m_fC == pln.m_fC) && (m_fD == pln.m_fD);
+        return (null != pln) && (m_fA == pln.m_fA) && (m_fB == pln.m_fB) && (m_fC == pln.m_fC) && (m_fD == pln.m_fD);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------

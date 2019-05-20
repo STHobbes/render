@@ -40,18 +40,18 @@ public class Assignment3b implements IRenderScene {
     final RGBf m_rgbBkg = new RGBf(0.25f, 0.25f, 0.25f);
 
     // the base block
-    private final Material m_mtlBase = new Material(new RGBf(0.0f,1.0f,0.0f), false, new AngleF(AngleF.DEGREES,45.0f));
+    private final Material m_mtlBase = new Material(new RGBf(0.0f, 1.0f, 0.0f), false, new AngleF(AngleF.DEGREES, 45.0f));
     private final Plane3f[] m_plnBase = {new Plane3f(0.0f, 0.0f, 1.0f, 1.0f),      // top
-            new Plane3f (0.0f, -1.0f,  0.0f, -2.0f),      // front
-            new Plane3f( 1.0f,  0.0f,  0.0f, -2.0f),      // right
-            new Plane3f( 0.0f,  1.0f,  0.0f, -2.0f),      // back
-            new Plane3f(-1.0f,  0.0f,  0.0f, -2.0f),      // left
-            new Plane3f( 0.0f,  0.0f, -1.0f, -1.5f)       // bottom
+            new Plane3f(0.0f, -1.0f, 0.0f, -2.0f),      // front
+            new Plane3f(1.0f, 0.0f, 0.0f, -2.0f),      // right
+            new Plane3f(0.0f, 1.0f, 0.0f, -2.0f),      // back
+            new Plane3f(-1.0f, 0.0f, 0.0f, -2.0f),      // left
+            new Plane3f(0.0f, 0.0f, -1.0f, -1.5f)       // bottom
     };
     final ImplicitPolyhedra m_basePolyhedra = new ImplicitPolyhedra(m_plnBase, m_mtlBase);
 
     // the gem block
-    private final Material m_mtlGem = new Material(new RGBf(1.0f,1.0f,1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
+    private final Material m_mtlGem = new Material(new RGBf(1.0f, 1.0f, 1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
             1.5f, 0.85f);
     private final float m_fRoot3 = 1.0f / (float) Math.sqrt(3.0);
     private final Plane3f[] m_plnGem = {new Plane3f(m_fRoot3, m_fRoot3, m_fRoot3, 0.0f),
@@ -66,15 +66,15 @@ public class Assignment3b implements IRenderScene {
     private final ImplicitPolyhedra m_gemPolyhedra = new ImplicitPolyhedra(m_plnGem, m_mtlGem);
 
     // center sphere
-    private final Material m_mtlSphere1 = new Material(new RGBf(0.0f,0.0f,1.0f), true, new AngleF(AngleF.DEGREES,9.0f));
+    private final Material m_mtlSphere1 = new Material(new RGBf(0.0f, 0.0f, 1.0f), true, new AngleF(AngleF.DEGREES, 9.0f));
     private final Sphere3f m_sphere1 = new Sphere3f(new Point3f(0.0f, 0.0f, 0.0f), 1.0f, m_mtlSphere1);
 
     // little sphere
-    private final Material m_mtlSphere2 = new Material(new RGBf(1.0f,0.0f,1.0f), false, new AngleF(AngleF.DEGREES,5.0f));
+    private final Material m_mtlSphere2 = new Material(new RGBf(1.0f, 0.0f, 1.0f), false, new AngleF(AngleF.DEGREES, 5.0f));
     private final Sphere3f m_sphere2 = new Sphere3f(new Point3f(-0.6f, -1.25f, 0.6f), 0.25f, m_mtlSphere2);
 
     // transparent little sphere
-    private final Material m_mtlSphere3 = new Material(new RGBf(1.0f,1.0f,1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
+    private final Material m_mtlSphere3 = new Material(new RGBf(1.0f, 1.0f, 1.0f), false, new AngleF(AngleF.DEGREES, 2.0f),
             1.5f, 0.75f);
     private final Sphere3f m_sphere3 = new Sphere3f(new Point3f(0.2f, -2.5f, 0.5f), 0.20f, m_mtlSphere3);
 
@@ -82,37 +82,39 @@ public class Assignment3b implements IRenderScene {
     private final float m_fDimmer = 0.70f;
 
     // the ambient light
-    private final AmbientLight m_lgtAmbient = new AmbientLight(new RGBf(0.1f,0.1f,0.1f));
+    private final AmbientLight m_lgtAmbient = new AmbientLight(new RGBf(0.1f, 0.1f, 0.1f));
 
     // a local light
-    private final PointLight m_lgtPoint = new PointLight(new RGBf(0.8f,0.8f,0.8f), new Point3f(-12.0f,-24.0f, 12.0f));
+    private final PointLight m_lgtPoint = new PointLight(new RGBf(0.8f, 0.8f, 0.8f), new Point3f(-12.0f, -24.0f, 12.0f));
 
     // a spot light
-    private final SpotLight m_lgtSpot1 = new SpotLight(new RGBf(0.7f,0.7f,0.7f), new Point3f( 12.0f,-10.0f, 48.0f),
-            new Vector3f(new Point3f(12.0f,-10.0f,48.0f), new Point3f(0.0f,0.0f,0.0f)).normalize(),
-            new AngleF(AngleF.DEGREES,5.0f) );
+    private final SpotLight m_lgtSpot1 = new SpotLight(new RGBf(0.7f, 0.7f, 0.7f), new Point3f(12.0f, -10.0f, 48.0f),
+            new Vector3f(new Point3f(12.0f, -10.0f, 48.0f), new Point3f(0.0f, 0.0f, 0.0f)).normalize(),
+            new AngleF(AngleF.DEGREES, 5.0f));
 
     // another spot light
-    private final SpotLight m_lgtSpot2 = new SpotLight(new RGBf(0.7f,0.7f,0.7f), new Point3f( 20.0f,-10.0f,10.0f),
-            new Vector3f(new Point3f(20.0f,-10.0f,10.0f), new Point3f(0.0f,0.0f,0.0f)).normalize(),
-            new AngleF(AngleF.DEGREES,5.0f) );
+    private final SpotLight m_lgtSpot2 = new SpotLight(new RGBf(0.7f, 0.7f, 0.7f), new Point3f(20.0f, -10.0f, 10.0f),
+            new Vector3f(new Point3f(20.0f, -10.0f, 10.0f), new Point3f(0.0f, 0.0f, 0.0f)).normalize(),
+            new AngleF(AngleF.DEGREES, 5.0f));
 
     // Put together the object and light lists
     private final IRtGeometry[] m_geometry = {m_basePolyhedra, m_gemPolyhedra, m_sphere1, m_sphere2, m_sphere3};
     private final IRtLight[] m_lights = {m_lgtAmbient, m_lgtPoint, m_lgtSpot1, m_lgtSpot2};
 
     //------------------------------------------------------------------------------------------------------------------------------
+
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
-     * @param ray The ray we want the colour for.
-     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
-     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
-     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
-     * @param lastHit        (IRtGeometry, readonly) The last-hit geometry - since all our geometries are convex, the last hit
-     *                       geometry does NOT need to be tested.
-     * @param bkg            (RGBf, readonly) The background color.
-     * @param nMaxBounce     (int) The maximum number of external reflections.
-     * @param nMaxInternal   (int) The maximum internal reflections before black is returned.
+     *
+     * @param ray          The ray we want the colour for.
+     * @param intersection (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights       (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects    (IRtGeometry[], readonly) The objects in the scene.
+     * @param lastHit      (IRtGeometry, readonly) The last-hit geometry - since all our geometries are convex, the last hit
+     *                     geometry does NOT need to be tested.
+     * @param bkg          (RGBf, readonly) The background color.
+     * @param nMaxBounce   (int) The maximum number of external reflections.
+     * @param nMaxInternal (int) The maximum internal reflections before black is returned.
      * @return Returns the colour seen by this ray.
      */
     static RGBf getPixelColor(Line3f ray, RayIntersection intersection, @NotNull IRtLight[] lights,
@@ -133,6 +135,7 @@ public class Assignment3b implements IRenderScene {
         return rgb.clamp();
 
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IRenderScene interface implementation                                                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -204,13 +207,14 @@ public class Assignment3b implements IRenderScene {
 interface IRtMaterial {
     /**
      * Compute the colour of a surface as seen from a specific direction.
-     * @param rgb            (RGBf, modified) The computed colour at the surface.
-     * @param intersection   (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
-     * @param lights         (IRtLight[], readonly) The light in the scene that may affect the intersection.
-     * @param rtObjects      (IRtGeometry[], readonly) The objects in the scene.
-     * @param bkg            (RGBf, readonly) The background color.
-     * @param nMaxBounce     (int, readonly) The maximum reflective bounces.
-     * @param nMaxInternal   (int, readonly) The maximum internal reflections in an object.
+     *
+     * @param rgb          (RGBf, modified) The computed colour at the surface.
+     * @param intersection (RayIntersection, readonly) The description of the surface - location, orientation, material, etc.
+     * @param lights       (IRtLight[], readonly) The light in the scene that may affect the intersection.
+     * @param rtObjects    (IRtGeometry[], readonly) The objects in the scene.
+     * @param bkg          (RGBf, readonly) The background color.
+     * @param nMaxBounce   (int, readonly) The maximum reflective bounces.
+     * @param nMaxInternal (int, readonly) The maximum internal reflections in an object.
      */
     void getColor(@NotNull RGBf rgb, @NotNull RayIntersection intersection, @NotNull IRtLight[] lights,
                   @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce, int nMaxInternal);
@@ -242,11 +246,15 @@ class Material implements IRtMaterial {
     void initForRender(RGBf color, boolean conductor, AngleF beta) {
         m_clr = color;
         m_conductor = conductor;
-        m_Ns = -(float)(Math.log(2.0) / Math.log(beta.cos()));
+        m_Ns = -(float) (Math.log(2.0) / Math.log(beta.cos()));
         float fR = (m_Ns - 5.0f) / 100.0f;
-        if (fR < 0.0f) { fR = 0.0f; }
-        if (fR > 1.0f) { fR = 1.0f; }
-        if (fR > 0.0f ) {
+        if (fR < 0.0f) {
+            fR = 0.0f;
+        }
+        if (fR > 1.0f) {
+            fR = 1.0f;
+        }
+        if (fR > 0.0f) {
             // If there is recursive reflection/refraction then that is the primary source of illumination for
             //  all surfaces.  For the diffuse surfaces to look correct, some sort of reflected ray distribution or
             //  reflection filtering needs to be used to soften the reflection.
@@ -270,7 +278,7 @@ class Material implements IRtMaterial {
                          @NotNull IRtGeometry[] rtObjects, @NotNull RGBf bkg, int nMaxBounce, int nMaxInternal) {
 
         final LightInfo lightInfo = new LightInfo();
-        rgb.setValue(0.0f,0.0f,0.0f);
+        rgb.setValue(0.0f, 0.0f, 0.0f);
         // Compute the light contributions to the color
         for (IRtLight light : lights) {
             if (light.getLight(lightInfo, intersection)) {
@@ -278,7 +286,7 @@ class Material implements IRtMaterial {
                     rgb.add(intersection.m_mtl.m_clr).mult(lightInfo.m_rgb);
                 } else if (lightInfo.m_nType == LightInfo.LOCAL) {
                     boolean bInShadow = false;
-                    final Line3f rayLight = new Line3f(intersection.m_ptLocation,lightInfo.m_ptFrom);
+                    final Line3f rayLight = new Line3f(intersection.m_ptLocation, lightInfo.m_ptFrom);
                     for (IRtGeometry geometry : rtObjects) {
                         if (geometry.testShadow(rayLight, lightInfo.m_fDist)) {
                             bInShadow = true;
@@ -318,7 +326,7 @@ class Material implements IRtMaterial {
             Line3f reflectedRay = new Line3f().setValue(intersection.m_ptLocation, vRfl);
             RayIntersection intRfl = new RayIntersection();
             rgb.add(Assignment3b.getPixelColor(reflectedRay, intRfl, lights, rtObjects, intersection.m_obj,
-                    bkg, nMaxBounce-1,nMaxInternal).scale(m_Ks));
+                    bkg, nMaxBounce - 1, nMaxInternal).scale(m_Ks));
         }
         // If the material is transparent add the refracted color
         if (m_isTransparent) {
@@ -331,14 +339,14 @@ class Material implements IRtMaterial {
                 intRfr.m_vToEye.setValue(vRfr).reverse();
                 if (intersection.m_obj.rayIntersection(refractedRay, true, intRfr)) {
                     // OK, we have the 'goes out' intersection, get the color coming from that point
-                    getInternalColor(rgbRfr, intRfr, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal-1);
+                    getInternalColor(rgbRfr, intRfr, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal - 1);
                     rgb.add(rgbRfr).scale(m_Kt);
                 } else {
                     // if this happens there is a problem with to object intersected. There was a ray that way logically
                     // intersected with this object. The logic in the object must allow this ray to go out of the object
                     rgb.setValue(1.0f, 1.0f, 0.0f);
                 }
-             }
+            }
         }
     }
 
@@ -355,11 +363,11 @@ class Material implements IRtMaterial {
             Line3f rayRefracted = new Line3f().setValue(intersection.m_ptLocation, vRfr);
             RayIntersection intRfr = new RayIntersection();
             rgb.setValue(Assignment3b.getPixelColor(rayRefracted, intRfr, lights, rtObjects, intersection.m_obj,
-                    bkg, nMaxBounce-1,nMaxInternal).scale(m_Kt));
+                    bkg, nMaxBounce - 1, nMaxInternal).scale(m_Kt));
         } else {
             // Complete internal reflection - no contribution from the outside
             Ks = m_Kt;
-            rgb.setValue(0.0f,0.0f,0.0f);
+            rgb.setValue(0.0f, 0.0f, 0.0f);
         }
         // Now we worry about the internal reflection part
         if (nMaxInternal > 0) {
@@ -372,7 +380,7 @@ class Material implements IRtMaterial {
             intRfl.m_vToEye.setValue(vRfl).reverse();
             if (intersection.m_obj.rayIntersection(reflectedRay, true, intRfl)) {
                 // OK, we have the 'goes out' intersection, get the color coming from that point
-                getInternalColor(rgbRfl, intRfl, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal-1);
+                getInternalColor(rgbRfl, intRfl, intersection.m_obj, lights, rtObjects, bkg, nMaxBounce, nMaxInternal - 1);
                 rgb.add(rgbRfl.scale(Ks));
             } else {
                 // if this happens there is a problem with the object intersection code. There was a ray that way logically
@@ -389,12 +397,12 @@ class Material implements IRtMaterial {
 }
 
 class RayIntersection {
-    public float        m_fDistance;    // the distance to the intersection
-    public Point3f      m_ptLocation;   // the location of the intersection
-    public Vector3f     m_vNormal;      // the surface normal at the intersection
-    public Vector3f     m_vToEye;       // the direction to the eye or the previous intersection.
-    public Material     m_mtl;          // the material of the surface
-    public IRtGeometry  m_obj;          // the object at this intersection
+    public float m_fDistance;    // the distance to the intersection
+    public Point3f m_ptLocation;   // the location of the intersection
+    public Vector3f m_vNormal;      // the surface normal at the intersection
+    public Vector3f m_vToEye;       // the direction to the eye or the previous intersection.
+    public Material m_mtl;          // the material of the surface
+    public IRtGeometry m_obj;          // the object at this intersection
 
     // All of the objects used by the intersection are created at construction
     public RayIntersection() {
@@ -411,15 +419,17 @@ interface IRtGeometry {
     /**
      * Test for a ray intersection closer than <tt>intersection.m_fDistance</tt> and if there is a closer intersection
      * save in information about that intersection in the <tt>intersection</tt>
-     * @param ray The ray being intersected.
+     *
+     * @param ray           The ray being intersected.
      * @param bStartsInside <tt>true</tt> if this ray is inside an object, <tt>false</tt> if this is an
-     * @param intersection The intersection.
+     * @param intersection  The intersection.
      * @return <tt>true</tt> if there is a closer intersection, <tt>false</tt> otherwise.
      */
     boolean rayIntersection(Line3f ray, boolean bStartsInside, RayIntersection intersection);
 
     /**
      * Test for this object blocking the light to <tt>intersection</tt>
+     *
      * @param rayToLight The ray to the light.
      * @param fDistLight The distance to the light.
      * @return <tt>true</tt> if this object casts a shadow, <tt>false</tt> otherwise.
@@ -428,20 +438,20 @@ interface IRtGeometry {
 }
 
 class LightInfo {
-    static public final int             AMBIENT = 0;
-    static public final int             DIRECTIONAL = 1;
-    static public final int             LOCAL = 2;
-    public int      m_nType;                    // type from the constants
-    public RGBf     m_rgb = new RGBf();         // colour (intensity)
-    public float    m_fDist;                    // distance (LOCAL lights only)
+    static public final int AMBIENT = 0;
+    static public final int DIRECTIONAL = 1;
+    static public final int LOCAL = 2;
+    public int m_nType;                    // type from the constants
+    public RGBf m_rgb = new RGBf();         // colour (intensity)
+    public float m_fDist;                    // distance (LOCAL lights only)
     public Vector3f m_vDir = new Vector3f();    // direction (DIRECTIONAL and LOCAL)
-    public Point3f  m_ptFrom = new Point3f();   // pt the light comes from (LOCAL only)
+    public Point3f m_ptFrom = new Point3f();   // pt the light comes from (LOCAL only)
 }
 
-interface IRtLight
-{
+interface IRtLight {
     /**
      * Set a dimmer value for the light, which is a scalar multiplier for the light intensity.
+     *
      * @param fDimmer (float) The dimming factor - usually in the range 0 to 1
      */
     void setDimmer(float fDimmer);
@@ -450,11 +460,12 @@ interface IRtLight
      * Get the lighting information describing how this light illuminates the ray intersection.  The light
      * should check the ray intersection to make sure the intersection actually faces the light, and return
      * <tt>false</tt> if the intersection cannot be illuminated by the light.
+     *
      * @param lightInfo    (LightInfo, modified) The description of the illumination of the intersection by this light.
      * @param intersection (RayIntersection, constant) The description of the ray intersection.
      * @return Returns <tt>true</tt> if this light illuminates the ray intersection and the <tt>lightInfo</tt>
-     *     has been filled in with lighting information, otherwise <tt>false</tt> is returned and the <tt>lightInfo</tt>
-     *     is meaningless (probably unchanged).
+     * has been filled in with lighting information, otherwise <tt>false</tt> is returned and the <tt>lightInfo</tt>
+     * is meaningless (probably unchanged).
      */
     boolean getLight(LightInfo lightInfo, RayIntersection intersection);
 }
@@ -515,8 +526,8 @@ class Sphere3f implements IRtGeometry {
         if (fDet < 0.0f) return -1.0f;  // no intersection - no solution to the quadratic equation
 
         return bStartsInside ?
-                (0.5f * (-fB + (float) Math.sqrt((double)fDet))) :
-                (0.5f * (-fB - (float) Math.sqrt((double)fDet)));
+                (0.5f * (-fB + (float) Math.sqrt((double) fDet))) :
+                (0.5f * (-fB - (float) Math.sqrt((double) fDet)));
     }
 }
 
@@ -590,7 +601,7 @@ class ImplicitPolyhedra implements IRtGeometry {
                         //  need to do anymore testing.
                         return null;
                     }
-                 }
+                }
             } else {
                 // going into the plane - this is important if it is the furthest 'goes into' we've
                 //  encountered so far.

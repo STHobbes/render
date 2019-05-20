@@ -93,8 +93,10 @@ public class Assignment1 implements IRenderScene {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
+
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
+     *
      * @param ray The ray we want the colour for.
      * @return Returns the colour seen by this ray.
      */

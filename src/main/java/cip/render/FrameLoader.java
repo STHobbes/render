@@ -20,24 +20,19 @@
  */
 package cip.render;
 
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.interfaces.IRtCamera;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.*;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import cip.render.utilColour.RGBf;
-
-import java.io.FileOutputStream;
-import java.util.LinkedList;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.FileOutputStream;
+import java.util.LinkedList;
 
 /**
  * This is a frame loader for an XML description of a frame.  The description includes the frame rendering options plus

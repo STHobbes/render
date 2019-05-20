@@ -1,9 +1,34 @@
 # render
 
-status: porting to github, cleanup and update as code and docs are added. 
-version: 0.5  
+![alt text](./resources/images/everything.jpg "sample image") 
+  
+status: currently porting from a moldy old project to github - cleanup and update as code and docs are added to the project. 
+version: 0.55  
 progress: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted.  
 TODO: see [TODO list](./TODO.md)
+
+## Abstract
+This is old ray-tracing code in Java that is easily extensible (good for experimenting with), and makes good images in
+reasonable time on today's hardware. The ray-tracing framework supports single sample per pixel, pixel oversampling, and
+distributed ray tracing (motion blur, depth of field, area lights, blurred reflection, etc).
+
+### How do I Run this in the Comfort of my Very Own Home?
+I work in intellij idea for java development. My project files are included in github, so if you use idea, you have access to
+all of my built, run, and test targets. These are the three versions of the ray-tracer:
+* Single sample per pixel, multi-threaded:  
+    
+  <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXml -d <i>&lt;sceneDescFile&gt;</i></tt>
+  
+* Oversampled pixels, multi-threaded (coming soon):
+  
+  <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXmlOS -d <i>&lt;sceneDescFile&gt;</i></tt>
+  
+* Distributed ray-tracing, multi-threaded (coming soon):
+  
+  <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXmlOSJ -d <i>&lt;sceneDescFile&gt;</i></tt>
+
+where:
+* <tt><i>&lt;sceneDescFile&gt;</i></tt> is the scene description file, examples of which are in the resources folder.
 
 
 ## Overview

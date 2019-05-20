@@ -1,14 +1,12 @@
-
 package cip.render.raytrace.material.texture;
 
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtBackground;
+import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
-
 import org.jetbrains.annotations.NotNull;
 
 public class SpheresTexture extends Checkerboard {

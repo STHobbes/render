@@ -199,7 +199,7 @@ public final class Line3f implements Cloneable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        Line3f line = (Line3f)super.clone();
+        Line3f line = (Line3f) super.clone();
         line.m_next = null;
         return line;
     }
@@ -213,7 +213,7 @@ public final class Line3f implements Cloneable {
      */
     public Line3f cloneLine3f() {
         try {
-            return (Line3f)this.clone();
+            return (Line3f) this.clone();
         } catch (CloneNotSupportedException e) {
             // This will not happen because clone is supported for this object.
         }

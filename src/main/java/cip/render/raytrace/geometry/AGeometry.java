@@ -21,15 +21,15 @@
 
 package cip.render.raytrace.geometry;
 
+import cip.render.DynXmlObjLoader;
+import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
+import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.raytrace.material.Blinn;
-import cip.render.raytrace.RayIntersection;
-import cip.render.DynXmlObjLoader;
-import cip.render.DynXmlObjParseException;
 import cip.render.util.AngleF;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Bv3fIntersection;
@@ -37,12 +37,11 @@ import cip.render.util3d.Line3f;
 import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 
 /**
  * This is an abstract class for a ray tracing geometry.  It offers an implementation of the most common elements
@@ -65,7 +64,9 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     // Turns on/off debug output to System.out.  Debug output is limited to object load and/or instantiation.  There is NEVER
     //  any printed output for operations that would occur inside the rendering loop.
     protected static final boolean DEBUG = true;
-    /** The name for this geometry instance */
+    /**
+     * The name for this geometry instance
+     */
     protected String m_strName = DEFAULT_NAME;  // the geometry name
 
     /**

@@ -20,21 +20,20 @@
  */
 package cip.render.raytrace.background;
 
+import cip.render.DynXmlObjLoader;
+import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
 import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.DynXmlObjLoader;
-import cip.render.DynXmlObjParseException;
 import cip.render.util.AngleF;
 import cip.render.util3d.Line3f;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * A constant colour background - the same colour in all directions.

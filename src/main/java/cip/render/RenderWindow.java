@@ -22,9 +22,9 @@ package cip.render;
 
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 
 /**
  * This is the main for window-centric rendering.  It provides the infrastructure to setup an on-screen window and manage
@@ -75,7 +75,7 @@ import javax.swing.*;
  * @since fall 2002
  */
 public class RenderWindow extends Frame implements ActionListener, WindowListener {
-//    private int m_nSizeX = 1190;         // the initial X size of the app window (my preferred default, adjust to your needs).
+    //    private int m_nSizeX = 1190;         // the initial X size of the app window (my preferred default, adjust to your needs).
 //    private int m_nSizeY = 1216;         // the initial Y size of the app window (my preferred default, adjust to your needs).
     private int m_nSizeX = 565;         // the initial X size of the app window (for images for class website).
     private int m_nSizeY = 574;         // the initial Y size of the app window (for images for class website).
@@ -217,13 +217,13 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
 
         if (JFileChooser.APPROVE_OPTION == m_dlgFileLoad.showOpenDialog(this)) {
             System.out.println(String.format("Open environment dialog returned filename <%s%c%s>",
-                    m_dlgFileLoad.getCurrentDirectory(), java.io.File.separatorChar ,m_dlgFileLoad.getSelectedFile().getName()));
+                    m_dlgFileLoad.getCurrentDirectory(), java.io.File.separatorChar, m_dlgFileLoad.getSelectedFile().getName()));
             m_strRenderSceneDesc = m_dlgFileLoad.getCurrentDirectory().toString() + java.io.File.separatorChar
                     + m_dlgFileLoad.getSelectedFile().getName();
             try {
                 final long startTime = System.currentTimeMillis();
                 m_renderScene.loadScene(m_strRenderSceneDesc);
-                System.out.println(String.format("Frame load time: %dms",System.currentTimeMillis() - startTime));
+                System.out.println(String.format("Frame load time: %dms", System.currentTimeMillis() - startTime));
                 m_canvas.repaint(0, 0, m_canvas.getWidth(), m_canvas.getHeight());
             } catch (final Throwable t) {
                 System.out.println(String.format("error opening scene description <%s%c%s>", m_dlgFileLoad.getCurrentDirectory(),
@@ -253,7 +253,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
                 final java.io.File file = new java.io.File(strFileName);
                 javax.imageio.ImageIO.write(bi, "jpg", file);
             } catch (final Throwable t) {
-                System.out.println(String.format("Error writing image file <%s>",strFileName));
+                System.out.println(String.format("Error writing image file <%s>", strFileName));
                 t.printStackTrace();
             }
         }

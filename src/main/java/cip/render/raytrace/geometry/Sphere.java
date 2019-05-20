@@ -20,21 +20,20 @@
  */
 package cip.render.raytrace.geometry;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.RayIntersection;
-import cip.render.util3d.*;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtLight;
+import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util.AngleF;
-
-import java.util.LinkedList;
-
+import cip.render.util3d.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is the implementation of a sphere of some radius centered at 0,0,0 in the object coordinate system.
@@ -235,7 +234,7 @@ public class Sphere extends AGeometry {
         Quadric3fIntersection qInt = intersection.borrowQuadricInt();
         try {
             m_quadric.getIntersection(qInt, ray, bStartsInside);
-            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE ) {
+            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE) {
                 return false;
             }
             // We got here if the ray intersects the object.  Test the intersection distance - if
@@ -248,7 +247,7 @@ public class Sphere extends AGeometry {
             // Update the intersection structure with information for this intersection
             intersection.m_fDist = fDistTmp;
             ray.pointAtDistance(intersection.m_pt, fDistTmp);
-            m_quadric.getNormal(intersection.m_vNormal,intersection.m_pt);
+            m_quadric.getNormal(intersection.m_vNormal, intersection.m_pt);
             intersection.m_bNatural = false;
             intersection.m_ptObject.setValue(intersection.m_pt);
             intersection.m_vObjNormal.setValue(intersection.m_vNormal);
@@ -259,7 +258,7 @@ public class Sphere extends AGeometry {
         } finally {
             intersection.returnQuadricInt(qInt);
         }
-     }
+    }
     //-------------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -308,7 +307,7 @@ public class Sphere extends AGeometry {
         Quadric3fIntersection qInt = intersection.borrowQuadricInt();
         try {
             m_quadric.getIntersection(qInt, intersection.m_pt, vLight, false);
-            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE ) {
+            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE) {
                 return false;
             }
             // We got here if the ray intersects the object.  Test the intersection distance - if

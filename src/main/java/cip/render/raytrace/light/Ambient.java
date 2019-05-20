@@ -20,17 +20,16 @@
  */
 package cip.render.raytrace.light;
 
-import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.LightInfo;
 import cip.render.DynXmlObjParseException;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * A uniform ambient light source.  The ambient light source is uniform global non-directional illumination.

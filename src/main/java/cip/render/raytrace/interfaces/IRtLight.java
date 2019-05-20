@@ -20,10 +20,10 @@
  */
 package cip.render.raytrace.interfaces;
 
-import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.LightInfo;
-import cip.render.util3d.Point3f;
+import cip.render.raytrace.RayIntersection;
 import cip.render.util2d.Point2f;
+import cip.render.util3d.Point3f;
 
 /**
  * This is the interface for lights that can be used in ray tracing or other illumination tasks.  The interface allows
@@ -44,7 +44,7 @@ public interface IRtLight {
      * the light in area sources.
      *
      * @param nSample    The number of sub-samples (over-samples) per pixel.
-     * @param f1dSample The 1d sample displacement array.  The length of this array will be equal to the number of sub-samples
+     * @param f1dSample  The 1d sample displacement array.  The length of this array will be equal to the number of sub-samples
      *                   per pixel.  This array is for oversampling linear phenomena.
      * @param f1dRandom  The 1d 'jitter' array.  No assumptions should be made about the length of this array.
      * @param pt2dSample The 2d sample displacement array.  The length of this array will be equal to the number of sub-samples
@@ -55,7 +55,7 @@ public interface IRtLight {
      * @param pt3dRandom The 3d 'jitter' array.  No assumptions should be made about the length of this array.
      */
     void initSampling(int nSample, float[] f1dSample, float[] f1dRandom, Point2f[] pt2dSample, Point2f[] pt2dRandom,
-                             Point3f[] pt3dSample, Point3f[] pt3dRandom);
+                      Point3f[] pt3dSample, Point3f[] pt3dRandom);
 
     //-------------------------------------------------------------------------------------------------------------------------
 

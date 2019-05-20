@@ -15,26 +15,24 @@
 
 package cip.render.raytrace.material.texture;
 
-import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtBackground;
+import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.IRtLight;
+import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-import java.lang.Math;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 
 public class Block implements IDynXmlObject, INamedObject, IRtMaterial {

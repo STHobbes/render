@@ -20,30 +20,24 @@
  */
 package cip.render.raytrace.material;
 
-import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.interfaces.IRtG;
-import cip.render.raytrace.interfaces.IRtD;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.LightInfo;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.*;
 import cip.render.util.AngleF;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is an implementation of the Blinn illumination model as described in
@@ -174,11 +168,12 @@ public class Blinn implements IDynXmlObject, INamedObject, IRtMaterial {
     /**
      * Creates a new instance of the <tt>Blinn</tt> illumination model.
      *
-     * @param strName (String) The material name.
-     * @param rgbMtl (RGBf, readonly) The (reflective) material color.
+     * @param strName    (String) The material name.
+     * @param rgbMtl     (RGBf, readonly) The (reflective) material color.
      * @param bConductor (boolean) <tt>true</tt> if the material is a coinductor (metallic), <tt>false</tt> if the material
      *                   is dielectric (plastic, non-metal))
-     * @param aBeta
+     * @param aBeta      (AngleF, readonly) The <i>beta</i> angle, or angle of deviation between <b>N</b> and <b>H</b> when the
+     *                   slope distribution is half the value as when <b>N = H</b>.  Valid values are 2 degree to 45 degree.
      */
     public Blinn(final String strName, final RGBf rgbMtl, final boolean bConductor, final AngleF aBeta) {
         m_strName = strName;
@@ -226,29 +221,40 @@ public class Blinn implements IDynXmlObject, INamedObject, IRtMaterial {
     }
 
     /**
-     * @return
+     * Get whether this material is a conductor or dielectric.
+     *
+     * @return Returns <tt>true</tt> if this material is a conductor, and <tt>false</tt> ifm this material is a dielectric.
      */
-    public final boolean getConductior() {
+    public final boolean getConductor() {
         return m_bConductor;
     }
 
     /**
-     * @param bConductor
+     * Set whether this material is a conductor or dielectric.
+     *
+     * @param bConductor (boolean) <tt>true</tt> if this material is a conductor, and <tt>false</tt> ifm this material
+     *                   is a dielectric.
      */
-    public final void setConductior(final boolean bConductor) {
+    public final void setConductor(final boolean bConductor) {
         m_bConductor = bConductor;
         initForRender();
     }
 
     /**
-     * @param aBeta
+     * Set the specular beta for the material.
+     *
+     * @param aBeta (AngleF,modified) Set to the <i>beta</i> angle, or angle of deviation between <b>N</b> and <b>H</b> when the
+     *              slope distribution is half the value as when <b>N = H</b>.  Valid values are 2 degree to 45 degree.
      */
     public final void getBeta(@NotNull final AngleF aBeta) {
         aBeta.setValue(m_aBeta);
     }
 
     /**
-     * @param aBeta
+     * Set the specular beta for the material.
+     *
+     * @param aBeta (AngleF, readonly) The <i>beta</i> angle, or angle of deviation between <b>N</b> and <b>H</b> when the
+     *              slope distribution is half the value as when <b>N = H</b>.  Valid values are 2 degree to 45 degree.
      */
     public final void setBeta(final AngleF aBeta) {
         m_aBeta.setValue(aBeta);

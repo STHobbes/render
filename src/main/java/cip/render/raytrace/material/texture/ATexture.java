@@ -20,11 +20,11 @@
  */
 package cip.render.raytrace.material.texture;
 
-import cip.render.INamedObject;
 import cip.render.ADynamicNamedObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.INamedObject;
+import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +47,6 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
     protected static final String XML_TAG_MATERIAL_REF_LOWER = XML_TAG_MATERIAL_REF.toLowerCase();
 
     /**
-     *
      * @param xmlElement
      * @param refObjectList
      * @return

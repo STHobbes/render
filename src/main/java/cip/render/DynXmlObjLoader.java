@@ -20,11 +20,11 @@
  */
 package cip.render;
 
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 
 /**
  * This is the loader for dynamically loaded objects from XML files.  The general form of the object

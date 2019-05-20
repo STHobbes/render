@@ -48,6 +48,7 @@ public class AngleF {
     public AngleF m_next = null;
 
     //-------------------------------------------------------------------------------------------------------------------------
+
     /**
      * Creates a new instance of <tt>AngleF</tt>
      */

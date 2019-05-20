@@ -20,18 +20,17 @@
  */
 package cip.render.raytrace.light;
 
-import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.LightInfo;
-import cip.render.util3d.PackageConstants;
 import cip.render.DynXmlObjParseException;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
+import cip.render.util3d.PackageConstants;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * A point light source.  The point light source is a source located in the scene and has a uniform intensity in all directions.

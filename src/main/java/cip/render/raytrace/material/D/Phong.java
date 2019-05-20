@@ -20,18 +20,17 @@
  */
 package cip.render.raytrace.material.D;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtD;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.interfaces.IRtD;
 import cip.render.util.AngleF;
 import cip.render.util3d.Vector3f;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 
 /**
  * The cosine power slope-distribution function introduced by

@@ -10,7 +10,6 @@
 package cip.render.util3d;
 
 /**
- *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0

@@ -35,7 +35,7 @@ import cip.render.utilColour.RGBf;
  * @since 1.0
  */
 public class LightInfo {
-//    // global ObjCache object with full cache tracking
+    //    // global ObjCache object with full cache tracking
 //    private static final ObjCache s_objCache = PackageConstants.NO_CACHE ?
 //            null : (PackageConstants.LOCAL_CACHE ? null : (new ObjCache("LightInfo          ")));
 //    // local cache - no tracking and/or error checking associated with the cache

@@ -31,6 +31,7 @@ public class PackageConstants {
 
     /**
      * Test whether a <tt>float</tt> value should be considered to be 0.0f for graphics.
+     *
      * @param fVal (float) The value to be tested.
      * @return <tt>true</tt> if the value should be considered to be 0.0f, <tt>false</tt> otherwise.
      */
@@ -49,6 +50,7 @@ public class PackageConstants {
 
     /**
      * Test whether a <tt>double</tt> value should be considered to be 0.0 for graphics.
+     *
      * @param dVal (double) The value to be tested.
      * @return <tt>true</tt> if the value should be considered to be 0.0, <tt>false</tt> otherwise.
      */

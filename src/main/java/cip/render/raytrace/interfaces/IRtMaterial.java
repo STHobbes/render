@@ -21,9 +21,9 @@
 package cip.render.raytrace.interfaces;
 
 import cip.render.raytrace.RayIntersection;
-import cip.render.utilColour.RGBf;
-import cip.render.util3d.Point3f;
 import cip.render.util2d.Point2f;
+import cip.render.util3d.Point3f;
+import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

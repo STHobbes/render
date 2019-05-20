@@ -343,8 +343,9 @@ public class Assignment4 implements IRenderScene {
 
     /**
      * Set the color for a pixel in the image.
-     * @param nX (int) The X location of the pixel in the image.
-     * @param nY (int) The Y location of the pixel in the image.
+     *
+     * @param nX  (int) The X location of the pixel in the image.
+     * @param nY  (int) The Y location of the pixel in the image.
      * @param clr (Color, readonly) The color of the pixel.
      */
     void setPixel(final int nX, final int nY, final Color clr) {

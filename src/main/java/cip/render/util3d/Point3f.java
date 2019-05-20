@@ -122,7 +122,7 @@ public class Point3f {
         return this;
     }
 
-   /**
+    /**
      * Get the perpendicular distance from this point to a plane.
      *
      * @param pln The plane

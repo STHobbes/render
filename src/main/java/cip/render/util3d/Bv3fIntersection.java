@@ -13,10 +13,10 @@ package cip.render.util3d;
  * The bounding volume intersection describes the results of a bounding volume intersection test.  For a bounding
  * volume there a 3 possibilities:
  * <ul>
- *      <li><tt>{@link #NO_INTERSECTION}</tt> - the ray starts outside the volume and does not intersect it;</li>
- *      <li><tt>{@link #INTERSECTS_INSIDE}</tt> - the ray starts
- *          inside the bounding volume and, obviously, goes out somewhere;</li>
- *      <li><tt>{@link #INTERSECTS_OUTSIDE}</tt> - or the ray starts outside the bounding volume and intersects it.</li>
+ * <li><tt>{@link #NO_INTERSECTION}</tt> - the ray starts outside the volume and does not intersect it;</li>
+ * <li><tt>{@link #INTERSECTS_INSIDE}</tt> - the ray starts
+ * inside the bounding volume and, obviously, goes out somewhere;</li>
+ * <li><tt>{@link #INTERSECTS_OUTSIDE}</tt> - or the ray starts outside the bounding volume and intersects it.</li>
  * </ul>
  * The intersection test provides a code that characterizes the
  * ray as either a non-intersecting ray or an intersecting ray.  For an intersecting ray, the two intersection
@@ -35,7 +35,6 @@ public class Bv3fIntersection {
     public static final int NO_INTERSECTION = 1;
     /**
      * The ray starts inside the bounding volume and, obviously, goes out somewhere.
-     *
      */
     public static final int INTERSECTS_INSIDE = 2;
     /**

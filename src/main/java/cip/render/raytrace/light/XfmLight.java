@@ -20,20 +20,19 @@
  */
 package cip.render.raytrace.light;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.LightInfo;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util3d.Xfm4x4f;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is a transformed light implementation.  It applies a transform to a light to reposition the
@@ -250,8 +249,8 @@ public class XfmLight extends ALight {
                     m_xfmNormal.transform(lightInfo.m_vDir);
                 }
             } finally {
-                    // return the temporary ray intersection.
-                    intersection.returnIntersection(rayIntTmp);
+                // return the temporary ray intersection.
+                intersection.returnIntersection(rayIntTmp);
             }
         }
         return bRet;

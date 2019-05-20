@@ -20,18 +20,17 @@
  */
 package cip.render.raytrace.material.G;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtG;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.interfaces.IRtG;
 import cip.render.util.AngleF;
 import cip.render.util3d.Vector3f;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 
 /**
  * The geometric attenuation function introduced by Torrance and Sparrow as

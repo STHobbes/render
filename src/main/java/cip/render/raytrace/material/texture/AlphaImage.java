@@ -20,11 +20,11 @@
  */
 package cip.render.raytrace.material.texture;
 
+import cip.render.DynXmlObjParseException;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.DynXmlObjParseException;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,6 +55,7 @@ public class AlphaImage extends ADualMaterialTexture {
         return lclProcessXmlElement(elementTag, xmlElement, refObjectList) ||
                 lclParseAndLoadImage(elementTag, xmlElement);
     }
+
     private boolean lclParseAndLoadImage(final @NotNull String elementTag,
                                          final @NotNull Element xmlElement) throws DynXmlObjParseException {
         return false;
@@ -100,9 +101,9 @@ public class AlphaImage extends ADualMaterialTexture {
             final int imageX = (int) (intersection.m_ptTexture.x * xRes);
             final int imageY = (int) ((1.0 - intersection.m_ptTexture.y) * yRes);
             final int imageRGBA = m_image.getRGB(imageX == xRes ? xRes - 1 : imageX, imageY == yRes ? yRes - 1 : imageY);
-            final float alpha = (float)((imageRGBA & 0x00ff0000) >> 16) / 255.0f;
+            final float alpha = (float) ((imageRGBA & 0x00ff0000) >> 16) / 255.0f;
             rgb1.scale(alpha);
-            rgb2.scale(1-alpha);
+            rgb2.scale(1 - alpha);
             rgb.setValue(rgb1).add(rgb2).scale(0.5f);
 //            if ((imageRGBA & 0x00ff0000) < 0x007f0000) {
 //                intersection.m_mtl = m_mtl2;

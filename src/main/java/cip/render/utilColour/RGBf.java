@@ -9,9 +9,9 @@
  */
 package cip.render.utilColour;
 
-import java.util.StringTokenizer;
-
 import org.w3c.dom.Element;
+
+import java.util.StringTokenizer;
 
 /**
  * A class representing an RGB colour of single precision (the components are represented by <tt>float</tt> values),

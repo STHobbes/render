@@ -20,25 +20,20 @@
  */
 package cip.render.raytrace.geometry;
 
-import cip.render.IDynXmlObject;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
-import cip.render.util3d.ZeroLengthVectorException;
-import cip.render.util3d.Plane3fIntersection;
-import cip.render.util3d.Plane3f;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Vector3f;
-
-import java.util.StringTokenizer;
-import java.util.LinkedList;
-
+import cip.render.IDynXmlObject;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtLight;
+import cip.render.raytrace.interfaces.IRtMaterial;
+import cip.render.util3d.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 /**
  * A convex planar polyhedra described by the plane equations of the faces.

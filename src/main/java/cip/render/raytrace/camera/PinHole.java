@@ -21,16 +21,15 @@
 package cip.render.raytrace.camera;
 
 import cip.render.DynXmlObjParseException;
-import cip.render.util3d.Point3f;
-import cip.render.util3d.Line3f;
 import cip.render.raytrace.RayIntersection;
-
-import java.util.LinkedList;
-
+import cip.render.util3d.Line3f;
+import cip.render.util3d.Point3f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is The implementation of a pin-hole perspective camera.  The pin-hole camera is a camera

@@ -20,24 +20,19 @@
  */
 package cip.render.raytrace.camera;
 
+import cip.render.DynXmlObjLoader;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtCamera;
 import cip.render.raytrace.RayIntersection;
-import cip.render.DynXmlObjLoader;
+import cip.render.raytrace.interfaces.IRtCamera;
 import cip.render.util.AngleF;
 import cip.render.util2d.Point2f;
-import cip.render.util3d.Point3f;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Vector3f;
-import cip.render.util3d.Xfm4x4f;
-import cip.render.util3d.ZeroLengthVectorException;
-
-import java.util.StringTokenizer;
-
+import cip.render.util3d.*;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.StringTokenizer;
 
 /**
  * This is an abstract class for a ray tracing camera.  It offers an implementation of the most common elements
@@ -153,15 +148,15 @@ public abstract class ACamera implements IDynXmlObject, INamedObject, IRtCamera 
                 m_ptTarget.y = Float.parseFloat(tokens.nextToken().trim());
                 m_ptTarget.z = Float.parseFloat(tokens.nextToken().trim());
                 m_fTargetDist = (float) Math.sqrt(
-                        ((m_ptTarget.x - m_xfmOrientation.get(0,3)) * (m_ptTarget.x - m_xfmOrientation.get(0,3))) +
-                        ((m_ptTarget.y - m_xfmOrientation.get(1,3)) * (m_ptTarget.y - m_xfmOrientation.get(1,3))) +
-                        ((m_ptTarget.z - m_xfmOrientation.get(2,3)) * (m_ptTarget.z - m_xfmOrientation.get(2,3))));
+                        ((m_ptTarget.x - m_xfmOrientation.get(0, 3)) * (m_ptTarget.x - m_xfmOrientation.get(0, 3))) +
+                                ((m_ptTarget.y - m_xfmOrientation.get(1, 3)) * (m_ptTarget.y - m_xfmOrientation.get(1, 3))) +
+                                ((m_ptTarget.z - m_xfmOrientation.get(2, 3)) * (m_ptTarget.z - m_xfmOrientation.get(2, 3))));
             } else if (!strTranslate.equals("")) {
                 // the camera position was set, use the new camera position and distance to reset the target
                 m_bSetCamEye = true;
-                m_ptTarget.x = m_xfmOrientation.get(0,3) + (m_fTargetDist * m_vView.i);
-                m_ptTarget.y = m_xfmOrientation.get(1,3) + (m_fTargetDist * m_vView.j);
-                m_ptTarget.z = m_xfmOrientation.get(2,3) + (m_fTargetDist * m_vView.k);
+                m_ptTarget.x = m_xfmOrientation.get(0, 3) + (m_fTargetDist * m_vView.i);
+                m_ptTarget.y = m_xfmOrientation.get(1, 3) + (m_fTargetDist * m_vView.j);
+                m_ptTarget.z = m_xfmOrientation.get(2, 3) + (m_fTargetDist * m_vView.k);
             }
 
         } else if (element.getTagName().equalsIgnoreCase(XML_TAG_TARGET_WID)) {
@@ -184,9 +179,9 @@ public abstract class ACamera implements IDynXmlObject, INamedObject, IRtCamera 
             }
             if (m_bSetCamEye) {
                 // an explicit camera position was specified - reset the target point
-                m_ptTarget.x = m_xfmOrientation.get(0,3) + (m_fTargetDist * m_vView.i);
-                m_ptTarget.y = m_xfmOrientation.get(1,3) + (m_fTargetDist * m_vView.j);
-                m_ptTarget.z = m_xfmOrientation.get(2,3) + (m_fTargetDist * m_vView.k);
+                m_ptTarget.x = m_xfmOrientation.get(0, 3) + (m_fTargetDist * m_vView.i);
+                m_ptTarget.y = m_xfmOrientation.get(1, 3) + (m_fTargetDist * m_vView.j);
+                m_ptTarget.z = m_xfmOrientation.get(2, 3) + (m_fTargetDist * m_vView.k);
             }
         } else {
             return false;
@@ -195,9 +190,9 @@ public abstract class ACamera implements IDynXmlObject, INamedObject, IRtCamera 
     }
 
     protected void resetCamVectors() {
-        m_vView.setValue(-m_xfmOrientation.get(0,1), -m_xfmOrientation.get(1,1), -m_xfmOrientation.get(2,1));
-        m_vSide.setValue(-m_xfmOrientation.get(0,0), -m_xfmOrientation.get(1,0), -m_xfmOrientation.get(2,0));
-        m_vUp.setValue(m_xfmOrientation.get(0,2), m_xfmOrientation.get(1,2), m_xfmOrientation.get(2,2));
+        m_vView.setValue(-m_xfmOrientation.get(0, 1), -m_xfmOrientation.get(1, 1), -m_xfmOrientation.get(2, 1));
+        m_vSide.setValue(-m_xfmOrientation.get(0, 0), -m_xfmOrientation.get(1, 0), -m_xfmOrientation.get(2, 0));
+        m_vUp.setValue(m_xfmOrientation.get(0, 2), m_xfmOrientation.get(1, 2), m_xfmOrientation.get(2, 2));
     }
 
     // Called at the end of parsing to initialize the camera for rendering

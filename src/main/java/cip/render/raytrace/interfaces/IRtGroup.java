@@ -20,8 +20,6 @@
  */
 package cip.render.raytrace.interfaces;
 
-import cip.render.raytrace.interfaces.IRtLight;
-
 import java.util.List;
 
 /**

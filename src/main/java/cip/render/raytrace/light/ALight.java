@@ -20,21 +20,20 @@
  */
 package cip.render.raytrace.light;
 
-import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.LightInfo;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
-
-import java.util.LinkedList;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 
 /**
  * @author roy

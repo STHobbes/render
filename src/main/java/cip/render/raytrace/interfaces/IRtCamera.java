@@ -22,8 +22,8 @@ package cip.render.raytrace.interfaces;
 
 import cip.render.raytrace.RayIntersection;
 import cip.render.util2d.Point2f;
-import cip.render.util3d.Point3f;
 import cip.render.util3d.Line3f;
+import cip.render.util3d.Point3f;
 
 /**
  * This is the interface to a camera used in a ray-traced scene.  The basic function of the camera in the context

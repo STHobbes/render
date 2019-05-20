@@ -20,20 +20,19 @@
  */
 package cip.render.raytrace.material.texture;
 
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjParseException;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.IRtBackground;
+import cip.render.raytrace.interfaces.IRtGeometry;
+import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.utilColour.RGBf;
-
-import java.util.LinkedList;
-import java.util.StringTokenizer;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 /**
  * Maps every unit square (in 2D) or cube (in 3D) into either an outline material or an infill material.  Within each
@@ -170,7 +169,7 @@ public class Outlined extends ADualMaterialTexture {
     }
 
     protected void lclAppendChildElements(final @NotNull Element element) {
-        lclAppendMaterials(element, "outlineMtl", "infillMtl" );
+        lclAppendMaterials(element, "outlineMtl", "infillMtl");
         // outline width
         final Element elWidth = element.getOwnerDocument().createElement(XML_TAG_WIDTH);
         element.appendChild(elWidth);

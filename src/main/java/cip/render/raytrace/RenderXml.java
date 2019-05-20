@@ -84,6 +84,7 @@ public class RenderXml implements IRenderScene {
     //-------------------------------------------------------------------------------------------------------------------------
     // RenderPixel
     //-------------------------------------------------------------------------------------------------------------------------
+
     /**
      * This is the implementation of a pixel renderer intended to be run in a rendering thread.  The pixel renderer asks the
      * parent renderer pixel dispatcher (really a sample dispatcher) for a pixel (sample); gets its colour, and gives it to
@@ -99,6 +100,7 @@ public class RenderXml implements IRenderScene {
 
         /**
          * Instantiate a pixel render to be run in a rendering thread.
+         *
          * @param parent (RenderXml) The parent renderer
          */
         RenderPixel(final RenderXml parent) {
@@ -383,8 +385,9 @@ public class RenderXml implements IRenderScene {
 
     /**
      * Set the color for a pixel in the image.
-     * @param nX (int) The X location of the pixel in the image.
-     * @param nY (int) The Y location of the pixel in the image.
+     *
+     * @param nX  (int) The X location of the pixel in the image.
+     * @param nY  (int) The Y location of the pixel in the image.
      * @param clr (Color, readonly) The color of the pixel.
      */
     void setSampleColor(final int nX, final int nY, final Color clr) {

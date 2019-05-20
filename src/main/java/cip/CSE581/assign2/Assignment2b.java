@@ -52,8 +52,10 @@ public class Assignment2b extends Assignment2a {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
+
     /**
      * Get the colour for a pixel (really, get the color for a view ray).
+     *
      * @param ray The ray we want the colour for.
      * @return Returns the colour seen by this ray.
      */
@@ -81,7 +83,7 @@ public class Assignment2b extends Assignment2a {
                 // compute the ambient
                 final RGBf rgb = new RGBf(intersection.m_rgb).mult(m_rgbAmbientLgt);
                 // add the diffuse
-                final Line3f rayLight = new Line3f(intersection.m_pt,m_ptPointLgt);
+                final Line3f rayLight = new Line3f(intersection.m_pt, m_ptPointLgt);
                 final RayIntersection lightIntersection = new RayIntersection(m_rgbBkg);
                 // If the light can get to the intersection then add the diffuse
                 lightIntersection.m_fDist = intersection.m_pt.getDistanceTo(m_ptPointLgt);

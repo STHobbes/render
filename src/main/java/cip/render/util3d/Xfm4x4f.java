@@ -112,6 +112,7 @@ public class Xfm4x4f {
 
     /**
      * Get the value of an element of the transformation.
+     *
      * @param row (int) The row of the element.
      * @param col (int) The column of the element.
      * @return (float) Returns the eelment.
@@ -695,7 +696,7 @@ public class Xfm4x4f {
 
     public final void transpose() {
         float temp;
-        for (int row=0; row<4; row++) {
+        for (int row = 0; row < 4; row++) {
             for (int col = row + 1; col < 4; col++) {
                 temp = this.xfm[row][col];
                 this.xfm[row][col] = this.xfm[col][row];
@@ -797,7 +798,7 @@ public class Xfm4x4f {
      */
     //
     // Reference: Press, Flannery, Teukolsky, Vetterling,
-    //        _Numerical_Recipes_in_C_, Cambridge University Press,
+    //        Numerical Recipes in C, Cambridge University Press,
     //        1988, pp 40-45.
     //
     private static boolean luDecomposition(final @NotNull double[] matrix0,
@@ -945,13 +946,13 @@ public class Xfm4x4f {
      * with the inverse of the matrix from which "matrix1" was originally
      * derived.
      *
-     * @param matrix1 (readonly) The decomposed matrix
+     * @param matrix1  (readonly) The decomposed matrix
      * @param row_perm (readonly) Th row permutation array.
-     * @param matrix2 (modified) and identity matrix.
+     * @param matrix2  (modified) and identity matrix.
      */
     //
     // Reference: Press, Flannery, Teukolsky, Vetterling,
-    //        _Numerical_Recipes_in_C_, Cambridge University Press,
+    //        Numerical Recipes in C, Cambridge University Press,
     //        1988, pp 44-45.
     //
     private static void luBackSubstitution(final double[] matrix1,
@@ -1013,6 +1014,7 @@ public class Xfm4x4f {
 
     /**
      * Inverts this transform and returns the result in this transformation.
+     *
      * @return Returns this transformation.
      */
     public @NotNull Xfm4x4f invert() {
@@ -1021,9 +1023,10 @@ public class Xfm4x4f {
     }
 
     /**
+     * Invert this transformation into the supplied transformation.
      *
-     * @param inverse
-     * @return
+     * @param inverse (Xfm4x4f, modified) The transformation that will be set to the inverse.
+     * @return Returns the inverse transformation <tt>inverse</tt>.
      */
     public @NotNull Xfm4x4f invert(@NotNull Xfm4x4f inverse) {
         inverse.invertGeneral(this);
@@ -1040,10 +1043,10 @@ public class Xfm4x4f {
      */
     public Xfm4x4f preMul(final Xfm4x4f xfm) {
         final Xfm4x4f xfmTmp = new Xfm4x4f(this);
-        for (int row=0; row<4; row++) {
-            for (int col=0; col < 4; col++) {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
                 this.xfm[row][col] = 0.0f;
-                for (int i=0; i<4; i++) {
+                for (int i = 0; i < 4; i++) {
                     this.xfm[row][col] += (xfm.xfm[row][i] * xfmTmp.xfm[i][col]);
                 }
             }
@@ -1052,7 +1055,6 @@ public class Xfm4x4f {
     }
 
     /**
-     *
      * @param srs00
      * @param srs01
      * @param srs02
@@ -1071,7 +1073,7 @@ public class Xfm4x4f {
         //  eliminate the need to borrow an intermediate transformation when performing a scale, rotate, or shear operation.
         float c0, c1, c2;     // the temporary column - we process this transform by column - these are the untransformed
         // state of the column
-        for (int col=0; col < 3; col++) {
+        for (int col = 0; col < 3; col++) {
             c0 = xfm[0][col];
             c1 = xfm[1][col];
             c2 = xfm[2][col];
@@ -1096,7 +1098,7 @@ public class Xfm4x4f {
     /**
      * Transform a point into a target point.
      *
-     * @param pt (Point3f, readonly) The point to be transformed.
+     * @param pt    (Point3f, readonly) The point to be transformed.
      * @param xfmPt (Point3f, modified) The point to receive the transformed point (the target point).
      * @return Returns the transformed point, <tt>xfmPt</tt>.
      */
@@ -1110,8 +1112,8 @@ public class Xfm4x4f {
     /**
      * Transform an array of points in place.
      *
-     * @param pts
-     * @return
+     * @param pts (Point3f[], modified) The array of points to be transformed.
+     * @return Returns the transformed point array <tt>pts</tt>.
      */
     public Point3f[] transform(final Point3f[] pts) {
         for (int iPt = pts.length; --iPt >= 0; ) {
@@ -1134,7 +1136,7 @@ public class Xfm4x4f {
     /**
      * Transform an vector into a target vector.
      *
-     * @param v (Vector3f, readonly) The vector to be transformed.
+     * @param v    (Vector3f, readonly) The vector to be transformed.
      * @param xfmV (Vector3f, modified) The vector to receive the transformed vector (the target vector).
      * @return Returns the transformed vector, <tt>xfmV</tt>.
      */
@@ -1148,11 +1150,11 @@ public class Xfm4x4f {
     /**
      * Transform an array of vectors into a target vector array.
      *
-     * @param vs (Vector3f[], readonly) An array of vectors to be transformed.
+     * @param vs    (Vector3f[], readonly) An array of vectors to be transformed.
      * @param xfmVs (Vector3f[], modified) An array of vectors to receive the transformed vectors.
      * @return Returns the transformed vector array, <tt>xfmVs</tt>.
      */
-    public Vector3f[] transform(final Vector3f[] vs,  final Vector3f[] xfmVs) {
+    public Vector3f[] transform(final Vector3f[] vs, final Vector3f[] xfmVs) {
         for (int iV = vs.length; --iV >= 0; ) {
             transform(vs[iV], xfmVs[iV]);
         }

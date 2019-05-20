@@ -20,34 +20,28 @@
  */
 package cip.render.raytrace.material;
 
-import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.raytrace.interfaces.IRtG;
-import cip.render.raytrace.interfaces.IRtD;
-import cip.render.raytrace.interfaces.IRtLight;
-import cip.render.raytrace.interfaces.IRtGeometry;
-import cip.render.raytrace.interfaces.IRtBackground;
-import cip.render.raytrace.LightInfo;
-import cip.render.raytrace.RayIntersection;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
+import cip.render.raytrace.LightInfo;
+import cip.render.raytrace.RayIntersection;
+import cip.render.raytrace.interfaces.*;
 import cip.render.util.AngleF;
 import cip.render.util2d.Point2f;
-import cip.render.util3d.Point3f;
 import cip.render.util3d.Line3f;
+import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
-import cip.render.utilColour.FresnelDielectric;
-import cip.render.utilColour.RGBf;
 import cip.render.utilColour.Fresnel;
 import cip.render.utilColour.FresnelConductor;
-
-import java.util.LinkedList;
-
+import cip.render.utilColour.FresnelDielectric;
+import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 /**
  * This is an implementation of the Hall illumination model as described in
@@ -235,10 +229,10 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
     /**
      * Creates a new instance of the <tt>Hall</tt> illumination model.
      *
-     * @param strName The illumination model name.
-     * @param rgbMtl The RGB diffuse color of the material.
+     * @param strName    The illumination model name.
+     * @param rgbMtl     The RGB diffuse color of the material.
      * @param bConductor <tt>true</tt> if the material is a conductor (metal), <tt>false</tt> otherwise.
-     * @param aBeta The angle at which reflection drops to 0.5 (roughness).
+     * @param aBeta      The angle at which reflection drops to 0.5 (roughness).
      */
     public Hall(final String strName, final RGBf rgbMtl, final boolean bConductor, final AngleF aBeta) {
         m_strName = strName;

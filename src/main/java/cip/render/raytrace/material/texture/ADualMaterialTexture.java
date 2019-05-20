@@ -20,9 +20,9 @@
  */
 package cip.render.raytrace.material.texture;
 
+import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
 import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.DynXmlObjParseException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
@@ -60,7 +60,7 @@ public abstract class ADualMaterialTexture extends ATexture {
     }
 
     protected void lclAppendChildElements(final @NotNull Element element) {
-        lclAppendMaterials(element, "material1", "material2" );
+        lclAppendMaterials(element, "material1", "material2");
     }
 
     protected final void lclAppendMaterials(final @NotNull Element element, final @NotNull String mtl1Name,

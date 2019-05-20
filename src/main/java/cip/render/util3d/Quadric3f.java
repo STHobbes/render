@@ -155,8 +155,6 @@ public class Quadric3f {
      */
     private boolean isConvex = true;
 
-    //-------------------------------------------------------------------------------------------------------------------------
-
     /**
      * Creates a new instance of <tt>Quadric3f</tt> initialized to a unit sphere.
      */
@@ -340,6 +338,7 @@ public class Quadric3f {
                 return 0.0f;
         }
     }
+
     /**
      * Inquire whether this quadric is convex.
      *
@@ -349,6 +348,7 @@ public class Quadric3f {
     public boolean isConvex() {
         return isConvex;
     }
+
     /**
      * Tests whether a point is inside ot outside a quadric. This might be interesting, for example, for a travelling camera that
      * passes into a crystal ball.
@@ -387,7 +387,7 @@ public class Quadric3f {
         //      a t^2 + b t + c = 0
         // are:
         //      t = -b +- sqrt(b^2 - 4ac) / 2a 
-       if (PackageConstants.isZero(fA)) {
+        if (PackageConstants.isZero(fA)) {
             // This is the case where there is only one root and the quadratic equation breaks down due to
             //  divide by zero.  The quadratic reduces to bt + c = 0 and the root is t = -c/b
             if (PackageConstants.isZero(fB)) {
