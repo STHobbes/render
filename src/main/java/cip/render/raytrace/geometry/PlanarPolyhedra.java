@@ -22,6 +22,7 @@ package cip.render.raytrace.geometry;
 
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtLight;
@@ -124,6 +125,7 @@ public class PlanarPolyhedra extends AGeometry {
      * Creates a new instance of <tt>PlanarPolyhedra</tt>
      */
     public PlanarPolyhedra() {
+        m_strName = "PlanarPolyhedra";
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
@@ -148,7 +150,8 @@ public class PlanarPolyhedra extends AGeometry {
         addFace(pln.m_fA, pln.m_fB, pln.m_fC, pln.m_fD, mtl);
     }
 
-    public void addFace(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl) throws ZeroLengthVectorException {
+    public void addFace(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl)
+            throws ZeroLengthVectorException {
         // The faces are kept in a fixed length array for fastest traversal during ray tracing.  This means we need to allocate
         //  a new vector and copy face references from the old vector.
         final Face tmpFace = new Face(fA, fB, fC, fD, mtl);    // in case it throws an exception;
@@ -169,12 +172,14 @@ public class PlanarPolyhedra extends AGeometry {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             final LinkedList faceListTmp = new LinkedList();
             while (null != domNode) {
                 if (domNode instanceof Element) {
+                    IRtMaterial mtl;
                     final Element element = (Element) domNode;
                     if (element.getTagName().equalsIgnoreCase(XML_TAG_FACE)) {
                         // a face element - get the plane, and there may be a material for the face.
@@ -187,41 +192,20 @@ public class PlanarPolyhedra extends AGeometry {
                         final float fB = Float.parseFloat(tokens.nextToken().trim());
                         final float fC = Float.parseFloat(tokens.nextToken().trim());
                         final float fD = Float.parseFloat(tokens.nextToken().trim());
-                        IRtMaterial mtl = null;
+                        IRtMaterial mtlFace = null;
                         Node mtlNode = element.getFirstChild();
                         while (null != mtlNode) {
                             final Element mtlEl = (Element) mtlNode;
-                            if (mtlEl.getTagName().equalsIgnoreCase(DynXmlObjLoader.XML_TAG)) {
-                                // Should be a material - that is the only dynamically loaded object that can be used
-                                final Object obj = DynXmlObjLoader.LoadObject(mtlEl, refObjectList);
-                                if (obj instanceof IRtMaterial) {
-                                    mtl = (IRtMaterial) obj;
-                                } else {
-                                    throw new DynXmlObjParseException("PlanarPolyhedra.face: " + m_strName + " material could not be parsed");
-                                }
-                            } else if (mtlEl.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF)) {
-                                final String strName = mtlEl.getAttribute(XML_TAG_REF_NAME_ATTR);
-                                mtl = resolveMaterialRef(strName, refObjectList);
+                            if (null != (mtlFace = FrameLoader.tryParseMaterial(mtlEl, refObjectList, m_strTyoe, m_strName))) {
+                                break;
                             }
-                            if (null != mtl) break;
                             mtlNode = mtlNode.getNextSibling();
                         }
-                        faceListTmp.add(new Face(fA, fB, fC, fD, mtl));
-                    } else if (element.getTagName().equalsIgnoreCase(DynXmlObjLoader.XML_TAG)) {
-                        // Should be a material - that is the only dynamically loaded object that can be used
-                        final Object obj = DynXmlObjLoader.LoadObject(element, refObjectList);
-                        if (obj instanceof IRtMaterial) {
-                            m_mtl = (IRtMaterial) obj;
-                        } else {
-                            throw new DynXmlObjParseException("PlanarPolyhedra " + m_strName + " material could not be parsed");
-                        }
-                    } else if (element.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF)) {
-                        // a material reference
-                        final String strName = element.getAttribute(XML_TAG_REF_NAME_ATTR);
-                        m_mtl = resolveMaterialRef(strName, refObjectList);
+                        faceListTmp.add(new Face(fA, fB, fC, fD, mtlFace));
+                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strTyoe, m_strName))) {
+                        m_mtl = mtl;
                     } else {
-                        throw new DynXmlObjParseException("Unrecognized PlanarPolyhedra XML description element <" +
-                                element.getTagName() + ">.");
+                        pkgThrowUnrecognizedXml(element);
                     }
                 }
                 domNode = domNode.getNextSibling();

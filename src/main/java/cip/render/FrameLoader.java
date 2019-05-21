@@ -24,6 +24,8 @@ import cip.render.raytrace.interfaces.*;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import cip.render.utilColour.RGBf;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -175,6 +177,7 @@ public class FrameLoader {
     private static final String XML_TAG_LIB_OBJ = "LibraryObjects";
     private static final String XML_TAG_GEOMETRY_REF = "GeometryByRef";
     private static final String XML_TAG_LIGHT_REF = "LightByRef";
+    private static final String XML_TAG_MATERIAL_REF = "MaterialByRef";
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
 
     private static final String XML_ATTR_DIMMER = "dimmer";
@@ -338,8 +341,42 @@ public class FrameLoader {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-
+    /**
+     * A method that can be called by geometry and texture loaders to try to parse a material or a reference to a material.
+     *
+     * @param element (not null, readonly) The XML element this methods will try to parse as a material.
+     * @param refObjectList (nullable, readonly) The reference object list.
+     * @param strObjType (not null) The calling object type, to be used in error messages.
+     * @param strObjName (not null) The calling object name in the scene description file, to be used in error messages.
+     * @return Returns <tt>null</tt> if this element is NOT a dynamically loaded material or material reference.
+     * @throws DynXmlObjParseException Thrown if an in-line material has a parsing error or if a material reference cannot be
+     * found in the reference object list.
+     */
+    public static IRtMaterial tryParseMaterial(@NotNull final Element element, final @Nullable LinkedList refObjectList,
+                                               @NotNull final String strObjType, @NotNull final String strObjName)
+            throws DynXmlObjParseException {
+        if (element.getTagName().equalsIgnoreCase(DynXmlObjLoader.XML_TAG)) {
+            // Should be a material - that is the only dynamically loaded object that can be used
+            final Object obj = DynXmlObjLoader.LoadObject(element, refObjectList);
+            if (obj instanceof IRtMaterial) {
+                return (IRtMaterial) obj;
+            } else {
+                throw new DynXmlObjParseException(String.format("%s %s material could not be parsed",strObjType, strObjName));
+            }
+        } else if (element.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF)) {
+            // a material reference
+            final String strName = element.getAttribute(XML_TAG_REF_NAME_ATTR);
+            if (!strName.equals("") && (null != refObjectList)) {
+                for (final Object obj : refObjectList) {
+                    if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {
+                        return (IRtMaterial) obj;
+                    }
+                }
+            }
+            throw new DynXmlObjParseException(String.format("Referenced material \"%s\" was not found.",strName));
+        }
+        return null;
+    }
     /**
      * Initialize all the loaded objects in the scene for sampling or oversampling.  This function should be called between
      * the time the frame is loaded and when you start to get the loaded elements from the frame.  It loops through all the
@@ -376,7 +413,6 @@ public class FrameLoader {
             }
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Return the camera.  If a camera is not specified in the scene description file, this defaults to a front view through
@@ -482,7 +518,7 @@ public class FrameLoader {
     /**
      * This main is for the express purpose of testing the loader.  It reads an XML scene description then writes it
      * back out from the loaded description.  This tests both the scene loading at a high level, and the
-     * {@link cip.render.raytrace.interfaces.IDynXmlObject} implementation at an object level.  In the current implementation of
+     * {@link cip.render.IDynXmlObject} implementation at an object level.  In the current implementation of
      * the test, there is no automatic comparison of the input and output for equivalence.  This must be done
      * by visual inspection of the output files.
      * <p>

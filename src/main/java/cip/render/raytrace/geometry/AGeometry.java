@@ -54,30 +54,33 @@ import java.util.LinkedList;
 public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeometry {
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
     protected static final String XML_TAG_GEOMETRY_REF = "GeometryByRef";
-    protected static final String XML_TAG_MATERIAL_REF = "MaterialByRef";
 
     protected static final String DEFAULT_NAME = "<unspecified>";
 
-    protected static final IRtMaterial DEFAULT_MATERIAL = new Blinn("default", new RGBf(0.0f, 1.0f, 0.0f),
+    static final IRtMaterial DEFAULT_MATERIAL = new Blinn("default", new RGBf(0.0f, 1.0f, 0.0f),
             false, new AngleF(AngleF.DEGREES, 45.0f));
 
-    // Turns on/off debug output to System.out.  Debug output is limited to object load and/or instantiation.  There is NEVER
-    //  any printed output for operations that would occur inside the rendering loop.
-    protected static final boolean DEBUG = true;
     /**
-     * The name for this geometry instance
+     * The name for this geometry instance which is used when referencing a geometry by name
      */
-    protected String m_strName = DEFAULT_NAME;  // the geometry name
+    protected String m_strName = DEFAULT_NAME;  // the object instance name
+
+    /**
+     * The name of the type (sphere, ellipsoid, cylinder, planar polyhedra, etc) for use in error messaging.
+     */
+    protected String m_strTyoe = DEFAULT_NAME;  // the geometry type name
+
+    protected IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the primary object material
 
     /**
      * Creates a new instance of <tt>AGeometry</tt>.
      */
-    public AGeometry() {
+    AGeometry() {
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * The geometry implementation must override this function to load the geometry from the XML node.
@@ -107,8 +110,9 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * Override this function to add object-specific information to an XML node.
      *
      * @param element The dynamically loaded object node that the object-specific information should be written into. The
-     *                {@link cip.render.raytrace.geometry.AGeometry#loadFromXml(org.w3c.dom.Element, LinkedList)} funtion must be overridden by
-     *                the geometry implementation to be able to read the object-specific information set by the object here.
+     *                {@link cip.render.raytrace.geometry.AGeometry#loadFromXml(org.w3c.dom.Element, LinkedList)} funtcion must
+     *                be overridden by the geometry implementation to be able to read the object-specific information set by
+     *                the object here.
      */
     protected void internalToXml(final Element element) {
     }
@@ -131,33 +135,18 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
                 }
             }
         }
-        throw new DynXmlObjParseException("Referenced geometry \"" + strName + "\" was not found.");
+        throw new DynXmlObjParseException(String.format("Referenced geometry \"%s\" was not found.",strName));
     }
 
-    /**
-     * Resolve a material reference by finding the material in the reference object list.  This is typically used by
-     * the implementation of a geometry that contains other materials that are specified by reference in the XML
-     * geometry specification.
-     *
-     * @param strName       The name of the material that will be located in the reference object list.
-     * @param refObjectList The reference object list.
-     * @return Returns the named material from the reference object list.
-     * @throws DynXmlObjParseException Thrown if the material cannot be found in the reference object list.
-     */
-    protected IRtMaterial resolveMaterialRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
-        if (!strName.equals("") && (null != refObjectList)) {
-            for (final Object obj : refObjectList) {
-                if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {
-                    return (IRtMaterial) obj;
-                }
-            }
-        }
-        throw new DynXmlObjParseException("Referenced material \"" + strName + "\" was not found.");
+    void pkgThrowUnrecognizedXml(Element element) throws DynXmlObjParseException {
+        throw new DynXmlObjParseException(String.format("Unrecognized %s XML description element <%s>",
+                m_strName, element.getTagName() ));
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // INamedObject interface implementation                                                                                 //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // INamedObject interface implementation                                                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public @NotNull String getName() {
         return m_strName;
@@ -168,12 +157,12 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         m_strName = strName;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtGeometry interface implementation                                                                                  //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtGeometry interface implementation                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void initSampling(final int nSample, final float[] f1dSample, final float[] f1dRandom, final Point2f[] pt2dSample, final Point2f[] pt2dRandom,
-                             final Point3f[] pt3dSample, final Point3f[] pt3dRandom) {
+    public void initSampling(final int nSample, final float[] f1dSample, final float[] f1dRandom, final Point2f[] pt2dSample,
+                             final Point2f[] pt2dRandom, final Point3f[] pt3dSample, final Point3f[] pt3dRandom) {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
@@ -239,7 +228,8 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * current intersection, and <tt>false</tt> otherwise.
      */
     @Override
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside, final int nSample, final int nRandom) {
+    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside,
+                                      final int nSample, final int nRandom) {
         return false;
     }
 
@@ -281,11 +271,12 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      *                     and a geometry and the geometry of the light should not be tested for casting a shadow from that light.
      * @param nSample      The pixel sub-sample index.  This is used in distributed ray-tracing to make sure
      *                     the correct sample displacement is used for samples that are distributed.
-     * @param nRandom      The jitter array index..
+     * @param nRandom      The jitter array index.
      * @return Returns <tt>true</tt> if this object casts a shadow from the light and <tt>false</tt>
      * otherwise.
      */
-    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight, final IRtLight light, final int nSample, final int nRandom) {
+    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight,
+                              final IRtLight light, final int nSample, final int nRandom) {
         return false;
     }
 

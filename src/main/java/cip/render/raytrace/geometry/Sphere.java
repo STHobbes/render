@@ -20,8 +20,8 @@
  */
 package cip.render.raytrace.geometry;
 
-import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
+import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtLight;
@@ -95,19 +95,20 @@ import java.util.LinkedList;
  * @since 1.0
  */
 public class Sphere extends AGeometry {
-    private static final String XML_TAG_RADIUS = "radius";
+    protected static final String XML_TAG_RADIUS = "radius";
 
     // The instance definition
-    private IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the sphere material
+//    protected IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the sphere material
     protected Quadric3f m_quadric = new Quadric3f();
 
     /**
      * Creates a new instance of <tt>Sphere</tt>.
      */
     public Sphere() {
+        m_strName = "sphere";
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     public IRtMaterial getMaterial() {
         return m_mtl;
     }
@@ -124,9 +125,9 @@ public class Sphere extends AGeometry {
         m_quadric.setEllipsoid(fRadius, fRadius, fRadius);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
             throws DynXmlObjParseException {
         try {
@@ -134,6 +135,7 @@ public class Sphere extends AGeometry {
             while (null != domNode) {
                 if (domNode instanceof Element) {
                     final Element element = (Element) domNode;
+                    IRtMaterial mtl;
                     if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
                         Node textNode = element.getFirstChild();
                         while (null != textNode) {
@@ -143,21 +145,10 @@ public class Sphere extends AGeometry {
                             }
                             textNode = textNode.getNextSibling();
                         }
-                    } else if (element.getTagName().equalsIgnoreCase(DynXmlObjLoader.XML_TAG)) {
-                        // Should be a material - that is the only dynamically loaded object that can be used
-                        final Object obj = DynXmlObjLoader.LoadObject(element, refObjectList);
-                        if (obj instanceof IRtMaterial) {
-                            m_mtl = (IRtMaterial) obj;
-                        } else {
-                            throw new DynXmlObjParseException("Sphere " + m_strName + " material could not be parsed");
-                        }
-                    } else if (element.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF)) {
-                        // a material reference
-                        final String strName = element.getAttribute(XML_TAG_REF_NAME_ATTR);
-                        m_mtl = resolveMaterialRef(strName, refObjectList);
+                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strTyoe, m_strName))) {
+                        m_mtl = mtl;
                     } else {
-                        throw new DynXmlObjParseException("Unrecognized sphere XML description element <" +
-                                element.getTagName() + ">.");
+                        pkgThrowUnrecognizedXml(element);
                     }
                 }
                 domNode = domNode.getNextSibling();
@@ -170,8 +161,6 @@ public class Sphere extends AGeometry {
             }
         }
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------
     protected void internalToXml(final Element element) {
         // The radius
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
@@ -298,12 +287,8 @@ public class Sphere extends AGeometry {
 
     //-------------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Tests a ray for a shadow intersection with a sphere.  See {@link cip.render.raytrace.interfaces.IRtGeometry}
-     * description of testShadow().
-     */
-    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight, final IRtLight light,
-                              final int nSample, final int nRandom) {
+    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight,
+                              final IRtLight light, final int nSample, final int nRandom) {
         Quadric3fIntersection qInt = intersection.borrowQuadricInt();
         try {
             m_quadric.getIntersection(qInt, intersection.m_pt, vLight, false);

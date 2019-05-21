@@ -43,7 +43,7 @@ import java.awt.event.*;
  * <td style="width:5%"></td>
  * <td><table border="1" summary="">
  * <tr>
- * <td style="width:5%" border="1">-r</td>
+ * <td style="width:5%">-r</td>
  * <td>Specify the implementation of the {@link IRenderScene} interface, <i>IRenderSceneImpl</i>,
  * that should be loaded for rendering.  This is loaded into the <i>m_strRenderSceneImpl</i> field.  If you want to setup the
  * container to default to the implementation you are currently working on so you can easily run things in the debugger of the
