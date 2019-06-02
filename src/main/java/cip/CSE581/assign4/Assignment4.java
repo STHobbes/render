@@ -185,7 +185,7 @@ public class Assignment4 implements IRenderScene {
             // render pixels while there are pixels to render
             while (m_parent.dispatchPixel(this)) {
                 m_intersection = new RayIntersection();
-                RGBf rgb = m_parent.getPixelColor(m_ray, m_intersection, m_parent.m_lights, m_parent.m_geometry, null,
+                RGBf rgb = getPixelColor(m_ray, m_intersection, m_parent.m_lights, m_parent.m_geometry, null,
                         m_parent.m_rgbBkg, 5, 15);
                 m_parent.setPixel(m_nX, m_nY, new Color(rgb.r, rgb.g, rgb.b));
             }

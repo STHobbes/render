@@ -18,6 +18,13 @@ package cip.render.util3d;
  * case of a single intersection, it is reported as the first intersection distance and the second intersection distance
  * is set to Float.POSITIVE_INFINITY.
  * <p>
+ * Quadric objects have a {@link Quadric3f#isInside(Point3f)} Method that can be used to determine whether a point is inside
+ * or outside the object. This would typically be used only for the camera to decide whether it has been moved into an object.
+ * Otherwise, the logic of your call to the {@link Quadric3f#getIntersection(Quadric3fIntersection, Line3f, boolean)} should be
+ * used to interpret the intersection:
+ *
+ * </p>
+ * <p>
  * From this information we can deduce the whether the point is inside (first intersection ray going in, dist 1
  * negative, dist 2 positive; or first intersection ray going out, dist 1 is positive or dist 2 is negative) or
  * outside (first intersection ray going out, dist 1 negative, dist 2 positive; or first intersection ray going in
@@ -56,21 +63,35 @@ public class Quadric3fIntersection {
     /**
      * The smallest distance to the intersection (the first intersection for an infinite directed line) from the origin
      * of the ray if the code is
-     * {@link cip.render.util3d.Quadric3fIntersection#GOING_INTO} or
-     * {@link cip.render.util3d.Quadric3fIntersection#GOING_OUT_OF}.  Otherwise, this field is
-     * meaningless.  NOTE: if the distance is negative, it means the intersection is effectively behind the start
-     * of the ray.
+     * {@link cip.render.util3d.Quadric3fIntersection#GOING_INTO} (the only possibility for a convex quadric); or
+     * {@link cip.render.util3d.Quadric3fIntersection#GOING_OUT_OF} (which happens with non-convex quadrics).  Otherwise,
+     * this field is meaningless.
+     * <p>
+     * NOTE: if the distance is negative, it implies the intersection is effectively behind the start
+     * of the ray. HOWEVER, you should observe the logic of whether the ray starts inside or outside the object as numerical
+     * inconsistencies (round off) make it arbitrary whether the start of reflections or refractions from the current object
+     * numerically start inside or outside the quadric.
+     * </p>
      */
     public float m_fDist1;
+
+    /**
+     *
+     */
+    public Line3f m_int1 = new Line3f();
 
     /**
      * The largest distance to the intersection (the second intersection for an infinite directed line) from the origin
      * of the ray if the code is
      * {@link cip.render.util3d.Quadric3fIntersection#GOING_INTO} or
      * {@link cip.render.util3d.Quadric3fIntersection#GOING_OUT_OF}.  Otherwise, this field is
-     * meaningless.  NOTE: if the distance is negative, it means the intersection is effectively behind the start
-     * of the ray.  Also, if the distance is infinite, it means there was only one root (a weird case for specific
-     * quadrics like cones where the ray is parallel to the cone surface and there is only one intersection).
+     * meaningless.
+     * <p>
+     * NOTE: if the distance is negative, it implies the intersection is effectively behind the start
+     * of the ray. HOWEVER, you should observe the logic of whether the ray starts inside or outside the object as numerical
+     * inconsistencies (round off) make it arbitrary whether the start of reflections or refractions from the current object
+     * numerically start inside or outside the quadric.
+     * </p>
      */
     public float m_fDist2;
 

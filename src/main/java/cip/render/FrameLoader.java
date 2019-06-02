@@ -555,9 +555,9 @@ public class FrameLoader {
             System.exit(0);
         }
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Scene file: " + strRenderSceneDesc + " has been loaded");
-        System.out.println("");
+        System.out.println();
 
         //---------------------------------------------------------------------------------------------------------------------
         //  The hierarchy representation
@@ -588,9 +588,9 @@ public class FrameLoader {
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer serializer = transformerFactory.newTransformer();
             serializer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(strTestOutHierarchy)));
-            System.out.println("");
+            System.out.println();
             System.out.println("Hierarchical rep file: " + strTestOutHierarchy + " has been written");
-            System.out.println("");
+            System.out.println();
         } catch (final Throwable t) {
             System.out.println("ERROR: creating and writing the hierarchy XML");
             t.printStackTrace();

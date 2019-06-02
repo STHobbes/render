@@ -338,11 +338,12 @@ public class Whitted extends Blinn {
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtMaterial interface implementation                                                                                  //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights, final @NotNull IRtGeometry[] rtObjects,
-                         final @NotNull IRtBackground rtBkg, final int nMaxRecursions, final int nSample, final int nRandom) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtMaterial interface implementation                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights,
+                         final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
+                         final int nSample, final int nRandom) {
         boolean bIntersectObj = false;
         final RayIntersection intRflRfr = intersection.borrowIntersection();
         final RGBf rgbRflRfr = intersection.borrowRGB();
@@ -380,14 +381,14 @@ public class Whitted extends Blinn {
             rgb.add(rgbRflRfr.scale(m_fKs));
 
             //-----------------------------------------------------------------------
-            // The refracted colour
+            // The refracted colour - this is a ray inside the object
             if (m_bIsTransparent) {
                 boolean bSetRefracted = false;
                 // test to see if there are any more recursions left for the material
                 if ((nMaxRecursions > 0) && ((intersection.m_fMaxContribution * m_fKt) > PackageConstants.CUTOFF_CONTRIBUTION) &&
                         vRflRfr.setToRefraction(intersection.m_vNormal, intersection.m_vToEye, 1.0f, m_fIndexOfRefraction)) {
-                    // the material is transparent, we can still recurse, and there is a refraction vector - the first step is to get the intersection
-                    //  going out of the current object
+                    // the material is transparent, we can still recurse, and there is a refraction vector - the first step
+                    // is to get the intersection going out of the current object
                     lnRflRfr.setValue(intersection.m_pt, vRflRfr);
                     intRflRfr.initialize(vRflRfr);
                     intRflRfr.m_fMaxContribution = intersection.m_fMaxContribution * m_fKt;

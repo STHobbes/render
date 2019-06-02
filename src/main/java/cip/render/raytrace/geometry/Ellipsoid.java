@@ -22,17 +22,10 @@
 package cip.render.raytrace.geometry;
 
 
-import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
-import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.util.AngleF;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Quadric3fIntersection;
-import cip.render.util3d.Vector3f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
@@ -51,11 +44,11 @@ import java.util.StringTokenizer;
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>Xradius,Yradius,Zradius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
  *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
- *               <font style="color:gray"><b>.</b><br>
- *             <i>material specific nodes and attributes</i><br>
- *               <b>.</b></font><br>
- *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
+ *               <font style="color:gray"><b>.</b>
+ *             <i>material specific nodes and attributes</i>
+ *               <b>.</b></font>
+ *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  * <table border="0" width="90%">
  * <caption style="text-align:left">where:</caption> <tr>
@@ -64,8 +57,8 @@ import java.util.StringTokenizer;
  * <tr>
  * <td><tt>radius</tt></td>
  * <td>The radii of the ellipsoid.  This is specified either as a single value which is applied to i, j, and k
- * resulting in a sphere (thye degenerate case of the ellipsoid); or  as 3 values that will be applied as X radius,
- * Y radius, and Z radius individually.  The default is a sphere of radius is 1 if not specified.
+ * resulting in a sphere (the degenerate case of the ellipsoid); or  as 3 values that will be applied as X radius,
+ * Y radius, and Z radius individually.  The default is a ellipsoid with X, Y, and Z radii of 1.0, 2.0, and 3.0 if not specified.
  * </td>
  * </tr>
  * <tr>
@@ -109,6 +102,9 @@ public class Ellipsoid extends Sphere {
      * Creates a new instance of Ellipsoid
      */
     public Ellipsoid() {
+        super();
+        m_quadric.setEllipsoid(1.0f, 2.0f, 3.0f);
+        m_strType = m_quadric.getQuadricType();
         m_strName = "ellipsoid";
     }
 
@@ -160,15 +156,17 @@ public class Ellipsoid extends Sphere {
                                     final float fRy = Float.parseFloat(tokens.nextToken().trim());
                                     final float fRz = Float.parseFloat(tokens.nextToken().trim());
                                     setRadius(fRx, fRy, fRz);
+                                    m_strType = m_quadric.getQuadricType();
                                 } else {
-                                    throw new IllegalArgumentException(
-                                            "XML_TAG_WIDTH specification must be in the form \"radius\" or \"Xradius,Yradius,Zradius\"");
+                                    throw new IllegalArgumentException(String.format(
+                                            "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius,Zradius\"",
+                                            XML_TAG_RADIUS));
                                 }
                                 break;
                             }
                             txtNode = txtNode.getNextSibling();
                         }
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strTyoe, m_strName))) {
+                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
                         m_mtl = mtl;
                     } else {
                         pkgThrowUnrecognizedXml(element);
@@ -200,8 +198,4 @@ public class Ellipsoid extends Sphere {
             ((IDynXmlObject) m_mtl).toChildXmlElement(element);
         }
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtGeometry interface implementation                                                                                  //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

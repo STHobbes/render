@@ -40,6 +40,16 @@ public class PackageConstants {
     }
 
     /**
+     * Test whether a <tt>float</tt> value should be considered to be greater than 0.0f for graphics.
+     *
+     * @param fVal (float) The value to be tested.
+     * @return <tt>true</tt> if the value should be considered to be greater than 0.0f, <tt>false</tt> otherwise.
+     */
+    public static boolean isGreaterThanZero(final float fVal) {
+        return (fVal > ZERO_TOLERANCE_MAX_FLOAT);
+    }
+
+    /**
      * The maximum positive <tt>double</tt> value that is considered to be 0.0 for graphics.
      */
     public static final double ZERO_TOLERANCE_MAX_DOUBLE = 1.0e-35;

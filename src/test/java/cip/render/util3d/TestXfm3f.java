@@ -1,10 +1,11 @@
 package cip.render.util3d;
 
 import cip.render.util.AngleF;
-import org.junit.platform.runner.JUnitPlatform;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -102,7 +103,7 @@ public class TestXfm3f {
             new Vector3f((float)Math.sqrt(1.0f/3.0f),(float)Math.sqrt(1.0f/3.0f),(float)Math.sqrt(1.0f/3.0f))
     };
 
-    static float _testdotProducts[] = {
+    static float[] _testdotProducts = {
             _testVectors[0].dot(_testVectors[3]),
             _testVectors[1].dot(_testVectors[3]),
             _testVectors[2].dot(_testVectors[3])

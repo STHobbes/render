@@ -231,6 +231,11 @@ public class XfmGeometry extends AGeometry {
         return m_obj.isConvex();
     }
 
+    @Override
+    public boolean isInside(Point3f pt) {
+        return false;
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -293,7 +298,7 @@ public class XfmGeometry extends AGeometry {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside, final int nSample, final int nRandom) {
+    public boolean getRayIntersection(@NotNull final RayIntersection intersection, @NotNull final Line3f ray, final boolean bStartsInside, final int nSample, final int nRandom) {
         if (null == m_obj) {
             return false;
         }

@@ -66,9 +66,9 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     protected String m_strName = DEFAULT_NAME;  // the object instance name
 
     /**
-     * The name of the type (sphere, ellipsoid, cylinder, planar polyhedra, etc) for use in error messaging.
+     *
      */
-    protected String m_strTyoe = DEFAULT_NAME;  // the geometry type name
+    protected String m_strType;
 
     protected IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the primary object material
 
@@ -76,6 +76,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * Creates a new instance of <tt>AGeometry</tt>.
      */
     AGeometry() {
+        m_strType = this.getClass().getName();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +93,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     /**
      * Create the dynamically loaded object node with attributes and then calls
      * {@link cip.render.raytrace.geometry.AGeometry#internalToXml(org.w3c.dom.Element)}.  This provides the
-     * dynaMically loaded XML boilerplate for the object.  Derived classes should not override this function,
+     * dynamically loaded XML boilerplate for the object.  Derived classes should not override this function,
      * but should override the {@link cip.render.raytrace.geometry.AGeometry#internalToXml(org.w3c.dom.Element)} to
      * add object-specific information to the XML node.
      */
@@ -143,7 +144,6 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
                 m_strName, element.getTagName() ));
     }
 
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // INamedObject interface implementation                                                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,6 +160,12 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IRtGeometry interface implementation                                                                                       //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @NotNull
+    @Override
+    public String getType() {
+        return m_strType;
+    }
+
     @Override
     public void initSampling(final int nSample, final float[] f1dSample, final float[] f1dRandom, final Point2f[] pt2dSample,
                              final Point2f[] pt2dRandom, final Point3f[] pt3dSample, final Point3f[] pt3dRandom) {
@@ -228,7 +234,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * current intersection, and <tt>false</tt> otherwise.
      */
     @Override
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside,
+    public boolean getRayIntersection(@NotNull final RayIntersection intersection, @NotNull final Line3f ray, final boolean bStartsInside,
                                       final int nSample, final int nRandom) {
         return false;
     }

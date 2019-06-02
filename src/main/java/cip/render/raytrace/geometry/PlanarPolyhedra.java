@@ -20,7 +20,6 @@
  */
 package cip.render.raytrace.geometry;
 
-import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
@@ -106,10 +105,11 @@ import java.util.StringTokenizer;
  */
 public class PlanarPolyhedra extends AGeometry {
     class Face {
-        Plane3f m_pln = new Plane3f();
-        IRtMaterial m_mtl = null;
+        final Plane3f m_pln = new Plane3f();
+        final IRtMaterial m_mtl;
 
-        public Face(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl) throws ZeroLengthVectorException {
+        public Face(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl)
+                throws ZeroLengthVectorException {
             m_pln.setValue(fA, fB, fC, fD).normalize();
             m_mtl = mtl;
         }
@@ -125,6 +125,7 @@ public class PlanarPolyhedra extends AGeometry {
      * Creates a new instance of <tt>PlanarPolyhedra</tt>
      */
     public PlanarPolyhedra() {
+        m_strType = "planar polyhedra";
         m_strName = "PlanarPolyhedra";
     }
 
@@ -156,12 +157,10 @@ public class PlanarPolyhedra extends AGeometry {
         //  a new vector and copy face references from the old vector.
         final Face tmpFace = new Face(fA, fB, fC, fD, mtl);    // in case it throws an exception;
         if (null != m_faces) {
-            final int oldLen = m_faces.length;
             final Face[] oldFaces = m_faces;
+            final int oldLen = m_faces.length;
             m_faces = new Face[oldLen + 1];
-            for (int iFace = 0; iFace < oldLen; iFace++) {
-                m_faces[iFace] = oldFaces[iFace];
-            }
+            System.arraycopy(oldFaces, 0, m_faces, 0, oldLen);
             m_faces[oldLen] = tmpFace;
         } else {
             m_faces = new Face[1];
@@ -196,13 +195,13 @@ public class PlanarPolyhedra extends AGeometry {
                         Node mtlNode = element.getFirstChild();
                         while (null != mtlNode) {
                             final Element mtlEl = (Element) mtlNode;
-                            if (null != (mtlFace = FrameLoader.tryParseMaterial(mtlEl, refObjectList, m_strTyoe, m_strName))) {
+                            if (null != (mtlFace = FrameLoader.tryParseMaterial(mtlEl, refObjectList, getType(), m_strName))) {
                                 break;
                             }
                             mtlNode = mtlNode.getNextSibling();
                         }
                         faceListTmp.add(new Face(fA, fB, fC, fD, mtlFace));
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strTyoe, m_strName))) {
+                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
                         m_mtl = mtl;
                     } else {
                         pkgThrowUnrecognizedXml(element);
@@ -257,8 +256,13 @@ public class PlanarPolyhedra extends AGeometry {
         return true;
     }
 
+    @Override
+    public boolean isInside(Point3f pt) {
+        return false;
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside,
+    public boolean getRayIntersection(@NotNull final RayIntersection intersection, @NotNull final Line3f ray, final boolean bStartsInside,
                                       final int nSample, final int nRandom) {
         final Plane3fIntersection plnInt = intersection.borrowPlaneInt();
         try {
@@ -373,10 +377,7 @@ public class PlanarPolyhedra extends AGeometry {
             }
             // We got here if the ray intersects the object.  Test the intersection distance - if
             //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-            if ((fDistIn < 0.0f) || (fDistIn > fDistLight)) {
-                return false;
-            }
-            return true;
+            return (!(fDistIn < 0.0f)) && (!(fDistIn > fDistLight));
         } catch (final Throwable t) {
             return false;
         } finally {

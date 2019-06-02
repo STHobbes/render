@@ -215,7 +215,6 @@ class RayIntersection {
         m_pt = new Point3f();
         m_vNormal = new Vector3f();
         m_rgb = new RGBf().setValue(rgbBkg);
-        ;
     }
 
 }

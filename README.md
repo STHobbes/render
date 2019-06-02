@@ -46,7 +46,7 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
       `cip.render.raytrace.*`, and this would be a good starting point for having your students extend the libraries with new
       types of geometries, lights, materials, textures, etc.
 * **Create (Work in) an Extensible Framework** - cast what was done in the first assignments into an extensible ray-tracing
-  framework. Really, this is working in a framework trhat was created for the class, but, your could create your own framework
+  framework. Really, this is working in a framework that was created for the class, but, your could create your own framework
   if you thing there is a better way to package things.
 * **Extend the Framework** - Add your own extensions to the framework. There are some basic implementations that were part of
   the original class support code, but most of these libraries are student extensions to the basic framework:
@@ -89,3 +89,9 @@ to the renderer for Robert Abel and Associates in 1983-1985, and then to writing
 now Maya). I have not done much rendering since then, but every 15 years or so, want to work on it to see what I can bring
 to the exercise from my non-rendering pursuits. My last return was for teaching CSE581, this return is because I retired and
 recently found the CSE581 code on an old machine, and thought I should revisit it - and that it might be useful to others.
+
+## Specifics
+* This project is in single precision because that is was good enough for the images we were creating at the time, and double
+  precision was way more time intensive than single precision. If you want to render sub-atomic or astronomical scenes you might
+  normalize you objects to the scale in which you are working (nanometers or light years) so you don't experience precision
+  problems

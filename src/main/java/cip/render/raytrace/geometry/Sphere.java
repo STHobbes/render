@@ -24,10 +24,11 @@ import cip.render.DynXmlObjParseException;
 import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util.AngleF;
-import cip.render.util3d.*;
+import cip.render.util3d.PackageConstants;
+import cip.render.util3d.Point3f;
+import cip.render.util3d.Vector3f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
@@ -45,9 +46,9 @@ import java.util.LinkedList;
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>radius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
  *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
- *             <font style="color:gray"><b>.</b>
+ *               <font style="color:gray"><b>.</b>
  *             <i>material specific nodes and attributes</i>
- *             <b>.</b></font>
+ *               <b>.</b></font>
  *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
@@ -94,17 +95,14 @@ import java.util.LinkedList;
  * @version 1.0
  * @since 1.0
  */
-public class Sphere extends AGeometry {
-    protected static final String XML_TAG_RADIUS = "radius";
-
-    // The instance definition
-//    protected IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the sphere material
-    protected Quadric3f m_quadric = new Quadric3f();
-
+public class Sphere extends AQuadricGeo {
     /**
      * Creates a new instance of <tt>Sphere</tt>.
      */
     public Sphere() {
+        super();
+        m_quadric.setEllipsoid(1.0f, 1.0f, 1.0f);
+        m_strType = m_quadric.getQuadricType();
         m_strName = "sphere";
     }
 
@@ -118,11 +116,12 @@ public class Sphere extends AGeometry {
     }
 
     public float getRadius() {
-        return m_quadric.getQ(1);
+        return (float) Math.sqrt(1.0f / m_quadric.getQ(1));
     }
 
     public void setRadius(final float fRadius) {
         m_quadric.setEllipsoid(fRadius, fRadius, fRadius);
+        m_strType = m_quadric.getQuadricType();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,7 +144,7 @@ public class Sphere extends AGeometry {
                             }
                             textNode = textNode.getNextSibling();
                         }
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strTyoe, m_strName))) {
+                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strType, m_strName))) {
                         m_mtl = mtl;
                     } else {
                         pkgThrowUnrecognizedXml(element);
@@ -175,16 +174,6 @@ public class Sphere extends AGeometry {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IRtGeometry interface implementation                                                                                  //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Returns <tt>true</tt> since a sphere is convex.
-     */
-    public boolean isConvex() {
-        return m_quadric.isConvex();
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------
-
     /**
      * Returns an array of 24 points that are the vertices of a convex hull described by a min-max box with the corners
      * trimmed by planes that are perpendicular to the diagonals of the 8 quadrants of a 3D axis system.
@@ -212,44 +201,6 @@ public class Sphere extends AGeometry {
         }
         return ptHull;
     }
-    //-------------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * Tests a ray for an intersection with a sphere.  See {@link cip.render.raytrace.interfaces.IRtGeometry}
-     * description of getRayIntersection().
-     */
-    public boolean getRayIntersection(final RayIntersection intersection, final Line3f ray, final boolean bStartsInside,
-                                      final int nSample, final int nRandom) {
-        Quadric3fIntersection qInt = intersection.borrowQuadricInt();
-        try {
-            m_quadric.getIntersection(qInt, ray, bStartsInside);
-            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE) {
-                return false;
-            }
-            // We got here if the ray intersects the object.  Test the intersection distance - if
-            //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-            final float fDistTmp = bStartsInside ? qInt.m_fDist2 : qInt.m_fDist1;
-            if ((fDistTmp < 0.0f) || (fDistTmp > intersection.m_fDist)) {
-                return false;
-            }
-
-            // Update the intersection structure with information for this intersection
-            intersection.m_fDist = fDistTmp;
-            ray.pointAtDistance(intersection.m_pt, fDistTmp);
-            m_quadric.getNormal(intersection.m_vNormal, intersection.m_pt);
-            intersection.m_bNatural = false;
-            intersection.m_ptObject.setValue(intersection.m_pt);
-            intersection.m_vObjNormal.setValue(intersection.m_vNormal);
-            intersection.m_xfmObjToWorldNormal.identity();
-            intersection.m_mtl = m_mtl;
-            intersection.m_rtObj = this;
-            return true;
-        } finally {
-            intersection.returnQuadricInt(qInt);
-        }
-    }
-    //-------------------------------------------------------------------------------------------------------------------------
-
     /**
      * The natural mapping for a sphere is U equal to degrees longitude measured counter-clockwise (looking down) starting at
      * the +i axis being 0 degree (+j = 90 degree, -i = 180 degree, and -j = 270 degree).  And V being latitude in degrees
@@ -285,21 +236,4 @@ public class Sphere extends AGeometry {
         intersection.returnVector(vN);
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-
-    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight,
-                              final IRtLight light, final int nSample, final int nRandom) {
-        Quadric3fIntersection qInt = intersection.borrowQuadricInt();
-        try {
-            m_quadric.getIntersection(qInt, intersection.m_pt, vLight, false);
-            if (qInt.m_nCode == Quadric3fIntersection.NONE_OUTSIDE || qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE) {
-                return false;
-            }
-            // We got here if the ray intersects the object.  Test the intersection distance - if
-            //  this intersection is behind the eye, or, is not closer than a previously computed intersection, return.
-            return (!(qInt.m_fDist1 < 0.0f)) && (!(qInt.m_fDist1 > fDistLight));
-        } finally {
-            intersection.returnQuadricInt(qInt);
-        }
-    }
 }
