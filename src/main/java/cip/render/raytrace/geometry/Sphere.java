@@ -107,14 +107,7 @@ public class Sphere extends AQuadricGeo {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
-    public IRtMaterial getMaterial() {
-        return m_mtl;
-    }
-
-    public void setMaterial(final IRtMaterial mtl) {
-        m_mtl = mtl;
-    }
-
+    // Accessor/Mutator functions
     public float getRadius() {
         return (float) Math.sqrt(1.0f / m_quadric.getQ(1));
     }

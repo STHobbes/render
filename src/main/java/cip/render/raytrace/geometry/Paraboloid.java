@@ -1,11 +1,5 @@
 /*
- * Cone.java
- *
- * Created on November 2, 2002, 3:11 PM
- * Copyright(c) 1993-2019 Crisis in Perspective, Inc.
- *                        PO Box 1949
- *                        Hood River, OR 97031
- *                        www.crisisinperspecive.com
+ * Paraboloid.java
  *
  * This program is free software; you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
@@ -18,19 +12,14 @@
  * The GNU General Public License is available at:
  *      http://www.opensource.org/licenses/gpl-license.php
  */
-
 package cip.render.raytrace.geometry;
-
 
 import cip.render.DynXmlObjParseException;
 import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtMaterial;
-import cip.render.util.AngleF;
-import cip.render.util3d.PackageConstants;
 import cip.render.util3d.Point3f;
-import cip.render.util3d.Vector3f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
@@ -40,11 +29,14 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
- * This is an implementation of an elliptical cone whose apex is at 0,0,0 and extends infinitely along the Z axis.
+ * This is the implementation of an elliptical paraboloid with tip at 0,0,0 in the object coordinate system.
+ * The paraboloid opens upward (toward +k), and is specified by 3 scalars: 'height' is the height of the object
+ * from tip to "cup rim", 'Xradius' is the width of the cup opening along the i axis, and 'Yradius' is the
+ * width of the cup opening along the j axis. NOTE: the paraboloid is of infinite extent unless clipping is specified.
  * <p>
- * The elliptical cone is specified as a node in an XML file as:
+ * The paraboloid is specified as a node in an XML file as:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Cone" name="<font style="color:magenta"><i>coneName</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Paraboloid" name="<font style="color:magenta"><i>coneName</i></font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>radius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>Xradius,Yradius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>height</b>&gt;<font style="color:magenta"><i>height</i></font>&lt;/<b>height</b>&gt;</font>
@@ -62,14 +54,14 @@ import java.util.StringTokenizer;
  * <td><table border="1" summary="">
  * <tr>
  * <td><tt>radius</tt></td>
- * <td>The radii of the cone.  This is specified either as a single value which is applied to i and j
- * resulting in a cone (the special case of the elliptical cone); or as 2 values that will be applied as X radius and
- * Y radius.  The default is a cone of radiii 1,2 if not specified.
+ * <td>The radii of the paraboloid. This is specified either as a single value which is applied to i and j
+ * resulting in a paraboloid (the special case of the elliptical paraboloid); or as 2 values that will be applied as X radius and
+ * Y radius.  The default is a paraboloid of radiii 1,2 if not specified.
  * </td>
  * </tr>
  * <tr>
  * <td><tt>height</tt></td>
- * <td>The Z distance from 0,0,0 (both positive and negative) where the cone has the specified radii.
+ * <td>The positive Z distance from 0,0,0 where the paraboloid has the specified radii.
  * </td>
  * </tr>
  * <tr>
@@ -81,7 +73,7 @@ import java.util.StringTokenizer;
  * </tr>
  * <tr>
  * <td><tt>DynamicallyLoadedObject</tt></td>
- * <td>The specification fof a material for the cone.  <tt>MaterialByRef</tt> is
+ * <td>The specification fof a material for the paraboloid.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
@@ -94,29 +86,27 @@ import java.util.StringTokenizer;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a cone with base radii 1, 2 and height 5:
+ * The following specifies a paraboloid with base radii 1, 2 and height 5:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Cone" name="<font style="color:magenta"><i>cone 1</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Paraboloid" name="<font style="color:magenta"><i>paraboloid 1</i></font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font><
  *         <font style="color:blue">&lt;<b>height</b>&gt;<font style="color:magenta"><i>5.0f</i></font>&lt;/<b>height</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  *
- * @author rnesius - original student author
+ * @author sjtitus@alumni.duke.edu - original student author
+ * @version 1.0
+ * @since 1.0
  */
-public class Cone extends AQuadricGeo {
-
+public class Paraboloid extends AQuadricGeo {
     private static final String XML_TAG_HEIGHT = "height";
 
-    /**
-     * Creates a new instance of <tt>Cone</tt>.
-     */
-    public Cone() {
+    public Paraboloid() {
         super();
-        m_quadric.setEllipticalCone(1.0f, 2.0f, 5.0f);
+        m_quadric.setEllipticalParaboloid(1.0f, 2.0f, 5.0f);
         m_strType = m_quadric.getQuadricType();
-        m_strName = "Cone";
+        m_strName = "Parabaloid";
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -130,7 +120,7 @@ public class Cone extends AQuadricGeo {
     }
 
     public float getHeight() {
-        return (float) Math.sqrt(-1.0f / m_quadric.getQ(3));
+        return -1.0f / m_quadric.getQ(3);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +182,7 @@ public class Cone extends AQuadricGeo {
                 domNode = domNode.getNextSibling();
             }
             if (bRefresh) {
-                m_quadric.setEllipticalCone(radiusX, radiusY, height);
+                m_quadric.setEllipticalParaboloid(radiusX, radiusY, height);
                 m_strType = m_quadric.getQuadricType();
             }
         } catch (final Throwable t) {
@@ -204,6 +194,7 @@ public class Cone extends AQuadricGeo {
         }
     }
 
+    // Write out this object as XML
     protected void internalToXml(final Element element) {
         // The radii
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
@@ -260,39 +251,76 @@ public class Cone extends AQuadricGeo {
     }
 
     /**
-     * The natural mapping for a sphere is U equal to degrees longitude measured counter-clockwise (looking down) starting at
-     * the +i axis being 0 degree (+j = 90 degree, -i = 180 degree, and -j = 270 degree).  And V being latitude in degrees
-     * starting at -90 degrees for -k, and +90 degree for +k.  The <tt>Sphere</tt> does not compute natural coordinates
+     * The natural mapping for a paraboloid is U equal to degrees longitude measured counter-clockwise
+     * (looking down) starting at the +i axis being 0 degree (+j = 90 degree, -i = 180 degree,
+     * and -j = 270 degree).  And V being latitude in degrees *  starting at -90 degrees for -k,
+     * and +90 degree for +k.  The <tt>Paraboloid</tt> does not compute natural coordinates
      * unless they are specifically requested using this function.
+     *
+     * @param intersection The ray intersection.
      */
     public void getNaturalCoordinates(final RayIntersection intersection) {
         if (intersection.m_bNatural) return;
 
-        final Vector3f vN = intersection.borrowVector().setValue(intersection.m_vObjNormal);
-        // the natural coordinates are longitude and latitude.
-        final float xyLen = (float) Math.sqrt((double) ((vN.i * vN.i) + (vN.j * vN.j)));
-        if (xyLen < PackageConstants.ZERO_TOLERANCE_MAX_FLOAT) {
-            // the normal is essentially straight up, or straight down, the geometric computations fall apart here
-            intersection.m_ptNatural.x = 0.0f;
-            if (vN.k > 0.0) {   // straight up
-                intersection.m_ptNatural.y = 90.0f;
-            } else {            // straight down
-                intersection.m_ptNatural.y = -90.0f;
-            }
-            intersection.m_vNatural[0].setValue(0.0f, 0.0f, 0.0f);
-            intersection.m_vNatural[1].setValue(0.0f, 0.0f, 0.0f);
-        } else {
-            final AngleF ang = intersection.borrowAngle();
-            intersection.m_ptNatural.x = ang.atan2(vN.j, vN.i).getDegrees();
-            intersection.m_ptNatural.y = ang.atan2(vN.k, xyLen).getDegrees();
-            intersection.returnAngle(ang);
-
-            intersection.m_vNatural[0].setValue(-vN.j / xyLen, vN.i / xyLen, 0.0f);
-            intersection.m_vNatural[1].setValue(-(vN.k * vN.i) / xyLen, -(vN.k * vN.j) / xyLen, xyLen);
-        }
-        intersection.m_bNatural = true;
-        intersection.returnVector(vN);
+//        // PARABOLA BODY, USE SPHERICAL
+//        if (intersection.m_ptObject.z < getHeight() - 0.001) {
+//            final Vector3f vN = intersection.borrowVector().setValue(intersection.m_vObjNormal);
+//            final float xyLen = (float) Math.sqrt((double) ((vN.i * vN.i) + (vN.j * vN.j)));
+//            if (xyLen < GlobalConstants.ZERO_TOLERANCE_MAX_FLOAT) {
+//                // normal is straight up / straight down
+//                intersection.m_ptNatural.x = 0.0f;
+//                if (vN.k > 0.0) {   // straight up
+//                    intersection.m_ptNatural.y = 90.0f;
+//                } else {            // straight down
+//                    intersection.m_ptNatural.y = -90.0f;
+//                }
+//                intersection.m_vNatural[0].setValue(0.0f, 0.0f, 0.0f);
+//                intersection.m_vNatural[1].setValue(0.0f, 0.0f, 0.0f);
+//            } else {
+//                final AngleF ang = intersection.borrowAngle();
+//                intersection.m_ptNatural.x = ang.atan2(vN.j, vN.i).getDegrees();
+//                intersection.m_ptNatural.y = ang.atan2(vN.k, xyLen).getDegrees();
+//                intersection.returnAngle(ang);
+//
+//                intersection.m_vNatural[0].setValue(-vN.j / xyLen, vN.i / xyLen, 0.0f);
+//                intersection.m_vNatural[1].setValue(-(vN.k * vN.i) / xyLen, -(vN.k * vN.j) / xyLen, xyLen);
+//            }
+//            intersection.returnVector(vN);
+//        }
+//        // CAP
+//        else {
+//            try {
+//                final Vector3f vN = intersection.borrowVector().setValue(
+//                        intersection.m_ptObject.x,
+//                        intersection.m_ptObject.y,
+//                        intersection.m_ptObject.z).normalize();
+//                final float xyLen = (float) Math.sqrt((double) ((vN.i * vN.i) + (vN.j * vN.j)));
+//                if (xyLen < GlobalConstants.ZERO_TOLERANCE_MAX_FLOAT) {
+//                    // normal is straight up / straight down
+//                    intersection.m_ptNatural.x = 0.0f;
+//                    if (vN.k > 0.0) {   // straight up
+//                        intersection.m_ptNatural.y = 90.0f;
+//                    } else {            // straight down
+//                        intersection.m_ptNatural.y = -90.0f;
+//                    }
+//                    intersection.m_vNatural[0].setValue(0.0f, 0.0f, 0.0f);
+//                    intersection.m_vNatural[1].setValue(0.0f, 0.0f, 0.0f);
+//                } else {
+//                    final AngleF ang = intersection.borrowAngle();
+//                    intersection.m_ptNatural.x = ang.atan2(vN.j, vN.i).getDegrees();
+//                    intersection.m_ptNatural.y = ang.atan2(vN.k, xyLen).getDegrees();
+//                    //intersection.m_ptNatural.j = 0;
+//                    intersection.returnAngle(ang);
+//
+//                    intersection.m_vNatural[0].setValue(-vN.j / xyLen, vN.i / xyLen, 0.0f);
+//                    intersection.m_vNatural[1].setValue(-(vN.k * vN.i) / xyLen, -(vN.k * vN.j) / xyLen, xyLen);
+//                }
+//                intersection.returnVector(vN);
+//            } catch (final Throwable t) {
+//                System.out.println("EXCEPTION IN GETNATURAL FOR PARAB");
+//            }
+//        }
+//        intersection.m_bNatural = true;
     }
-
 
 }

@@ -60,21 +60,13 @@ import java.util.StringTokenizer;
  * <tr>
  * <td><tt>radius</tt></td>
  * <td>The radii of the cylinder.  This is specified either as a single value which is applied to i and j
- * resulting in a cylinder (the degenerate case of the elliptical cylinder; or  as 2 values that will be applied as X radius and
+ * resulting in a cylinder (the special case of the elliptical cylinder); or  as 2 values that will be applied as X radius and
  * Y radius.  The default is a cylinder of radius 1 if not specified.
  * </td>
  * </tr>
  * <tr>
- * <tr>
- * <td><tt>axis</tt></td>
- * <td>The axis of the cylinder.  The default axis is "k" if not specified. Only possible values are i,j,k.
- * Do not use the axis attribute if you are doing texture mapping, use transformations instead to
- * rotate the cylinder.
- * </td>
- * </tr>
- * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>A material specfied by reference to the name of a previously loaded material. <tt>MaterialByRef</tt> is
+ * <td>A material specified by reference to the name of a previously loaded material. <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  If no material
  * is specified, the material defaults to matte green material.
  * </td>
@@ -94,13 +86,10 @@ import java.util.StringTokenizer;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a cylinder with base radii 1 and 2, height = 2, and axis = k:<br><br>
+ * The following specifies a cylinder with base radii 1 and 2:
  * <pre>
  *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Cylinder" name="<font style="color:magenta"><i>cylinder 1</i></font>"&gt;</font>
- *         <font style="color:blue">&lt;<b>radius1</b>&gt;<font style="color:magenta"><i>1.0</i></font>&lt;/<b>radius1</b>&gt;</font><
- *         <font style="color:blue">&lt;<b>radius2</b>&gt;<font style="color:magenta"><i>2.0</i></font>&lt;/<b>radius2</b>&gt;</font>
- *         <font style="color:blue">&lt;<b>height</b>&gt;<font style="color:magenta"><i>2.0s</i></font>&lt;/<b>height</b>&gt;</font>
- *         <font style="color:blue">&lt;<b>axis</b>&gt;<font style="color:magenta"><i>k</i></font>&lt;/<b>axis</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font><
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>

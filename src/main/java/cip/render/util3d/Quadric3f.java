@@ -33,15 +33,15 @@ import org.jetbrains.annotations.NotNull;
  * q<sub>3</sub> = 1/r<sub>k</sub><sup>2</sup>  ;&nbsp;&nbsp; q<sub>0</sub> = -1
  * <p>
  * Elliptic Paraboloid about k:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup>
- * ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>9</sub>  = -1/height ;
+ * ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>9</sub>  = -1/height
  * <p>
  * Elliptic Cone about k:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup>
- * ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub> = -1/height<sup>2</sup> ;
+ * ;&nbsp;&nbsp; q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub> = -1/height<sup>2</sup>
  * <p>
  * Hyperboloid about k:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup> ;&nbsp;&nbsp;
  * q<sub>2</sub> = 1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>3</sub> = -1/r<sub>k</sub><sup>2</sup> ;&nbsp;&nbsp; q<sub>0</sub> = -1
  * <p>
- * Hyperbolic Paraboloid about j:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup> ;&nbsp;&nbsp;
+ * Hyperbolic Paraboloid about k:&nbsp;&nbsp;&nbsp; q<sub>1</sub> = 1/r<sub>i</sub><sup>2</sup> ;&nbsp;&nbsp;
  * q<sub>2</sub> = -1/r<sub>j</sub><sup>2</sup> ;&nbsp;&nbsp;&nbsp; q<sub>9</sub> = -1/r<sub>k</sub>
  * </blockquote><p>
  * We intersect a ray starting at point (i<sub>o</sub>,j<sub>o</sub>,k<sub>o</sub>) and extending in direction (i,j,k),
@@ -224,8 +224,8 @@ public class Quadric3f {
      * The elliptical paraboloid has an elliptical cross section centered on the Z axis.  The elliptic cross section has i and j
      * radii of <tt>fRx</tt>,<tt>fRy</tt> where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
      *
-     * @param fRx     The i radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
-     * @param fRy     The j radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
+     * @param fRx     The i radius of the cross section where k = <tt>fHeight</tt>.
+     * @param fRy     The j radius of the cross section where k = <tt>fHeight</tt>.
      * @param fHeight The k distance from the origin at which the elliptic cross section has i and j
      *                radii of <tt>fRx</tt>,<tt>fRy</tt>
      * @return Returns this quadric after initialization.
@@ -238,7 +238,7 @@ public class Quadric3f {
         m_q2 = 1.0f / (fRy * fRy);
         m_q3 = 0.0f;
         m_q9 = -1.0f / fHeight;
-        m_isConvex = false;
+        m_isConvex = true;
         return this;
     }
 

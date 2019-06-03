@@ -40,7 +40,7 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
   * **Instructor's Notes:**
     * The only framework code required for assignments 1-3 are the `cip.render.util`, `cip.render.util2d`,
       and `cip.render.util3d` libraries.
-    * Assignment 4 is started with the above libraries, but them transitions to using the ray-tracing framework. In the class
+    * Assignment 4 is started with the above libraries, but then transitions to using the ray-tracing framework. In the class
       there was an initial framework that included lights, geometry, materials, and textures that I had written; and a final
       framework that included all of the student-contributed lights, geometry, textures, etc. This is all now in
       `cip.render.raytrace.*`, and this would be a good starting point for having your students extend the libraries with new
@@ -50,7 +50,8 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
   if you thing there is a better way to package things.
 * **Extend the Framework** - Add your own extensions to the framework. There are some basic implementations that were part of
   the original class support code, but most of these libraries are student extensions to the basic framework:
-  * **Geometry** - Add new geometric objects you want to use in this directory.
+  * **Geometry** - Add new geometric objects you want to use in this directory. Originally, this included only a sphere,
+    convex polygonal polyhedra, and transformed geometry. Students added full quadric support, and blobbies (see assignment 4)
   * **Lights** - 
   * **Textures** -
   * **Materials** -

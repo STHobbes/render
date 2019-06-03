@@ -79,6 +79,16 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         m_strType = this.getClass().getName();
     }
 
+    //-------------------------------------------------------------------------------------------------------------------------
+    // Accessor/Mutator functions
+    public IRtMaterial getMaterial() {
+        return m_mtl;
+    }
+
+    public void setMaterial(final IRtMaterial mtl) {
+        m_mtl = mtl;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
