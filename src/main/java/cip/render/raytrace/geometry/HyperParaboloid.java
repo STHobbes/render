@@ -35,11 +35,11 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
- * This is the implementation of an ellipsoid of some radii centered at 0,0,0 in the object coordinate system.
+ * This is the implementation of an hyperbolic paraboloid of some radii centered at 0,0,0 in the object coordinate system.
  * <p>
- * The ellipsoid is specified as a node in an XML file as:
+ * The hyperbolic paraboloid  is specified as a node in an XML file as:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Ellipsoid" name="<font style="color:magenta"><i>ellipsoidName</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.HyperParaboloid" name="<font style="color:magenta"><i>ellipsoidName</i></font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>radius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>Xradius,Yradius,Zradius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
@@ -56,24 +56,25 @@ import java.util.StringTokenizer;
  * <td><table border="1" summary="">
  * <tr>
  * <td><tt>radius</tt></td>
- * <td>The radii of the ellipsoid.  This is specified either as a single value which is applied to i, j, and k
- * resulting in a sphere (the degenerate case of the ellipsoid); or  as 3 values that will be applied as X radius,
- * Y radius, and Z radius individually.  The default is a ellipsoid with X, Y, and Z radii of 1.0, 2.0, and 3.0 if not specified.
+ * <td>The radii of the hyperbolic paraboloid.  This is specified either as a single value which is applied to i, j, and k;
+ * or  as 3 values that will be applied as X radius,
+ * Y radius, and Z radius individually.  The default is a hyperbolic paraboloid with X, Y, and Z radii of 1.0, 2.0,
+ * and 3.0 if not specified.
  * </td>
  * </tr>
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>The specification fof a material for the ellipsoid.  <tt>MaterialByRef</tt> is
+ * <td>The specification fof a material for the hyperbolic paraboloid.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
- * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
+ * loaded object must implement the  {@link IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
  * </td>
  * </tr>
  * <tr>
  * <td><tt>DynamicallyLoadedObject</tt></td>
- * <td>The specification for a material for the ellipsoid.  <tt>MaterialByRef</tt> is
+ * <td>The specification for a material for the hyperbolic paraboloid.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
- * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
+ * loaded object must implement the  {@link IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
  * </td>
  * </tr>
@@ -84,9 +85,9 @@ import java.util.StringTokenizer;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a sphere of radii 5, 3, and 2:<br><br>
+ * The following specifies a hyperbolic paraboloid of radii 5, 3, and 2:<br><br>
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Ellipsoid" name="<font style="color:magenta">ellipsoid</font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.HyperParaboloid" name="<font style="color:magenta">hyperbolic paraboloid</font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">5,3,2</font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
@@ -96,32 +97,32 @@ import java.util.StringTokenizer;
  * @version 1.0
  * @since 1.0
  */
-public class Ellipsoid extends Sphere {
+public class HyperParaboloid extends AQuadricGeo {
 
     /**
      * Creates a new instance of Ellipsoid
      */
-    public Ellipsoid() {
+    public HyperParaboloid() {
         super();
-        m_quadric.setEllipsoid(1.0f, 2.0f, 3.0f);
+        m_quadric.setHyperbolicParaboloid(1.0f, 2.0f, 3.0f);
         m_strType = m_quadric.getQuadricType();
-        m_strName = "ellipsoid";
+        m_strName = "hyperbolic paraboloid";
     }
 
     public float getRadiusX() {
-        return (float) Math.sqrt(1.0f / m_quadric.getQ(1));
+        return m_quadric.getQ(1);
     }
 
     public float getRadiusY() {
-        return (float) Math.sqrt(1.0f / m_quadric.getQ(2));
+        return m_quadric.getQ(2);
     }
 
     public float getRadiusZ() {
-        return (float) Math.sqrt(1.0f / m_quadric.getQ(3));
+        return m_quadric.getQ(3);
     }
 
     public void setRadius(final float fRx, final float fRy, final float fRz) {
-        m_quadric.setEllipsoid(fRx, fRy, fRz);
+        m_quadric.setHyperbolicParaboloid(fRx, fRy, fRz);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,11 +184,15 @@ public class Ellipsoid extends Sphere {
             elRadius.appendChild(element.getOwnerDocument().createTextNode(String.format("%f", getRadiusX())));
         } else {
             elRadius.appendChild(element.getOwnerDocument().createTextNode(String.format("%f,%f,%f",
-                    getRadiusX(),getRadiusY(),getRadiusZ())));
+                    getRadiusX(), getRadiusY(), getRadiusZ())));
         }
         // The material
         if ((m_mtl != DEFAULT_MATERIAL) && (m_mtl instanceof IDynXmlObject)) {
             ((IDynXmlObject) m_mtl).toChildXmlElement(element);
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtGeometry interface implementation                                                                                  //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

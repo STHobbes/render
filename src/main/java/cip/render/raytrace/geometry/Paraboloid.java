@@ -56,7 +56,7 @@ import java.util.StringTokenizer;
  * <td><tt>radius</tt></td>
  * <td>The radii of the paraboloid. This is specified either as a single value which is applied to i and j
  * resulting in a paraboloid (the special case of the elliptical paraboloid); or as 2 values that will be applied as X radius and
- * Y radius.  The default is a paraboloid of radiii 1,2 if not specified.
+ * Y radius.  The default is a paraboloid of radii 1,2 if not specified.
  * </td>
  * </tr>
  * <tr>

@@ -47,7 +47,7 @@ import java.util.StringTokenizer;
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>Xradius,Yradius</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
  *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
- *               <font style="color:gray"><b>.
+ *               <font style="color:gray"><b>.</b>
  *             <i>material specific nodes and attributes</i>
  *               <b>.</b></font>
  *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>

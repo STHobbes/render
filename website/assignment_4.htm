@@ -315,11 +315,16 @@ allocator to become available rather than on the rendering task at hand.&nbsp; F
 see <a href="multi-threading.htm">multi-threading</a>.</p>
 <h3>Getting on a Common Platform</h3>
 <p>Up to now you have been writing your own ray-tracing platform, let's get on a common and tested platform so you can start
-to focus on the interesting extension stuff. </p>
+    to focus on the interesting extensions in an extensible environment. &nbsp; By a common platform, I mean that we have
+    articulated
+    the problem in a common way to facilitate the explorations we do for the rest of this course.&nbsp; Specifically - we are all
+    using the same interfaces on dynamically loaded objects so we can easily extend all aspects of our renderer simply by writing
+    new objects that use those interfaces.</p>
+        <p>Everything that you have written up to this point exists in the ray tracing library. Additionally it includes loading
+            the scene to be rendered from an XML file (in vogue at the time, I would use JSON if I were doing this again)</p>
 
 
-
-<!--mstheme--></font><!--msnavigation--></td>
+        <!--mstheme--></font><!--msnavigation--></td>
 </tr><!--msnavigation--></table>
 </body>
 </html>

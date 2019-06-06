@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : test_ellipsoids.xml
-    Created on : 19 May 2019
+    Document   : test_hyperboloids.xml
+    Created on : 3 June 2019
     Author     : roy
     Description:
-        This is the environment for assignment 3 & 4 which visually tests the sphere geometry
+        This is an environment for testing hyperboloid geometry
 -->
 <RenderedFrame>
 
@@ -29,7 +29,7 @@
             <beta>45</beta>
         </DynamicallyLoadedObject>
 
-        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="magenta">
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="magenta">
             <colour rgb="1.0f,0.0f,1.0f"/>
             <dielectric/>
             <beta>5</beta>
@@ -61,50 +61,50 @@
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.Ambient" name="ambient light">
-        <intensity rgb="0.1f,0.1f,0.1f"/>
+        <intensity rgb="0.2f,0.2f,0.2f"/>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm point light">
-        <position originAt="-12.0f,-24.0f, 12.0f"/>
+        <position originAt="-12.0f,-24.0f, 15.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="point light">
             <intensity rgb="0.8f,0.8f,0.8f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 1 light">
-        <position originAt="12.0f, -10.0f, 48.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <position originAt="12.0f, -12.0f, 12.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.light.Spot" name="spot 1">
-            <intensity rgb="0.7f,0.7f,0.7f"/>
+            <intensity rgb="0.9f,0.9f,0.9f"/>
             <beta>5</beta>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 2 light">
-        <position originAt="20.0f, -10.0f, 10.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <position originAt="20.0f, -10.0f, 2.0f" aimedAt="0.0f, 0.0f, -0.9f"/>
         <!--<position originAt="20.0f, -10.0f, 10.0f"/>-->
-        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="spot 2">
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Spot" name="spot 2">
             <intensity rgb="0.7f,0.7f,0.7f"/>
-            <!--<beta>5</beta>-->
+            <beta>5</beta>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid" name="ellipspoid 1">
-        <radius>1.0f,0.75f,5.0f</radius>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid" name="hyperboloid 1">
+        <radius>0.25f,0.50f,0.75f</radius>
         <MaterialByRef name="blue"/>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="ellipspoid 2">
-        <position originAt="-0.6f,-1.25f,0.6f"/>
-        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid">
-            <radius>0.25,0.2f,0.3f</radius>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="hyperboloid 2">
+        <position originAt="-1.0f,-1.25f,0.6f" altitude="90.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid">
+            <radius>0.05f,0.10f,0.5f</radius>
             <MaterialByRef name="magenta"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="ellipspoid 3">
-        <position originAt="0.2f, -2.5f, 0.5f"/>
-        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid">
-            <radius>0.1f,0.20f,0.3f</radius>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="hyperboloid 3">
+        <position originAt="0.2f, -2.5f, 0.0f" roll="90.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid">
+            <radius>0.1f,0.2f,0.5f</radius>
             <MaterialByRef name="glass sphere"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>

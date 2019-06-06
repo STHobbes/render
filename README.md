@@ -94,5 +94,7 @@ recently found the CSE581 code on an old machine, and thought I should revisit i
 ## Specifics
 * This project is in single precision because that is was good enough for the images we were creating at the time, and double
   precision was way more time intensive than single precision. If you want to render sub-atomic or astronomical scenes you might
-  normalize you objects to the scale in which you are working (nanometers or light years) so you don't experience precision
-  problems
+  normalize your objects to the scale in which you are working (nanometers or light years) so you don't experience precision
+  problems. If your want both in the same environment - double precision is not enough - you need a different strategy.
+  
+## Some Relevant Q and A
