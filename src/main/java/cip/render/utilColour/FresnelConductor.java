@@ -10,6 +10,7 @@
 package cip.render.utilColour;
 
 import cip.render.util3d.Vector3f;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author royster.hall@gmail.com
@@ -25,6 +26,8 @@ public class FresnelConductor extends Fresnel {
 
     /**
      * Creates a new instance of FresnelConductor
+     *
+     * @param rgb (RGB, readonly) The reflectance of the material
      */
     public FresnelConductor(final RGBf rgb) {
         init(rgb, 1.0f, approxK(rgb));
@@ -80,7 +83,7 @@ public class FresnelConductor extends Fresnel {
         return 0.5f * (a2Parallel + a2Perpendicular);
     }
 
-    public RGBf approxFr(final RGBf Fr, final Vector3f N, final Vector3f L) {
+    public RGBf approxFr(@NotNull final RGBf Fr, @NotNull final Vector3f N, @NotNull final Vector3f L) {
         final float fRtheta = conductor_ave(N, L);   // average reflectance at incident angle
         final float fTmp = (fRtheta - m_Ro) / (1.0f - m_Ro);
         if ((Fr.r = m_rgb.r + ((1.0f - m_rgb.r) * fTmp)) < 0.0f) {

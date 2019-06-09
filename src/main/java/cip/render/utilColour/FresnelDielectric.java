@@ -10,6 +10,7 @@
 package cip.render.utilColour;
 
 import cip.render.util3d.Vector3f;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author royster.hall@gmail.com
@@ -23,6 +24,8 @@ public class FresnelDielectric extends Fresnel {
 
     /**
      * Creates a new instance of FresnelDielectric
+     *
+     * @param rgb (RGB, readonly) The reflectance of the material
      */
     public FresnelDielectric(final RGBf rgb) {
         init(rgb, approxN(rgb));
@@ -54,7 +57,8 @@ public class FresnelDielectric extends Fresnel {
         return 0.5f * ((fAmplParallel * fAmplParallel) + (fAmplPerpendicular * fAmplPerpendicular));
     }
 
-    public RGBf approxFrFt(final RGBf Fr, final RGBf Ft, final Vector3f N, final Vector3f L, final Vector3f T, final boolean bIn, final float n) {
+    public RGBf approxFrFt(@NotNull final RGBf Fr, @NotNull final RGBf Ft, @NotNull final Vector3f N, @NotNull final Vector3f L,
+                           @NotNull final Vector3f T, final boolean bIn, final float n) {
         final float fRtheta = dielectric_ave(N, L, T, bIn, n);   // average reflectance at incident angle
         final float fTmp = (fRtheta - m_Ro) / (1.0f - m_Ro);
         if ((Fr.r = m_rgb.r + ((1.0f - m_rgb.r) * fTmp)) < 0.0f) {

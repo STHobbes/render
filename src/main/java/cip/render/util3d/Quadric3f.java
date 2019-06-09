@@ -176,8 +176,8 @@ public class Quadric3f {
      * The elliptical cone is an ellipse of radius <tt>fRx</tt>, <tt>fRy</tt> centered at 0,0 where it cuts through
      * the XY plane.  It extends infinitely in Z.
      *
-     * @param fRx (float, > 0.0f) The i radius of the elliptical-cylinder.
-     * @param fRy (float, > 0.0f) The j radius of the elliptical-cylinder.
+     * @param fRx (float, &gt; 0.0f) The i radius of the elliptical-cylinder.
+     * @param fRy (float, &gt; 0.0f) The j radius of the elliptical-cylinder.
      * @return Returns this quadric after initialization.
      */
     public Quadric3f setEllipticalCylinder(final float fRx, final float fRy) {
@@ -199,9 +199,9 @@ public class Quadric3f {
      * <p>
      * The ellipsoid is centered at 0,0,0.
      *
-     * @param fRx (float, > 0.0f) The i radius of the ellipsoid.
-     * @param fRy (float, > 0.0f) The j radius of the ellipsoid.
-     * @param fRz (float, > 0.0f) The k radius of the ellipsoid.
+     * @param fRx (float, &gt; 0.0f) The i radius of the ellipsoid.
+     * @param fRy (float, &gt; 0.0f) The j radius of the ellipsoid.
+     * @param fRz (float, &gt; 0.0f) The k radius of the ellipsoid.
      * @return Returns this quadric after initialization.
      */
     public Quadric3f setEllipsoid(final float fRx, final float fRy, final float fRz) {
@@ -224,9 +224,9 @@ public class Quadric3f {
      * The elliptical paraboloid has an elliptical cross section centered on the Z axis.  The elliptic cross section has i and j
      * radii of <tt>fRx</tt>,<tt>fRy</tt> where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
      *
-     * @param fRx     The i radius of the cross section where k = <tt>fHeight</tt>.
-     * @param fRy     The j radius of the cross section where k = <tt>fHeight</tt>.
-     * @param fHeight The k distance from the origin at which the elliptic cross section has i and j
+     * @param fRx     (float, &gt; 0.0f) The i radius of the cross section where k = <tt>fHeight</tt>.
+     * @param fRy     (float, &gt; 0.0f) The j radius of the cross section where k = <tt>fHeight</tt>.
+     * @param fHeight (float, &gt; 0.0f) The k distance from the origin at which the elliptic cross section has i and j
      *                radii of <tt>fRx</tt>,<tt>fRy</tt>
      * @return Returns this quadric after initialization.
      */
@@ -250,9 +250,9 @@ public class Quadric3f {
      * The elliptical cone has an elliptical cross section centered on the Z axis.  The elliptic cross section has i and j
      * radii of <tt>fRx</tt>,<tt>fRy</tt> where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
      *
-     * @param fRx     The i radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
-     * @param fRy     The j radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
-     * @param fHeight The k distance from the origin at which the elliptic cross section has i and j
+     * @param fRx     (float, &gt; 0.0f) The i radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
+     * @param fRy     (float, &gt; 0.0f) The j radius of the cross section where k = <tt>fHeight</tt> and k = -<tt>fHeight</tt>.
+     * @param fHeight (float, &gt; 0.0f) The k distance from the origin at which the elliptic cross section has i and j
      *                radii of <tt>fRx</tt>,<tt>fRy</tt>
      * @return Returns this quadric after initialization.
      */
@@ -279,11 +279,11 @@ public class Quadric3f {
      * The hyperboloid has an elliptical cross section of radius <tt>fRx</tt>, <tt>fRy</tt> centered at 0,0 where it cuts through
      * the XY plane.  It extends infinitely in Z and flares out (gets larger) as it gets further from k.
      *
-     * @param fRx The i radius at k = 0.
-     * @param fRy The j radius at k = 0.
-     * @param fRz The k 'radius'.  This is not really a radius because the hyperboloid extends infinitely.  A small radius means the
-     *            shape flares rapidly, a large radius means the shape flares gradually.  Note that as <tt>fRz</tt> approaches infinity the
-     *            q<sub>3</sub> term approaches 0 and the hyperboloid becomes an elliptical cylinder.
+     * @param fRx (float, &gt; 0.0f) The i radius at k = 0.
+     * @param fRy (float, &gt; 0.0f) The j radius at k = 0.
+     * @param fRz (float, &gt; 0.0f) The k 'radius'.  This is not really a radius because the hyperboloid extends
+     *            infinitely.  A small radius means the shape flares rapidly, a large radius means the shape flares
+     *            gradually.  Note that as <tt>fRz</tt> approaches infinity the q<sub>3</sub> term approaches 0 and the hyperboloid becomes an elliptical cylinder.
      * @return Returns this quadric after initialization.
      */
     public Quadric3f setHyperboloid(final float fRx, final float fRy, final float fRz) {

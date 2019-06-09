@@ -178,7 +178,6 @@ public class FrameLoader {
     private static final String XML_TAG_GEOMETRY_REF = "GeometryByRef";
     private static final String XML_TAG_LIGHT_REF = "LightByRef";
     private static final String XML_TAG_MATERIAL_REF = "MaterialByRef";
-    protected static final String XML_TAG_REF_NAME_ATTR = "name";
 
     private static final String XML_ATTR_DIMMER = "dimmer";
     private static final String XML_ATTR_PIXELSAMPLES = "pixelSamples";
@@ -186,7 +185,7 @@ public class FrameLoader {
 
     // instance fields
     // The reference list of all loaded and named objects
-    protected LinkedList<Object> m_refObjList = new LinkedList<>();
+    protected LinkedList<IDynXmlObject> m_refObjList = new LinkedList<>();
     // the camera
     protected IRtCamera m_defCamera = new cip.render.raytrace.camera.PinHole();
     protected IRtCamera m_camera = null;
@@ -194,11 +193,11 @@ public class FrameLoader {
     protected IRtBackground m_defBackground = new cip.render.raytrace.background.ConstantColour(new RGBf(0.0f, 0.0f, 0.0f));
     protected IRtBackground m_background = null;
     // The top level object/group list
-    protected LinkedList m_objectList = new LinkedList();
+    protected LinkedList<IRtGeometry> m_objectList = new LinkedList<>();
     // The flattened geometry list
-    protected LinkedList m_objectFlatList = new LinkedList();
+    protected LinkedList<IRtGeometry> m_objectFlatList = new LinkedList<>();
     // the flattened light list
-    protected LinkedList m_lightList = new LinkedList();
+    protected LinkedList<IRtLight> m_lightList = new LinkedList<>();
     // the dimmer
     protected float m_fDimmer = 1.0f;
     // pixel sampling
@@ -247,12 +246,12 @@ public class FrameLoader {
                     // now that we have loaded it, lets find out what it is
                     if (obj instanceof IRtGeometry) {
                         bCanRender = true;
-                        m_objectList.add(obj);
-                        m_objectFlatList.add(obj);
+                        m_objectList.add((IRtGeometry) obj);
+                        m_objectFlatList.add((IRtGeometry) obj);
                     }
                     if (obj instanceof IRtLight) {
                         bCanRender = true;
-                        m_lightList.add(obj);
+                        m_lightList.add((IRtLight) obj);
                     }
 
                     if (obj instanceof IRtBackground) {
@@ -275,12 +274,13 @@ public class FrameLoader {
                 } else if (domEl.getTagName().equalsIgnoreCase(XML_TAG_GEOMETRY_REF)) {
                     // look through the ref objects for a geometry of this name and add it to the scene
                     int iObj = -1;
-                    final String strName = domEl.getAttribute(XML_TAG_REF_NAME_ATTR);
+                    final String strName = domEl.getAttribute(DynXmlObjLoader.XML_ATTR_NAME);
                     if (!strName.equals("") && (null != m_refObjList)) {
                         for (iObj = 0; iObj < m_refObjList.size(); iObj++) {
                             final Object obj = m_refObjList.get(iObj);
                             if ((obj instanceof IRtGeometry) && ((INamedObject) obj).getName().equals(strName)) {
-                                m_lightList.add(obj);
+                                m_objectList.add((IRtGeometry) obj);
+                                m_objectFlatList.add((IRtGeometry) obj);
                                 break;
                             }
                         }
@@ -292,12 +292,12 @@ public class FrameLoader {
                 } else if (domEl.getTagName().equalsIgnoreCase(XML_TAG_LIGHT_REF)) {
                     // look through the ref objects for a light of this name and add it to the scene
                     int iObj = -1;
-                    final String strName = domEl.getAttribute(XML_TAG_REF_NAME_ATTR);
+                    final String strName = domEl.getAttribute(DynXmlObjLoader.XML_ATTR_NAME);
                     if (!strName.equals("") && (null != m_refObjList)) {
                         for (iObj = 0; iObj < m_refObjList.size(); iObj++) {
                             final Object obj = m_refObjList.get(iObj);
                             if ((obj instanceof IRtLight) && ((INamedObject) obj).getName().equals(strName)) {
-                                m_lightList.add(obj);
+                                m_lightList.add((IRtLight) obj);
                                 break;
                             }
                         }
@@ -365,7 +365,7 @@ public class FrameLoader {
             }
         } else if (element.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF)) {
             // a material reference
-            final String strName = element.getAttribute(XML_TAG_REF_NAME_ATTR);
+            final String strName = element.getAttribute(DynXmlObjLoader.XML_ATTR_NAME);
             if (!strName.equals("") && (null != refObjectList)) {
                 for (final Object obj : refObjectList) {
                     if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {

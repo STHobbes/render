@@ -70,14 +70,14 @@ import java.util.LinkedList;
  * <tr>
  * <td><tt>colour</tt> or <tt>colour</tt></td>
  * <td>The material colour as specified by the <tt><i>RGBf_attributes</i></tt> which are described in
- * <a href="../../utilColour/RGBf.html#setValue(org.w3c.dom.Element, boolean)">RGBf.setValue()</a>.
+ * {@link RGBf#setValue(Element, boolean)}.
  * </td>
  * </tr>
  * <tr>
  * <td><tt>emissivity</tt></td>
  * <td>The base material colour in the absense of any lighting as specified by the
  * <tt><i>RGBf_attributes</i></tt> which are described in
- * <a href="../../utilColour/RGBf.html#setValue(org.w3c.dom.Element, boolean)">RGBf.setValue()</a>.
+ * {@link RGBf#setValue(Element, boolean)}.
  * Emissivity can be used when an object needs to be a constant colour for chroma-key compositing, or
  * when a material is a light source.
  * </td>
@@ -288,7 +288,7 @@ public class Blinn implements IDynXmlObject, INamedObject, IRtMaterial {
      * Resets the diffuse RGB and the associated specular RGB based on whether the material is conductive.  It is
      * assumed everything else about the material is fine, so no re-initialization for rendering is performed.
      *
-     * @param newRGB
+     * @param newRGB (RGBf, readonly) Sets the new reflectance for this material.
      * @return Returns this material.
      */
     public Blinn setRGB(final RGBf newRGB) {

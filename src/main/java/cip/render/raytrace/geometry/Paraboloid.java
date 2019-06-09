@@ -89,7 +89,7 @@ import java.util.StringTokenizer;
  * The following specifies a paraboloid with base radii 1, 2 and height 5:
  * <pre>
  *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Paraboloid" name="<font style="color:magenta"><i>paraboloid 1</i></font>"&gt;</font>
- *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font><
+ *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>height</b>&gt;<font style="color:magenta"><i>5.0f</i></font>&lt;/<b>height</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>

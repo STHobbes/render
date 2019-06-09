@@ -65,8 +65,8 @@ public final class DynXmlObjLoader {
      *
      * @param xmlElement    The XML node containing the description of the object.
      * @param refObjectList A linked list of previously loaded named objects.  The loaded object is added to this
-     *                      list if the object is loaded successfully.  This list is passed to the object being loaded so that object
-     *                      references can be resolved.
+     *                      list if the object is loaded successfully.  This list is passed to the object being loaded so
+     *                      that object references can be resolved.
      * @return Returns the instantiated and initialized object.
      * @throws DynXmlObjParseException Thrown if there was an error instantiating and/or loading the object from the node.
      */

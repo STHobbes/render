@@ -40,6 +40,8 @@ public class DynXmlObjParseException extends Exception {
 
     /**
      * Creates a new instance of <tt>DynXmlObjParseException</tt>.
+     *
+     * @param strDetail (String) A message describing the details of the problem.
      */
     public DynXmlObjParseException(final String strDetail) {
         super(strDetail);
@@ -47,6 +49,9 @@ public class DynXmlObjParseException extends Exception {
 
     /**
      * Creates a new instance of <tt>DynXmlObjParseException</tt>.
+     *
+     * @param strDetail (String) A message describing the details of the problem.
+     * @param t (Throwable , nullable) The underlying cause that resulted in this exception being thrown.
      */
     public DynXmlObjParseException(final String strDetail, final Throwable t) {
         super(strDetail, t);

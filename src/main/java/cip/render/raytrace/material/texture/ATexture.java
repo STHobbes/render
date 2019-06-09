@@ -47,8 +47,11 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
     protected static final String XML_TAG_MATERIAL_REF_LOWER = XML_TAG_MATERIAL_REF.toLowerCase();
 
     /**
-     * @param xmlElement
-     * @param refObjectList
+     * Parse a material from the <tt>xmlElement</tt>, the material may either be locally parsed or referenced from the
+     * object library.
+     *
+     * @param xmlElement ({@link Element}, not null) The element that is expected to contain a material.
+     * @param refObjectList ({@link LinkedList}, nullable)
      * @return
      * @throws DynXmlObjParseException
      */
@@ -89,8 +92,8 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
         return null;
     }
 
-    protected static IRtMaterial resolveMaterialRef(final @NotNull String strName,
-                                                    final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    static IRtMaterial resolveMaterialRef(final @NotNull String strName,
+                                          final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
         if (!strName.equals("") && (null != refObjectList)) {
             for (final Object obj : refObjectList) {
                 if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {

@@ -38,7 +38,7 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
- * This is the implementation of a elliptical cylinder of infinite extent
+ * This is the implementation of a elliptical cylinder centered at 0,0,0 of infinite extend in the major axis Z.
  * <p>
  * The cylinder is specified as a node in an XML file as:
  * <pre>
@@ -89,7 +89,7 @@ import java.util.StringTokenizer;
  * The following specifies a cylinder with base radii 1 and 2:
  * <pre>
  *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Cylinder" name="<font style="color:magenta"><i>cylinder 1</i></font>"&gt;</font>
- *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font><
+ *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta"><i>1.0f, 2.0f</i></font>&lt;/<b>radius</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>blue</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>

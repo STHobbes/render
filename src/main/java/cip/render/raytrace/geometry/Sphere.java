@@ -83,7 +83,7 @@ import java.util.LinkedList;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a sphere of radius 5:<br><br>
+ * The following specifies a sphere of radius 5:
  * <pre>
  *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.geometry.Sphere" name="<font style="color:magenta">sphere</font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>radius</b>&gt;<font style="color:magenta">5</font>&lt;/<b>radius</b>&gt;</font>
