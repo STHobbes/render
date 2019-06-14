@@ -47,33 +47,29 @@ import java.util.LinkedList;
  * adaptively terminated before the absolute cutoff ts reached and the absolute cutoff is a guard against pathologic
  * environments that could reflect rays forever (i.e. 100% reflective).
  * <p>
- * The Whitted illuminated material is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.Whitted" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>conductor</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transparent</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>opaque</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta"><i>n</i></font>&lt;/<b>indexOfRefraction</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transmittance</b>&gt;<font style="color:magenta"><i>transmittance</i></font>&lt;/<b>transmittance</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>slopeDistributionFunction</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>geometricAttenuationFunction</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * where:<br>
+ * The Whitted illuminated material is specified as a node in an XML file as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>class="cip.raytrace.material.Whitted" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>conductor</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>transparent</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>opaque</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta"><i>n</i></font>&lt;/<b>indexOfRefraction</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>transmittance</b>&gt;<font style="color:magenta"><i>transmittance</i></font>&lt;/<b>transmittance</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>slopeDistributionFunction</i></font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>geometricAttenuationFunction</i></font>"/&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
- * <td><tt>colour</tt> or <<tt>colour</tt></td>
+ * <td><tt>colour</tt> or <tt>colour</tt></td>
  * <td>The material colour as specified by the <tt><i>RGBf_attributes</i></tt> which are described in
- * <a href="../../utilColour/RGBf.html#setValue(org.w3c.dom.Element, boolean)">RGBf.setValue()</a>.
+ * {@link RGBf#setValue(Element, boolean)}
  * </td>
  * </tr>
  * <tr>
@@ -125,7 +121,7 @@ import java.util.LinkedList;
  * <tr>
  * <td><tt>DynamicallyLoadedObject</tt></td>
  * <td>This is the specification of either the a slope distribution function (the object implements the
- * {@link cip.render.raytrace.interfaces.IRtD} interface) or the geometric attenuation function (the object
+ * {@link cip.render.raytrace.interfaces.IRtD} interface) and/or the geometric attenuation function (the object
  * implements the {@link cip.render.raytrace.interfaces.IRtG} interface).  If not specified, the default
  * slope distribution function is the {@link cip.render.raytrace.material.D.Blinn} function, and the
  * geometric attenuation defaults to 1.
@@ -138,19 +134,18 @@ import java.util.LinkedList;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a glass material using the Blinn slope distibution function:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.Whitted" name="<font style="color:magenta">green</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0,1,0</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">5</font>&lt;/<b>beta</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transparent</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta">1.5</font>&lt;/<b>indexOfRefraction</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transmittance</b>&gt;<font style="color:magenta">0.8</font>&lt;/<b>transmittance</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta">cip.raytrace.material.D.Blinn</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * The following specifies a glass material using the Blinn slope distibution function:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.Whitted" name="<font style="color:magenta">green</font>"&gt;</font>
+ *         <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0,1,0</font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">5</font>&lt;/<b>beta</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>transparent</b>/&gt;</font>
+ *         <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta">1.5</font>&lt;/<b>indexOfRefraction</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>transmittance</b>&gt;<font style="color:magenta">0.8</font>&lt;/<b>transmittance</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta">cip.render.raytrace.material.D.Blinn</font>"/&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -163,7 +158,7 @@ public class Whitted extends Blinn {
     private static final String XML_TAG_TRANSPARENCY = "transmittance";
 
     // instance fields
-    protected boolean m_bIsTransparent = false;         // opaque by default
+    protected boolean m_bIsTransparent = false;       // opaque by default
     protected float m_fIndexOfRefraction = 1.5f;      // index of refraction for glass
     protected float m_fKt = 0.95f;                    // transmission for glass
 
@@ -192,17 +187,19 @@ public class Whitted extends Blinn {
         initForRender();
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-
     /**
-     * @return
+     * Query whether this is a transparent material.
+     *
+     * @return (boolean) <tt>true</tt> if this material is transparent, <tt>false</tt> if this material is opaque.
      */
     public final boolean getTransparent() {
         return m_bIsTransparent;
     }
 
     /**
-     * @param bIsTransparent
+     * Set whether this is a transparent material.
+     *
+     * @param bIsTransparent <tt>true</tt> if this material is transparent, <tt>false</tt> if this material is opaque.
      */
     public final void setTransparent(final boolean bIsTransparent) {
         m_bIsTransparent = bIsTransparent;
@@ -210,28 +207,40 @@ public class Whitted extends Blinn {
     }
 
     /**
-     * @return
+     *  Query the index of refraction for the material. Note: the index of refraction is only meaningful if
+     *  the material is transparent.
+     *
+     * @return (float) The index of refraction for the material.
      */
     public final float getIndexOfRefraction() {
         return m_fIndexOfRefraction;
     }
 
     /**
-     * @param fIndexOfRefraction
+     * Set the index of refraction for the material. Note: the index of refraction is only meaningful if
+     * the material is transparent.
+     *
+     * @param fIndexOfRefraction (float) The index of refraction for the material.
      */
     public final void setIndexOfRefraction(final float fIndexOfRefraction) {
         m_fIndexOfRefraction = fIndexOfRefraction;
     }
 
     /**
-     * @return
+     * Get the transmittance (the fraction of incident light that passes into a transparent material).  Note: the transmissivity
+     * is only meaningful if the material is transparent.
+     *
+     * @return (float) Returns the transmissivity.
      */
     public final float getTransmissivity() {
         return m_fKt;
     }
 
     /**
-     * @param fKt
+     * Set the transmittance (the fraction of incident light that passes into a transparent material).  Note: the transmissivity
+     * is only meaningful if the material is transparent.
+     *
+     * @param fKt (float) The transmissivity.
      */
     public final void setTransmissivity(final float fKt) {
         m_fKt = fKt;
@@ -341,6 +350,7 @@ public class Whitted extends Blinn {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IRtMaterial interface implementation                                                                                       //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
     public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights,
                          final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
                          final int nSample, final int nRandom) {
@@ -415,8 +425,9 @@ public class Whitted extends Blinn {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    public void getInternalColor(final RGBf rgb, final RayIntersection intersection, final IRtLight[] lights, final IRtGeometry[] rtObjects,
-                                 final int nMaxRecursions, final int nInternalReflections, final IRtBackground rtBkg, final int nSample, final int nRandom) {
+    public void getInternalColor(final RGBf rgb, final RayIntersection intersection, final IRtLight[] lights,
+                                 final IRtGeometry[] rtObjects, final int nMaxRecursions, final int nInternalReflections,
+                                 final IRtBackground rtBkg, final int nSample, final int nRandom) {
         // The intersection is an internal intersection.  The refracted ray goes outside the object, the reflected ray stays
         //  inside the object
         boolean bIntersectObj = false;

@@ -45,29 +45,26 @@ import java.util.LinkedList;
  * The texture coordinates and vectors are transformed 'in place' in the RayIntersection and then the
  * intersection is passed to the next material in the chain for color evaluation.
  * <p>
- * The texture positioning is specified as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.texture.PositionTexture" name="<font style="color:magenta"><i>myPositionedTexture</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>material specific nodes and attributes</i><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * where:<br>
+ * The texture positioning is specified as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.texture.PositionTexture" name="<font style="color:magenta"><i>myPositionedTexture</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *           <font style="color:gray"><b>.</b>
+ *         <i>material specific nodes and attributes</i>
+ *           <b>.</b></font>
+ *       <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *    <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
  * <td><tt>position</tt></td>
  * <td>The geometry position as specified by the <tt><i>Xfm4x4f_attributes</i></tt> which are described in
- * {@link cip.render.core.util.util3d.Xfm4x4f#setValue(org.w3c.dom.Element, boolean, boolean)}.  All transformation options
+ * {@link cip.render.util3d.Xfm4x4f#setValue(org.w3c.dom.Element, boolean, boolean)}.  All transformation options
  * including scale and shear are supported for texture positioning.<br>
  * </td>
  * </tr>

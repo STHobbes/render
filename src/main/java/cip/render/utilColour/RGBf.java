@@ -234,7 +234,7 @@ public class RGBf {
      * <caption style="text-align:left">where:</caption>
      * <tr>
      * <td style="width:5%"></td>
-     * <td><table border="1">
+     * <td><table border="1" summary="">
      * <tr>
      * <td><tt>rgb</tt></td>
      * <td>The colour as specified as an r,g,b value.  R, g, and b are normally specified in the range 0-1.

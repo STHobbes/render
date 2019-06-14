@@ -52,8 +52,8 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
      *
      * @param xmlElement ({@link Element}, not null) The element that is expected to contain a material.
      * @param refObjectList ({@link LinkedList}, nullable)
-     * @return
-     * @throws DynXmlObjParseException
+     * @return (IRtMaterial, nullable)
+     * @throws DynXmlObjParseException thrown if there was a problem in the XML description and it could not be parsed.
      */
     protected IRtMaterial parseMaterial(final @NotNull Element xmlElement,
                                         final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {

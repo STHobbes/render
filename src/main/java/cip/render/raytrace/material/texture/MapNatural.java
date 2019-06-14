@@ -45,24 +45,21 @@ import java.util.LinkedList;
  * to be the natural coordinates and vector of the intersection.  The intersection is passed to the next material
  * in the chain for color evaluation.
  * <p>
- * The natural mapping is specified as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.texture.MapNatural" name="<font style="color:magenta"><i>myNaturalMap</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:gray"><b>.</b><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>material specific nodes and attributes</i><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b></font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * where:<br>
+ * The natural mapping is specified as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.texture.MapNatural" name="<font style="color:magenta"><i>myNaturalMap</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *            <font style="color:gray"><b>.</b>
+ *          <i>material specific nodes and attributes</i>
+ *             <b>.</b></font>
+ *       <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * <table border="0" width="90%">
- * <tr>
+ * <caption style="text-align:left">where:</caption> <tr>
  * <td style="width:5%"></td>
- * <td><table border="1">
+ * <td><table border="1" summary="">
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
  * <td>A material specfied by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
@@ -81,7 +78,7 @@ import java.util.LinkedList;
  * </table>
  * </td>
  * </tr>
- * </table><br>
+ * </table>
  *
  * @author royster.hall@gmail.com
  * @version 1.0

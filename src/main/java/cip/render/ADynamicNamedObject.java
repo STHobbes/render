@@ -70,6 +70,8 @@ public abstract class ADynamicNamedObject implements IDynXmlObject, INamedObject
     /**
      * Called once the object XML has been parsed to validate and/or trigger post load initialization. Override this method if
      * there are required parameters that do not defult, or if additional initialization is required after object parsing.
+     *
+     * @throws DynXmlObjParseException thrown if there was a problem in the XML description and it could not be parsed.
      */
     protected void lclValidate() throws DynXmlObjParseException {
 
