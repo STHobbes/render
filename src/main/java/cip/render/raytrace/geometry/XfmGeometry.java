@@ -156,7 +156,8 @@ public class XfmGeometry extends AGeometry {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {

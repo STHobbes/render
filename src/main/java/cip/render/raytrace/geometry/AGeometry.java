@@ -93,7 +93,10 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    abstract public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList);
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
+
+    }
 
     /**
      * Create the dynamically loaded object node with attributes and then calls

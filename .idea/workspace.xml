@@ -3,249 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Assignment2a.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Assignment2a.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Assignment2b.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Assignment2b.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/AmbientLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/AmbientLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Assignment2c.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Assignment2c.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/IRtMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/LightInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Material.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Material.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/PointLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/PointLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/SpotLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/SpotLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign2c/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/AmbientLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/AmbientLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Assignment3a.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Assignment3a.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/IRtMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/LightInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Material.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Material.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/PointLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/PointLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/SpotLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/SpotLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/AmbientLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/AmbientLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Assignment3b.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Assignment3b.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/IRtMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/LightInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Material.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Material.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/PointLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/PointLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/SpotLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/SpotLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign3b/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/AmbientLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/AmbientLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Assignment4.RenderPixel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Assignment4.RenderPixel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Assignment4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Assignment4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/IRtMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/ImplicitPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/ImplicitPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/LightInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Material.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Material.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/PointLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/PointLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Sphere3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/Sphere3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/SpotLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/SpotLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign4/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/ADynamicNamedObject.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/ADynamicNamedObject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/DynXmlObjLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/DynXmlObjLoader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/DynXmlObjParseException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/DynXmlObjParseException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/FrameLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/FrameLoader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/IDynXmlObject.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/IDynXmlObject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/INamedObject.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/INamedObject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/IRenderScene.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/IRenderScene.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/MyFileFilter.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/MyFileFilter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/RenderCanvas.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/RenderCanvas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/RenderWindow.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/RenderWindow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/TestRenderScene.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/TestRenderScene.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/LightInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RayIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.RenderPixel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.RenderPixel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/ConstantColour.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/ConstantColour.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/ACamera.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/ACamera.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/Aperture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/Aperture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/PinHole.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/PinHole.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Ellipsoid.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Ellipsoid.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.Face.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.Face.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Sphere.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Sphere.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/XfmGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/XfmGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtBackground.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtBackground.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtCamera.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtCamera.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtD.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtG.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtG.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtGeometry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtGroup.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtGroup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/IRtMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/interfaces/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/ALight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/ALight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Ambient.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Ambient.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Point.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Point.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Spot.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/Spot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/XfmLight.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/XfmLight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/light/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Blinn.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Blinn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Blinn.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Blinn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Gaussian.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Gaussian.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Phong.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/Phong.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/TrowRietz.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/TrowRietz.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/D/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/Torrance.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/Torrance.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/G/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Hall.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Hall.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/PackageConstants.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/PackageConstants.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Whitted.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/Whitted.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/ADualMaterialTexture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/ADualMaterialTexture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/ATexture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/ATexture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/AlphaImage.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/AlphaImage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Block.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Block.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Checkerboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Checkerboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/MapLinear.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/MapLinear.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/MapNatural.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/MapNatural.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Outlined.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Outlined.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/PositionTexture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/PositionTexture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Ridges.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Ridges.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/SpheresTexture.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/SpheresTexture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Wavy.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/Wavy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/material/texture/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util/AngleF.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util/AngleF.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util2d/Point2f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util2d/Point2f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util2d/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Bv3fIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Bv3fIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/BvMinMax3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/BvMinMax3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Line3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Line3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/PackageConstants.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/PackageConstants.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Plane3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Plane3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Plane3fIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Plane3fIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Point3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Point3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3fIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3fIntersection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/SingularMatrixException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/SingularMatrixException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Vector3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Vector3f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Xfm4x4f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Xfm4x4f.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/ZeroLengthVectorException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/ZeroLengthVectorException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/Fresnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/Fresnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/FresnelConductor.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/FresnelConductor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/FresnelDielectric.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/FresnelDielectric.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/RGBf.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/RGBf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/utilColour/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-16.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-17.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-18.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-19.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-20.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-21.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-21.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-22.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-22.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-23.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-23.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-24.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-24.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-25.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-25.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-26.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-26.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadocs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -291,20 +52,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="-383">
+                  <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/CSE581/package-info.java">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="9" selection-end-line="9" />
+                <state relative-caret-position="96">
+                  <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -313,74 +71,19 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java">
+            <entry file="file://$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="540">
-                  <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+                <state relative-caret-position="598">
+                  <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelConductor.java">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="30" selection-start-line="28" selection-end-line="30" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1336#2331#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelDielectric.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="28" selection-start-line="28" selection-end-line="28" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="299">
-                  <caret line="92" column="42" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="68" selection-start-line="67" selection-end-line="68" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="128">
-                  <caret line="42" column="3" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="576">
-                  <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
+                <state relative-caret-position="306">
+                  <caret line="161" column="54" selection-start-line="161" selection-start-column="54" selection-end-line="161" selection-end-column="54" />
                 </state>
               </provider>
             </entry>
@@ -389,11 +92,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="745">
-                  <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+                <state relative-caret-position="244">
+                  <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3057#3058#0" expanded="true" />
@@ -427,7 +130,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="316">
@@ -531,7 +234,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/util3d/PackageConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtGeometry.java" />
         <option value="$PROJECT_DIR$/resources/test/geometries/test_elliptical_cylinders.xml" />
@@ -542,7 +244,6 @@
         <option value="$PROJECT_DIR$/resources/test/geometries/test_paraboloids.xml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" />
-        <option value="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" />
         <option value="$PROJECT_DIR$/resources/test/geometries/test_hyperboloids.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperEllipsoid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperparaboloid.java" />
@@ -568,7 +269,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjParseException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/Fresnel.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelConductor.java" />
@@ -577,11 +277,14 @@
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" />
+        <option value="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java" />
       </list>
     </option>
   </component>
@@ -611,6 +314,24 @@
             <path>
               <item name="render" type="b2602c69:ProjectViewProjectNode" />
               <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="geometries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="render" type="b2602c69:ProjectViewProjectNode" />
@@ -676,17 +397,6 @@
               <item name="render" type="462c0819:PsiDirectoryNode" />
               <item name="raytrace" type="462c0819:PsiDirectoryNode" />
               <item name="background" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="camera" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="render" type="b2602c69:ProjectViewProjectNode" />
@@ -801,7 +511,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RenderWindow - test - sphere">
+  <component name="RunManager" selected="Application.RenderWindow - test - ellipsoid">
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
@@ -1197,7 +907,7 @@
       <workItem from="1557110602897" duration="99672000" />
       <workItem from="1558111965005" duration="59717000" />
       <workItem from="1559001220224" duration="79556000" />
-      <workItem from="1559923187929" duration="19380000" />
+      <workItem from="1559923187929" duration="21946000" />
     </task>
     <task id="LOCAL-00001" summary="porting of CSE506 assignments 1 and 2 to github.">
       <created>1554352866757</created>
@@ -1297,7 +1007,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560065018613</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="javadoc cleanup, javadoc generation has no warnings or errors.">
+      <created>1560529489891</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1560529489891</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1333,7 +1050,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="493122000" />
+    <option name="totallyTimeSpent" value="495688000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1346,7 +1063,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2561" y="101" width="2517" height="1335" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -1363,7 +1079,7 @@
       <window_info anchor="bottom" id="Build" order="8" weight="0.24508196" />
       <window_info anchor="bottom" id="Message" order="9" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.29098362" />
+      <window_info anchor="bottom" id="Run" order="11" visible="true" weight="0.29098362" />
       <window_info anchor="bottom" id="Debug" order="12" weight="0.36639345" />
       <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
@@ -1371,7 +1087,7 @@
       <window_info anchor="bottom" id="TODO" order="16" weight="0.3295082" />
       <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3295082" />
       <window_info anchor="bottom" id="Duplicates" order="18" weight="0.3295082" />
-      <window_info anchor="right" auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.17050505" />
+      <window_info active="true" anchor="right" auto_hide="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17050505" />
       <window_info anchor="right" id="Maven" order="1" weight="0.32969698" />
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="right" id="GfmBrowser" order="3" weight="0.32969698" />
@@ -1436,7 +1152,8 @@
     <MESSAGE value="Added cone and paraboloid objects." />
     <MESSAGE value="Added hyperboiloids and hyperbolic parabolids with rendering tests." />
     <MESSAGE value="javadoc cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="javadoc cleanup" />
+    <MESSAGE value="javadoc cleanup, javadoc generation has no warnings or errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="javadoc cleanup, javadoc generation has no warnings or errors." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1471,22 +1188,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/util3d/Vector3f.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="143" column="17" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#14417#0" expanded="true" />
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2120#2121#0" expanded="true" />
-            <element signature="e#4869#4870#0" expanded="true" />
-            <element signature="e#4925#4926#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/test/geometries/test_cones.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -1578,16 +1279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/test/geometries/test_hyperboloids.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1602,13 +1293,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1732,23 +1416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/CSE581/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" selection-end-line="9" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="2" column="78" selection-start-line="2" selection-start-column="78" selection-end-line="2" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -1876,18 +1543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3057#3058#0" expanded="true" />
-            <element signature="e#3085#3086#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -1925,10 +1580,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/CSE581/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" selection-end-line="9" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="237" selection-start-line="237" selection-end-line="237" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3057#3058#0" expanded="true" />
+            <element signature="e#3085#3086#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="161" column="54" selection-start-line="161" selection-start-column="54" selection-end-line="161" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-383">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,6 +1,6 @@
 /**
  * <p>
- * These are classes supporting various background including a constant colour background and reflection mapped backgrounds.
+ * These are classes supporting various backgrounds including a constant colour background and reflection mapped backgrounds.
  * </p>
  *
  * @author royster.hall@gmail.com

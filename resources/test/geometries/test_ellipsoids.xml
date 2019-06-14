@@ -89,7 +89,7 @@
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid" name="ellipspoid 1">
-        <radius>1.0f,0.75f,5.0f</radius>
+        <radius>1.0f,0.75f,0.5f</radius>
         <MaterialByRef name="blue"/>
     </DynamicallyLoadedObject>
 
