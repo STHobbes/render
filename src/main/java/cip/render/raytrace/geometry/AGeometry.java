@@ -258,11 +258,12 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * @param intersection The ray intersection.
      */
     @Override
-    public void getNaturalCoordinates(final RayIntersection intersection) {
+    public void getNaturalCoordinates(@NotNull final RayIntersection intersection) {
         final Vector3f vN = intersection.m_vObjNormal;
 
         intersection.m_ptNatural.x = intersection.m_ptObject.x;
         intersection.m_ptNatural.y = intersection.m_ptObject.y;
+        intersection.m_ptNatural.z = Float.NaN;
 
         intersection.m_vNatural[0].i = (float) Math.sqrt((vN.j * vN.j) + (vN.k * vN.k));
         intersection.m_vNatural[0].j = 0.0f;
@@ -271,6 +272,8 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         intersection.m_vNatural[1].i = 0.0f;
         intersection.m_vNatural[1].j = (float) Math.sqrt((vN.i * vN.i) + (vN.k * vN.k));
         intersection.m_vNatural[1].k = 0.0f;
+
+        intersection.m_bNatural = true;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------

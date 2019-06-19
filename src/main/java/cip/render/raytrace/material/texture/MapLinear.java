@@ -23,7 +23,6 @@ package cip.render.raytrace.material.texture;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
@@ -40,10 +39,16 @@ import org.w3c.dom.Node;
 import java.util.LinkedList;
 
 /**
+ * <p>
  * Performs a linear mapping of either object or world coordinates into the texture coordinates of the intersection.
- * The mapping is simply setting the texture point equal to either the object or world coordinates of the
+ * The mapping is simply setting the texture reference equal to either the object or world coordinates of the
  * intersection point.  The perturbation vectors are scaled by the cosine projection of the normal.  The intersection
- * with the new texture coordinates is passed to the next material in the chain for color evaluation.
+ * with the new texture coordinates is passed to the next material in the chain for color evaluation.</p>
+ * <p>
+ * Note that this is a 3D projection. It is 3D coordinates in a 3D space, so using a 2D texture, like an image, will most
+ * probably produce sub-optimal results. More directly, don't use 2D textures with this mapping because they will be really
+ * disappointing; only use 3D textures.
+ * </p>
  * <p>
  * The linear mapping is specified as:<br><br>
  * <pre>
@@ -100,7 +105,7 @@ import java.util.LinkedList;
  * @version 1.0
  * @since 1.0
  */
-public class MapLinear implements IDynXmlObject, INamedObject, IRtMaterial {
+public class MapLinear extends ATexture {
     protected static final String XML_TAG_OBJECT = "object";
     protected static final String XML_TAG_WORLD = "world";
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
@@ -175,17 +180,6 @@ public class MapLinear implements IDynXmlObject, INamedObject, IRtMaterial {
         if ((null != m_mtl) && (m_mtl instanceof IDynXmlObject)) {
             ((IDynXmlObject) m_mtl).toChildXmlElement(element);
         }
-    }
-
-    protected IRtMaterial resolveMaterialRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
-        if (!strName.equals("") && (null != refObjectList)) {
-            for (final Object obj : refObjectList) {
-                if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {
-                    return (IRtMaterial) obj;
-                }
-            }
-        }
-        throw new DynXmlObjParseException("Referenced material \"" + strName + "\" was not found.");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

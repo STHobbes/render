@@ -23,7 +23,6 @@ package cip.render.raytrace.material.texture;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
@@ -38,6 +37,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Asks the intersected object to fill in the {@link cip.render.raytrace.RayIntersection#m_ptNatural},
@@ -47,12 +48,12 @@ import java.util.LinkedList;
  * <p>
  * The natural mapping is specified as:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.texture.MapNatural" name="<font style="color:magenta"><i>myNaturalMap</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.texture.MapNatural" name="<font style="color:magenta"><i>myNaturalMap</i></font>"&gt;</font>
  *       <font style="color:blue">&lt;<b>MaterialByRef</b> name="<font style="color:magenta"><i>materialName</i></font>"/&gt;</font>
  *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
  *            <font style="color:gray"><b>.</b>
  *          <i>material specific nodes and attributes</i>
- *             <b>.</b></font>
+ *            <b>.</b></font>
  *       <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
@@ -62,7 +63,7 @@ import java.util.LinkedList;
  * <td><table border="1" summary="">
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>A material specfied by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
+ * <td>A material specified by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  If no material
  * is specified the mapping will generate an exception during rendering.
  * </td>
@@ -84,7 +85,10 @@ import java.util.LinkedList;
  * @version 1.0
  * @since 1.0
  */
-public class MapNatural implements IDynXmlObject, INamedObject, IRtMaterial {
+public class MapNatural extends ATexture {
+    static final Logger logger = Logger.getLogger(MapNatural.class.getName());
+    static boolean loggingFinest = logger.isLoggable(Level.FINEST);
+
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
     protected static final String XML_TAG_MATERIAL_REF = "MaterialByRef";
 
@@ -147,17 +151,6 @@ public class MapNatural implements IDynXmlObject, INamedObject, IRtMaterial {
         }
     }
 
-    protected IRtMaterial resolveMaterialRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
-        if (!strName.equals("") && (null != refObjectList)) {
-            for (final Object obj : refObjectList) {
-                if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {
-                    return (IRtMaterial) obj;
-                }
-            }
-        }
-        throw new DynXmlObjParseException("Referenced material \"" + strName + "\" was not found.");
-    }
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // INamedObject interface implementation                                                                                 //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,19 +169,26 @@ public class MapNatural implements IDynXmlObject, INamedObject, IRtMaterial {
     /**
      * IGNORED, not applicable to <tt>MapNatural</tt>.
      */
-    public void initSampling(final int nSample, final @NotNull float[] f1dSample, final float[] f1dRandom, final @NotNull Point2f[] pt2dSample, final Point2f[] pt2dRandom,
+    public void initSampling(final int nSample, final @NotNull float[] f1dSample, final float[] f1dRandom,
+                             final @NotNull Point2f[] pt2dSample, final Point2f[] pt2dRandom,
                              final @NotNull Point3f[] pt3dSample, final Point3f[] pt3dRandom) {
     }
 
-    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights, final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
+    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights,
+                         final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
                          final int nSample, final int nRandom) {
         intersection.m_rtObj.getNaturalCoordinates(intersection);
-        intersection.m_ptTexture.setValue(intersection.m_ptNatural.x, intersection.m_ptNatural.y, 0.0f);
+        intersection.m_ptTexture.setValue(intersection.m_ptNatural.x, intersection.m_ptNatural.y, intersection.m_ptNatural.z);
+        intersection.m_vTexture[0].setValue(intersection.m_vNatural[0]);
+        ;
         intersection.m_vTexture[0].setValue(intersection.m_vNatural[0]);
         intersection.m_vTexture[1].setValue(intersection.m_vNatural[1]);
-        intersection.m_vTexture[2].setValue(0.0f, 0.0f, 0.0f);
+        intersection.m_vTexture[2].setValue(intersection.m_vNatural[1]);
         intersection.m_bTexture = true;
         intersection.m_mtl = m_mtl;
+        if (loggingFinest) {
+            logger.finest(String.format("set texture coords to: %f, %f", intersection.m_ptTexture.x, intersection.m_ptTexture.y));
+        }
         m_mtl.getColor(rgb, intersection, lights, rtObjects, rtBkg, nMaxRecursions, nSample, nRandom);
     }
 }

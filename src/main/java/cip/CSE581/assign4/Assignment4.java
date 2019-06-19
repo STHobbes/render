@@ -219,7 +219,7 @@ public class Assignment4 implements IRenderScene {
     }
 
     @Override
-    public void renderImage(final Image image) {
+    public void renderImage(@NotNull final Image image) {
         if ((null != m_bi) &&
                 (image.getWidth(null) == m_bi.getWidth(null)) && (image.getHeight(null) == m_bi.getHeight(null))) {
             // copying pre-draw image into
@@ -231,7 +231,7 @@ public class Assignment4 implements IRenderScene {
     }
 
     @Override
-    public void renderScene(Component component, Graphics gc) {
+    public void renderScene(@NotNull Component component, @NotNull Graphics gc) {
         // NOTE: This method is called by the RenderWindow which is managing the screen view of the scene. If the screen window is
         // re-sized, then the current rendering is interrupted, a new screen buffer is allocated, and this method is called to
         // render to the new screen buffer.

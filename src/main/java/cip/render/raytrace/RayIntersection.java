@@ -23,7 +23,6 @@ package cip.render.raytrace;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util.AngleF;
-import cip.render.util2d.Point2f;
 import cip.render.util3d.*;
 import cip.render.utilColour.RGBf;
 
@@ -89,12 +88,12 @@ public class RayIntersection {
     private float m_fArea;
 
     /**
-     * The point at which the ray intersects the surface
+     * The point at which the ray intersects the surface, which gets back transformed to world space before the color processing.
      */
     public Point3f m_pt = new Point3f();
 
     /**
-     * The normal of the surface at the intersection point
+     * The normal of the surface at the intersection point, which gets back transformed to world space before the color processing.
      */
     public Vector3f m_vNormal = new Vector3f();
 
@@ -134,7 +133,7 @@ public class RayIntersection {
     /**
      * The natural coordinates of the ray intersection on the object
      */
-    public Point2f m_ptNatural = new Point2f();
+    public Point3f m_ptNatural = new Point3f();
     /**
      * The natural coordinates UV vectors on the object
      */

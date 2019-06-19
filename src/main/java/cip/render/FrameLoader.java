@@ -35,6 +35,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is a frame loader for an XML description of a frame.  The description includes the frame rendering options plus
@@ -173,6 +175,9 @@ import java.util.LinkedList;
  * @since 1.0
  */
 public class FrameLoader {
+    static final Logger logger = Logger.getLogger(FrameLoader.class.getName());
+    static boolean loggingWarning = logger.isLoggable(Level.WARNING);
+
     private static final String XML_TAG_ROOT = "RenderedFrame";
     private static final String XML_TAG_LIB_OBJ = "LibraryObjects";
     private static final String XML_TAG_GEOMETRY_REF = "GeometryByRef";
@@ -269,7 +274,9 @@ public class FrameLoader {
                     }
 
                     if (!bCanRender) {
-                        System.out.println("Warning: loaded object " + obj.getClass().getName() + " cannot be rendered.");
+                        if (loggingWarning) {
+                            logger.warning(String.format("Loaded object %s cannot be rendered.", obj.getClass().getName()));
+                        }
                     }
                 } else if (domEl.getTagName().equalsIgnoreCase(XML_TAG_GEOMETRY_REF)) {
                     // look through the ref objects for a geometry of this name and add it to the scene
@@ -286,7 +293,9 @@ public class FrameLoader {
                         }
                     }
                     if ((iObj < 0) || (iObj >= m_refObjList.size())) {
-                        System.out.println("Warning: referenced light \"" + strName + "\" cannot be resolved.");
+                        if (loggingWarning) {
+                            logger.warning(String.format("Referenced geometry \"%s\" cannot be resolved.", strName));
+                        }
                     }
 
                 } else if (domEl.getTagName().equalsIgnoreCase(XML_TAG_LIGHT_REF)) {
@@ -303,7 +312,9 @@ public class FrameLoader {
                         }
                     }
                     if ((iObj < 0) || (iObj >= m_refObjList.size())) {
-                        System.out.println("Warning: referenced light \"" + strName + "\" cannot be resolved.");
+                        if (loggingWarning) {
+                            logger.warning(String.format("Warning: referenced light \"" + strName + "\" cannot be resolved."));
+                        }
                     }
 
                 } else if (domEl.getTagName().equalsIgnoreCase(XML_TAG_LIB_OBJ)) {

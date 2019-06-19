@@ -20,6 +20,8 @@
  */
 package cip.render;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 
 /**
@@ -36,7 +38,7 @@ public interface IRenderScene {
      * Load a scene from the specified scene description file.  The scene description is an XML file that describes the camera,
      * materials, objects, and lighting for a scene along with specifics about rendering the scene.
      *
-     * @param strSceneDesc The scene description file.
+     * @param strSceneDesc (String, nullable) The scene description file.
      * @throws Exception The exception that may be thrown is specific to the loader. If an exception is thrown the caller is
      *                   expected to try an create a meaningful message for the user, and then to exit.
      */
@@ -53,9 +55,9 @@ public interface IRenderScene {
     /**
      * Renders the scene, or a part of the scene, to the an {@link Image}.
      *
-     * @param image The {@link Image} the scene should be rendered to.
+     * @param image (Image, not null) The {@link Image} the scene should be rendered to.
      */
-    void renderImage(Image image);
+    void renderImage(@NotNull Image image);
 
     /**
      * Renders the scene, or a part of the scene, to the {@link Graphics} context of a window.  The component provides the
@@ -64,8 +66,8 @@ public interface IRenderScene {
      * exposure of the window changes, the clipBounds may only
      * be a small part of the entire component.
      *
-     * @param component The component the scene is being rendered into.
-     * @param gc        The {@link Graphics} context of the component the scene should be rendered to.
+     * @param component (Component, not null) The component the scene is being rendered into.
+     * @param gc        (Graphics, not null) The {@link Graphics} context of the component the scene should be rendered to.
      */
-    void renderScene(Component component, Graphics gc);
+    void renderScene(@NotNull Component component, @NotNull Graphics gc);
 }

@@ -38,7 +38,7 @@ import java.util.LinkedList;
 
 /**
  * An implementation of the Whitted illumination model as described in Whitted, Turner (1980), "An Improved Illumination
- * Model for Shaded Display", Communications of the ACM, vol. 23, no. 6, pp. 343-349.  The Whitted model is implemented on top of
+ * Model for Shaded Display", Communications of the ACM, vol 23, no 6, pp 343-349.  The Whitted model is implemented on top of
  * the {@link cip.render.raytrace.material.Blinn} illumination model - the Blinn model provides the basic surface illumination, this model
  * adds the reflected and transmitted global illumination components.
  * <p>
@@ -49,7 +49,7 @@ import java.util.LinkedList;
  * <p>
  * The Whitted illuminated material is specified as a node in an XML file as:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>class="cip.raytrace.material.Whitted" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>class="cip.render.raytrace.material.Whitted" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
  *         <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>conductor</b>/&gt;</font>
@@ -136,7 +136,7 @@ import java.util.LinkedList;
  * <p>
  * The following specifies a glass material using the Blinn slope distibution function:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.Whitted" name="<font style="color:magenta">green</font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.Whitted" name="<font style="color:magenta">green</font>"&gt;</font>
  *         <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0,1,0</font>"/&gt;</font>
  *         <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
  *         <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">5</font>&lt;/<b>beta</b>&gt;</font>

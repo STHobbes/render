@@ -21,6 +21,9 @@
 package cip.render.raytrace.material;
 
 /**
+ * These are constants that control reflection and transmission recursion depth so ray-tracing does not get into
+ * infinitely recursive loops.
+ *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0

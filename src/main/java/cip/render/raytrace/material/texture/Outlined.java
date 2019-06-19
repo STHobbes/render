@@ -33,6 +33,8 @@ import org.w3c.dom.Node;
 
 import java.util.LinkedList;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Maps every unit square (in 2D) or cube (in 3D) into either an outline material or an infill material.  Within each
@@ -108,6 +110,9 @@ import java.util.StringTokenizer;
  * @since 1.0
  */
 public class Outlined extends ADualMaterialTexture {
+    static final Logger logger = Logger.getLogger(Outlined.class.getName());
+    static boolean loggingFinest = logger.isLoggable(Level.FINEST);
+
     private static final String XML_TAG_WIDTH = "width";
 
     // The instance definition
@@ -195,7 +200,10 @@ public class Outlined extends ADualMaterialTexture {
         //  which quadrant of the square we are in and assign a material
         intersection.m_ptTexture.x -= (float) Math.floor(intersection.m_ptTexture.x);
         intersection.m_ptTexture.y -= (float) Math.floor(intersection.m_ptTexture.y);
-        intersection.m_ptTexture.z -= (float) Math.floor(intersection.m_ptTexture.z);
+        final boolean is_2d = Float.isNaN(intersection.m_ptTexture.z);
+        if (is_2d) {
+            intersection.m_ptTexture.z -= (float) Math.floor(intersection.m_ptTexture.z);
+        }
         intersection.m_mtl = m_mtl2;
 
         // now check for the outline material
@@ -203,9 +211,18 @@ public class Outlined extends ADualMaterialTexture {
                 (intersection.m_ptTexture.x > (1.0f - m_fOutlineWidthX)) ||
                 (intersection.m_ptTexture.y < m_fOutlineWidthY) ||
                 (intersection.m_ptTexture.y > (1.0f - m_fOutlineWidthY)) ||
-                (intersection.m_ptTexture.z < m_fOutlineWidthZ) ||
-                (intersection.m_ptTexture.z > (1.0f - m_fOutlineWidthZ))) {
+                (!is_2d && (intersection.m_ptTexture.z < m_fOutlineWidthZ) ||
+                        (intersection.m_ptTexture.z > (1.0f - m_fOutlineWidthZ)))) {
+            if (loggingFinest) {
+                logger.finest(String.format("%f, %f mapped to outline material",
+                        intersection.m_ptTexture.x, intersection.m_ptTexture.y));
+            }
             intersection.m_mtl = m_mtl1;
+        } else {
+            if (loggingFinest) {
+                logger.finest(String.format("%f, %f mapped to infill material",
+                        intersection.m_ptTexture.x, intersection.m_ptTexture.y));
+            }
         }
 
         intersection.m_mtl.getColor(rgb, intersection, lights, rtObjects, rtBkg, nMaxRecursions, nSample, nRandom);

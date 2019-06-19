@@ -145,12 +145,12 @@ public class Assignment3a implements IRenderScene {
     }
 
     @Override
-    public void renderImage(Image image) {
+    public void renderImage(@NotNull Image image) {
 
     }
 
     @Override
-    public void renderScene(Component component, Graphics gc) {
+    public void renderScene(@NotNull Component component, @NotNull Graphics gc) {
         final Dimension dimScreen = component.getSize();
         // get the bounds of the hither plane (pixel plane)
         final Rectangle rectRender = gc.getClipBounds();

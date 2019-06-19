@@ -24,8 +24,12 @@ import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
+import cip.render.util3d.Point3f;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Maps every unit square (in 2D) or cube (in 3D) into 4 unit squares (2D) or 8 unit cubes (3D) with alternating materials in the
@@ -99,6 +103,8 @@ import org.jetbrains.annotations.NotNull;
  * @since 1.0
  */
 public class Checkerboard extends ADualMaterialTexture {
+    private static final Logger logger = Logger.getLogger(Checkerboard.class.getName());
+    private static boolean loggingFinest = logger.isLoggable(Level.FINEST);
 
     /**
      * Creates a new instance of <tt>Checkerboard</tt>
@@ -118,25 +124,51 @@ public class Checkerboard extends ADualMaterialTexture {
         }
         // the checkerboard is really simple, we just take every 1 unit square and check
         //  which quadrant of the square we are in and assign a material
-        intersection.m_ptTexture.x -= (float) Math.floor(intersection.m_ptTexture.x);
-        intersection.m_ptTexture.y -= (float) Math.floor(intersection.m_ptTexture.y);
-        intersection.m_ptTexture.z -= (float) Math.floor(intersection.m_ptTexture.z);
+        final Point3f ptTexture = intersection.m_ptTexture;
+        ptTexture.x -= (float) Math.floor(ptTexture.x);
+        ptTexture.y -= (float) Math.floor(ptTexture.y);
+        final boolean is_2d = Float.isNaN(ptTexture.z);
+        if (is_2d) {
+            ptTexture.z -= (float) Math.floor(ptTexture.z);
+        }
         intersection.m_mtl = m_mtl2;
 
-        if (((intersection.m_ptTexture.x < 0.5f) && (intersection.m_ptTexture.y < 0.5f) && (intersection.m_ptTexture.z < 0.5f)) ||
-                ((intersection.m_ptTexture.x > 0.5f) && (intersection.m_ptTexture.y > 0.5f) && (intersection.m_ptTexture.z < 0.5f)) ||
-                ((intersection.m_ptTexture.x < 0.5f) && (intersection.m_ptTexture.y > 0.5f) && (intersection.m_ptTexture.z > 0.5f)) ||
-                ((intersection.m_ptTexture.x > 0.5f) && (intersection.m_ptTexture.y < 0.5f) && (intersection.m_ptTexture.z > 0.5f))) {
-            intersection.m_mtl = m_mtl1;
+        if (is_2d) {
+            if (((ptTexture.x < 0.5f) && (ptTexture.y < 0.5f)) || ((ptTexture.x > 0.5f) && (ptTexture.y > 0.5f))) {
+                intersection.m_mtl = m_mtl1;
+                if (loggingFinest) {
+                    logger.finest(String.format("%f, %f mapped to material 1", ptTexture.x, ptTexture.y));
+                }
+            } else {
+                if (loggingFinest) {
+                    logger.finest(String.format("%f, %f mapped to material 2", ptTexture.x, ptTexture.y));
+                }
+            }
+        } else {
+            if (((ptTexture.x < 0.5f) && (ptTexture.y < 0.5f) && (ptTexture.z < 0.5f)) ||
+                    ((ptTexture.x > 0.5f) && (ptTexture.y > 0.5f) && (ptTexture.z < 0.5f)) ||
+                    ((ptTexture.x < 0.5f) && (ptTexture.y > 0.5f) && (ptTexture.z > 0.5f)) ||
+                    ((ptTexture.x > 0.5f) && (ptTexture.y < 0.5f) && (ptTexture.z > 0.5f))) {
+                intersection.m_mtl = m_mtl1;
+                if (loggingFinest) {
+                    logger.finest(String.format("%f, %f mapped to material 1", ptTexture.x, ptTexture.y));
+                }
+            } else {
+                if (loggingFinest) {
+                    logger.finest(String.format("%f, %f mapped to material 2", ptTexture.x, ptTexture.y));
+                }
+            }
         }
 
         // before we go on, assign a local texture coordinate within the square
-        intersection.m_ptTexture.x *= 2.0;
-        intersection.m_ptTexture.x -= (float) Math.floor(intersection.m_ptTexture.x);
-        intersection.m_ptTexture.y *= 2.0;
-        intersection.m_ptTexture.y -= (float) Math.floor(intersection.m_ptTexture.y);
-        intersection.m_ptTexture.z *= 2.0;
-        intersection.m_ptTexture.z -= (float) Math.floor(intersection.m_ptTexture.z);
+        ptTexture.x *= 2.0;
+        ptTexture.x -= (float) Math.floor(ptTexture.x);
+        ptTexture.y *= 2.0;
+        ptTexture.y -= (float) Math.floor(ptTexture.y);
+        if (!is_2d) {
+            ptTexture.z *= 2.0;
+            ptTexture.z -= (float) Math.floor(ptTexture.z);
+        }
 
         intersection.m_mtl.getColor(rgb, intersection, lights, rtObjects, rtBkg, nMaxRecursions, nSample, nRandom);
     }

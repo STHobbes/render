@@ -35,6 +35,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.util.LinkedList;
+import java.util.logging.Logger;
 
 /**
  * This is the implementation of a sphere of some radius centered at 0,0,0 in the object coordinate system.
@@ -96,6 +97,8 @@ import java.util.LinkedList;
  * @since 1.0
  */
 public class Sphere extends AQuadricGeo {
+    static final Logger logger = Logger.getLogger(Sphere.class.getName());
+
     /**
      * Creates a new instance of <tt>Sphere</tt>.
      */
@@ -200,8 +203,9 @@ public class Sphere extends AQuadricGeo {
      * starting at -90 degrees for -k, and +90 degree for +k.  The <tt>Sphere</tt> does not compute natural coordinates
      * unless they are specifically requested using this function.
      */
-    public void getNaturalCoordinates(final RayIntersection intersection) {
-        if (intersection.m_bNatural) return;
+    @Override
+    public void getNaturalCoordinates(@NotNull final RayIntersection intersection) {
+        if (intersection.m_bTexture) return;
 
         final Vector3f vN = intersection.borrowVector().setValue(intersection.m_vObjNormal);
         // the natural coordinates are longitude and latitude.
@@ -225,7 +229,10 @@ public class Sphere extends AQuadricGeo {
             intersection.m_vNatural[0].setValue(-vN.j / xyLen, vN.i / xyLen, 0.0f);
             intersection.m_vNatural[1].setValue(-(vN.k * vN.i) / xyLen, -(vN.k * vN.j) / xyLen, xyLen);
         }
+        intersection.m_ptNatural.z = Float.NaN;
+        intersection.m_vTexture[2].setValue(0.0f, 0.0f, 0.0f);
         intersection.m_bNatural = true;
+        logger.finest(String.format("Natural texture coords set to: %f, %f", intersection.m_ptNatural.x, intersection.m_ptNatural.y));
         intersection.returnVector(vN);
     }
 

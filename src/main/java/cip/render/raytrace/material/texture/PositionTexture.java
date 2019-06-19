@@ -23,7 +23,6 @@ package cip.render.raytrace.material.texture;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
@@ -92,7 +91,7 @@ import java.util.LinkedList;
  * @version 1.0
  * @since 1.0
  */
-public class PositionTexture implements IDynXmlObject, INamedObject, IRtMaterial {
+public class PositionTexture extends ATexture {
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
     protected static final String XML_TAG_MATERIAL_REF = "MaterialByRef";
     private static final String XML_TAG_POSITION = "position";
@@ -108,10 +107,11 @@ public class PositionTexture implements IDynXmlObject, INamedObject, IRtMaterial
     public PositionTexture() {
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+            throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {
@@ -168,20 +168,9 @@ public class PositionTexture implements IDynXmlObject, INamedObject, IRtMaterial
         }
     }
 
-    protected IRtMaterial resolveMaterialRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
-        if (!strName.equals("") && (null != refObjectList)) {
-            for (final Object obj : refObjectList) {
-                if ((obj instanceof IRtMaterial) && ((INamedObject) obj).getName().equals(strName)) {
-                    return (IRtMaterial) obj;
-                }
-            }
-        }
-        throw new DynXmlObjParseException("Referenced material \"" + strName + "\" was not found.");
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // INamedObject interface implementation                                                                                 //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // INamedObject interface implementation                                                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public @NotNull String getName() {
         return m_strName;
     }
@@ -190,26 +179,37 @@ public class PositionTexture implements IDynXmlObject, INamedObject, IRtMaterial
         m_strName = strName;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtMaterial interface implementation                                                                                  //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtMaterial interface implementation                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * IGNORED, not applicable to <tt>PositionTexture</tt>.
      */
-    public void initSampling(final int nSample, final @NotNull float[] f1dSample, final float[] f1dRandom, final @NotNull Point2f[] pt2dSample, final Point2f[] pt2dRandom,
+    public void initSampling(final int nSample, final @NotNull float[] f1dSample, final float[] f1dRandom,
+                             final @NotNull Point2f[] pt2dSample, final Point2f[] pt2dRandom,
                              final @NotNull Point3f[] pt3dSample, final Point3f[] pt3dRandom) {
     }
 
-    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights, final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
+    public void getColor(final @NotNull RGBf rgb, final @NotNull RayIntersection intersection, final @NotNull IRtLight[] lights,
+                         final @NotNull IRtGeometry[] rtObjects, final @NotNull IRtBackground rtBkg, final int nMaxRecursions,
                          final int nSample, final int nRandom) {
         if (!intersection.m_bTexture) {
             throw new IllegalStateException("PositionTexture: texture coordinates have not been set");
         }
-        m_xfm.transform(intersection.m_ptTexture);
-        m_xfm.transform(intersection.m_vTexture[0]);
-        m_xfm.transform(intersection.m_vTexture[1]);
-        m_xfm.transform(intersection.m_vTexture[2]);
+        // So this could be only a 2D texture, in which case, the z is Float.NaN, so we really can't transform the point.
+        if (Float.isNaN(intersection.m_ptTexture.z)) {
+            intersection.m_ptTexture.z = 0.0f;
+            m_xfm.transform(intersection.m_ptTexture);
+            m_xfm.transform(intersection.m_vTexture[0]);
+            m_xfm.transform(intersection.m_vTexture[1]);
+            intersection.m_ptTexture.z = Float.NaN;
+        } else {
+            m_xfm.transform(intersection.m_ptTexture);
+            m_xfm.transform(intersection.m_vTexture[0]);
+            m_xfm.transform(intersection.m_vTexture[1]);
+            m_xfm.transform(intersection.m_vTexture[2]);
+        }
         intersection.m_mtl = m_mtl;
         m_mtl.getColor(rgb, intersection, lights, rtObjects, rtBkg, nMaxRecursions, nSample, nRandom);
     }

@@ -20,6 +20,8 @@
  */
 package cip.render;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 
 /**
@@ -57,12 +59,12 @@ public class TestRenderScene implements IRenderScene {
 
     //-------------------------------------------------------------------------------------------------------------------------
     @Override
-    public void renderImage(final Image image) {
+    public void renderImage(@NotNull final Image image) {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
     @Override
-    public void renderScene(final Component component, final Graphics gc) {
+    public void renderScene(@NotNull final Component component, @NotNull final Graphics gc) {
         // get the bounds of what need to be drawn on the hither plane
         final Rectangle rectCam = gc.getClipBounds();
         // the loop through the horizontal lines of the display

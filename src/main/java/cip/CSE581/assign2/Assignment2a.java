@@ -23,6 +23,7 @@ package cip.CSE581.assign2;
 import cip.render.IRenderScene;
 import cip.render.util3d.*;
 import cip.render.utilColour.RGBf;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -156,12 +157,12 @@ public class Assignment2a implements IRenderScene {
 
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
-    public void renderImage(final Image image) {
+    public void renderImage(@NotNull final Image image) {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
-    public void renderScene(final Component component, final Graphics gc) {
+    public void renderScene(@NotNull final Component component, @NotNull final Graphics gc) {
         final Dimension dimScreen = component.getSize();
         // get the bounds of the hither plane (picture plane)
         final Rectangle rectRender = gc.getClipBounds();

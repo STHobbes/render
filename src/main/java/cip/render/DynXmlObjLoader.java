@@ -25,6 +25,8 @@ import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is the loader for dynamically loaded objects from XML files.  The general form of the object
@@ -43,7 +45,9 @@ import java.util.LinkedList;
  * @since 1.0
  */
 public final class DynXmlObjLoader {
-    private static final boolean DEBUG = false;
+    private static final Logger logger = Logger.getLogger(DynXmlObjLoader.class.getName());
+    private static boolean loggingFiner = logger.isLoggable(Level.FINER);
+
     public static final String DEFAULT_NAME = "<unspecified>";
     /**
      * The XML tag name for a dynamically loaded object in an XML file.
@@ -86,8 +90,8 @@ public final class DynXmlObjLoader {
             strName = DEFAULT_NAME;
         }
         // instantiate the object class
-        if (DEBUG) {
-            System.out.println(String.format("Loading: class='%s', name=%s", strClass, strName));
+        if (loggingFiner) {
+            logger.finer(String.format("Loading: class='%s', name=%s", strClass, strName));
         }
         final Object obj;
         try {

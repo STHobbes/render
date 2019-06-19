@@ -154,9 +154,12 @@ public interface IRtGeometry {
      * of natural coordinates.  If the {@link cip.render.raytrace.RayIntersection#m_bNatural} flag is already <tt>true</tt>
      * then the natural coordinates for the intersection have already been computed and the function can immediately return.
      *
+     * NOTE: in many cases the natural coordinates are 2D (expressed as only x and y) and represent the bast wrapping of an image
+     * around an object. In this case
+     *
      * @param intersection The ray intersection.
      */
-    void getNaturalCoordinates(RayIntersection intersection);
+    void getNaturalCoordinates(@NotNull RayIntersection intersection);
 
     /**
      * Test whether there is an intersection with the ray from the intersection in the <tt>vLight</tt> direction

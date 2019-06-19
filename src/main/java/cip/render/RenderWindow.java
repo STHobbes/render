@@ -25,6 +25,10 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 
 /**
  * This is the main for window-centric rendering.  It provides the infrastructure to setup an on-screen window and manage
@@ -75,8 +79,15 @@ import java.awt.event.*;
  * @since fall 2002
  */
 public class RenderWindow extends Frame implements ActionListener, WindowListener {
+
+    private static final Logger globalLogger = Logger.getLogger("");
+    static final Logger logger = Logger.getLogger(RenderWindow.class.getName());
+    static StreamHandler handler = new StreamHandler(System.out, new SimpleFormatter());
+
+
+
     //    private int m_nSizeX = 1190;         // the initial X size of the app window (my preferred default, adjust to your needs).
-//    private int m_nSizeY = 1216;         // the initial Y size of the app window (my preferred default, adjust to your needs).
+    //    private int m_nSizeY = 1216;         // the initial Y size of the app window (my preferred default, adjust to your needs).
     private int m_nSizeX = 565;         // the initial X size of the app window (for images for class website).
     private int m_nSizeY = 574;         // the initial Y size of the app window (for images for class website).
     private final GraphicsConfiguration m_graphicsConfig;       // the graphics configuration of the device the window is on
@@ -101,6 +112,10 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
      * @param args The command line arguments - see usage notes.
      */
     public static void main(final String[] args) {
+        globalLogger.setLevel(Level.INFO);
+        handler.setLevel(Level.INFO);
+        globalLogger.addHandler(handler);
+
         String strRenderSceneImpl = null;
         String strRenderSceneDesc = null;
         // parse the commandline arguments
@@ -111,6 +126,36 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
             } else if (args[ix].equalsIgnoreCase("-d") && (ix < (args.length - 1))) {
                 ix++;
                 strRenderSceneDesc = args[ix];
+            } else if (args[ix].equalsIgnoreCase("-l") && (ix < (args.length - 1))) {
+                ix++;
+                String log_level_str = args[ix];
+                Level level = Level.INFO;
+                switch (log_level_str) {
+                    case "FINEST":
+                        level = Level.ALL;
+                        break;
+                    case "FINER":
+                        level = Level.FINER;
+                        break;
+                    case "FINE":
+                        level = Level.FINE;
+                        break;
+                    case "INFO":
+                        level = Level.INFO;
+                        break;
+                    case "CONFIG":
+                        level = Level.CONFIG;
+                        break;
+                    case "WARNING":
+                        level = Level.WARNING;
+                        break;
+                    default:
+                        level = Level.INFO;
+                        break;
+                }
+                globalLogger.setLevel(level);
+                handler.setLevel(level);
+
             }
         }
 
@@ -367,7 +412,8 @@ class RenderCanvas extends Canvas {
     public void paint(final Graphics g) {
         final long startTime = System.currentTimeMillis();
         m_renderScene.renderScene(this, g);
-        System.out.println(String.format("Frame render time: %dms", (System.currentTimeMillis() - startTime)));
+        RenderWindow.logger.info(String.format("Frame render time: %dms", (System.currentTimeMillis() - startTime)));
+        RenderWindow.handler.flush();
     }
 
 }

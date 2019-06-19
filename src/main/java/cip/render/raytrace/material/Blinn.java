@@ -42,7 +42,7 @@ import java.util.LinkedList;
 /**
  * This is an implementation of the Blinn illumination model as described in
  * Blinn, James F (1977), "Models of Light Reflection for Computer Synthesized Images", ACM Computer Graphics,
- * (SIGGRAPH 77), vol. 11, no. 2, pp.192-198.  In this paper, Blinn describes a specular reflection DGF
+ * (SIGGRAPH 77), vol 11, no 2, pp.92-198.  In this paper, Blinn describes a specular reflection DGF
  * where: D is the slope-distribution function; G is the geometric attenuation function; and F is the
  * Fresnel reflectance.  Though Blinn mentions Fresnel reflectance, it is unclear whether it was used
  * in his images.  This implementation of the Blinn illumination model supports various implementations
@@ -50,7 +50,7 @@ import java.util.LinkedList;
  * <p>
  * The Blinn illuminated material is specified as a node in an XML file as:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.Blinn" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.Blinn" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
  *       <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
  *       <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font>
  *       <font style="color:blue">&lt;<b>conductor</b>/&gt;</font>
@@ -116,11 +116,11 @@ import java.util.LinkedList;
  * <p>
  * The following specifies a matte green material using the Phong slope distibution function:
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.material.Blinn" name="<font style="color:magenta">green</font>"&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.Blinn" name="<font style="color:magenta">green</font>"&gt;</font>
  *       <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0,1,0</font>"/&gt;</font>
  *       <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
  *       <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">45</font>&lt;/<b>beta</b>&gt;</font>
- *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta">cip.raytrace.material.D.Phong</font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta">cip.render.raytrace.material.D.Phong</font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  *

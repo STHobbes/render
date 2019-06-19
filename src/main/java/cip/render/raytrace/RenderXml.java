@@ -29,10 +29,13 @@ import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util3d.Line3f;
 import cip.render.utilColour.RGBf;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import java.util.logging.Logger;
+
 
 /**
  * This is a ray tracer that loads the scene to be rendered from an XML scene description file, and renders that scene using a
@@ -81,9 +84,11 @@ import java.util.LinkedList;
  */
 public class RenderXml implements IRenderScene {
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    private static final Logger logger = Logger.getLogger(RenderXml.class.getName());
+
+    //------------------------------------------------------------------------------------------------------------------------------
     // RenderPixel
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
 
     /**
      * This is the implementation of a pixel renderer intended to be run in a rendering thread.  The pixel renderer asks the
@@ -131,9 +136,9 @@ public class RenderXml implements IRenderScene {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     // RenderXmlHierarchy
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     final int m_nMaxRecursions = 6;
 
     protected boolean m_bNewScene = true;
@@ -153,7 +158,7 @@ public class RenderXml implements IRenderScene {
     int m_nYcur;                            // the current pixel Y (will be dispatched next)
     int m_nXmax;                            // the maximum X
     int m_nYmax;                            // the maximum Y
-    Graphics m_gc;                          // the graphics we are drawing into
+    Graphics m_gc;                          // the graphics context we are drawing into
 
     // the thread synchronizer for when the image is done
     byte[] m_threadLock = new byte[0];
@@ -163,8 +168,6 @@ public class RenderXml implements IRenderScene {
     int m_pixArrayWidth = 0;
     int m_pixArrayHeight = 0;
     BufferedImage m_bi = null;
-
-    //-------------------------------------------------------------------------------------------------------------------------
 
     /**
      * Creates a new instance of <tt>RenderXml</tt>
@@ -264,7 +267,7 @@ public class RenderXml implements IRenderScene {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    public void renderImage(final Image image) {
+    public void renderImage(@NotNull final Image image) {
         if ((null != m_bi) &&
                 (image.getWidth(null) == m_bi.getWidth(null)) && (image.getHeight(null) == m_bi.getHeight(null))) {
             // copying pre-draw image into
@@ -276,7 +279,7 @@ public class RenderXml implements IRenderScene {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    public void renderScene(final Component component, final Graphics gc) {
+    public void renderScene(@NotNull final Component component, @NotNull final Graphics gc) {
         final Dimension dimScreen = component.getSize();
         // get the bounds of the hither plane (picture plane)
         final Rectangle rectRender = gc.getClipBounds();
@@ -312,9 +315,9 @@ public class RenderXml implements IRenderScene {
         if (m_bNewScene) {
             // now start the threads
             final int nProcessors = Runtime.getRuntime().availableProcessors();
-            final int nThreads = nProcessors;     // start a rendering thread for each processor
-//            nThreads = 1;   // Use this to manually set the thread count for performance testing.
-            System.out.println(String.format("Starting %d threads on %d processors", nThreads, nProcessors));
+//            final int nThreads = nProcessors;     // start a rendering thread for each processor
+            final int nThreads = 1;     // Use this to manually set the thread count for performance testing or debugging
+            logger.info(String.format("Starting %d threads on %d processors", nThreads, nProcessors));
 
             // The deal here is we start the threads and keep a count of the running threads.  This count is
             //  protected by the thread lock.  Once the threads are started, they run till there are no
@@ -339,6 +342,7 @@ public class RenderXml implements IRenderScene {
                 }
             }
             m_bNewScene = false;
+            gc.drawImage(m_bi, m_nXmin, m_nYmin, m_nXmax, m_nYmax, m_nXmin, m_nYmin, m_nXmax, m_nYmax, null);
 
         } else {
             gc.drawImage(m_bi, m_nXmin, m_nYmin, m_nXmax, m_nYmax, m_nXmin, m_nYmin, m_nXmax, m_nYmax, null);
@@ -379,7 +383,7 @@ public class RenderXml implements IRenderScene {
                 }
             }
         }
-        System.out.println(String.format("no more pixels for this thread: %s", renderThread.toString()));
+        logger.info(String.format("no more pixels for this thread: %s", renderThread.toString()));
         return false;
     }
 

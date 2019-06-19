@@ -42,11 +42,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is an implementation of the Hall illumination model as described in
- * Hall, Roy A and D. P. Greenberg (1983), "A Testbed for Realistic Image Synthesis", IEEE Computer
- * Graphics and Applications, Nov 1983, and later in Hall, R. A., <i>Color and Illumination in Computer Generated
+ * Hall, Roy A and D P Greenberg (1983), "A Testbed for Realistic Image Synthesis", IEEE Computer
+ * Graphics and Applications, Nov 1983; and later in Hall, R A, <i>Color and Illumination in Computer Generated
  * Imagery</i>, Springer-Verlag, New York 1988. In this model uses the recursive model of Whitted, enhanced
  * with the Fresnel reflection approximations from Cook, and adding transmitted illumination from primary
  * light sources.  This implementation supports various implementations
@@ -58,23 +60,20 @@ import java.util.LinkedList;
  * environments that could reflect rays forever (i.e. 100% reflective).
  * <p>
  * The Hall illuminated material is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.Hall" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>conductor</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transparent</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>opaque</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta"><i>indexOfRefraction</i></font>&lt;/<b>indexOfRefraction</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>coefficientOfExtinction</b>&gt;<font style="color:magenta"><i>coefficientOfExtinction</i></font>&lt;/<b>coefficientOfExtinction</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>slopeDistributionFunction</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="<font style="color:magenta"><i>geometricAttenuationFunction</i></font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.Hall" name="<font style="color:magenta"><i>materialName</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>colour</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta"><i>betaDegrees</i></font>&lt;/<b>beta</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>conductor</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>transparent</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>opaque</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta"><i>indexOfRefraction</i></font>&lt;/<b>indexOfRefraction</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>coefficientOfExtinction</b>&gt;<font style="color:magenta"><i>coefficientOfExtinction</i></font>&lt;/<b>coefficientOfExtinction</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>slopeDistributionFunction</i></font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>geometricAttenuationFunction</i></font>"/&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>*
  * <table border="0" width="90%">
  * <caption style="text-align:left">where:</caption>
  * <tr>
@@ -162,22 +161,23 @@ import java.util.LinkedList;
  * <b>Example of XML Specification</b>
  * <p>
  * The following specifies a glass material using the Blinn slope distibution function:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.material.Hall" name="<font style="color:magenta">glass</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0.15f,0.15f,0.15f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">2</font>&lt;/<b>beta</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>transparent</b>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta">1.5</font>&lt;/<b>indexOfRefraction</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.render.raytrace.material.Hall" name="<font style="color:magenta">glass</font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>colour</b> rgb="<font style="color:magenta">0.15f,0.15f,0.15f</font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>dielectric</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>beta</b>&gt;<font style="color:magenta">2</font>&lt;/<b>beta</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>transparent</b>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>indexOfRefraction</b>&gt;<font style="color:magenta">1.5</font>&lt;/<b>indexOfRefraction</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0
  */
 public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
+    static final Logger logger = Logger.getLogger(Hall.class.getName());
+    static boolean loggingFine = logger.isLoggable(Level.FINE);
 
     private static final String XML_TAG_EMISSIVITY = "emissivity";
     private static final String XML_TAG_COLOR = "color";
