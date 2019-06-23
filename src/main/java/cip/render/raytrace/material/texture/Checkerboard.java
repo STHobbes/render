@@ -128,7 +128,7 @@ public class Checkerboard extends ADualMaterialTexture {
         ptTexture.x -= (float) Math.floor(ptTexture.x);
         ptTexture.y -= (float) Math.floor(ptTexture.y);
         final boolean is_2d = Float.isNaN(ptTexture.z);
-        if (is_2d) {
+        if (!is_2d) {
             ptTexture.z -= (float) Math.floor(ptTexture.z);
         }
         intersection.m_mtl = m_mtl2;
@@ -151,11 +151,11 @@ public class Checkerboard extends ADualMaterialTexture {
                     ((ptTexture.x > 0.5f) && (ptTexture.y < 0.5f) && (ptTexture.z > 0.5f))) {
                 intersection.m_mtl = m_mtl1;
                 if (loggingFinest) {
-                    logger.finest(String.format("%f, %f mapped to material 1", ptTexture.x, ptTexture.y));
+                    logger.finest(String.format("%f, %f, %f mapped to material 1", ptTexture.x, ptTexture.y, ptTexture.z));
                 }
             } else {
                 if (loggingFinest) {
-                    logger.finest(String.format("%f, %f mapped to material 2", ptTexture.x, ptTexture.y));
+                    logger.finest(String.format("%f, %f, %f mapped to material 2", ptTexture.x, ptTexture.y, ptTexture.z));
                 }
             }
         }

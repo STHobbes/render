@@ -21,11 +21,11 @@
 package cip.render.raytrace.camera;
 
 import cip.render.DynXmlObjParseException;
+import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.util3d.Line3f;
 import cip.render.util3d.Point3f;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -131,7 +131,7 @@ public class PinHole extends ACamera {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         initForParse();
         try {
             // Read the specified components for the camera

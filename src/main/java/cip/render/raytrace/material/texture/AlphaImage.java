@@ -21,13 +21,13 @@
 package cip.render.raytrace.material.texture;
 
 import cip.render.DynXmlObjParseException;
+import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import javax.imageio.ImageIO;
@@ -50,8 +50,9 @@ public class AlphaImage extends ADualMaterialTexture {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
     protected boolean lclProcessXmlElement(final @NotNull String elementTag, final @NotNull Element xmlElement,
-                                           final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+                                           final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         return lclProcessXmlElement(elementTag, xmlElement, refObjectList) ||
                 lclParseAndLoadImage(elementTag, xmlElement);
     }

@@ -30,7 +30,6 @@ import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util2d.Point2f;
 import cip.render.util3d.Point3f;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import java.util.LinkedList;
@@ -61,7 +60,7 @@ public class ALight implements IDynXmlObject, INamedObject, IRtLight {
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
     }
 
     @Override

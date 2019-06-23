@@ -190,7 +190,7 @@ public class FrameLoader {
 
     // instance fields
     // The reference list of all loaded and named objects
-    protected LinkedList<IDynXmlObject> m_refObjList = new LinkedList<>();
+    protected LinkedList<INamedObject> m_refObjList = new LinkedList<>();
     // the camera
     protected IRtCamera m_defCamera = new cip.render.raytrace.camera.PinHole();
     protected IRtCamera m_camera = null;
@@ -457,7 +457,7 @@ public class FrameLoader {
      *
      * @return Returns the hierarchical list of geometries in the scene.
      */
-    public LinkedList getGeometryHierarchy() {
+    public LinkedList<IRtGeometry> getGeometryHierarchy() {
         return m_objectList;
     }
 
@@ -470,7 +470,7 @@ public class FrameLoader {
      *
      * @return Returns the flatted list of geometries in the scene.
      */
-    public LinkedList getGeometryFlat() {
+    public LinkedList<IRtGeometry> getGeometryFlat() {
         return m_objectFlatList;
     }
 
@@ -481,7 +481,7 @@ public class FrameLoader {
      *
      * @return Returns the flattened list of lights in the scene.
      */
-    public LinkedList getLights() {
+    public LinkedList<IRtLight> getLights() {
         return m_lightList;
     }
 

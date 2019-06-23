@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/test/textures/test_wavy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" afterDir="false" />
@@ -242,31 +239,49 @@
       <change beforePath="$PROJECT_DIR$/javadocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign1/Assignment1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign1/Assignment1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign2/Assignment2a.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign2/Assignment2a.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign2c/Assignment2c.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign2c/Assignment2c.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign3/Assignment3a.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign3/Assignment3a.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign3b/Assignment3b.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign3b/Assignment3b.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign4/Assignment4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/CSE581/assign4/Assignment4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/TestRenderScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/TestRenderScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RayIntersection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RayIntersection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/ConstantColour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/ConstantColour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/Aperture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/Aperture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/ALight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/ALight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Ambient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Ambient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Spot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Spot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/XfmLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/XfmLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Blinn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Blinn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Gaussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Gaussian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Phong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/Phong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/TrowRietz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/TrowRietz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/Torrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/Torrance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/PackageConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/PackageConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/AlphaImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/AlphaImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -312,26 +327,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2484">
-                  <caret line="207" column="65" selection-start-line="207" selection-start-column="65" selection-end-line="207" selection-end-column="65" />
+                <state relative-caret-position="5">
+                  <caret line="114" selection-start-line="113" selection-end-line="114" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="114" column="113" selection-start-line="114" selection-start-column="113" selection-end-line="114" selection-end-column="113" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="281">
-                  <caret line="43" column="38" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="38" />
+                <state relative-caret-position="456">
+                  <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -342,41 +348,60 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3696">
-                  <caret line="348" selection-start-line="348" selection-end-line="348" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="624">
-                  <caret line="73" selection-start-line="73" selection-end-line="73" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/CSE581/assign1/Assignment1.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1380">
-                  <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
+                <state relative-caret-position="-771">
+                  <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java">
+            <entry file="file://$PROJECT_DIR$/resources/test/textures/test_wavy.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1616">
-                  <caret line="154" selection-start-line="154" selection-end-line="154" />
+                <state relative-caret-position="607">
+                  <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="63">
+                  <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
                   <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="e#1667#1700#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="736">
+                  <caret line="132" selection-start-line="131" selection-end-line="132" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Math.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="601">
+                  <caret line="440" column="25" selection-start-line="440" selection-start-column="25" selection-end-line="440" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#17181#17182#0" expanded="true" />
+                    <element signature="e#17264#17265#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="653">
+                  <caret line="224" column="52" selection-start-line="224" selection-start-column="52" selection-end-line="224" selection-end-column="52" />
                 </state>
               </provider>
             </entry>
@@ -386,37 +411,10 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/rt.jar!/sun/util/logging/LoggingSupport.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1308">
-                  <caret line="120" column="18" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/util/logging/Formatter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1020">
-                  <caret line="112" column="31" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1680">
-                  <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="50" selection-start-line="50" selection-end-line="50" />
+                <state relative-caret-position="450">
+                  <caret line="105" selection-start-line="105" selection-end-line="105" />
                 </state>
               </provider>
             </entry>
@@ -424,8 +422,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="66">
-                  <caret line="271" column="55" lean-forward="true" selection-start-line="271" selection-start-column="55" selection-end-line="271" selection-end-column="55" />
+                <state relative-caret-position="255">
+                  <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#22971#22972#0" expanded="true" />
@@ -450,38 +448,11 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="553">
-                  <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="156">
-                  <caret line="39" column="59" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="59" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="108" column="35" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="505">
-                  <caret line="171" selection-start-line="171" selection-end-line="171" />
+                <state relative-caret-position="-1">
                   <folding>
+                    <element signature="e#0#11607#0" expanded="true" />
                     <element signature="imports" expanded="true" />
                   </folding>
                 </state>
@@ -492,7 +463,37 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="112">
-                  <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+                  <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="662">
+                  <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="464">
+                  <caret line="117" lean-forward="true" selection-start-line="116" selection-end-line="117" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="228">
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
                 </state>
               </provider>
             </entry>
@@ -523,6 +524,7 @@
       <find>Frame render time</find>
       <find>unexpected negative N.L</find>
       <find>System.out.println</find>
+      <find>outlinemtl</find>
       <find>intersection.m_ptTexture</find>
     </findStrings>
     <replaceStrings>
@@ -534,6 +536,7 @@
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/cip</dir>
       <dir>$PROJECT_DIR$/src/main/java/cip/render</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -542,10 +545,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/test/geometries/test_hyperparaboloids.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" />
-        <option value="$PROJECT_DIR$/website/assignment_4.htm" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/package-info.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" />
@@ -564,8 +563,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/Fresnel.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelConductor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelDielectric.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" />
         <option value="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" />
@@ -581,18 +578,24 @@
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtGeometry.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RayIntersection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" />
         <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" />
+        <option value="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" />
+        <option value="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java" />
+        <option value="$PROJECT_DIR$/resources/test/textures/test_wavy.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" />
       </list>
     </option>
   </component>
@@ -622,6 +625,24 @@
             <path>
               <item name="render" type="b2602c69:ProjectViewProjectNode" />
               <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="render" type="b2602c69:ProjectViewProjectNode" />
+              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="render" type="b2602c69:ProjectViewProjectNode" />
@@ -718,18 +739,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/website" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cip.render.raytrace.geometry" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/test/textures" />
       <recent name="$PROJECT_DIR$/resources/test/geometries" />
       <recent name="$PROJECT_DIR$/resources/test/dataGenerators" />
       <recent name="$PROJECT_DIR$/resources/website" />
       <recent name="$PROJECT_DIR$/src/main/java/cip/CSE581/assign4" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cip.render.raytrace.geometry" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/website" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -749,7 +770,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RenderWindow - test - tex - outlined-checkerboard">
+  <component name="RunManager" selected="Application.RenderWindow - test - tex - wavy">
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
@@ -1052,6 +1073,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RenderWindow - test - tex - wavy" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cip.render.RenderWindow" />
+      <module name="render.main" />
+      <option name="PROGRAM_PARAMETERS" value="-r cip.render.raytrace.RenderXml -d test/textures/test_wavy.xml" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/resources" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cip.render.raytrace.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RenderWindow - test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cip.render.RenderWindow" />
       <module name="render.main" />
@@ -1152,6 +1188,7 @@
       <item itemvalue="Application.RenderWindow - test - hyperparaboloid" />
       <item itemvalue="Application.RenderWindow - test - tex - outlined-checkerboard" />
       <item itemvalue="Application.RenderWindow - test - tex - checkerboard" />
+      <item itemvalue="Application.RenderWindow - test - tex - wavy" />
       <item itemvalue="Gradle.render [clean test]" />
       <item itemvalue="Gradle.TestXfm3f" />
       <item itemvalue="JavaScript Debug.assignment_1.htm" />
@@ -1178,7 +1215,7 @@
       <workItem from="1559001220224" duration="79556000" />
       <workItem from="1559923187929" duration="60388000" />
       <workItem from="1560739267539" duration="989000" />
-      <workItem from="1560740366575" duration="2824000" />
+      <workItem from="1560740366575" duration="35481000" />
     </task>
     <task id="LOCAL-00001" summary="porting of CSE506 assignments 1 and 2 to github.">
       <created>1554352866757</created>
@@ -1292,7 +1329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560535961579</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Progress in texture cleanup mand testing. eliminating a lot of&#10;duplicate code with texture super-0classes.">
+      <created>1560930075929</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1560930075929</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1328,7 +1372,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="537943000" />
+    <option name="totallyTimeSpent" value="570600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1365,7 +1409,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3295082" />
       <window_info anchor="bottom" id="TODO" order="16" weight="0.3295082" />
       <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3295082" />
-      <window_info anchor="bottom" id="Duplicates" order="18" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Duplicates" order="18" weight="0.3295082" />
       <window_info anchor="right" auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.17050505" />
       <window_info anchor="right" id="Maven" order="1" weight="0.32969698" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -1393,7 +1437,7 @@
       <window_info anchor="bottom" id="Build" order="8" weight="0.24508196" />
       <window_info anchor="bottom" id="Message" order="9" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="11" visible="true" weight="0.29098362" />
+      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.29098362" />
       <window_info anchor="bottom" id="Debug" order="12" weight="0.36639345" />
       <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
@@ -1433,7 +1477,9 @@
     <MESSAGE value="javadoc cleanup" />
     <MESSAGE value="javadoc cleanup, javadoc generation has no warnings or errors." />
     <MESSAGE value="Fixed an error introduced to quadric geometries during documentation cleanup." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed an error introduced to quadric geometries during documentation cleanup." />
+    <MESSAGE value="Progress in texture cleanup mand testing. eliminating a lot of&#10;duplicate code with texture super-0classes." />
+    <MESSAGE value="Added tests for the Wavy texture. Reworked Wavy to be a true 3D texture.&#10;&#10;Debugged/improved Checkerboard and Outlined as 3D textures&#10;&#10;Progress in texture cleanup and testing. eliminating a lot of&#10;duplicate code with texture base-classes. Added documentation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests for the Wavy texture. Reworked Wavy to be a true 3D texture.&#10;&#10;Debugged/improved Checkerboard and Outlined as 3D textures&#10;&#10;Progress in texture cleanup and testing. eliminating a lot of&#10;duplicate code with texture base-classes. Added documentation." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1464,69 +1510,16 @@
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/assignment_4.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1019">
-          <caret line="324" selection-start-line="324" selection-end-line="324" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/ConstantColour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="53" column="105" selection-start-line="53" selection-start-column="105" selection-end-line="53" selection-end-column="105" />
-          <folding>
-            <element signature="e#1739#1740#0" expanded="true" />
-            <element signature="e#1771#1772#0" expanded="true" />
-            <element signature="e#1917#1918#0" expanded="true" />
-            <element signature="e#1952#1953#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelConductor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="30" selection-start-line="28" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1336#2331#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/utilColour/Fresnel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="73" selection-start-line="72" selection-end-line="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Exception.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
-          <folding>
-            <element signature="e#2406#2407#0" expanded="true" />
-            <element signature="e#2443#2444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2161">
@@ -1565,20 +1558,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1723,20 +1702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2484">
-          <caret line="207" column="65" selection-start-line="207" selection-start-column="65" selection-end-line="207" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3696">
-          <caret line="348" selection-start-line="348" selection-end-line="348" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="624">
@@ -1806,24 +1771,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
+        <state relative-caret-position="289">
+          <caret line="107" column="35" selection-start-line="107" selection-start-column="35" selection-end-line="107" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="112">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <folding>
+            <element signature="e#0#11607#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="1304" column="18" selection-start-line="1304" selection-start-column="18" selection-end-line="1304" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-771">
+          <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="271" column="55" lean-forward="true" selection-start-line="271" selection-start-column="55" selection-end-line="271" selection-end-column="55" />
+        <state relative-caret-position="255">
+          <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#22971#22972#0" expanded="true" />
@@ -1846,68 +1835,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/AlphaImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="114" column="113" selection-start-line="114" selection-start-column="113" selection-end-line="114" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="108" column="35" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="43" column="38" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="96">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
+        <state relative-caret-position="242">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        <state relative-caret-position="450">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+        <state relative-caret-position="456">
+          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="39" column="59" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="59" />
+        <state relative-caret-position="63">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#1667#1700#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1616">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="816">
+          <caret line="87" column="36" selection-start-line="87" selection-start-column="36" selection-end-line="87" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-190">
+          <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6023#6024#0" expanded="true" />
+            <element signature="e#6130#6131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="440" column="25" selection-start-line="440" selection-start-column="25" selection-end-line="440" selection-end-column="25" />
+          <folding>
+            <element signature="e#17181#17182#0" expanded="true" />
+            <element signature="e#17264#17265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="114" selection-start-line="113" selection-end-line="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="224" column="52" selection-start-line="224" selection-start-column="52" selection-end-line="224" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="132" selection-start-line="131" selection-end-line="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="117" lean-forward="true" selection-start-line="116" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_wavy.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
         </state>
       </provider>
     </entry>

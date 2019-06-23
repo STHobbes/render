@@ -111,9 +111,10 @@
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
         <radius>1.0f</radius>
-        <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapNatural" name="MapNatural">
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapLinear" name="MapLinear">
+            <object/>
             <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture">
-                <position scale="0.05f,0.05f,0.05f"/>
+                <position scale="2f,2f,2f"/>
                 <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Checkerboard" name="Checkerboard">
                     <material1>
                         <MaterialByRef name="blue"/>

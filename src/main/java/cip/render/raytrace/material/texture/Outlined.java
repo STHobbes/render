@@ -21,13 +21,13 @@
 package cip.render.raytrace.material.texture;
 
 import cip.render.DynXmlObjParseException;
+import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtBackground;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -110,8 +110,8 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class Outlined extends ADualMaterialTexture {
-    static final Logger logger = Logger.getLogger(Outlined.class.getName());
-    static boolean loggingFinest = logger.isLoggable(Level.FINEST);
+    private static final Logger logger = Logger.getLogger(Outlined.class.getName());
+    private static boolean loggingFinest = logger.isLoggable(Level.FINEST);
 
     private static final String XML_TAG_WIDTH = "width";
 
@@ -125,14 +125,16 @@ public class Outlined extends ADualMaterialTexture {
      * Creates a new instance of <tt>Outlined </tt>
      */
     public Outlined() {
+        super("outlineMtl", "infillMtl");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
     protected boolean lclProcessXmlElement(final @NotNull String elementTag, final @NotNull Element xmlElement,
-                                           final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
-        return lclParseMaterials(elementTag, xmlElement, refObjectList, "outlinemtl", "infillmtl") ||
+                                           final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
+        return super.lclProcessXmlElement(elementTag, xmlElement, refObjectList) ||
                 lclParseWidth(elementTag, xmlElement);
     }
 
@@ -161,7 +163,7 @@ public class Outlined extends ADualMaterialTexture {
                             m_fOutlineWidthZ = 0.49f;
                         }
                     } else {
-                        throw new IllegalArgumentException(
+                        throw new DynXmlObjParseException(
                                 "'width' specification must be in the form 'width' or 'Xwidth,Ywidth,Zwidth'");
                     }
                     break;
@@ -174,7 +176,7 @@ public class Outlined extends ADualMaterialTexture {
     }
 
     protected void lclAppendChildElements(final @NotNull Element element) {
-        lclAppendMaterials(element, "outlineMtl", "infillMtl");
+        super.lclAppendChildElements(element);
         // outline width
         final Element elWidth = element.getOwnerDocument().createElement(XML_TAG_WIDTH);
         element.appendChild(elWidth);
@@ -201,7 +203,7 @@ public class Outlined extends ADualMaterialTexture {
         intersection.m_ptTexture.x -= (float) Math.floor(intersection.m_ptTexture.x);
         intersection.m_ptTexture.y -= (float) Math.floor(intersection.m_ptTexture.y);
         final boolean is_2d = Float.isNaN(intersection.m_ptTexture.z);
-        if (is_2d) {
+        if (!is_2d) {
             intersection.m_ptTexture.z -= (float) Math.floor(intersection.m_ptTexture.z);
         }
         intersection.m_mtl = m_mtl2;

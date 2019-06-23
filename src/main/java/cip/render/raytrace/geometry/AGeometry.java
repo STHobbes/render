@@ -38,7 +38,6 @@ import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import java.util.LinkedList;
@@ -93,7 +92,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
 
     }
@@ -119,7 +118,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * Override this function to add object-specific information to an XML node.
      *
      * @param element The dynamically loaded object node that the object-specific information should be written into. The
-     *                {@link cip.render.raytrace.geometry.AGeometry#loadFromXml(org.w3c.dom.Element, LinkedList)} funtcion must
+     *                {@link IDynXmlObject#loadFromXml(Element, LinkedList)} funtcion must
      *                be overridden by the geometry implementation to be able to read the object-specific information set by
      *                the object here.
      */

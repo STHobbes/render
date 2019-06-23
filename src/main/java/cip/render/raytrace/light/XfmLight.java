@@ -23,12 +23,12 @@ package cip.render.raytrace.light;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
 import cip.render.raytrace.LightInfo;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtLight;
 import cip.render.util3d.Xfm4x4f;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -163,7 +163,7 @@ public class XfmLight extends ALight {
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {

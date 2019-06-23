@@ -21,11 +21,11 @@
 package cip.render.raytrace.light;
 
 import cip.render.DynXmlObjParseException;
+import cip.render.INamedObject;
 import cip.render.raytrace.LightInfo;
 import cip.render.raytrace.RayIntersection;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -107,7 +107,7 @@ public class Ambient extends ALight {
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         try {
             // Read the specified components for the material
             Node domNode = xmlElement.getFirstChild();

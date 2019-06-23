@@ -23,11 +23,11 @@ package cip.render.raytrace.material.D;
 import cip.render.DynXmlObjLoader;
 import cip.render.DynXmlObjParseException;
 import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
 import cip.render.raytrace.interfaces.IRtD;
 import cip.render.util.AngleF;
 import cip.render.util3d.Vector3f;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import java.util.LinkedList;
@@ -60,7 +60,7 @@ public class Gaussian implements IDynXmlObject, IRtD {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         // there is actually nothing to load, so this function does nothing
     }
 

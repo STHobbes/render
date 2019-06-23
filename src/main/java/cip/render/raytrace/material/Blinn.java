@@ -33,7 +33,6 @@ import cip.render.util3d.Point3f;
 import cip.render.util3d.Vector3f;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -349,7 +348,7 @@ public class Blinn implements IDynXmlObject, INamedObject, IRtMaterial {
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void loadFromXml(final @NotNull Element xmlElement,
-                            final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+                            final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         try {
             // Read the specified components for the material
             Node domNode = xmlElement.getFirstChild();

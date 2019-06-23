@@ -37,7 +37,6 @@ import cip.render.utilColour.FresnelConductor;
 import cip.render.utilColour.FresnelDielectric;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -345,7 +344,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         m_fIndexOfRefraction = -1.0f;
         m_fCoefficientOfExtinction = -1.0f;
         try {

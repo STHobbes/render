@@ -21,35 +21,38 @@
 package cip.render;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.util.LinkedList;
 
 /**
+ * The abstract implementation of a dynamic and named object that can be read from or written to an XML file. Extend your
+ * dynamic named object from this class and implement the <tt>lcl*</tt> methods fpr object-specific behaviour.
+ *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0
  */
 public abstract class ADynamicNamedObject implements IDynXmlObject, INamedObject {
-    protected String m_strName = DynXmlObjLoader.DEFAULT_NAME;      // this material name
+    protected String m_strName = DynXmlObjLoader.DEFAULT_NAME;      // initialize the name to the default name.
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void loadFromXml(final @NotNull Element xmlElement,
-                            final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+                            final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {
                 if (domNode instanceof Element) {
                     final Element element = (Element) domNode;
-                    final String elementTag = element.getTagName().toLowerCase();
+                    final String elementTag = element.getTagName();
                     if (!lclProcessXmlElement(elementTag, element, refObjectList)) {
                         throw new DynXmlObjParseException(
-                                String.format("Unrecognized sphere XML description element <%s>.", element.getTagName()));
+                                String.format("Unrecognized %s XML description element <%s>.", this.getClass().getSimpleName(),
+                                        element.getTagName()));
                     }
                 }
                 domNode = domNode.getNextSibling();
@@ -62,21 +65,31 @@ public abstract class ADynamicNamedObject implements IDynXmlObject, INamedObject
         }
     }
 
+    /**
+     * Called for each XML element within the XML description of the object.
+     *
+     * @param elementTag    (String, not null) The XML element tag.
+     * @param xmlElement    (Element, not null) The XML element.
+     * @param refObjectList ({@link LinkedList}&lt;{@link INamedObject}&gt;, nullable) The list of library objects.
+     * @return Returns <tt>true</tt> if this node was parsed by the object, <tt>false</tt> otherwise - which means there was
+     * garbage in the element (from the point of view of the object being loaded), which will cause a
+     * {@link DynXmlObjParseException} to be thrown.
+     * @throws DynXmlObjParseException Thrown if there was an error parsing this element.
+     */
     protected boolean lclProcessXmlElement(final @NotNull String elementTag, final @NotNull Element xmlElement,
-                                           final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+                                           final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         return false;
     }
 
     /**
      * Called once the object XML has been parsed to validate and/or trigger post load initialization. Override this method if
-     * there are required parameters that do not defult, or if additional initialization is required after object parsing.
+     * there are required parameters that do not default, or if additional initialization is required after object parsing.
      *
-     * @throws DynXmlObjParseException thrown if there was a problem in the XML description and it could not be parsed.
+     * @throws DynXmlObjParseException thrown if there was a problem in the XML description and the loaded object is not valid.
      */
     protected void lclValidate() throws DynXmlObjParseException {
 
     }
-
 
     @Override
     public void toChildXmlElement(final @NotNull Element parentEl) {
@@ -89,6 +102,12 @@ public abstract class ADynamicNamedObject implements IDynXmlObject, INamedObject
         lclAppendChildElements(element);
     }
 
+    /**
+     * Called by {@link #toChildXmlElement(Element)} after the XML element for instantiating the object has been created to fill
+     * in the child initialization parameters for the object.
+     * @param element ({@link Element}, not null) The element that instantiates the object. The object initialization parameters
+     *                should be created as children of this element.
+     */
     protected void lclAppendChildElements(final @NotNull Element element) {
 
     }

@@ -215,8 +215,8 @@ public class RenderXml implements IRenderScene {
     public void loadScene(final String strSceneDesc) throws Exception {
         try {
             final FrameLoader frameLoader = new FrameLoader(strSceneDesc);
-            final LinkedList objectList = frameLoader.getGeometryHierarchy();
-            final LinkedList lightList = frameLoader.getLights();
+            final LinkedList<IRtGeometry> objectList = frameLoader.getGeometryHierarchy();
+            final LinkedList<IRtLight> lightList = frameLoader.getLights();
 
             if (objectList.isEmpty()) {
                 throw new DynXmlObjParseException("No geometry to be rendered was loaded.");
@@ -240,13 +240,13 @@ public class RenderXml implements IRenderScene {
             // setup the geometry list
             m_rtObjects = new IRtGeometry[objectList.size()];
             for (int iObj = 0; iObj < objectList.size(); iObj++) {
-                m_rtObjects[iObj] = (IRtGeometry) (objectList.get(iObj));
+                m_rtObjects[iObj] = objectList.get(iObj);
             }
 
             // setup the light list
             m_rtLights = new IRtLight[lightList.size()];
             for (int iLgt = 0; iLgt < lightList.size(); iLgt++) {
-                m_rtLights[iLgt] = (IRtLight) (lightList.get(iLgt));
+                m_rtLights[iLgt] = lightList.get(iLgt);
                 m_rtLights[iLgt].setDimmer(frameLoader.getDimmer());
             }
 

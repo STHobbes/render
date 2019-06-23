@@ -51,12 +51,13 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
      * object library.
      *
      * @param xmlElement ({@link Element}, not null) The element that is expected to contain a material.
-     * @param refObjectList ({@link LinkedList}, nullable)
-     * @return (IRtMaterial, nullable)
+     * @param refObjectList ({@link LinkedList}&lt;{@link INamedObject}&gt;, nullable) The list of library objects.
+     * @return (IRtMaterial, nullable) EReturns the material parsed from this element, returns <tt>null</tt> if a material was
+     * not parsed from this eelment.
      * @throws DynXmlObjParseException thrown if there was a problem in the XML description and it could not be parsed.
      */
-    protected IRtMaterial parseMaterial(final @NotNull Element xmlElement,
-                                        final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
+    final protected IRtMaterial parseMaterial(final @NotNull Element xmlElement,
+                                              final @Nullable LinkedList refObjectList) throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();
             while (null != domNode) {
@@ -69,14 +70,15 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
                         if (obj instanceof IRtMaterial) {
                             return (IRtMaterial) obj;
                         } else {
-                            throw new DynXmlObjParseException("Checkerboard " + m_strName + " material could not be parsed");
+                            throw new DynXmlObjParseException(String.format("%s *s  material could not be parsed",
+                                    getClass().getSimpleName(), m_strName));
                         }
                     } else if (element.getTagName().equalsIgnoreCase(XML_TAG_MATERIAL_REF_LOWER)) {
                         // a material reference
                         final String strName = element.getAttribute(XML_TAG_REF_NAME_ATTR);
                         return resolveMaterialRef(strName, refObjectList);
                     } else {
-                        throw new DynXmlObjParseException("Unrecognized Checkerboard XML description element <" +
+                        throw new DynXmlObjParseException("Unrecognized " + getClass().getSimpleName() + " XML description element <" +
                                 element.getTagName() + ">.");
                     }
                 }
@@ -86,7 +88,7 @@ public abstract class ATexture extends ADynamicNamedObject implements IRtMateria
             if (t instanceof DynXmlObjParseException) {
                 throw (DynXmlObjParseException) t;
             } else {
-                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
+                throw new DynXmlObjParseException(getClass().getSimpleName() + " parse exception", t);
             }
         }
         return null;

@@ -25,9 +25,9 @@ package cip.render.raytrace.geometry;
 import cip.render.DynXmlObjParseException;
 import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
+import cip.render.INamedObject;
 import cip.render.raytrace.interfaces.IRtMaterial;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -127,7 +127,7 @@ public class Ellipsoid extends Sphere {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         try {
             Node domNode = xmlElement.getFirstChild();

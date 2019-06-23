@@ -21,7 +21,6 @@
 package cip.render;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 
 import java.util.LinkedList;
@@ -50,13 +49,13 @@ public interface IDynXmlObject {
      * itself based on the contents of the node.
      *
      * @param xmlElement    The dynamically loaded object DOM Document element.
-     * @param refObjectList A linked list if named objects (implementing the {@link cip.render.INamedObject} interface)
+     * @param refObjectList A linked list if named objects (implementing the {@link INamedObject} interface)
      *                      that have already been loaded and can be used to resolve object references.
      * @throws DynXmlObjParseException Thrown if there was an error parsing the object.  If this exception is
      *                                 thrown it should be assumed that this object was incorrectly initialized,
      *                                 is invalid, and should not be used in any further operations.
      */
-    void loadFromXml(@NotNull Element xmlElement, @Nullable LinkedList refObjectList) throws DynXmlObjParseException;
+    void loadFromXml(@NotNull Element xmlElement, LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException;
 
     //-------------------------------------------------------------------------------------------------------------------------
 

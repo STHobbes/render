@@ -29,7 +29,6 @@ import cip.render.util.AngleF;
 import cip.render.util3d.Line3f;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -110,7 +109,7 @@ public class ConstantColour implements IDynXmlObject, INamedObject, IRtBackgroun
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final @Nullable LinkedList refObjectList)
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         try {
             // Read the specified components for the material

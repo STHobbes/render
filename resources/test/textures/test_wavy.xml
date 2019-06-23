@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : test_outlined_checkerboard.xml
-    Created on : 14 June 2019
+    Document   : test_wavy.xml
+    Created on : 22 June 2019
     Author     : roy
     Description:
-        This is a texture test that uses a checkerboard whose 2 materials are outline textures.
+        This is a texture test that uses a checkerboard whose 2 materials are materials selected from the material
+        library. The sphere use a natual mapping, so this also tests the natural mapping for spheres.
 -->
 <RenderedFrame>
 
@@ -101,8 +102,10 @@
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 2 light">
         <position originAt="20.0f, -10.0f, 10.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <!--<position originAt="20.0f, -10.0f, 10.0f"/>-->
         <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="spot 2">
             <intensity rgb="0.7f,0.7f,0.7f"/>
+            <!--<beta>5</beta>-->
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
@@ -111,29 +114,13 @@
         <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapLinear" name="MapLinear">
             <object/>
             <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture">
-                <position scale="2f,2f,2f"/>
-                <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Checkerboard" name="Checkerboard">
+                <position scale="2f,4f,2f"/>
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Wavy" name="Wavy">
                     <material1>
-                        <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline1">
-                            <width>0.05</width>
-                            <outlineMtl>
-                                <MaterialByRef name="gold"/>
-                            </outlineMtl>
-                            <infillMtl>
-                                <MaterialByRef name="blue"/>
-                            </infillMtl>
-                        </DynamicallyLoadedObject>
+                        <MaterialByRef name="blue"/>
                     </material1>
                     <material2>
-                        <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline2">
-                            <width>0.05</width>
-                            <outlineMtl>
-                                <MaterialByRef name="gold"/>
-                            </outlineMtl>
-                            <infillMtl>
-                                <MaterialByRef name="orange"/>
-                            </infillMtl>
-                        </DynamicallyLoadedObject>
+                        <MaterialByRef name="orange"/>
                     </material2>
                 </DynamicallyLoadedObject>
             </DynamicallyLoadedObject>
@@ -146,29 +133,13 @@
             <radius>0.25</radius>
             <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapNatural" name="MapNatural">
                 <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture">
-                    <position scale="0.02f,0.02f,0.02f"/>
-                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Checkerboard" name="Checkerboard1">
+                    <position scale="0.03f,0.15f,0.03f"/>
+                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Wavy" name="Wavy2">
                         <material1>
-                            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline1">
-                                <width>0.05</width>
-                                <outlineMtl>
-                                    <MaterialByRef name="gold"/>
-                                </outlineMtl>
-                                <infillMtl>
-                                    <MaterialByRef name="blue"/>
-                                </infillMtl>
-                            </DynamicallyLoadedObject>
+                            <MaterialByRef name="blue"/>
                         </material1>
                         <material2>
-                            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline2">
-                                <width>0.05</width>
-                                <outlineMtl>
-                                    <MaterialByRef name="gold"/>
-                                </outlineMtl>
-                                <infillMtl>
-                                    <MaterialByRef name="yellow"/>
-                                </infillMtl>
-                            </DynamicallyLoadedObject>
+                            <MaterialByRef name="yellow"/>
                         </material2>
                     </DynamicallyLoadedObject>
                 </DynamicallyLoadedObject>
@@ -195,29 +166,13 @@
             <face plane=" 0.0f, 0.0f,-1.0f,-0.25f"/>
             <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapNatural" name="MapNatural">
                 <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture1">
-                    <position scale="2,2,1"/>
-                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Checkerboard" name="Checkerboard2">
+                    <position scale="2,4,1"/>
+                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Wavy" name="Wavy3">
                         <material1>
-                            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline3">
-                                <width>0.05,0.05,0.0</width>
-                                <outlineMtl>
-                                    <MaterialByRef name="gold"/>
-                                </outlineMtl>
-                                <infillMtl>
-                                    <MaterialByRef name="green"/>
-                                </infillMtl>
-                            </DynamicallyLoadedObject>
+                            <MaterialByRef name="green"/>
                         </material1>
                         <material2>
-                            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Outlined" name="outline4">
-                                <width>0.05,0.05,0.0</width>
-                                <outlineMtl>
-                                    <MaterialByRef name="gold"/>
-                                </outlineMtl>
-                                <infillMtl>
-                                    <MaterialByRef name="yellow"/>
-                                </infillMtl>
-                            </DynamicallyLoadedObject>
+                            <MaterialByRef name="yellow"/>
                         </material2>
                     </DynamicallyLoadedObject>
                 </DynamicallyLoadedObject>
