@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RenderedFrame>
+<RenderedFrame pixelSamples="2" pixelKernel="2">
     <LibraryObjects>
         <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="sphereMat">
             <colour rgb="1.0,0.9,0.7"/>

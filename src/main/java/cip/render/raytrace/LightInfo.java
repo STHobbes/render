@@ -35,13 +35,6 @@ import cip.render.utilColour.RGBf;
  * @since 1.0
  */
 public class LightInfo {
-    //    // global ObjCache object with full cache tracking
-//    private static final ObjCache s_objCache = PackageConstants.NO_CACHE ?
-//            null : (PackageConstants.LOCAL_CACHE ? null : (new ObjCache("LightInfo          ")));
-//    // local cache - no tracking and/or error checking associated with the cache
-//    private static final byte[] s_cacheLock = PackageConstants.NO_CACHE ?
-//            null : (PackageConstants.LOCAL_CACHE ? (new byte[0]) : null);
-//    private static LightInfo s_lclObjCache = null;
     public LightInfo m_next = null;
 
     /**
@@ -68,35 +61,4 @@ public class LightInfo {
 
     public LightInfo() {
     }
-//
-//    // Borrow the object from the object cache (create one if there are none in the cache
-//    public static LightInfo borrowObj() {
-//        LightInfo lightInfo = null;
-//        if (PackageConstants.LOCAL_CACHE) {
-//            synchronized (s_cacheLock) {
-//                if (null != (lightInfo = s_lclObjCache)) {
-//                    s_lclObjCache = lightInfo.m_next;
-//                    lightInfo.m_next = null;
-//                }
-//            }
-//        } else {
-//            lightInfo = (LightInfo) s_objCache.borrowObj(true);
-//        }
-//        if (null == lightInfo) {
-//            lightInfo = new LightInfo();
-//        }
-//        return lightInfo;
-//    }
-//
-//    // return an object to the cache
-//    public void returnObj() {
-//        if (PackageConstants.LOCAL_CACHE) {
-//            synchronized (s_cacheLock) {
-//                m_next = s_lclObjCache;
-//                s_lclObjCache = this;
-//            }
-//        } else {
-//            s_objCache.returnObj(this);
-//        }
-//    }
 }

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : test_block.xml
+    Created on : 6 July 2019
+    Author     : roy
+    Description:
+        This is a texture test that uses a block texture whose 2 materials are materials selected from the material
+        library. The big sphere uses an object space (3D) mapping. The base plane and small sphere use a natural (2D) mapping.
+-->
+<RenderedFrame>
+
+    <LibraryObjects>
+        <!-- These are library objects that can be referenced anywhere in the scene -->
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="red">
+            <colour rgb="1.0f,0.0f,0.0f"/>
+            <conductor/>
+            <beta>10</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="yellow">
+            <colour rgb="0.7f,0.7f,0.0f"/>
+            <dielectric/>
+            <beta>45</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="gold">
+            <colour rgb="0.9f,0.8f,0.4f"/>
+            <conductor/>
+            <beta>9</beta>
+            <opaque/>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="orange">
+            <colour rgb="1.0f,0.5f,0.0f"/>
+            <conductor/>
+            <beta>45</beta>
+            <opaque/>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="blue">
+            <colour rgb="0.0f,0.0f,1.0f"/>
+            <conductor/>
+            <beta>9</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Blinn" name="green">
+            <colour rgb="0.0f,1.0f,0.0f"/>
+            <dielectric/>
+            <beta>45</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="magenta">
+            <colour rgb="1.0f,0.0f,1.0f"/>
+            <dielectric/>
+            <beta>5</beta>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="glass gem">
+            <colour rgb="1.0f,1.0f,1.0f"/>
+            <dielectric/>
+            <beta>2</beta>
+            <transparent/>
+            <indexOfRefraction>1.5</indexOfRefraction>
+            <transmittance>0.85</transmittance>
+        </DynamicallyLoadedObject>
+
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="glass sphere">
+            <colour rgb="1.0f,1.0f,1.0f"/>
+            <dielectric/>
+            <beta>2</beta>
+            <transparent/>
+            <indexOfRefraction>1.5</indexOfRefraction>
+            <transmittance>0.75</transmittance>
+        </DynamicallyLoadedObject>
+
+    </LibraryObjects>
+
+    <!-- This is the scene description -->
+    <DynamicallyLoadedObject class="cip.render.raytrace.background.ConstantColour">
+        <colour rgb="0.25f,0.25f,0.25f"/>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.Ambient" name="ambient light">
+        <intensity rgb="0.1f,0.1f,0.1f"/>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm point light">
+        <position originAt="-12.0f,-24.0f, 12.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="point light">
+            <intensity rgb="0.8f,0.8f,0.8f"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 1 light">
+        <position originAt="12.0f, -10.0f, 48.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Spot" name="spot 1">
+            <intensity rgb="0.7f,0.7f,0.7f"/>
+            <beta>5</beta>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 2 light">
+        <position originAt="20.0f, -10.0f, 10.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="spot 2">
+            <intensity rgb="0.7f,0.7f,0.7f"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
+        <radius>1.0f</radius>
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapLinear" name="MapLinear">
+            <object/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture">
+                <position scale="2f,4f,2f"/>
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Block" name="Block">
+                    <material1>
+                        <MaterialByRef name="blue"/>
+                    </material1>
+                    <material2>
+                        <MaterialByRef name="orange"/>
+                    </material2>
+                </DynamicallyLoadedObject>
+            </DynamicallyLoadedObject>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="sphere2">
+        <position originAt="-0.6f,-1.25f,0.6f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere">
+            <radius>0.25</radius>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapNatural" name="MapNatural">
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture">
+                    <position scale="0.03f,0.15f,0.03f"/>
+                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Block" name="Block2">
+                        <material1>
+                            <MaterialByRef name="blue"/>
+                        </material1>
+                        <material2>
+                            <MaterialByRef name="yellow"/>
+                        </material2>
+                    </DynamicallyLoadedObject>
+                </DynamicallyLoadedObject>
+            </DynamicallyLoadedObject>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="sphere3">
+        <position originAt="0.2f, -2.5f, 0.5f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere">
+            <radius>0.20</radius>
+            <MaterialByRef name="glass sphere"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="base">
+        <position originAt="0.0f,0.0f,-1.25f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">
+            <face plane=" 0.0f, 0.0f, 1.0f,-0.25f"/>
+            <face plane=" 0.0f,-1.0f, 0.0f,-2.0f"/>
+            <face plane=" 1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 1.0f, 0.0f,-2.0f"/>
+            <face plane="-1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.25f"/>
+            <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.MapNatural" name="MapNatural">
+                <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.PositionTexture" name="PositionTexture1">
+                    <position scale="2,4,1"/>
+                    <DynamicallyLoadedObject class="cip.render.raytrace.material.texture.Block" name="Block3">
+                        <material1>
+                            <MaterialByRef name="green"/>
+                        </material1>
+                        <material2>
+                            <MaterialByRef name="yellow"/>
+                        </material2>
+                    </DynamicallyLoadedObject>
+                </DynamicallyLoadedObject>
+            </DynamicallyLoadedObject>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="gem">
+        <position originAt="1.0f,-1.0f,-0.5f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">
+            <face plane=" 1.0f, 1.0f, 1.0f,-0.5f"/>
+            <face plane=" 1.0f,-1.0f, 1.0f,-0.5f"/>
+            <face plane="-1.0f, 1.0f, 1.0f,-0.5f"/>
+            <face plane="-1.0f,-1.0f, 1.0f,-0.5f"/>
+            <face plane=" 1.0f, 1.0f,-1.0f,-0.5f"/>
+            <face plane=" 1.0f,-1.0f,-1.0f,-0.5f"/>
+            <face plane="-1.0f, 1.0f,-1.0f,-0.5f"/>
+            <face plane="-1.0f,-1.0f,-1.0f,-0.5f"/>
+            <MaterialByRef name="glass gem"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
+
+</RenderedFrame>

@@ -9,7 +9,7 @@
         framework.  In this example, the local geometries are defined around a local
         object coordinate system, and transformed to the final location.
 -->
-<RenderedFrame>
+<RenderedFrame pixelSamples="2" pixelKernel="2">
 
     <LibraryObjects>
         <!-- These are library objects that can be referenced anywhere in the scene -->

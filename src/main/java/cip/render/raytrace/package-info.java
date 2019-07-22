@@ -1,6 +1,6 @@
 /**
  * <p>
- * The programs and classes specifically support ray tracing.
+ * The programs and classes specifically supporting ray traced image generation.
  * </p>
  *
  * @author royster.hall@gmail.com

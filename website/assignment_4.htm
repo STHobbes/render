@@ -105,8 +105,7 @@ use for the rest of the class.<br><br>
 <tr>
 <td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
 <td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Pick a geometry or test environment to add to our
-framework and do a
-little background research.<br><br>
+framework and do a little background research.<br><br>
 <!--mstheme--></font><!--msthemelist--></td>
 </tr>
 <!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
@@ -149,7 +148,7 @@ threads.&nbsp; One way to do this is to dedicate a rendering thread-per-processo
 multi-core).&nbsp; More threads than this would slow down rendering as your threads would be competing for CPU.&nbsp; Thus,
 if there are 4 processors, the image computation should take about a quarter of the time; and if there are 8
 processors, about an eighth of the time.&nbsp; You might ask about competition with other processes on the
-computer.&nbsp; I find my computer is using ver little CPU most of the time, so this is not really an issue.</p>
+computer.&nbsp; I find my computer is using very little CPU most of the time, so this is not really an issue.</p>
 <p>
 So, how do we use a thread per processor within the assignment 3 program?&nbsp; There are many approaches one could
 take.&nbsp; I find that thinking of computing the color for a pixel as a unit of work is quite natural and all I need
@@ -322,8 +321,107 @@ the problem in a common way to facilitate the explorations we do for the rest of
 using the same interfaces on dynamically loaded objects so we can easily extend all aspects of our renderer simply by writing
 new objects that use those interfaces.</p>
 <p>
-Everything that you have written up to this point exists in the ray tracing library. Additionally it includes loading
-the scene to be rendered from an XML file (in vogue at the time, I would use JSON if I were doing this again).</p>
+Everything that you have written up to this point exists in the ray tracing library. Additionally, the library includes loading
+the scene to be rendered from an XML file (in vogue at the time, I would use JSON if I were doing this again) - but these
+common formatting fads are somewhat irrelevant if you know what exactly you want to represent, see .</p>
+
+<p>Run the framework with the environments I supplied just to get familiar with
+things.&nbsp; Write a couple new .xml environments and submit them.&nbsp; Yes,
+we are working with a very limited set of geometries and cameras -- we'll fix
+that in the next couple weeks.</p>
+<h3>Adding a New Geometry or Test Environment</h3>
+These were the new additions from the 2004 class - for your class, pick others such as spline surfaces, fractals,
+<a href="https://en.wikipedia.org/wiki/Torus">torus</a>,
+<a href="https://en.wikipedia.org/wiki/Superquadrics">superquadric</a>,
+<a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">.obj files</a>,
+other procedurally generated objects (geodesic sphere, <a href="https://en.wikipedia.org/wiki/Gustav_Stickley">Stickley</a> chair or
+table), etc.<br/><br/>
+<!--mstheme--></font><!--msthemelist-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Lens</b> (spherical) - <font color="#00FF00">claimed
+by Chris</font> -
+the union of two spheres which intersect.&nbsp; This can be two identical
+spheres, or, if you allow different radius spheres could model both concave
+and convex lenses.&nbsp; See pictures from the 2004 course for an idea of
+how they work.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Elliptical Cylinder</b> - <font color="#00FF00">claimed
+by Sourabh</font>
+- An elliptical cylinder.&nbsp; See <a href="quadrics.htm">quadric</a> notes on the
+formulations of quadrics.<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Elliptical Cone</b> - <font color="#00FF00">claimed
+by Rob</font> - An
+elliptical cone.&nbsp; See <a href="quadrics.htm">quadric</a> notes on the formulations of
+quadrics. <br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Hyperboloid</b> - <font color="#00FF00">claimed
+by Jim</font> - A
+hyperboloid.&nbsp; See <a href="quadrics.htm">quadric</a> notes on the formulations of quadrics.
+<br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Elliptic Paraboloid</b> - <font color="#00FF00">claimed
+by Steve</font>
+- An elliptic paraboloid.&nbsp; See <a href="quadrics.htm">quadric</a> notes on the
+formulations of quadrics. <br>
+&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Blobby</b> - <font color="#00FF00">
+claimed by Matt</font> - per Blinn - google search on
+<i>blobby Blinn</i> - the links to a posted copy of his paper change, but this is a current link to <a
+href="https://ohiostate.pressbooks.pub/app/uploads/sites/45/2017/09/blinn-blobby.pdf">A Generalization of
+Algebraic Surface Drawing</a> and this is a <a href="blinn-blobby.pdf">cached copy</a> in the event that link does not work.
+<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<blockquote>
+<p>The image below describes what happens when the nodes of a model with 2 nodes separate:<br/>
+<p align="center"><img src="blobbies.gif">
+<p>This paper helps provide context for this type of implicit shape: <a href="http://paulbourke.net/geometry/implicitsurf/">Implicit
+Surfaces</a>
+These are <b>great</b> objects for building interesting shapes
+that morph and change in animation.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--msthemelist-->
+<tr>
+<td valign="baseline" width="42"><img src="_themes/roys-chalkboard/chabul1c.gif" width="15" height="15" hspace="13"></td>
+<td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><b>Fractal Sphere Environoment</b> - <font
+color="#00FF00">claimed by Seeger</font> - per Haines - see
+<a href="https://www1.acm.org/pubs/tog/resources/SPD/">
+http://www1.acm.org/pubs/tog/resources/SPD/</a>&nbsp;<!--mstheme--></font><!--msthemelist--></td>
+</tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p>&nbsp;</p>
+<p align="center"><img src="https://www1.acm.org/tog/resources/SPD/balls.png" width="512" height="512"></p>
+<blockquote>
+<p>This environment is one of a series of environments that was developed so
+that ray tracer performance could be compared as an apples-to-apples
+comparison.&nbsp; If you get particularly inspired, you could do a few of the
+other environments too.</p>
 
 
 <!--mstheme--></font><!--msnavigation--></td>

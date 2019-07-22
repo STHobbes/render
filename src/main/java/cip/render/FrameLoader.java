@@ -80,7 +80,7 @@ import java.util.logging.Logger;
  *     <font style="color:blue">&lt;/<b>RenderedFrame</b>&gt;</font>
  * </pre>
  * <table border="0" width="90%">
- * <caption style="text-align:left">where:</caption>
+ * <caption style="text-align:left">where the <tt>frameAttributes</tt> are:</caption>
  * <tr>
  * <td style="width:5%"></td>
  * <td><table border="1" summary="">
@@ -218,6 +218,9 @@ public class FrameLoader {
      * @throws Exception An exception is thrown if the scene could not be loaded.
      */
     public FrameLoader(final String strXmlFile) throws Exception {
+
+        m_refObjList.add((INamedObject) m_defCamera);
+
         // load the XML file into a DOM Document, then start parsing.  The DOM document should be a RenderedFrame node
         //  which includes rendering attributes, a camera, light(s), and geometry.
         final javax.xml.parsers.DocumentBuilderFactory dbf = javax.xml.parsers.DocumentBuilderFactory.newInstance();
@@ -515,8 +518,8 @@ public class FrameLoader {
     /**
      * Returns the size of the filter kernel.  The default is 1 pixel if not
      * specified in the scene description.  A 1 pixel kernel means only the samples within the pixel are
-     * used to compute the pixel colour.  A 2 pixle kernel generally means the sampling  extends into the adjacent pixels using
-     * a wieghted sampling - though this is dependent on renderer implementation.
+     * used to compute the pixel colour.  A 2 pixel kernel generally means the sampling  extends into the adjacent pixels using
+     * a weighted sampling - though this is dependent on renderer implementation.
      *
      * @return Returns the sample kernel.
      */

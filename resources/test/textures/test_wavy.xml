@@ -5,8 +5,8 @@
     Created on : 22 June 2019
     Author     : roy
     Description:
-        This is a texture test that uses a checkerboard whose 2 materials are materials selected from the material
-        library. The sphere use a natual mapping, so this also tests the natural mapping for spheres.
+        This is a texture test that uses a wavy texture whose 2 materials are materials selected from the material
+        library. The big sphere uses an object space (3D) mapping. The base plane and small sphere use a natural (2D) mapping.
 -->
 <RenderedFrame>
 
@@ -102,10 +102,8 @@
 
     <DynamicallyLoadedObject class="cip.render.raytrace.light.XfmLight" name="xfm spot 2 light">
         <position originAt="20.0f, -10.0f, 10.0f" aimedAt="0.0f, 0.0f, 0.0f"/>
-        <!--<position originAt="20.0f, -10.0f, 10.0f"/>-->
         <DynamicallyLoadedObject class="cip.render.raytrace.light.Point" name="spot 2">
             <intensity rgb="0.7f,0.7f,0.7f"/>
-            <!--<beta>5</beta>-->
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

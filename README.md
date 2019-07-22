@@ -3,8 +3,10 @@
 ![alt text](./resources/images/everything.jpg "sample image") 
   
 status: currently porting from a moldy old project to github - cleanup and update as code and docs are added to the project. 
-version: 0.55  
-progress: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted.  
+version: 0.60  
+progress: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted. Oversampling and
+distributed ray tracing are posted, a number of textures have been completed with tests, All quadric geometries are completed
+with tests
 TODO: see [TODO list](./TODO.md)
 
 ## Abstract
@@ -19,11 +21,11 @@ all of my built, run, and test targets. These are the three versions of the ray-
     
   <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXml -d <i>&lt;sceneDescFile&gt;</i></tt>
   
-* Oversampled pixels, multi-threaded (coming soon):
+* Oversampled pixels, multi-threaded:
   
   <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXmlOS -d <i>&lt;sceneDescFile&gt;</i></tt>
   
-* Distributed ray-tracing, multi-threaded (coming soon):
+* Distributed ray-tracing, multi-threaded:
   
   <tt>java cip.render.RenderWindow -r cip.render.raytrace.RenderXmlOSJ -d <i>&lt;sceneDescFile&gt;</i></tt>
 
@@ -46,8 +48,8 @@ Algorithms* (CSE581) at Oregon Graduate Institute (OGI) in 2002, 2003, and 2004.
       `cip.render.raytrace.*`, and this would be a good starting point for having your students extend the libraries with new
       types of geometries, lights, materials, textures, etc.
 * **Create (Work in) an Extensible Framework** - cast what was done in the first assignments into an extensible ray-tracing
-  framework. Really, this is working in a framework that was created for the class, but, your could create your own framework
-  if you thing there is a better way to package things.
+  framework. Really, this is working in a framework that was created for the class, but, you could create your own framework
+  if you think there is a better way to package things.
 * **Extend the Framework** - Add your own extensions to the framework. There are some basic implementations that were part of
   the original class support code, but most of these libraries are student extensions to the basic framework:
   * **Geometry** - Add new geometric objects you want to use in this directory. Originally, this included only a sphere,

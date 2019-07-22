@@ -70,8 +70,8 @@ import java.util.logging.Logger;
  * <b>Note:</b>
  * <p>
  * This implementation anticipates implementations with oversampling and jitter (future topics in the course); so, the
- * <tt>dispatchPixel</tt> and <tt>setSampleColor</tt> methods of <tt>Assignment4</tt> have been renamed <tt>dispatchSample</tt>
- * and <tt>setSample</tt>. Additionally, they carry a couple arguments that are unused for a single sample per pixel. This
+ * <tt>dispatchPixel</tt> and <tt>setPixelColor</tt> methods of <tt>Assignment4</tt> have been renamed <tt>dispatchSample</tt>
+ * and <tt>setPixelColor</tt>. Additionally, they carry a couple arguments that are unused for a single sample per pixel. This
  * lets us use inheritance through extensions of this renderer that include oversampling and distributed ray
  * tracing.
  * </p>
@@ -87,7 +87,7 @@ public class RenderXml implements IRenderScene {
     private static final Logger logger = Logger.getLogger(RenderXml.class.getName());
 
     //------------------------------------------------------------------------------------------------------------------------------
-    // RenderPixel
+    // RenderSample
     //------------------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -100,6 +100,8 @@ public class RenderXml implements IRenderScene {
         public RenderXml m_parent;
         public int m_nX;
         public int m_nY;
+        public int m_nSamp;
+        public int m_nRandom;
         public Line3f m_ray = new Line3f();
         public RayIntersection m_intersection = new RayIntersection();
 
@@ -121,7 +123,7 @@ public class RenderXml implements IRenderScene {
             // render pixels while there are pixels to render
             while (m_parent.dispatchPixel(this)) {
                 final Color clr = m_parent.getSampleColor(m_ray, m_intersection);
-                m_parent.setSampleColor(m_nX, m_nY, clr);
+                m_parent.setPixelColor(m_nX, m_nY, clr);
             }
 
             // let the main thread know we are done
@@ -143,13 +145,13 @@ public class RenderXml implements IRenderScene {
 
     protected boolean m_bNewScene = true;
     // the camera for viewing the scene
-    private IRtCamera m_camera = null;
+    protected IRtCamera m_camera = null;
     // the background for the scene
-    private IRtBackground m_bkg = null;
+    protected IRtBackground m_bkg = null;
     // The geometry array
-    private IRtGeometry[] m_rtObjects = null;
+    protected IRtGeometry[] m_rtObjects = null;
     // the light array
-    private IRtLight[] m_rtLights = null;
+    protected IRtLight[] m_rtLights = null;
 
     // The rendering window description and where we are in dispatching pixels
     int m_nXmin;                            // the minimum X
@@ -158,10 +160,16 @@ public class RenderXml implements IRenderScene {
     int m_nYcur;                            // the current pixel Y (will be dispatched next)
     int m_nXmax;                            // the maximum X
     int m_nYmax;                            // the maximum Y
+    int m_nXDmin;                           // the minimim dispatch X
+    int m_nYDmin;                           // the miniumu dispatch Y
+    int m_nXDmax;                           // the maximim dispatch X
+    int m_nYDmax;                           // the maximum dispatch Y
+    int m_nSampCur = 0;                     // the current pixel subsample (will be dispatched next)
+    int m_nRandCur = 0;                     // the current randomizing array (jitter array) index
     Graphics m_gc;                          // the graphics context we are drawing into
 
     // the thread synchronizer for when the image is done
-    byte[] m_threadLock = new byte[0];
+    final byte[] m_threadLock = new byte[0];
     int m_threadCt = 0;
 
     // This is the image that pixels are drawn into as computation completes
@@ -231,6 +239,9 @@ public class RenderXml implements IRenderScene {
                 throw new DynXmlObjParseException("No camera was loaded for rendering.");
             }
 
+            lclConditionLoadedEnvironment(frameLoader);
+            // -----------------------------------------------------------------------------------------------------
+            // now pull out the information we need to render the frame.
             m_bkg = frameLoader.getBackground();
             m_camera = frameLoader.getCamera();
 
@@ -261,6 +272,10 @@ public class RenderXml implements IRenderScene {
         }
     }
 
+    protected void lclConditionLoadedEnvironment(FrameLoader frameLoader) {
+        // Nothing to do here now, but we could be setting oversampling and jitter parameters ...
+    }
+
     @Override
     public String getTitle() {
         return null;
@@ -283,10 +298,7 @@ public class RenderXml implements IRenderScene {
         final Dimension dimScreen = component.getSize();
         // get the bounds of the hither plane (picture plane)
         final Rectangle rectRender = gc.getClipBounds();
-        // create the objects to represent the ray from the eye through the pixel on the pixel plane
-        //  and to represent the intersection at each pixel.  These objects are created outside the
-        //  pixel loop for increased performance.
-        final Line3f ray = new Line3f();
+
         m_camera.initPicturePlane(dimScreen.width, dimScreen.height, 1.0f);
 
         if ((dimScreen.width != m_pixArrayWidth) || (dimScreen.height != m_pixArrayHeight)) {
@@ -295,28 +307,30 @@ public class RenderXml implements IRenderScene {
             m_pixArrayHeight = dimScreen.height;
             m_bi = new BufferedImage(m_pixArrayWidth, m_pixArrayHeight, BufferedImage.TYPE_INT_ARGB);
             m_bNewScene = true;
+            lclAllocateKernelSamplingBuffer();
         }
 
         if (m_bNewScene) {
-            m_nXmin = 0;
-            m_nYmin = 0;
-            m_nXmax = m_pixArrayWidth;
-            m_nYmax = m_pixArrayHeight;
+            m_nXDmin = m_nXmin = 0;
+            m_nYDmin = m_nYmin = 0;
+            m_nXDmax = m_nXmax = m_pixArrayWidth;
+            m_nYDmax = m_nYmax = m_pixArrayHeight;
         } else {
-            m_nXmin = rectRender.x;
-            m_nYmin = rectRender.y;
-            m_nXmax = rectRender.x + rectRender.width;
-            m_nYmax = rectRender.y + rectRender.height;
+            m_nXDmin = m_nXmin = rectRender.x;
+            m_nYDmin = m_nYmin = rectRender.y;
+            m_nXDmax = m_nXmax = rectRender.x + rectRender.width;
+            m_nYDmax = m_nYmax = rectRender.y + rectRender.height;
         }
         m_gc = gc;
-        m_nXcur = m_nXmin;
-        m_nYcur = m_nYmin;
+        lclSetKernelDispatchBounds();
+        m_nXcur = m_nXDmin;
+        m_nYcur = m_nYDmin;
 
         if (m_bNewScene) {
             // now start the threads
             final int nProcessors = Runtime.getRuntime().availableProcessors();
-//            final int nThreads = nProcessors;     // start a rendering thread for each processor
-            final int nThreads = 1;     // Use this to manually set the thread count for performance testing or debugging
+            final int nThreads = nProcessors;     // start a rendering thread for each processor
+//            final int nThreads = 1;     // Use this to manually set the thread count for performance testing or debugging
             logger.info(String.format("Starting %d threads on %d processors", nThreads, nProcessors));
 
             // The deal here is we start the threads and keep a count of the running threads.  This count is
@@ -333,7 +347,8 @@ public class RenderXml implements IRenderScene {
                 m_threadCt = 0;
                 for (int iThread = 0; iThread < nThreads; iThread++) {
                     m_threadCt++;
-                    new Thread(new RenderPixel(this)).start();
+                    lclCreateRenderingThread();
+//                    new Thread(new RenderPixel(this)).start();
                 }
                 try {
                     m_threadLock.wait();
@@ -349,10 +364,19 @@ public class RenderXml implements IRenderScene {
         }
     }
 
+    protected void lclAllocateKernelSamplingBuffer() {
+    }
+
+    protected void lclSetKernelDispatchBounds() {
+    }
+
+    protected void lclCreateRenderingThread() {
+        new Thread(new RenderPixel(this)).start();
+    }
     /**
      * Dispatch an un-rendered pixel in the image whenever this method is called.
      *
-     * @param renderThread (RenderPixel, modified) The pixel rendering thread to be loaded with a new pixel to render.
+     * @param renderThread (RenderSample, modified) The pixel rendering thread to be loaded with a new pixel to render.
      * @return <tt>true</tt> if a new pixel was dispatched, <tt>false</tt> if all pixels have been dispatch and there are no
      * un-rendered pixels left in the image.
      */
@@ -360,31 +384,31 @@ public class RenderXml implements IRenderScene {
         // this function is synchronized because we want to limit the access to the current pixel position to a single
         //  thread.  The thread comes in, pixel positions are computed and the pixel indecies incremented and then
         //  the function returns.
-        while (m_nYcur < m_nYmax) {
+        while (m_nYcur < m_nYDmax) {
             try {
                 // setup the ray and intersection for this pixel
-                m_camera.getRay(renderThread.m_ray, renderThread.m_intersection, m_nXcur, m_nYcur, 0, 0);
+                m_camera.getRay(renderThread.m_ray, renderThread.m_intersection, m_nXcur, m_nYcur, m_nSampCur, m_nRandCur);
                 renderThread.m_nX = m_nXcur;
                 renderThread.m_nY = m_nYcur;
-                m_nXcur++;
-                if (m_nXcur >= m_nXmax) {
-                    m_nXcur = m_nXmin;
-                    m_nYcur++;
-                }
                 return true;
             } catch (final Throwable t) {
                 // something bad happened - color code this pixel yellow
                 t.printStackTrace();
-                setSampleColor(m_nXcur, m_nYcur, Color.YELLOW);
-                m_nXcur++;
-                if (m_nXcur >= m_nXmax) {
-                    m_nXcur = m_nXmin;
-                    m_nYcur++;
-                }
+                setPixelColor(m_nXcur, m_nYcur, Color.YELLOW);
+            } finally {
+                lclIncrementSampling();
             }
         }
         logger.info(String.format("no more pixels for this thread: %s", renderThread.toString()));
         return false;
+    }
+
+    void lclIncrementSampling() {
+        m_nXcur++;
+        if (m_nXcur >= m_nXmax) {
+            m_nXcur = m_nXmin;
+            m_nYcur++;
+        }
     }
 
     /**
@@ -394,7 +418,7 @@ public class RenderXml implements IRenderScene {
      * @param nY  (int) The Y location of the pixel in the image.
      * @param clr (Color, readonly) The color of the pixel.
      */
-    void setSampleColor(final int nX, final int nY, final Color clr) {
+    private void setPixelColor(final int nX, final int nY, final Color clr) {
         // this function is synchronized on m_gc so access to the gc is thread safe
         synchronized (m_gc) {
             m_bi.setRGB(nX, nY, clr.getRGB());

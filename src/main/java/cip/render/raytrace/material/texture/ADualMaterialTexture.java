@@ -31,7 +31,7 @@ import java.util.LinkedList;
 
 /**
  * The abstract base class for a texture that combines 2 materials. This class implements the methods for the 2 materials parse
- * from and write to the XML scene description file. By default the materials are named <tt><"material1"</tt> and
+ * from and write to the XML scene description file. By default the materials are named <tt>"material1"</tt> and
  * <tt>"material2"</tt>. Functions are provided that let your texture use material names that are more relevant to your texture.
  *
  * @author royster.hall@gmail.com
@@ -87,6 +87,13 @@ public abstract class ADualMaterialTexture extends ATexture {
         return false;
     }
 
+    /**
+     * Write the material elements to the XML file. If there are additional parameters to your texture you should override this
+     * method, call the super (this method) to write the materials, and then write the additional parameters for your texture.
+     *
+     * @param element ({@link Element}, not null) The element that instantiates the object. The object initialization parameters
+     *                should be created as children of this element.
+     */
     protected void lclAppendChildElements(final @NotNull Element element) {
         if ((null != m_mtl1) && (m_mtl1 instanceof IDynXmlObject)) {
             final Element elMtl1 = element.getOwnerDocument().createElement(m_mtl1_name);

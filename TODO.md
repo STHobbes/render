@@ -6,16 +6,20 @@
 
 ## Ray Trace Code:
 * **Documentation**
-  * cleanup to remove all the javadocs generation errors.
-  * cleanup the documentation of XML format.
-  * Add documentation missing the texture abstract classes
-  * Document cone
+  * (done) cleanup to remove all the javadocs generation errors.
+  * (in progress) cleanup the documentation of XML format.
+  * (in progress) Add missing documentation to the texture abstract classes - Also, look for texture classes that should extend
+    the abstract classes and convert them to using the base
+  * (done) Document cone and other quadrics, add test environments.
   * Add clipping planes to quadric objects
 * **All code**
-  * Analysis and correction
-  * Reformatting
+  * (in progress) Analysis and correction
+    * (in progress) Reformatting
+    * (in progress) Try to reduce duplicate code - there will be some in the assignment code as each assignment
+       builds from the previous.
+* ** high level ray-tracing**
+  * (done, needs better documentation) make sure oversampling and distributed ray-tracing implementations are included and working.
 * **Textures**
-  * Start testing textures with quadrics
-
-* **Duplicate Code**
-  * Try to reduce this - there will be some in the assignment code as each assignment builds from the previous.
+  * (in progress) Start testing textures with quadrics
+  * (in progress) Update textures to use base classes (greatly simplifies them)
+  * (in progress) Update textures to be true 3D textures where appropriate.
