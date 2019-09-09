@@ -72,7 +72,7 @@ import java.util.logging.Logger;
  *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>slopeDistributionFunction</i></font>"/&gt;</font>
  *       <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>geometricAttenuationFunction</i></font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
- * </pre>*
+ * </pre>
  * <table border="0" width="90%">
  * <caption style="text-align:left">where:</caption>
  * <tr>

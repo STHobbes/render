@@ -2,11 +2,11 @@
 
 ![alt text](./resources/images/everything.jpg "sample image") 
   
-status: currently porting from a moldy old project to github - cleanup and update as code and docs are added to the project. 
-version: 0.60  
-progress: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted. Oversampling and
+STATUS: currently porting from a moldy old project to github - cleanup and update as code and docs are added to the project.<br/> 
+VERSION: 0.60<br/> 
+PROGRESS: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted. Oversampling and
 distributed ray tracing are posted, a number of textures have been completed with tests, All quadric geometries are completed
-with tests
+with tests.<br/> 
 TODO: see [TODO list](./TODO.md)
 
 ## Abstract

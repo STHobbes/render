@@ -36,20 +36,20 @@ import java.util.LinkedList;
  * is a camera in which the lens is an area lens, modeled as a roughly square area parallel to the target plane.  This
  * camera will simulate depth-of-field using distributed ray techniques.
  * <p>
- * The area camera is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.camera.Aperture" name="<font style="color:magenta"><i>cameraName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta"><i>width</i></font>&lt;/<b>targetWidth</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetDist</b>&gt;<font style="color:magenta"><i>distance</i></font>&lt;/<b>targetDist</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>lensDiameter</b>&gt;<font style="color:magenta"><i>diameter</i></font>&lt;/<b>lensDiameter</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
- * The elements are optional and are applied in the order specified.  For example if you specify a target distance, but then specify the
- * camera position by origin and aimed at - the target distance will be adjusted to be the distance between the origin and the aimed at.  Conversly,
- * if you specify the position first and then the distance, the camera position and orientation is preserved and the target point is moved to the
- * distance specified from the eye position.  If you specify camera position more than once, the last position will override the earlier positions.
+ * The area camera is specified as a node in an XML file as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.camera.Aperture" name="<font style="color:magenta"><i>cameraName</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta"><i>width</i></font>&lt;/<b>targetWidth</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetDist</b>&gt;<font style="color:magenta"><i>distance</i></font>&lt;/<b>targetDist</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>lensDiameter</b>&gt;<font style="color:magenta"><i>diameter</i></font>&lt;/<b>lensDiameter</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
+ * The elements are optional and are applied in the order specified.  For example if you specify a target distance, but then
+ * specify the camera position by origin and aimed at - the target distance will be adjusted to be the distance between the
+ * origin and the aimed at.  Conversely, if you specify the position first and then the distance, the camera position and
+ * orientation is preserved and the target point is moved to the distance specified from the eye position.  If you specify
+ * camera position more than once, the last position will override the earlier positions.
  * <table style="width:90%">
  * <caption style="text-align:left">where:</caption>
  * <tr>
@@ -59,8 +59,8 @@ import java.util.LinkedList;
  * <td><tt>postion</tt></td>
  * <td>The camera position and orientation as specified by the <tt><i>Xfm4x4f_attributes</i></tt> which are described in
  * {@link cip.render.util3d.Xfm4x4f#setValue(Element, boolean, boolean)}.  The most common methods of
- * specification are <i>originAt</i> and <i>aimedAt</i> or <i>originAt</i> and <i>aximuth</i>, <i>altitude</i> orientation.
- * If <i>originAt</i> is set, this becomes the camera location.  If <i>aimedAt</i> is set, this becomes the parget point.
+ * specification are <i>originAt</i> and <i>aimedAt</i> or <i>originAt</i> and <i>azimuth</i>, <i>altitude</i> orientation.
+ * If <i>originAt</i> is set, this becomes the camera location.  If <i>aimedAt</i> is set, this becomes the target point.
  * </td>
  * </tr>
  * <tr>
@@ -70,7 +70,7 @@ import java.util.LinkedList;
  * </tr>
  * <tr>
  * <td><tt>targetDist</tt></td>
- * <td>The distance from the parget point to the camera.  If the camera position has been previously set, then it is maintained
+ * <td>The distance from the target point to the camera.  If the camera position has been previously set, then it is maintained
  * and the target point is moved to meet the specified target distance.  If the camera position has not previously been set, the
  * target point is maintained and the camera is moved to meet the specified target distance.
  * </td>
@@ -79,8 +79,8 @@ import java.util.LinkedList;
  * <td><tt>lensDiameter</tt> or <tt>aperture</tt></td>
  * <td>The diameter of the lens.  The default is a lens diameter of 0.5.  As in real life, depth-of-field (the range of distance
  * that the image is in focus) is inversely proportional to the diameter of the lens.  The larger the lens, the smaller the
- * depth-of-field, the smaller the lens, the larger the depth-of-field.  The image plane (target plane) is where the camera
- * is focused.
+ * depth-of-field, the smaller the lens, the larger the depth-of-field.  The image plane (target plane at target distance) is
+ * where the camera is in focus.
  * </td>
  * </tr>
  * </table>
@@ -91,28 +91,25 @@ import java.util.LinkedList;
  * <b>Example of XML Specification</b>
  * <p>
  * The following specifies a pinhole camera with the camera location and target point specified in the position, and a target plane
- * width of 6:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.camera.Aperture" name="<font style="color:magenta">camera</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b>
- * originAt="<font style="color:magenta">5.0,-5.0,5.0</font>"
- * aimedAt="<font style="color:magenta">1.0f,-1.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta">6</font>&lt;/<b>targetWidth</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>lensDiameter</b>&gt;<font style="color:magenta">.5</font>&lt;/<b>lensDiameter</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * width of 6:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.camera.Aperture" name="<font style="color:magenta">camera</font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>position</b> originAt="<font style="color:magenta">5.0,-5.0,5.0</font>" aimedAt="<font style="color:magenta">1.0f,-1.0f,-0.5f</font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta">6</font>&lt;/<b>targetWidth</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>lensDiameter</b>&gt;<font style="color:magenta">.5</font>&lt;/<b>lensDiameter</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
  * @since 1.0
  */
 public class Aperture extends ACamera {
-    protected static final String XML_TAG_LENS_DIA = "lensDiameter";
-    protected static final String XML_TAG_APERTURE = "aperture";
+    private static final String XML_TAG_LENS_DIA = "lensDiameter";
+    private static final String XML_TAG_APERTURE = "aperture";
 
-    Point3f m_ptEye = new Point3f();
-    float m_fDia = 0.5f;
+    private Point3f m_ptEye = new Point3f();
+    private float m_fDia = 0.5f;
 
     /**
      * Creates a new instance of an <tt>Aperture</tt> camera.

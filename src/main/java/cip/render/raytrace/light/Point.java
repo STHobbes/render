@@ -37,9 +37,8 @@ import java.util.LinkedList;
  * <p>
  * The point light source is specified as a node in an XML file as:<br><br>
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.light.Point"
- *                              name="<font style="color:magenta"><i>pointLightName</i></font>"&gt;</font>
- *         <font style="color:blue">&lt;<b>intensity</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.light.Point" name="<font style="color:magenta"><i>pointLightName</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>intensity</b> <font style="color:magenta"><i>RGBf_attributes</i></font>/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  * <table border="0" width="90%">
@@ -62,9 +61,8 @@ import java.util.LinkedList;
  * <p>
  * The following specifies red point light source:<br><br>
  * <pre>
- *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.light.Point"
- *                              name="<font style="color:magenta">pointLight</font>"&gt;</font>
- *         <font style="color:blue">&lt;<b>intensity</b> rgb="<font style="color:magenta">1,0,0</font>"/&gt;</font>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.light.Point" name="<font style="color:magenta">pointLight</font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>intensity</b> rgb="<font style="color:magenta">1,0,0</font>"/&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  *
@@ -76,9 +74,9 @@ public class Point extends ALight {
     private static final String XML_TAG_INTENSITY = "intensity";
 
     // The instance definition
-    private final RGBf m_rgb = new RGBf(1.0f, 1.0f, 1.0f);           // the point light intensity
-    private float m_fDimmer = 1.0f;                           // the dimmer value
-    private final RGBf m_rgbDimmed = new RGBf(m_rgb);              // the dimmed intensity used in the scene
+    private final RGBf m_rgb = new RGBf(1.0f, 1.0f, 1.0f);  // the point light intensity
+    private float m_fDimmer = 1.0f;                         // the dimmer value
+    private final RGBf m_rgbDimmed = new RGBf(m_rgb);       // the dimmed intensity used in the scene
 
     /**
      * Creates a new instance of a <tt>Point</tt> light source.
@@ -86,7 +84,7 @@ public class Point extends ALight {
     public Point() {
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     public final void getIntensity(final RGBf rgbIntensity) {
         rgbIntensity.setValue(m_rgb);
     }
@@ -100,11 +98,12 @@ public class Point extends ALight {
         return m_fDimmer;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+            throws DynXmlObjParseException {
         try {
             // Read the specified components for the material
             Node domNode = xmlElement.getFirstChild();
@@ -130,7 +129,7 @@ public class Point extends ALight {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     @Override
     protected void internalToXml(final Element element) {
         // the point light intensity
@@ -139,16 +138,16 @@ public class Point extends ALight {
         m_rgb.toXmlAttr(elRGB);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtLight interface implementation                                                                                     //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtLight interface implementation                                                                                          //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void setDimmer(final float fDimmer) {
         m_fDimmer = fDimmer;
         m_rgbDimmed.setValue(m_rgb).scale(m_fDimmer);
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     @Override
     public boolean getLight(final LightInfo lightInfo, final RayIntersection intersection, final int nSample, final int nRandom) {
         // check whether the light is behind the intersection surface

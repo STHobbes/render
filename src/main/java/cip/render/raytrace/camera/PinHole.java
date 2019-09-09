@@ -36,15 +36,14 @@ import java.util.LinkedList;
  * in which the lens is a pin-hole, modeled as a point.  Because the lens has no aperture area,
  * depth-of-field is not simulated by this camera.
  * <p>
- * The pin-hole camera is specified as a node in an XML file as:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.camera.PinHole" name="<font style="color:magenta"><i>cameraName</i></font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta"><i>width</i></font>&lt;/<b>targetWidth</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetDist</b>&gt;<font style="color:magenta"><i>distance</i></font>&lt;/<b>targetDist</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * The pin-hole camera is specified as a node in an XML file as:
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.camera.PinHole" name="<font style="color:magenta"><i>cameraName</i></font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>position</b> <font style="color:magenta"><i>Xfm4x4f_attributes</i></font>/&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta"><i>width</i></font>&lt;/<b>targetWidth</b>&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetDist</b>&gt;<font style="color:magenta"><i>distance</i></font>&lt;/<b>targetDist</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  * The elements are optional and are applied in the order specified.  For example if you specify a target distance, but then specify the
  * camera position by origin and aimed at - the target distance will be adjusted to be the distance between the origin and the aimed at.  Conversly,
  * if you specify the position first and then the distance, the camera position and orientation is preserved and the target point is moved to the
@@ -69,7 +68,7 @@ import java.util.LinkedList;
  * </tr>
  * <tr>
  * <td><tt>targetDist</tt></td>
- * <td>The distance from the parget point to the camera.  If the camera position has been previously set, then it is maintained
+ * <td>The distance from the target point to the camera.  If the camera position has been previously set, then it is maintained
  * and the target point is moved to meet the specified target distance.  If the camera position has not previously been set, the
  * target point is maintained and the camera is moved to meet the specified target distance.
  * </td>
@@ -83,15 +82,12 @@ import java.util.LinkedList;
  * <p>
  * The following specifies a pinhole camera with the camera location and target point specified in the position, and a target plane
  * width of 6:<br><br>
- * <tt>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b>
- * class="cip.raytrace.camera.PinHole" name="<font style="color:magenta">camera</font>"&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>position</b>
- * originAt="<font style="color:magenta">5.0,-5.0,5.0</font>"
- * aimedAt="<font style="color:magenta">1.0f,-1.0f,-0.5f</font>"/&gt;</font><br>
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta">6</font>&lt;/<b>targetWidth</b>&gt;</font><br>
- * &nbsp;&nbsp;&nbsp; <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font><br><br>
- * </tt>
+ * <pre>
+ *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.camera.PinHole" name="<font style="color:magenta">camera</font>"&gt;</font>
+ *       <font style="color:blue">&lt;<b>position</b> originAt="<font style="color:magenta">5.0,-5.0,5.0</font>"aimedAt="<font style="color:magenta">1.0f,-1.0f,-0.5f</font>"/&gt;</font>
+ *       <font style="color:blue">&lt;<b>targetWidth</b>&gt;<font style="color:magenta">6</font>&lt;/<b>targetWidth</b>&gt;</font>
+ *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ * </pre>
  *
  * @author royster.hall@gmail.com
  * @version 1.0
@@ -122,16 +118,17 @@ public class PinHole extends ACamera {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     public Point3f getEyePt(final Point3f ptEye) {
         ptEye.setValue(m_ptEye);
         return ptEye;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+            throws DynXmlObjParseException {
         initForParse();
         try {
             // Read the specified components for the camera
@@ -157,10 +154,11 @@ public class PinHole extends ACamera {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtCamera interface implementation                                                                                    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void getRay(final Line3f ray, final RayIntersection rayIntersection, final int nXpixel, final int nYpixel, final int nSample, final int nRandom) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtCamera interface implementation                                                                                         //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void getRay(final Line3f ray, final RayIntersection rayIntersection, final int nXpixel, final int nYpixel,
+                       final int nSample, final int nRandom) {
         if (!m_bScreenInit) throw new IllegalStateException("Cannot get pixel rays before the screen information is set.");
         // use the ray origin as a temporary point to retreive the pixel location (this is so we can keep things thread-safe without
         //  screwing around with creating or caching a bunch of temporary stuff orn synchonizing things).

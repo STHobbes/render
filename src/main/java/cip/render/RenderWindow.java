@@ -20,6 +20,7 @@
  */
 package cip.render;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -39,7 +40,7 @@ import java.util.logging.StreamHandler;
  * <p>
  * <b>Usage:</b>
  * <pre>
- *     RenderWindow &lt;-r <i>IRenderSceneImpl</i>&gt; &lt;-d <i>sceneDescFile</i>&gt;
+ *     RenderWindow &lt;-r <i>IRenderSceneImpl</i>&gt; &lt;-d <i>sceneDescFile</i>&gt; &lt;-l <i>loggingLevel</i>&gt;
  * </pre>
  * <table border="0" width="90%">
  * <caption style="text-align:left">where:</caption>
@@ -111,7 +112,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
      *
      * @param args The command line arguments - see usage notes.
      */
-    public static void main(final String[] args) {
+    public static void main(@NotNull final String[] args) {
         globalLogger.setLevel(Level.INFO);
         handler.setLevel(Level.INFO);
         globalLogger.addHandler(handler);
@@ -129,7 +130,7 @@ public class RenderWindow extends Frame implements ActionListener, WindowListene
             } else if (args[ix].equalsIgnoreCase("-l") && (ix < (args.length - 1))) {
                 ix++;
                 String log_level_str = args[ix];
-                Level level = Level.INFO;
+                Level level;
                 switch (log_level_str) {
                     case "FINEST":
                         level = Level.ALL;

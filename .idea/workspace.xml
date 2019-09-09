@@ -1,33 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/KernelSample.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/PixelColour.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.RenderSample.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOSJ.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AQuadricGeo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cylinder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/HyperParaboloid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Hyperboloid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Paraboloid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/TestXfm3f.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocs/index-files/index-27.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/test/textures/test_block.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOSJ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/blinn-blobby.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/blobbies.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/roy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/roy.xml" afterDir="false" />
+    <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="Documentation cleanup.">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" afterDir="false" />
@@ -120,10 +97,15 @@
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/KernelSample.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/KernelSample.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/LightInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/LightInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/PixelColour.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/PixelColour.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RayIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RayIntersection.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.RenderPixel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.RenderPixel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXml.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.RenderSample.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.RenderSample.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOSJ.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/RenderXmlOSJ.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/ConstantColour.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/ConstantColour.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/background/package-summary.html" afterDir="false" />
@@ -135,7 +117,13 @@
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/camera/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AGeometry.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AGeometry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AQuadricGeo.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/AQuadricGeo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cone.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cylinder.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Cylinder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Ellipsoid.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Ellipsoid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/HyperParaboloid.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/HyperParaboloid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Hyperboloid.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Hyperboloid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Paraboloid.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Paraboloid.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.Face.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.Face.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/PlanarPolyhedra.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Sphere.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/raytrace/geometry/Sphere.html" afterDir="false" />
@@ -216,6 +204,7 @@
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3fIntersection.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Quadric3fIntersection.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/SingularMatrixException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/SingularMatrixException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/TestXfm3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/TestXfm3f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Vector3f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Vector3f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/Xfm4x4f.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/Xfm4x4f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/render/util3d/ZeroLengthVectorException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/render/util3d/ZeroLengthVectorException.html" afterDir="false" />
@@ -251,6 +240,7 @@
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-24.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-24.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-25.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-25.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-26.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-26.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-27.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-27.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/index-files/index-5.html" afterDir="false" />
@@ -263,30 +253,17 @@
       <change beforePath="$PROJECT_DIR$/javadocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/dataGenerators/sphereflake2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/dataGenerators/sphereflake2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/textures/test_wavy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/textures/test_wavy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/website/assignment4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/website/assignment4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/LightInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/LightInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/assignment_4.htm" beforeDir="false" afterPath="$PROJECT_DIR$/website/assignment_4.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/syllabus.htm" beforeDir="false" afterPath="$PROJECT_DIR$/website/syllabus.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/Aperture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/Aperture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -312,189 +289,6 @@
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4751515">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4764">
-                  <caret line="418" column="25" selection-start-line="418" selection-start-column="25" selection-end-line="418" selection-end-column="25" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#5016#5017#0" expanded="true" />
-                    <element signature="e#5057#5058#0" expanded="true" />
-                    <element signature="e#16995#16996#0" expanded="true" />
-                    <element signature="e#17052#17053#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/package-info.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="24">
-                  <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOSJ.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1118">
-                  <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
-                  <folding>
-                    <element signature="e#0#5444#0" expanded="true" />
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/package-info.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/package-info.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="24">
-                  <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOS.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="76" selection-start-line="76" selection-end-line="76" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#34154#34155#0" expanded="true" />
-                    <element signature="e#34211#34212#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/README.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="-111">
-                    <caret line="8" selection-start-line="8" selection-end-line="8" />
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-              <provider editor-type-id="Gfm" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/TODO.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="240">
-                    <caret line="20" column="131" selection-start-line="20" selection-start-column="131" selection-end-line="20" selection-end-column="131" />
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-              <provider editor-type-id="Gfm" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/Torrance.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
-                  <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/package-info.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="24">
-                  <caret line="2" column="87" selection-start-line="2" selection-start-column="87" selection-end-line="2" selection-end-column="87" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/LightInfo.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="528">
-                  <caret line="63" selection-start-line="63" selection-end-line="63" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/package-info.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="8" column="3" lean-forward="true" selection-end-line="8" selection-end-column="3" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1675">
-                  <caret line="221" column="39" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#22971#22972#0" expanded="true" />
-                    <element signature="e#23037#23038#0" expanded="true" />
-                    <element signature="e#23624#23625#0" expanded="true" />
-                    <element signature="e#23702#23703#0" expanded="true" />
-                    <element signature="e#26948#26949#0" expanded="true" />
-                    <element signature="e#26986#26987#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/website/assignment4.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-9">
-                  <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -536,246 +330,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelConductor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/FresnelDielectric.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/utilColour/RGBf.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" />
-        <option value="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/background/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/PackageConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/package-info.java" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_linear_checkerboard.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtGeometry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RayIntersection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java" />
-        <option value="$PROJECT_DIR$/website/syllabus.htm" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_wavy.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java" />
-        <option value="$PROJECT_DIR$/resources/test/textures/test_block.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java" />
-        <option value="$PROJECT_DIR$/website/assignment_4.htm" />
-        <option value="$PROJECT_DIR$/resources/test/dataGenerators/sphereflake2_3.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" />
-        <option value="$PROJECT_DIR$/resources/website/assignment4.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOSJ.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOS.java" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/TODO.md" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/LightInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/package-info.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="2561" />
     <option name="y" value="101" />
     <option name="width" value="2517" />
     <option name="height" value="1335" />
   </component>
+  <component name="ProjectId" id="1QP4taTbpruvg7Bd1hms6jBEgcO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="dataGenerators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="light" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="material" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="material" type="462c0819:PsiDirectoryNode" />
-              <item name="D" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="material" type="462c0819:PsiDirectoryNode" />
-              <item name="G" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cip" type="462c0819:PsiDirectoryNode" />
-              <item name="render" type="462c0819:PsiDirectoryNode" />
-              <item name="raytrace" type="462c0819:PsiDirectoryNode" />
-              <item name="RenderXmlOS.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="render" type="b2602c69:ProjectViewProjectNode" />
-              <item name="render" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -793,7 +356,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1338,7 +901,11 @@
       <workItem from="1559923187929" duration="60388000" />
       <workItem from="1560739267539" duration="989000" />
       <workItem from="1560740366575" duration="41610000" />
-      <workItem from="1562304891422" duration="46612000" />
+      <workItem from="1562304891422" duration="55901000" />
+      <workItem from="1565642829370" duration="494000" />
+      <workItem from="1567658812107" duration="128000" />
+      <workItem from="1567659155612" duration="199000" />
+      <workItem from="1567911737477" duration="1351000" />
     </task>
     <task id="LOCAL-00001" summary="porting of CSE506 assignments 1 and 2 to github.">
       <created>1554352866757</created>
@@ -1466,7 +1033,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561271008472</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added oversampling and distributed ray tracing implementations of&#10;IRenderWindow. Many documentation updates, code cleanup, duplicate&#10;code removal, more work on textures. More work on test environments.">
+      <created>1563778061062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1563778061062</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1501,9 +1075,6 @@
       <configuration name="TestXfm3f" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="623341000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -1513,81 +1084,21 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="2561" y="101" width="2517" height="1335" extended-state="0" />
-    <layout>
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3295082" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="4" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.3295082" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="7" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.24508196" />
-      <window_info anchor="bottom" id="Message" order="9" />
-      <window_info anchor="bottom" id="Find" order="10" visible="true" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="11" weight="0.29098362" />
-      <window_info anchor="bottom" id="Debug" order="12" weight="0.36639345" />
-      <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
-      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3295082" />
-      <window_info anchor="bottom" id="TODO" order="16" weight="0.3295082" />
-      <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3295082" />
-      <window_info anchor="bottom" id="Duplicates" order="18" weight="0.3295082" />
-      <window_info active="true" anchor="right" auto_hide="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17050505" />
-      <window_info anchor="right" id="Maven" order="1" weight="0.32969698" />
-      <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="GfmBrowser" order="3" weight="0.32969698" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" weight="0.32969698" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Commander" order="7" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3295082" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="4" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.3295082" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="7" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.24508196" />
-      <window_info anchor="bottom" id="Message" order="9" />
-      <window_info anchor="bottom" id="Find" order="10" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="11" weight="0.29098362" />
-      <window_info anchor="bottom" id="Debug" order="12" weight="0.36639345" />
-      <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
-      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3295082" />
-      <window_info anchor="bottom" id="TODO" order="16" weight="0.3295082" />
-      <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3295082" />
-      <window_info anchor="bottom" id="Duplicates" order="18" visible="true" weight="0.3295082" />
-      <window_info anchor="right" auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.17050505" />
-      <window_info anchor="right" id="Maven" order="1" weight="0.32969698" />
-      <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="GfmBrowser" order="3" weight="0.32969698" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" weight="0.32969698" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Commander" order="7" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-    </layout-to-restore>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -1608,7 +1119,9 @@
     <MESSAGE value="Fixed an error introduced to quadric geometries during documentation cleanup." />
     <MESSAGE value="Progress in texture cleanup mand testing. eliminating a lot of&#10;duplicate code with texture super-0classes." />
     <MESSAGE value="Added tests for the Wavy texture. Reworked Wavy to be a true 3D texture.&#10;&#10;Debugged/improved Checkerboard and Outlined as 3D textures&#10;&#10;Progress in texture cleanup and testing. eliminating a lot of&#10;duplicate code with texture base-classes. Added documentation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests for the Wavy texture. Reworked Wavy to be a true 3D texture.&#10;&#10;Debugged/improved Checkerboard and Outlined as 3D textures&#10;&#10;Progress in texture cleanup and testing. eliminating a lot of&#10;duplicate code with texture base-classes. Added documentation." />
+    <MESSAGE value="Added oversampling and distributed ray tracing implementations of&#10;IRenderWindow. Many documentation updates, code cleanup, duplicate&#10;code removal, more work on textures. More work on test environments." />
+    <MESSAGE value="Documentation cleanup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation cleanup." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1618,483 +1131,35 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/CSE581/assign3b/Assignment3b.java</url>
           <line>270</line>
-          <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/cip/render/util3d/TestXfm3f.java</url>
           <line>138</line>
-          <properties />
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java</url>
-          <line>413</line>
-          <properties />
+          <line>414</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java</url>
-          <line>130</line>
-          <properties />
+          <line>131</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java</url>
           <line>87</line>
-          <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOSJ.java</url>
           <line>71</line>
-          <properties />
           <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/RenderWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1464">
-          <caret line="149" column="45" selection-start-line="149" selection-start-column="45" selection-end-line="149" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16678#16679#0" expanded="true" />
-            <element signature="e#16712#16713#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6060">
-          <caret line="557" column="62" selection-start-line="557" selection-start-column="44" selection-end-line="557" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/util/logging/SimpleFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="61" column="64" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/rt.jar!/sun/util/logging/LoggingSupport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1308">
-          <caret line="120" column="18" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/util/logging/Formatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="112" column="31" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapLinear.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="107" column="35" selection-start-line="107" selection-start-column="35" selection-end-line="107" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Ridges.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="1304" column="18" selection-start-line="1304" selection-start-column="18" selection-end-line="1304" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/AlphaImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/PositionTexture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/MapNatural.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="87" column="36" selection-start-line="87" selection-start-column="36" selection-end-line="87" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="440" column="25" selection-start-line="440" selection-start-column="25" selection-end-line="440" selection-end-column="25" />
-          <folding>
-            <element signature="e#17181#17182#0" expanded="true" />
-            <element signature="e#17264#17265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Outlined.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="224" column="52" selection-start-line="224" selection-start-column="52" selection-end-line="224" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Checkerboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="132" selection-start-line="131" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_checkerboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="117" lean-forward="true" selection-start-line="116" selection-end-line="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ATexture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_outlined_checkerboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="114" selection-start-line="113" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IDynXmlObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/ADynamicNamedObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_wavy.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/DynXmlObjLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/syllabus.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1236">
-          <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Wavy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2471#2472#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/textures/test_block.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="150" column="33" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/assignment_4.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="150" column="48" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/IRenderScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1634">
-          <caret line="381" column="29" selection-start-line="381" selection-start-column="29" selection-end-line="381" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Blinn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="495" selection-start-line="495" selection-end-line="495" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AQuadricGeo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/dataGenerators/sphereflake2_3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="1" column="47" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="166" column="18" selection-start-line="166" selection-start-column="18" selection-end-line="166" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/IRtCamera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/ACamera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="285" selection-start-line="285" selection-end-line="285" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/website/assignment4.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1675">
-          <caret line="221" column="39" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#22971#22972#0" expanded="true" />
-            <element signature="e#23037#23038#0" expanded="true" />
-            <element signature="e#23624#23625#0" expanded="true" />
-            <element signature="e#23702#23703#0" expanded="true" />
-            <element signature="e#26948#26949#0" expanded="true" />
-            <element signature="e#26986#26987#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/util/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2978">
-          <caret line="582" column="31" selection-start-line="582" selection-start-column="31" selection-end-line="582" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2692">
-          <caret line="492" column="30" selection-start-line="492" selection-start-column="30" selection-end-line="492" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/texture/ADualMaterialTexture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOSJ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1118">
-          <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#5444#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXmlOS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#34154#34155#0" expanded="true" />
-            <element signature="e#34211#34212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-111">
-            <caret line="8" selection-start-line="8" selection-end-line="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="Gfm" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="240">
-            <caret line="20" column="131" selection-start-line="20" selection-start-column="131" selection-end-line="20" selection-end-column="131" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="Gfm" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/Torrance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4764">
-          <caret line="418" column="25" selection-start-line="418" selection-start-column="25" selection-end-line="418" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5016#5017#0" expanded="true" />
-            <element signature="e#5057#5058#0" expanded="true" />
-            <element signature="e#16995#16996#0" expanded="true" />
-            <element signature="e#17052#17053#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/LightInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/G/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="2" column="87" selection-start-line="2" selection-start-column="87" selection-end-line="2" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/interfaces/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/D/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" column="3" lean-forward="true" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/light/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="gradleExecuteTaskHistory">
     <option value="" />
