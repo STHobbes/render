@@ -96,14 +96,14 @@ public class RenderXml implements IRenderScene {
      * the colour collector.  Rendering threads are created when the rendering of an image starts, and finish when there are
      * no more pixels left to render (the dispatcher does not setup a new sample when called).
      */
-    class RenderPixel implements Runnable {
-        public RenderXml m_parent;
-        public int m_nX;
-        public int m_nY;
-        public int m_nSamp;
-        public int m_nRandom;
-        public Line3f m_ray = new Line3f();
-        public RayIntersection m_intersection = new RayIntersection();
+    static class RenderPixel implements Runnable {
+        RenderXml m_parent;
+        int m_nX;
+        int m_nY;
+        int m_nSamp;
+        int m_nRandom;
+        Line3f m_ray = new Line3f();
+        RayIntersection m_intersection = new RayIntersection();
 
         /**
          * Instantiate a pixel render to be run in a rendering thread.

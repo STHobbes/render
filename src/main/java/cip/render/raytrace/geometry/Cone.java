@@ -204,7 +204,7 @@ public class Cone extends AQuadricGeo {
         }
     }
 
-    protected void internalToXml(final Element element) {
+    protected void internalToXml(@NotNull final Element element) {
         // The radii
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);

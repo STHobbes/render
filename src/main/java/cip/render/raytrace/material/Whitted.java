@@ -207,8 +207,8 @@ public class Whitted extends Blinn {
     }
 
     /**
-     *  Query the index of refraction for the material. Note: the index of refraction is only meaningful if
-     *  the material is transparent.
+     * Query the index of refraction for the material. Note: the index of refraction is only meaningful if
+     * the material is transparent.
      *
      * @return (float) The index of refraction for the material.
      */
@@ -331,7 +331,8 @@ public class Whitted extends Blinn {
     //-------------------------------------------------------------------------------------------------------------------------
     protected void internalToXmlElement(final Element element) {
         // conductor/dielectric
-        final Element elTransparent = element.getOwnerDocument().createElement(m_bIsTransparent ? XML_TAG_TRANSPARENT : XML_TAG_OPAQUE);
+        final Element elTransparent = element.getOwnerDocument().createElement(m_bIsTransparent ?
+                XML_TAG_TRANSPARENT : XML_TAG_OPAQUE);
         element.appendChild(elTransparent);
         // see if we need to write out transparent specific parameters
         if (m_bIsTransparent) {
@@ -415,6 +416,7 @@ public class Whitted extends Blinn {
             }
         } catch (final Throwable t) {
             t.printStackTrace();
+            // Something bad happened, set the color to yellow
             rgb.setValue(1.0f, 1.0f, 0.0f);
         } finally {
             intersection.returnIntersection(intRflRfr);
@@ -461,7 +463,8 @@ public class Whitted extends Blinn {
                 rgb.setValue(0.0f, 0.0f, 0.0f);
             }
             // now do the internally reflecting color
-            if ((nInternalReflections < PackageConstants.MAX_INTERNAL_REFLECTION) && ((intersection.m_fMaxContribution * fAtten) > PackageConstants.CUTOFF_CONTRIBUTION)) {
+            if ((nInternalReflections < PackageConstants.MAX_INTERNAL_REFLECTION) &&
+                    ((intersection.m_fMaxContribution * fAtten) > PackageConstants.CUTOFF_CONTRIBUTION)) {
                 // we continue to recurse the internal refraction into the current object
                 vRflRfr.setToReflection(intersection.m_vNormal, intersection.m_vToEye);
                 lnRflRfr.setValue(intersection.m_pt, vRflRfr);
@@ -470,6 +473,7 @@ public class Whitted extends Blinn {
                 if (intersection.m_rtObj.getRayIntersection(intRflRfr, lnRflRfr, true, nSample, nRandom)) {
                     getInternalColor(rgbRflRfr, intRflRfr, lights, rtObjects, nMaxRecursions, nInternalReflections + 1, rtBkg, nSample, nRandom);
                 } else {
+                    // did not get an intersection for going out - don't know what to do with this, set the color to orange.
                     rgbRflRfr.setValue(1.0f, 0.5f, 0.0f);
                 }
             } else {
@@ -479,6 +483,7 @@ public class Whitted extends Blinn {
             rgb.add(rgbRflRfr.scale(fAtten));
         } catch (final Throwable t) {
             t.printStackTrace();
+            // Something bad happened, set the color to yellow
             rgb.setValue(1.0f, 1.0f, 0.0f);
         } finally {
             intersection.returnIntersection(intRflRfr);

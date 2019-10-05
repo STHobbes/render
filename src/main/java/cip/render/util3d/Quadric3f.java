@@ -418,10 +418,11 @@ public class Quadric3f {
             } else {
                 // OK there is only one, it is either going in or out as specified by the bStartsInside logic. This would be the
                 // case for something like a cone (which has upper and lower halves) when the major axis of the ray is k and it
-                // is pareallel to the surface of the cone - this is a rare case.
+                // is parallel to the surface of the cone - this is a rare case.
                 if (bStartsInside) {
                     quadInt.m_fDist1 = Float.POSITIVE_INFINITY;
                     quadInt.m_fDist2 = -fC / fB;
+                    quadInt.m_nCode = Quadric3fIntersection.GOING_OUT_OF;
                 } else {
                     quadInt.m_fDist1 = -fC / fB;
                     quadInt.m_fDist2 = Float.POSITIVE_INFINITY;

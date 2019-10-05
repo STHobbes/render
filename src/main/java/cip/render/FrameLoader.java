@@ -391,6 +391,9 @@ public class FrameLoader {
         }
         return null;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Initialize all the loaded objects in the scene for sampling or oversampling.  This function should be called between
      * the time the frame is loaded and when you start to get the loaded elements from the frame.  It loops through all the

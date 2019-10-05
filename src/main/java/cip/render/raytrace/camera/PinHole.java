@@ -44,10 +44,11 @@ import java.util.LinkedList;
  *       <font style="color:blue">&lt;<b>targetDist</b>&gt;<font style="color:magenta"><i>distance</i></font>&lt;/<b>targetDist</b>&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
- * The elements are optional and are applied in the order specified.  For example if you specify a target distance, but then specify the
- * camera position by origin and aimed at - the target distance will be adjusted to be the distance between the origin and the aimed at.  Conversly,
- * if you specify the position first and then the distance, the camera position and orientation is preserved and the target point is moved to the
- * distance specified from the eye position.  If you specify camera position more than once, the last position will override the earlier positions.
+ * The elements are optional and are applied in the order specified.  For example if you specify a target distance, but then
+ * specify the camera position by origin and aimed at - the target distance will be adjusted to be the distance between the
+ * origin and the aimed at.  Conversely, if you specify the position first and then the distance, the camera position and
+ * orientation is preserved and the target point is moved to the distance specified from the eye position.  If you specify
+ * camera position more than once, the last position will override the earlier positions.
  * <table border="0" width="90%">
  * <caption style="text-align:left">where:</caption>
  * <tr>
@@ -80,8 +81,8 @@ import java.util.LinkedList;
  * <p>
  * <b>Example of XML Specification</b>
  * <p>
- * The following specifies a pinhole camera with the camera location and target point specified in the position, and a target plane
- * width of 6:<br><br>
+ * The following specifies a pinhole camera with the camera location and target point specified in the position, and a target
+ * plane width of 6:<br><br>
  * <pre>
  *     <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="cip.raytrace.camera.PinHole" name="<font style="color:magenta">camera</font>"&gt;</font>
  *       <font style="color:blue">&lt;<b>position</b> originAt="<font style="color:magenta">5.0,-5.0,5.0</font>"aimedAt="<font style="color:magenta">1.0f,-1.0f,-0.5f</font>"/&gt;</font>

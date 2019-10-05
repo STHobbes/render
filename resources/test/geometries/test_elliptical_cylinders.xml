@@ -88,12 +88,12 @@
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Cylinder" name="cylinder1">
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Cylinder" name="cylinder blue1">
         <radius>1.0f,0.75f</radius>
         <MaterialByRef name="blue"/>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="cylinder2">
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="cylinder magenta">
         <position originAt="-0.6f,-1.25f,0.6f" altitude="90.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Cylinder">
             <radius>0.25,0.2f</radius>
@@ -101,11 +101,13 @@
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="cylinder3">
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="cylinder glass">
         <position originAt="0.2f, -2.5f, 0.0f" roll="90.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Cylinder">
             <radius>0.1f,0.20f</radius>
             <MaterialByRef name="glass sphere"/>
+            <face plane=" 0.0f,-0.7071f, 0.7071f,-0.50f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.80f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

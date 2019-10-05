@@ -195,7 +195,7 @@ public class Paraboloid extends AQuadricGeo {
     }
 
     // Write out this object as XML
-    protected void internalToXml(final Element element) {
+    protected void internalToXml(@NotNull final Element element) {
         // The radii
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);

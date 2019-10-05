@@ -21,7 +21,6 @@
 package cip.render.raytrace.geometry;
 
 import cip.render.DynXmlObjParseException;
-import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
@@ -30,10 +29,8 @@ import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util3d.*;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 import java.util.LinkedList;
-import java.util.StringTokenizer;
 
 /**
  * A convex planar polyhedra described by the plane equations of the faces.
@@ -104,22 +101,9 @@ import java.util.StringTokenizer;
  * @since 1.0
  */
 public class PlanarPolyhedra extends AGeometry {
-    class Face {
-        final Plane3f m_pln = new Plane3f();
-        final IRtMaterial m_mtl;
-
-        public Face(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl)
-                throws ZeroLengthVectorException {
-            m_pln.setValue(fA, fB, fC, fD).normalize();
-            m_mtl = mtl;
-        }
-    }
-
-    private static final String XML_TAG_FACE = "face";
-    private static final String XML_ATTR_FACE_PLANE = "plane";
-    // instance fields
-    protected IRtMaterial m_mtl = DEFAULT_MATERIAL;  // the default material
+    // These are the planes describing the geometry
     protected Face[] m_faces = null;
+    protected LinkedList<Face> m_faceListTmp = new LinkedList<Face>();
 
     /**
      * Creates a new instance of <tt>PlanarPolyhedra</tt>
@@ -129,7 +113,7 @@ public class PlanarPolyhedra extends AGeometry {
         m_strName = "PlanarPolyhedra";
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     public void clear() {
         m_mtl = DEFAULT_MATERIAL;
         m_faces = null;
@@ -168,66 +152,39 @@ public class PlanarPolyhedra extends AGeometry {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IDynXmlObject interface implementation                                                                                //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IDynXmlObject interface implementation                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
-        try {
-            Node domNode = xmlElement.getFirstChild();
-            final LinkedList faceListTmp = new LinkedList();
-            while (null != domNode) {
-                if (domNode instanceof Element) {
-                    IRtMaterial mtl;
-                    final Element element = (Element) domNode;
-                    if (element.getTagName().equalsIgnoreCase(XML_TAG_FACE)) {
-                        // a face element - get the plane, and there may be a material for the face.
-                        final String strPlane = element.getAttribute(XML_ATTR_FACE_PLANE);
-                        final StringTokenizer tokens = new StringTokenizer(strPlane, ",");
-                        if (tokens.countTokens() != 4) {
-                            throw new IllegalArgumentException("face specification must be in the form <face plane=\"A,B,C,D\">");
-                        }
-                        final float fA = Float.parseFloat(tokens.nextToken().trim());
-                        final float fB = Float.parseFloat(tokens.nextToken().trim());
-                        final float fC = Float.parseFloat(tokens.nextToken().trim());
-                        final float fD = Float.parseFloat(tokens.nextToken().trim());
-                        IRtMaterial mtlFace = null;
-                        Node mtlNode = element.getFirstChild();
-                        while (null != mtlNode) {
-                            final Element mtlEl = (Element) mtlNode;
-                            if (null != (mtlFace = FrameLoader.tryParseMaterial(mtlEl, refObjectList, getType(), m_strName))) {
-                                break;
-                            }
-                            mtlNode = mtlNode.getNextSibling();
-                        }
-                        faceListTmp.add(new Face(fA, fB, fC, fD, mtlFace));
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
-                        m_mtl = mtl;
-                    } else {
-                        pkgThrowUnrecognizedXml(element);
-                    }
-                }
-                domNode = domNode.getNextSibling();
-            }
-            // create the face array from the linked list -- we move the faces into an array for best performance during intersection testing
-            if (faceListTmp.size() < 4) {
-                throw new DynXmlObjParseException("PlanarPolyhedra: " + m_strName + " a polyhedra must have at least 4 planes to be a closed solid");
-            }
-            m_faces = new Face[faceListTmp.size()];
-            for (int iFace = 0; iFace < faceListTmp.size(); iFace++) {
-                m_faces[iFace] = (Face) faceListTmp.get(iFace);
-            }
-        } catch (final Throwable t) {
-            if (t instanceof DynXmlObjParseException) {
-                throw (DynXmlObjParseException) t;
-            } else {
-                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
-            }
+        Face face = tryParseFace(element, refObjectList);
+        if (null != face) {
+            m_faceListTmp.add(face);
+            return true;
         }
+        return false;
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-    protected void internalToXml(final Element element) {
+    //------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    protected void internalFinishLoad() {
+        // create the face array from the linked list -- we move the faces into an array for best performance during
+        // intersection testing. There is a physical/philosophical issue here - what constitutes a valid planar polyhedra?
+        // For example, if you want a surface representing ground, and the camera is above the ground, then a single plane
+        // is valid. If you want a glass/diamond gem, then you need a closed polyhedra - this requires a minimum of 4
+        // planes (a tetrahedron-like volume) that are configured to create a closed solid. This validation is non-trivial
+        m_faces = new Face[m_faceListTmp.size()];
+        for (int iFace = 0; iFace < m_faceListTmp.size(); iFace++) {
+            m_faces[iFace] = m_faceListTmp.get(iFace);
+        }
+        m_faceListTmp = null;
+    }
+
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    protected void internalToXml(@NotNull final Element element) {
         final StringBuilder strBuff = new StringBuilder(64);
         // The faces
         if (null != m_faces) {
@@ -249,9 +206,10 @@ public class PlanarPolyhedra extends AGeometry {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // IRtGeometry interface implementation                                                                                  //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // IRtGeometry interface implementation                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
     public boolean isConvex() {
         return true;
     }
@@ -261,9 +219,10 @@ public class PlanarPolyhedra extends AGeometry {
         return false;
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-    public boolean getRayIntersection(@NotNull final RayIntersection intersection, @NotNull final Line3f ray, final boolean bStartsInside,
-                                      final int nSample, final int nRandom) {
+    //------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    public boolean getRayIntersection(@NotNull final RayIntersection intersection, @NotNull final Line3f ray,
+                                      final boolean bStartsInside, final int nSample, final int nRandom) {
         final Plane3fIntersection plnInt = intersection.borrowPlaneInt();
         try {
             //  This is the convex polyhedra test where we compute the distence to intersections
@@ -290,11 +249,14 @@ public class PlanarPolyhedra extends AGeometry {
                         if (((fDistOut < 0.0f) || (fDistIn > fDistOut)) && !bStartsInside) return false;
                     }
                 } else {
-                    // going into the plane
+                    // going into the plane - and if this is greater than the current distance in, reset that.
                     if (plnInt.m_fDist > fDistIn) {
                         fDistIn = plnInt.m_fDist;
                         nIn = ix;
-                        if (fDistIn > fDistOut) return false;
+                        if (fDistIn > fDistOut) {
+                            // ooh - the furthest distance in is greater than the closest distance out - so no intersection.
+                            return false;
+                        }
                     }
                 }
             }
@@ -328,19 +290,19 @@ public class PlanarPolyhedra extends AGeometry {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
-    public boolean testShadow(final RayIntersection intersection, final Vector3f vLight, final float fDistLight, final IRtLight light,
-                              final int nSample, final int nRandom) {
+    //------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    public boolean testShadow(@NotNull final RayIntersection intersection, final Vector3f vLight, final float fDistLight,
+                              final IRtLight light, final int nSample, final int nRandom) {
         final Plane3fIntersection plnInt = intersection.borrowPlaneInt();
 
         try {
-            //  This is the convex polyhedra test where we compute the distence to intersections
+            //  This is the convex polyhedra test where we compute the distance to intersections
             //  into the planes of the polyhedra, and out of the planes of the polyhedra.  If
             //  the furthest in-to is closer than the furthest out-of, then the ray is is
             //  intersecting the polyhedra.
             float fDistIn = Float.NEGATIVE_INFINITY;
             float fDistOut = Float.POSITIVE_INFINITY;
-            int nIn = -1;
             for (int ix = 0; ix < m_faces.length; ix++) {
                 m_faces[ix].m_pln.getIntersection(plnInt, intersection.m_pt, vLight);
                 if (plnInt.m_nCode == Plane3fIntersection.NONE_OUTSIDE) {
@@ -366,7 +328,6 @@ public class PlanarPolyhedra extends AGeometry {
                     //  encountered so far.
                     if (plnInt.m_fDist > fDistIn) {
                         fDistIn = plnInt.m_fDist;
-                        nIn = ix;
                         if (fDistIn > fDistOut) {
                             // if this test is true, an intersection is not possible - we don't
                             //  need to do anymore testing.

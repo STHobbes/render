@@ -76,7 +76,7 @@ public class Quadric3fIntersection {
     public float m_fDist1;
 
     /**
-     *
+     * The intersection point and associated surface normal
      */
     public Line3f m_int1 = new Line3f();
 

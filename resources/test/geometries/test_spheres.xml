@@ -53,6 +53,13 @@
             <transmittance>0.75</transmittance>
         </DynamicallyLoadedObject>
 
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="gold">
+            <colour rgb="0.9f,0.8f,0.4f"/>
+            <conductor/>
+            <beta>9</beta>
+            <opaque/>
+        </DynamicallyLoadedObject>
+
     </LibraryObjects>
 
     <!-- This is the scene description -->
@@ -91,6 +98,24 @@
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Sphere" name="sphere1">
         <radius>1.0f</radius>
         <MaterialByRef name="blue"/>
+        <face plane=" 1.0f, 0.0f, 0.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
+        <face plane="-1.0f, 0.0f, 0.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
+        <face plane=" 0.0f, 1.0f, 0.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
+        <face plane=" 0.0f,-1.0f, 0.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
+        <face plane=" 0.0f, 0.0f, 1.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
+        <face plane=" 0.0f, 0.0f,-1.0f,-0.80f">
+            <MaterialByRef name="gold"/>
+        </face>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="sphere2">

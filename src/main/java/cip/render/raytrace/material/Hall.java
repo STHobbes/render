@@ -765,6 +765,7 @@ public class Hall implements IDynXmlObject, INamedObject, IRtMaterial {
                 if (intersection.m_rtObj.getRayIntersection(intRflRfr, lnRflRfr, true, nSample, nRandom)) {
                     getInternalColor(rgbRflRfr, intRflRfr, lights, rtObjects, nMaxRecursions, nInternalReflections + 1, rtBkg, nSample, nRandom);
                 } else {
+                    // did not get an intersection for going out - don't know what to do with this, set the color to orange.
                     rgbRflRfr.setValue(1.0f, 0.5f, 0.0f);
                 }
             } else {

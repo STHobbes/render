@@ -21,11 +21,9 @@
 package cip.render.raytrace.geometry;
 
 import cip.render.DynXmlObjParseException;
-import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util.AngleF;
 import cip.render.util3d.PackageConstants;
 import cip.render.util3d.Point3f;
@@ -123,40 +121,29 @@ public class Sphere extends AQuadricGeo {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+    @Override
+    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
-        try {
-            Node domNode = xmlElement.getFirstChild();
-            while (null != domNode) {
-                if (domNode instanceof Element) {
-                    final Element element = (Element) domNode;
-                    IRtMaterial mtl;
-                    if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-                        Node textNode = element.getFirstChild();
-                        while (null != textNode) {
-                            if (textNode.getNodeType() == Node.TEXT_NODE) {
-                                setRadius(Float.parseFloat(textNode.getNodeValue().trim()));
-                                break;
-                            }
-                            textNode = textNode.getNextSibling();
-                        }
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, m_strType, m_strName))) {
-                        m_mtl = mtl;
-                    } else {
-                        pkgThrowUnrecognizedXml(element);
-                    }
-                }
-                domNode = domNode.getNextSibling();
-            }
-        } catch (final Throwable t) {
-            if (t instanceof DynXmlObjParseException) {
-                throw (DynXmlObjParseException) t;
-            } else {
-                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
-            }
+        if (super.internalParseElement(element, refObjectList)) {
+            return true;
         }
+        if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+            Node textNode = element.getFirstChild();
+            while (null != textNode) {
+                if (textNode.getNodeType() == Node.TEXT_NODE) {
+                    setRadius(Float.parseFloat(textNode.getNodeValue().trim()));
+                    break;
+                }
+                textNode = textNode.getNextSibling();
+            }
+            return true;
+        }
+        return false;
     }
-    protected void internalToXml(final Element element) {
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    protected void internalToXml(@NotNull final Element element) {
         // The radius
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);

@@ -21,10 +21,7 @@
 
 package cip.render.raytrace.geometry;
 
-import cip.render.DynXmlObjLoader;
-import cip.render.DynXmlObjParseException;
-import cip.render.IDynXmlObject;
-import cip.render.INamedObject;
+import cip.render.*;
 import cip.render.raytrace.RayIntersection;
 import cip.render.raytrace.interfaces.IRtGeometry;
 import cip.render.raytrace.interfaces.IRtLight;
@@ -32,15 +29,14 @@ import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.raytrace.material.Blinn;
 import cip.render.util.AngleF;
 import cip.render.util2d.Point2f;
-import cip.render.util3d.Bv3fIntersection;
-import cip.render.util3d.Line3f;
-import cip.render.util3d.Point3f;
-import cip.render.util3d.Vector3f;
+import cip.render.util3d.*;
 import cip.render.utilColour.RGBf;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 /**
  * This is an abstract class for a ray tracing geometry.  It offers an implementation of the most common elements
@@ -51,10 +47,24 @@ import java.util.LinkedList;
  * @since 1.0
  */
 public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeometry {
+    class Face {
+        final Plane3f m_pln = new Plane3f();
+        final IRtMaterial m_mtl;
+
+        public Face(final float fA, final float fB, final float fC, final float fD, final IRtMaterial mtl)
+                throws ZeroLengthVectorException {
+            m_pln.setValue(fA, fB, fC, fD).normalize();
+            m_mtl = mtl;
+        }
+    }
+
     protected static final String XML_TAG_REF_NAME_ATTR = "name";
     protected static final String XML_TAG_GEOMETRY_REF = "GeometryByRef";
 
     protected static final String DEFAULT_NAME = "<unspecified>";
+
+    protected static final String XML_TAG_FACE = "face";
+    protected static final String XML_ATTR_FACE_PLANE = "plane";
 
     static final IRtMaterial DEFAULT_MATERIAL = new Blinn("default", new RGBf(0.0f, 1.0f, 0.0f),
             false, new AngleF(AngleF.DEGREES, 45.0f));
@@ -78,7 +88,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         m_strType = this.getClass().getName();
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
     // Accessor/Mutator functions
     public IRtMaterial getMaterial() {
         return m_mtl;
@@ -88,13 +98,94 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         m_mtl = mtl;
     }
 
+    /**
+     * @param element
+     * @param refObjectList
+     * @return
+     * @throws DynXmlObjParseException
+     */
+    Face tryParseFace(@NotNull Element element, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
+        if (element.getTagName().equalsIgnoreCase(XML_TAG_FACE)) {
+            // a face element - get the plane, and there may be a material for the face.
+            final String strPlane = element.getAttribute(XML_ATTR_FACE_PLANE);
+            final StringTokenizer tokens = new StringTokenizer(strPlane, ",");
+            if (tokens.countTokens() != 4) {
+                throw new IllegalArgumentException("face specification must be in the form <face plane=\"A,B,C,D\">");
+            }
+            final float fA = Float.parseFloat(tokens.nextToken().trim());
+            final float fB = Float.parseFloat(tokens.nextToken().trim());
+            final float fC = Float.parseFloat(tokens.nextToken().trim());
+            final float fD = Float.parseFloat(tokens.nextToken().trim());
+            IRtMaterial mtlFace = null;
+            Node mtlNode = element.getFirstChild();
+            while (null != mtlNode) {
+                if (mtlNode instanceof Element) {
+                    if (null != (mtlFace = FrameLoader.tryParseMaterial((Element) mtlNode, refObjectList, getType(), m_strName))) {
+                        break;
+                    }
+                }
+                mtlNode = mtlNode.getNextSibling();
+            }
+            return new Face(fA, fB, fC, fD, mtlFace);
+        }
+        return null;
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * This is the generic load for a geometric object.
+     *
+     * @param xmlElement    The dynamically loaded object DOM Document element.
+     * @param refObjectList A linked list if named objects (implementing the {@link INamedObject} interface)
+     *                      that have already been loaded and can be used to resolve object references.
+     * @throws DynXmlObjParseException Thrown if there is an error in the scene description XML that cannot be parsed
+     *                                 by this object.
+     */
     public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
+        try {
+            Node domNode = xmlElement.getFirstChild();
+            while (null != domNode) {
+                if (domNode instanceof Element) {
+                    IRtMaterial mtl;
+                    final Element element = (Element) domNode;
+                    if (!internalParseElement(element, refObjectList)) {
+                        if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
+                            m_mtl = mtl;
+                        } else {
+                            pkgThrowUnrecognizedXml(element);
+                        }
+                    }
+                }
+                domNode = domNode.getNextSibling();
+            }
+            internalFinishLoad();
+        } catch (final Throwable t) {
+            if (t instanceof DynXmlObjParseException) {
+                throw (DynXmlObjParseException) t;
+            } else {
+                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
+            }
+        }
+    }
 
+    /**
+     * @param element       (not null, readonly) The dom element to be parsed.
+     * @param refObjectList A linked list if named objects (implementing the {@link INamedObject} interface)
+     *                      that have already been loaded and can be used to resolve object references.
+     * @return <tt>true</tt> if the element was parsed, <tt>false</tt> otherwise.
+     */
+    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
+            throws DynXmlObjParseException {
+        return false;
+    }
+
+    /**
+     *
+     */
+    protected void internalFinishLoad() {
     }
 
     /**
@@ -122,7 +213,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      *                be overridden by the geometry implementation to be able to read the object-specific information set by
      *                the object here.
      */
-    protected void internalToXml(final Element element) {
+    protected void internalToXml(@NotNull final Element element) {
     }
 
     /**
@@ -143,12 +234,12 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
                 }
             }
         }
-        throw new DynXmlObjParseException(String.format("Referenced geometry \"%s\" was not found.",strName));
+        throw new DynXmlObjParseException(String.format("Referenced geometry \"%s\" was not found.", strName));
     }
 
     void pkgThrowUnrecognizedXml(Element element) throws DynXmlObjParseException {
         throw new DynXmlObjParseException(String.format("Unrecognized %s XML description element <%s>",
-                m_strName, element.getTagName() ));
+                m_strName, element.getTagName()));
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

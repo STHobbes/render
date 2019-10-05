@@ -175,7 +175,7 @@ public class Ellipsoid extends Sphere {
         }
     }
 
-    protected void internalToXml(final Element element) {
+    protected void internalToXml(@NotNull final Element element) {
         // The radius
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);
