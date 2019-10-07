@@ -96,16 +96,22 @@
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="ellipspoid 2">
         <position originAt="-0.6f,-1.25f,0.6f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid">
-            <radius>0.25,0.2f,0.3f</radius>
+            <radius>0.1f,0.20f,0.3f</radius>
             <MaterialByRef name="magenta"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="ellipspoid 3">
-        <position originAt="0.2f, -2.5f, 0.5f"/>
+        <position originAt="0.2f, -2.5f, 0.5f" azimuth="45" altitude="45"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Ellipsoid">
-            <radius>0.1f,0.20f,0.3f</radius>
+            <radius>0.25,0.2f,0.3f</radius>
             <MaterialByRef name="glass sphere"/>
+            <face plane=" 1.0f, 0.0f, 0.0f,-0.17f"/>
+            <face plane="-1.0f, 0.0f, 0.0f,-0.17f"/>
+            <face plane=" 0.0f, 1.0f, 0.0f,-0.15f"/>
+            <face plane=" 0.0f,-1.0f, 0.0f,-0.15f"/>
+            <face plane=" 0.0f, 0.0f, 1.0f,-0.24f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.24f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

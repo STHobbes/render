@@ -69,7 +69,7 @@ import java.util.logging.Logger;
  * </tr>
  * <tr>
  * <td><tt>DynamicallyLoadedObject</tt></td>
- * <td>The specification fof a material for the sphere.  <tt>MaterialByRef</tt> is
+ * <td>The specification for a material for the sphere.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
@@ -124,9 +124,6 @@ public class Sphere extends AQuadricGeo {
     @Override
     protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
-        if (super.internalParseElement(element, refObjectList)) {
-            return true;
-        }
         if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
             Node textNode = element.getFirstChild();
             while (null != textNode) {
@@ -138,7 +135,7 @@ public class Sphere extends AQuadricGeo {
             }
             return true;
         }
-        return false;
+        return super.internalParseElement(element, refObjectList);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

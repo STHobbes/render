@@ -36,7 +36,7 @@ public class PackageConstants {
      * limit guards against situations where a ray never seems to escape an object (possible within our limits of
      * roundoff error, and for particular geometry configuations).
      */
-    public static int MAX_INTERNAL_REFLECTION = 10;
+    public static int MAX_INTERNAL_REFLECTION = 20;
 
     /**
      * The contribution below which continuing the ray intersection tree will be assumed to have

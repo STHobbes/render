@@ -3,32 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_elliptical_cylinders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_elliptical_cylinders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_spheres.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_spheres.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_cones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_cones.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_ellipsoids.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/RenderXml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/camera/PinHole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AQuadricGeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AQuadricGeo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Hall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/PackageConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/PackageConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3fIntersection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3fIntersection.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -127,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RenderWindow - test - cylinder">
+  <component name="RunManager" selected="Application.RenderWindowOS - test - cone">
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
@@ -503,6 +510,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RenderWindowOS - test - cone" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cip.render.RenderWindow" />
+      <module name="render.main" />
+      <option name="PROGRAM_PARAMETERS" value="-r cip.render.raytrace.RenderXmlOS -d test/geometries/test_cones.xml" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/resources" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cip.render.raytrace.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RenderWindowOSJ - assignment 4 framework" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cip.render.RenderWindow" />
       <module name="render.main" />
@@ -603,6 +625,7 @@
       <item itemvalue="Application.RenderWindow - test - ellipsoid" />
       <item itemvalue="Application.RenderWindow - test - cylinder" />
       <item itemvalue="Application.RenderWindow - test - cone" />
+      <item itemvalue="Application.RenderWindowOS - test - cone" />
       <item itemvalue="Application.RenderWindow - test - paraboloid" />
       <item itemvalue="Application.RenderWindow - test - hyperboloid" />
       <item itemvalue="Application.RenderWindow - test - hyperparaboloid" />
@@ -641,7 +664,7 @@
       <workItem from="1567658812107" duration="128000" />
       <workItem from="1567659155612" duration="199000" />
       <workItem from="1567911737477" duration="1351000" />
-      <workItem from="1568007295790" duration="72946000" />
+      <workItem from="1568007295790" duration="94775000" />
     </task>
     <task id="LOCAL-00001" summary="porting of CSE506 assignments 1 and 2 to github.">
       <created>1554352866757</created>
@@ -783,7 +806,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568007443062</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added clipping planes for spheres and cylinders,">
+      <created>1570244006501</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1570244006501</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -864,7 +894,8 @@
     <MESSAGE value="Added tests for the Wavy texture. Reworked Wavy to be a true 3D texture.&#10;&#10;Debugged/improved Checkerboard and Outlined as 3D textures&#10;&#10;Progress in texture cleanup and testing. eliminating a lot of&#10;duplicate code with texture base-classes. Added documentation." />
     <MESSAGE value="Added oversampling and distributed ray tracing implementations of&#10;IRenderWindow. Many documentation updates, code cleanup, duplicate&#10;code removal, more work on textures. More work on test environments." />
     <MESSAGE value="Documentation cleanup." />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation cleanup." />
+    <MESSAGE value="Added clipping planes for spheres and cylinders," />
+    <option name="LAST_COMMIT_MESSAGE" value="Added clipping planes for spheres and cylinders," />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -908,8 +939,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java</url>
-          <line>476</line>
-          <option name="timeStamp" value="73" />
+          <line>484</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java</url>
+          <line>417</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

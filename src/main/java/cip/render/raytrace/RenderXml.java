@@ -141,7 +141,7 @@ public class RenderXml implements IRenderScene {
     //------------------------------------------------------------------------------------------------------------------------------
     // RenderXmlHierarchy
     //------------------------------------------------------------------------------------------------------------------------------
-    final int m_nMaxRecursions = 6;
+    final int m_nMaxRecursions = 10;
 
     protected boolean m_bNewScene = true;
     // the camera for viewing the scene

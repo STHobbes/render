@@ -23,11 +23,9 @@ package cip.render.raytrace.geometry;
 
 
 import cip.render.DynXmlObjParseException;
-import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
 import cip.render.raytrace.RayIntersection;
-import cip.render.raytrace.interfaces.IRtMaterial;
 import cip.render.util.AngleF;
 import cip.render.util3d.PackageConstants;
 import cip.render.util3d.Point3f;
@@ -81,7 +79,7 @@ import java.util.StringTokenizer;
  * </tr>
  * <tr>
  * <td><tt>DynamicallyLoadedObject</tt></td>
- * <td>The specification fof a material for the cone.  <tt>MaterialByRef</tt> is
+ * <td>The specification for a material for the cone.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
@@ -136,73 +134,183 @@ public class Cone extends AQuadricGeo {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+//    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+//            throws DynXmlObjParseException {
+//        try {
+//            Node domNode = xmlElement.getFirstChild();
+//            float radiusX = getRadiusX();
+//            float radiusY = getRadiusY();
+//            float height = getHeight();
+//            boolean bRefresh = false;
+//            while (null != domNode) {
+//                if (domNode instanceof Element) {
+//                    final Element element = (Element) domNode;
+//                    IRtMaterial mtl;
+//                    if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+//                        Node txtNode = element.getFirstChild();
+//                        while (null != txtNode) {
+//                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
+//                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
+//                                if (tokens.countTokens() == 1) {
+//                                    radiusX = radiusY = Float.parseFloat(txtNode.getNodeValue().trim());
+//                                    bRefresh = true;
+//                                } else if (tokens.countTokens() == 2) {
+//                                    radiusX = Float.parseFloat(tokens.nextToken().trim());
+//                                    radiusY = Float.parseFloat(tokens.nextToken().trim());
+//                                    bRefresh = true;
+//                                } else {
+//                                    throw new IllegalArgumentException(String.format(
+//                                            "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
+//                                            XML_TAG_RADIUS));
+//                                }
+//                                break;
+//                            }
+//                            txtNode = txtNode.getNextSibling();
+//                        }
+//                    } else if (element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
+//                        Node txtNode = element.getFirstChild();
+//                        while (null != txtNode) {
+//                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
+//                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
+//                                height = Float.parseFloat(tokens.nextToken().trim());
+//                                bRefresh = true;
+//                            } else {
+//                                throw new IllegalArgumentException(String.format(
+//                                        "\"%s\" specification must be in the form \"height\"",
+//                                        XML_TAG_HEIGHT));
+//                            }
+//                            break;
+//                        }
+//                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
+//                        m_mtl = mtl;
+//                    } else {
+//                        pkgThrowUnrecognizedXml(element);
+//                    }
+//                }
+//                domNode = domNode.getNextSibling();
+//            }
+//            if (bRefresh) {
+//                m_quadric.setEllipticalCone(radiusX, radiusY, height);
+//                m_strType = m_quadric.getQuadricType();
+//            }
+//        } catch (final Throwable t) {
+//            if (t instanceof DynXmlObjParseException) {
+//                throw (DynXmlObjParseException) t;
+//            } else {
+//                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
+//            }
+//        }
+//    }
+    @Override
+    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
-        try {
-            Node domNode = xmlElement.getFirstChild();
+        if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS) || element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
             float radiusX = getRadiusX();
             float radiusY = getRadiusY();
             float height = getHeight();
             boolean bRefresh = false;
-            while (null != domNode) {
-                if (domNode instanceof Element) {
-                    final Element element = (Element) domNode;
-                    IRtMaterial mtl;
-                    if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-                        Node txtNode = element.getFirstChild();
-                        while (null != txtNode) {
-                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
-                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-                                if (tokens.countTokens() == 1) {
-                                    radiusX = radiusY = Float.parseFloat(txtNode.getNodeValue().trim());
-                                    bRefresh = true;
-                                } else if (tokens.countTokens() == 2) {
-                                    radiusX = Float.parseFloat(tokens.nextToken().trim());
-                                    radiusY = Float.parseFloat(tokens.nextToken().trim());
-                                    bRefresh = true;
-                                } else {
-                                    throw new IllegalArgumentException(String.format(
-                                            "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
-                                            XML_TAG_RADIUS));
-                                }
-                                break;
-                            }
-                            txtNode = txtNode.getNextSibling();
+            if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+                Node textNode = element.getFirstChild();
+                while (null != textNode) {
+                    if (textNode.getNodeType() == Node.TEXT_NODE) {
+                        final StringTokenizer tokens = new StringTokenizer(textNode.getNodeValue(), ",");
+                        if (tokens.countTokens() == 1) {
+                            radiusX = radiusY = Float.parseFloat(textNode.getNodeValue().trim());
+                            bRefresh = true;
+                        } else if (tokens.countTokens() == 2) {
+                            radiusX = Float.parseFloat(tokens.nextToken().trim());
+                            radiusY = Float.parseFloat(tokens.nextToken().trim());
+                            bRefresh = true;
+                        } else {
+                            throw new IllegalArgumentException(String.format(
+                                    "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
+                                    XML_TAG_RADIUS));
                         }
-                    } else if (element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
-                        Node txtNode = element.getFirstChild();
-                        while (null != txtNode) {
-                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
-                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-                                height = Float.parseFloat(tokens.nextToken().trim());
-                                bRefresh = true;
-                            } else {
-                                throw new IllegalArgumentException(String.format(
-                                        "\"%s\" specification must be in the form \"height\"",
-                                        XML_TAG_HEIGHT));
-                            }
-                            break;
-                        }
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
-                        m_mtl = mtl;
-                    } else {
-                        pkgThrowUnrecognizedXml(element);
+                        break;
                     }
+                    textNode = textNode.getNextSibling();
                 }
-                domNode = domNode.getNextSibling();
+            } else {
+                Node textNode = element.getFirstChild();
+                while (null != textNode) {
+                    if (textNode.getNodeType() == Node.TEXT_NODE) {
+                        final StringTokenizer tokens = new StringTokenizer(textNode.getNodeValue(), ",");
+                        if (tokens.countTokens() == 1) {
+                            height = Float.parseFloat(tokens.nextToken().trim());
+                            bRefresh = true;
+                        } else {
+                            throw new IllegalArgumentException(String.format(
+                                    "\"%s\" specification must be in the form \"height\"",
+                                    XML_TAG_HEIGHT));
+                        }
+                        break;
+                    }
+                    textNode = textNode.getNextSibling();
+                }
             }
             if (bRefresh) {
                 m_quadric.setEllipticalCone(radiusX, radiusY, height);
                 m_strType = m_quadric.getQuadricType();
             }
-        } catch (final Throwable t) {
-            if (t instanceof DynXmlObjParseException) {
-                throw (DynXmlObjParseException) t;
-            } else {
-                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
-            }
+            return true;
         }
+        return super.internalParseElement(element, refObjectList);
     }
+
+//        }
+//            if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+//            Node textNode = element.getFirstChild();
+//            while (null != textNode) {
+//                float radiusX = getRadiusX();
+//                float radiusY = getRadiusY();
+//                float height = getHeight();
+//                boolean bRefresh = false;
+//                if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+//                    Node txtNode = element.getFirstChild();
+//                    while (null != txtNode) {
+//                        if (txtNode.getNodeType() == Node.TEXT_NODE) {
+//                            final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
+//                            if (tokens.countTokens() == 1) {
+//                                radiusX = radiusY = Float.parseFloat(txtNode.getNodeValue().trim());
+//                                bRefresh = true;
+//                            } else if (tokens.countTokens() == 2) {
+//                                radiusX = Float.parseFloat(tokens.nextToken().trim());
+//                                radiusY = Float.parseFloat(tokens.nextToken().trim());
+//                                bRefresh = true;
+//                            } else {
+//                                throw new IllegalArgumentException(String.format(
+//                                        "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
+//                                        XML_TAG_RADIUS));
+//                            }
+//                            break;
+//                        }
+//                        txtNode = txtNode.getNextSibling();
+//                    }
+//                } else if (element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
+//                    Node txtNode = element.getFirstChild();
+//                    while (null != txtNode) {
+//                        if (txtNode.getNodeType() == Node.TEXT_NODE) {
+//                            final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
+//                            height = Float.parseFloat(tokens.nextToken().trim());
+//                            bRefresh = true;
+//                        } else {
+//                            throw new IllegalArgumentException(String.format(
+//                                    "\"%s\" specification must be in the form \"height\"",
+//                                    XML_TAG_HEIGHT));
+//                        }
+//                        break;
+//                    }
+//                }
+//                if (bRefresh) {
+//                    m_quadric.setEllipticalCone(radiusX, radiusY, height);
+//                    m_strType = m_quadric.getQuadricType();
+//                }
+//                textNode = textNode.getNextSibling();
+//            }
+//            return true;
+//        }
+//        return super.internalParseElement(element, refObjectList);
+//    }
 
     protected void internalToXml(@NotNull final Element element) {
         // The radii

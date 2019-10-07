@@ -420,7 +420,7 @@ public class Quadric3f {
                 // case for something like a cone (which has upper and lower halves) when the major axis of the ray is k and it
                 // is parallel to the surface of the cone - this is a rare case.
                 if (bStartsInside) {
-                    quadInt.m_fDist1 = Float.POSITIVE_INFINITY;
+                    quadInt.m_fDist1 = Float.NEGATIVE_INFINITY;
                     quadInt.m_fDist2 = -fC / fB;
                     quadInt.m_nCode = Quadric3fIntersection.GOING_OUT_OF;
                 } else {

@@ -64,7 +64,7 @@ import java.util.StringTokenizer;
  * </tr>
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>The specification fof a material for the hyperbolic paraboloid.  <tt>MaterialByRef</tt> is
+ * <td>The specification for a material for the hyperbolic paraboloid.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.

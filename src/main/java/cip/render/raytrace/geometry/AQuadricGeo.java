@@ -110,10 +110,36 @@ abstract class AQuadricGeo extends AGeometry {
                     // this is a concave with and out-in ordering of distances
                     fDistOut = qInt.m_fDist1;
                     fDistIn = qInt.m_fDist2;
+                    // Logically: if bStartsInside is not set the ray start is not inside the object, and if fDistOut is
+                    // positive, the ray start is inside the quadric, but there should be a clipping plane between us and
+                    // going out. If the fDistOut is negative then we are really only concerned about going in
+
+                    // BUT - if the clipping plane is behind the goes out, then the goes out is outside the bounds of the
+                    // geometry. In this case, the goes in is visible. and potentially an object intersection of interest.
+                    if (!bStartsInside) {
+                        if (fDistOut > 0.0f) {
+                            fDistIn = Float.NEGATIVE_INFINITY;
+                        } else {
+                            fDistOut = Float.POSITIVE_INFINITY;
+                        }
+                    }
                 }
                 int clip_status = lclTestClippingPlanes(intersection, ray, bStartsInside, fDistIn, fDistOut);
                 if (clip_status == CLIP_NEGATES_INTERSECT) {
-                    return false;
+                    if (!bStartsInside && (qInt.m_nCode == Quadric3fIntersection.GOING_OUT_OF)) {
+                        // And this is the case where the ray starts inside the quadric, but the clipping planes negate that
+                        // that intersection as one of interest, so we look at the goes in
+                        fDistIn = qInt.m_fDist2;
+                        fDistOut = Float.POSITIVE_INFINITY;
+                        clip_status = lclTestClippingPlanes(intersection, ray, bStartsInside, fDistIn, fDistOut);
+                        if (clip_status == CLIP_NEGATES_INTERSECT) {
+                            return false;
+                        } else if (clip_status == CLIP_INTERSECT) {
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
                 } else if (clip_status == CLIP_INTERSECT) {
                     // The clipping plane intersection supersedes the quadric intersection
                     return true;
@@ -148,7 +174,7 @@ abstract class AQuadricGeo extends AGeometry {
 
     //------------------------------------------------------------------------------------------------------------------------------
     private int lclTestClippingPlanes(@NotNull final RayIntersection intersection, @NotNull final Line3f ray,
-                                      final boolean bStartsInside, float fDistIn, float fDistOut) {
+                                      boolean bStartsInside, float fDistIn, float fDistOut) {
         if ((null == m_clipPlanes) || (0 == m_clipPlanes.length)) {
             return NO_CLIP_INTERSECT;
         }
@@ -243,12 +269,30 @@ abstract class AQuadricGeo extends AGeometry {
                 fDistOut = qInt.m_fDist2;
             } else {
                 // this is a concave with and out-in ordering of distances
-                fDistOut = qInt.m_fDist1;
-                fDistIn = qInt.m_fDist2;
+                if (fDistOut > 0.0f) {
+                    fDistIn = Float.NEGATIVE_INFINITY;
+                    fDistOut = qInt.m_fDist1;
+                } else {
+                    fDistIn = qInt.m_fDist2;
+                    fDistOut = Float.POSITIVE_INFINITY;
+                }
             }
             int clip_status = lclTestClippingPlaneShadow(intersection, vLight, fDistLight, fDistIn, fDistOut);
             if (clip_status == CLIP_NEGATES_INTERSECT) {
-                return false;
+                if (qInt.m_nCode == Quadric3fIntersection.GOING_OUT_OF) {
+                    // And this is the case where the ray starts inside the quadric, but the clipping planes negate that
+                    // that intersection as one of interest, so we look at the goes in
+                    fDistIn = qInt.m_fDist2;
+                    fDistOut = Float.POSITIVE_INFINITY;
+                    clip_status = lclTestClippingPlaneShadow(intersection, vLight, fDistLight, fDistIn, fDistOut);
+                    if (clip_status == CLIP_NEGATES_INTERSECT) {
+                        return false;
+                    } else if (clip_status == CLIP_INTERSECT) {
+                        return true;
+                    }
+                } else {
+                    return false;
+                }
             } else if (clip_status == CLIP_INTERSECT) {
                 // The clipping plane intersection supersedes the
                 return true;

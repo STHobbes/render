@@ -23,10 +23,8 @@ package cip.render.raytrace.geometry;
 
 
 import cip.render.DynXmlObjParseException;
-import cip.render.FrameLoader;
 import cip.render.IDynXmlObject;
 import cip.render.INamedObject;
-import cip.render.raytrace.interfaces.IRtMaterial;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -63,7 +61,7 @@ import java.util.StringTokenizer;
  * </tr>
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>The specification fof a material for the ellipsoid.  <tt>MaterialByRef</tt> is
+ * <td>The specification for a material for the ellipsoid.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
@@ -127,53 +125,37 @@ public class Ellipsoid extends Sphere {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
+    @Override
+    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
-        try {
-            Node domNode = xmlElement.getFirstChild();
-            while (null != domNode) {
-                if (domNode instanceof Element) {
-                    final Element element = (Element) domNode;
-                    IRtMaterial mtl;
-                    if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-                        Node txtNode = element.getFirstChild();
-                        while (null != txtNode) {
-                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
-                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-                                if (tokens.countTokens() == 1) {
-                                    final float fRx = Float.parseFloat(txtNode.getNodeValue().trim());
-                                    setRadius(fRx, fRx, fRx);
-                                } else if (tokens.countTokens() == 3) {
-                                    final float fRx = Float.parseFloat(tokens.nextToken().trim());
-                                    final float fRy = Float.parseFloat(tokens.nextToken().trim());
-                                    final float fRz = Float.parseFloat(tokens.nextToken().trim());
-                                    setRadius(fRx, fRy, fRz);
-                                    m_strType = m_quadric.getQuadricType();
-                                } else {
-                                    throw new IllegalArgumentException(String.format(
-                                            "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius,Zradius\"",
-                                            XML_TAG_RADIUS));
-                                }
-                                break;
-                            }
-                            txtNode = txtNode.getNextSibling();
-                        }
-                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
-                        m_mtl = mtl;
+        if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
+            Node textNode = element.getFirstChild();
+            while (null != textNode) {
+                if (textNode.getNodeType() == Node.TEXT_NODE) {
+                    final StringTokenizer tokens = new StringTokenizer(textNode.getNodeValue(), ",");
+                    if (tokens.countTokens() == 1) {
+                        final float fRx = Float.parseFloat(textNode.getNodeValue().trim());
+                        setRadius(fRx, fRx, fRx);
+                    } else if (tokens.countTokens() == 3) {
+                        final float fRx = Float.parseFloat(tokens.nextToken().trim());
+                        final float fRy = Float.parseFloat(tokens.nextToken().trim());
+                        final float fRz = Float.parseFloat(tokens.nextToken().trim());
+                        setRadius(fRx, fRy, fRz);
+                        m_strType = m_quadric.getQuadricType();
                     } else {
-                        pkgThrowUnrecognizedXml(element);
+                        throw new IllegalArgumentException(String.format(
+                                "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius,Zradius\"",
+                                XML_TAG_RADIUS));
                     }
+                    break;
                 }
-                domNode = domNode.getNextSibling();
+                textNode = textNode.getNextSibling();
             }
-        } catch (final Throwable t) {
-            if (t instanceof DynXmlObjParseException) {
-                throw (DynXmlObjParseException) t;
-            } else {
-                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
-            }
+            return true;
         }
+        return super.internalParseElement(element, refObjectList);
     }
+
 
     protected void internalToXml(@NotNull final Element element) {
         // The radius
