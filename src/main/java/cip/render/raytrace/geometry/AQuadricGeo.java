@@ -37,7 +37,7 @@ abstract class AQuadricGeo extends AGeometry {
     // IRtGeometry interface implementation                                                                                       //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
+    boolean pkgParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         Face face = tryParseFace(element, refObjectList);
         if (null != face) {
@@ -49,7 +49,7 @@ abstract class AQuadricGeo extends AGeometry {
 
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
-    protected void internalFinishLoad() {
+    void pkgFinishLoad() {
         // create the face array from the linked list -- we move the faces into an array for best performance during
         // intersection testing. There is a physical/philosophical issue here - what constitutes a valid planar polyhedra?
         // For example, if you want a surface representing ground, and the camera is above the ground, then a single plane
@@ -93,7 +93,7 @@ abstract class AQuadricGeo extends AGeometry {
             if (qInt.m_nCode == Quadric3fIntersection.NONE_INSIDE) {
                 // The ray starts inside the quadric and does not intersect it - however, it could intersect a
                 // clipping plane either into or out of the quadric.
-                return NO_CLIP_INTERSECT == lclTestClippingPlanes(intersection, ray, bStartsInside,
+                return CLIP_INTERSECT == lclTestClippingPlanes(intersection, ray, bStartsInside,
                         fDistIn, fDistOut);
             } else {
                 // We got here if the ray intersects this quadric object. In a convex quadric the least distance intersection
@@ -196,7 +196,7 @@ abstract class AQuadricGeo extends AGeometry {
                         // going out of the plane - OK we need to think about this in the context of concave quadrics
                         if (plnInt.m_fDist < fDistOut) {
                             fDistOut = plnInt.m_fDist;
-                            if (/**(fDistOut < 0.0f) || **/((fDistIn > fDistOut) && !bStartsInside)) {
+                            if ((fDistIn > fDistOut) && !bStartsInside) {
                                 return CLIP_NEGATES_INTERSECT;
                             }
                             nOut = ix;

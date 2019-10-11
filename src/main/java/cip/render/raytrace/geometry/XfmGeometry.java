@@ -199,7 +199,7 @@ public class XfmGeometry extends AGeometry {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    protected void internalToXml(@NotNull final Element element) {
+    protected void pkgToXml(@NotNull final Element element) {
         // The position transform
         try {
             // the transformed position

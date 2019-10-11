@@ -114,7 +114,7 @@
             <height>1.0f</height>
             <MaterialByRef name="glass sphere"/>
             <face plane=" 0.0f,-0.7071f, 0.7071f,-0.50f"/>
-            <face plane=" 0.0f, 0.0f,-1.0f,-0.80f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.90f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

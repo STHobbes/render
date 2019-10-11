@@ -52,6 +52,17 @@ import java.util.StringTokenizer;
  *             <i>material specific nodes and attributes</i>
  *               <b>.</b></font>
  *         <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font>
+ *           <font style="color:gray"><b>.</b>
+ *           <b>.</b></font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"&gt;</font>
+ *           <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta"><i>materialName</i></font>&lt;/<b>MaterialByRef</b>&gt;</font>
+ *           <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *                 <font style="color:gray"><b>.</b>
+ *               <i>material specific nodes and attributes</i>
+ *                 <b>.</b></font>
+ *           <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *         <font style="color:blue">&lt;/<b>face</b>&gt;</font>
  *     <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
  * </pre>
  * <table border="0" width="90%">
@@ -83,6 +94,24 @@ import java.util.StringTokenizer;
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
  * loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.  If no material
  * is specified, the material defaults to matte green material.
+ * </td>
+ * </tr>
+ * <tr>
+ * <td><tt>face</tt></td>
+ * <td><i>Optional, none for a true cone.</i> The plane equation of a clipping face.  There are as many <tt>face</tt> entries
+ * as there are clipping planes on the cone.
+ * The plane equation is normalized during object load. Within the face description these elements may optionally appear:
+ * <ul>
+ *   <li><tt>MaterialByRef</tt> - A material for the face specified by reference to the name of a previously loaded
+ *   material.  <tt>MaterialByRef</tt> is mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification
+ *   of a material. </li>
+ *   <li><tt>DynamicallyLoadedObject</tt> - The specification for a material for the face.  <tt>MaterialByRef</tt> is
+ *   mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
+ *   loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.</li>
+ * </ul>
+ *  If no face material is specified, the cone material is used. Face materials are best used with opaque
+ *  objects. Specifying different transparent materials for the cone and clipping faces should be avoided unless the
+ *  materials are the same except for surface roughness, i.e. smooth glass and frosted (sandblasted) glass.
  * </td>
  * </tr>
  * </table>
@@ -134,75 +163,8 @@ public class Cone extends AQuadricGeo {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    public void loadFromXml(final @NotNull Element xmlElement, final LinkedList<INamedObject> refObjectList)
-//            throws DynXmlObjParseException {
-//        try {
-//            Node domNode = xmlElement.getFirstChild();
-//            float radiusX = getRadiusX();
-//            float radiusY = getRadiusY();
-//            float height = getHeight();
-//            boolean bRefresh = false;
-//            while (null != domNode) {
-//                if (domNode instanceof Element) {
-//                    final Element element = (Element) domNode;
-//                    IRtMaterial mtl;
-//                    if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-//                        Node txtNode = element.getFirstChild();
-//                        while (null != txtNode) {
-//                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
-//                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-//                                if (tokens.countTokens() == 1) {
-//                                    radiusX = radiusY = Float.parseFloat(txtNode.getNodeValue().trim());
-//                                    bRefresh = true;
-//                                } else if (tokens.countTokens() == 2) {
-//                                    radiusX = Float.parseFloat(tokens.nextToken().trim());
-//                                    radiusY = Float.parseFloat(tokens.nextToken().trim());
-//                                    bRefresh = true;
-//                                } else {
-//                                    throw new IllegalArgumentException(String.format(
-//                                            "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
-//                                            XML_TAG_RADIUS));
-//                                }
-//                                break;
-//                            }
-//                            txtNode = txtNode.getNextSibling();
-//                        }
-//                    } else if (element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
-//                        Node txtNode = element.getFirstChild();
-//                        while (null != txtNode) {
-//                            if (txtNode.getNodeType() == Node.TEXT_NODE) {
-//                                final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-//                                height = Float.parseFloat(tokens.nextToken().trim());
-//                                bRefresh = true;
-//                            } else {
-//                                throw new IllegalArgumentException(String.format(
-//                                        "\"%s\" specification must be in the form \"height\"",
-//                                        XML_TAG_HEIGHT));
-//                            }
-//                            break;
-//                        }
-//                    } else if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
-//                        m_mtl = mtl;
-//                    } else {
-//                        pkgThrowUnrecognizedXml(element);
-//                    }
-//                }
-//                domNode = domNode.getNextSibling();
-//            }
-//            if (bRefresh) {
-//                m_quadric.setEllipticalCone(radiusX, radiusY, height);
-//                m_strType = m_quadric.getQuadricType();
-//            }
-//        } catch (final Throwable t) {
-//            if (t instanceof DynXmlObjParseException) {
-//                throw (DynXmlObjParseException) t;
-//            } else {
-//                throw new DynXmlObjParseException(getClass().getName() + " parse exception", t);
-//            }
-//        }
-//    }
     @Override
-    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
+    boolean pkgParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS) || element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
             float radiusX = getRadiusX();
@@ -254,65 +216,11 @@ public class Cone extends AQuadricGeo {
             }
             return true;
         }
-        return super.internalParseElement(element, refObjectList);
+        return super.pkgParseElement(element, refObjectList);
     }
 
-//        }
-//            if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-//            Node textNode = element.getFirstChild();
-//            while (null != textNode) {
-//                float radiusX = getRadiusX();
-//                float radiusY = getRadiusY();
-//                float height = getHeight();
-//                boolean bRefresh = false;
-//                if (element.getTagName().equalsIgnoreCase(XML_TAG_RADIUS)) {
-//                    Node txtNode = element.getFirstChild();
-//                    while (null != txtNode) {
-//                        if (txtNode.getNodeType() == Node.TEXT_NODE) {
-//                            final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-//                            if (tokens.countTokens() == 1) {
-//                                radiusX = radiusY = Float.parseFloat(txtNode.getNodeValue().trim());
-//                                bRefresh = true;
-//                            } else if (tokens.countTokens() == 2) {
-//                                radiusX = Float.parseFloat(tokens.nextToken().trim());
-//                                radiusY = Float.parseFloat(tokens.nextToken().trim());
-//                                bRefresh = true;
-//                            } else {
-//                                throw new IllegalArgumentException(String.format(
-//                                        "\"%s\" specification must be in the form \"radius\" or \"Xradius,Yradius\"",
-//                                        XML_TAG_RADIUS));
-//                            }
-//                            break;
-//                        }
-//                        txtNode = txtNode.getNextSibling();
-//                    }
-//                } else if (element.getTagName().equalsIgnoreCase(XML_TAG_HEIGHT)) {
-//                    Node txtNode = element.getFirstChild();
-//                    while (null != txtNode) {
-//                        if (txtNode.getNodeType() == Node.TEXT_NODE) {
-//                            final StringTokenizer tokens = new StringTokenizer(txtNode.getNodeValue(), ",");
-//                            height = Float.parseFloat(tokens.nextToken().trim());
-//                            bRefresh = true;
-//                        } else {
-//                            throw new IllegalArgumentException(String.format(
-//                                    "\"%s\" specification must be in the form \"height\"",
-//                                    XML_TAG_HEIGHT));
-//                        }
-//                        break;
-//                    }
-//                }
-//                if (bRefresh) {
-//                    m_quadric.setEllipticalCone(radiusX, radiusY, height);
-//                    m_strType = m_quadric.getQuadricType();
-//                }
-//                textNode = textNode.getNextSibling();
-//            }
-//            return true;
-//        }
-//        return super.internalParseElement(element, refObjectList);
-//    }
-
-    protected void internalToXml(@NotNull final Element element) {
+    @Override
+    protected void pkgToXml(@NotNull final Element element) {
         // The radii
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);
@@ -340,6 +248,7 @@ public class Cone extends AQuadricGeo {
      * Returns an array of 24 points that are the vertices of a convex hull described by a min-max box with the corners
      * trimmed by planes that are perpendicular to the diagonals of the 8 quadrants of a 3D axis system.
      */
+    @Override
     public Point3f[] getConvexHullVertices() {
         // yeah, we need to sort this out - the cylinder is infinite extent, so until it is clipped, the bounds are infinite...
 

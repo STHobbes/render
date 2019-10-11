@@ -356,13 +356,15 @@ public class FrameLoader {
     }
 
     /**
-     * A method that can be called by geometry and texture loaders to try to parse a material or a reference to a material.
+     * A method to try to parse an element in an XML description of a geometry or texture as a material. The loader for the
+     * geometry or texture can call this method for elements that could be material descriptions or references..
      *
-     * @param element (not null, readonly) The XML element this methods will try to parse as a material.
+     * @param element (not null, readonly) The XML element this method will try to parse as a material.
      * @param refObjectList (nullable, readonly) The reference object list.
      * @param strObjType (not null) The calling object type, to be used in error messages.
      * @param strObjName (not null) The calling object name in the scene description file, to be used in error messages.
-     * @return Returns <tt>null</tt> if this element is NOT a dynamically loaded material or material reference.
+     * @return Returns <tt>null</tt> if this element is NOT a dynamically loaded material or material reference, otherwise
+     *  a reference to the dynamically loaded material or material reference.
      * @throws DynXmlObjParseException Thrown if an in-line material has a parsing error or if a material reference cannot be
      * found in the reference object list.
      */

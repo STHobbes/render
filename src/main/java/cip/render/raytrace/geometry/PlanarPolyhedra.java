@@ -42,7 +42,14 @@ import java.util.LinkedList;
  *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font>
  *           <font style="color:gray"><b>.</b>
  *           <b>.</b></font>
- *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"/&gt;</font>
+ *         <font style="color:blue">&lt;<b>face</b> plane="<font style="color:magenta"><i>A,B,C,D</i></font>"&gt;</font>
+ *           <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta"><i>materialName</i></font>&lt;/<b>MaterialByRef</b>&gt;</font>
+ *           <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
+ *                 <font style="color:gray"><b>.</b>
+ *               <i>material specific nodes and attributes</i>
+ *                 <b>.</b></font>
+ *           <font style="color:blue">&lt;/<b>DynamicallyLoadedObject</b>&gt;</font>
+ *         <font style="color:blue">&lt;/<b>face</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>MaterialByRef</b>&gt;<font style="color:magenta"><i>materialName</i></font>&lt;/<b>MaterialByRef</b>&gt;</font>
  *         <font style="color:blue">&lt;<b>DynamicallyLoadedObject</b> class="<font style="color:magenta"><i>materialClass</i></font>"&gt;</font>
  *               <font style="color:gray"><b>.</b>
@@ -58,12 +65,23 @@ import java.util.LinkedList;
  * <tr>
  * <td><tt>face</tt></td>
  * <td>The plane equation of a face.  There are as many <tt>face</tt> entries as there are faces on the object.
- * The plane equation is normalized during object load.
+ * The plane equation is normalized during object load. Within the face description these elements may optionally appear:
+ * <ul>
+ *   <li><tt>MaterialByRef</tt> - A material for the face specified by reference to the name of a previously loaded
+ *   material.  <tt>MaterialByRef</tt> is mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification
+ *   of a material. </li>
+ *   <li><tt>DynamicallyLoadedObject</tt> - The specification for a material for the face.  <tt>MaterialByRef</tt> is
+ *   mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  The dynamically
+ *   loaded object must implement the  {@link cip.render.raytrace.interfaces.IRtMaterial} interface.</li>
+ * </ul>
+ *  If no face material is specified, the polyhedra material is used. Face materials are best used with opaque
+ *  objects. Specifying different transparent materials for the polyhedra and faces should be avoided unless the
+ *  materials are the same except for surface roughness, i.e. smooth glass and frosted (sandblasted) glass.
  * </td>
  * </tr>
  * <tr>
  * <td><tt>MaterialByRef</tt></td>
- * <td>A material specfied by reference to the name of a perviously loaded material.  <tt>MaterialByRef</tt> is
+ * <td>A material for the polyhedra specified by reference to the name of a previously loaded material.  <tt>MaterialByRef</tt> is
  * mutually exclusive with the <tt>DynamicallyLoadedObject</tt> specification of a material.  If no material
  * is specified, the material defaults to matte green material.
  * </td>
@@ -156,7 +174,7 @@ public class PlanarPolyhedra extends AGeometry {
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
+    boolean pkgParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         Face face = tryParseFace(element, refObjectList);
         if (null != face) {
@@ -168,7 +186,7 @@ public class PlanarPolyhedra extends AGeometry {
 
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
-    protected void internalFinishLoad() {
+    void pkgFinishLoad() {
         // create the face array from the linked list -- we move the faces into an array for best performance during
         // intersection testing. There is a physical/philosophical issue here - what constitutes a valid planar polyhedra?
         // For example, if you want a surface representing ground, and the camera is above the ground, then a single plane
@@ -184,7 +202,7 @@ public class PlanarPolyhedra extends AGeometry {
 
     //------------------------------------------------------------------------------------------------------------------------------
     @Override
-    protected void internalToXml(@NotNull final Element element) {
+    protected void pkgToXml(@NotNull final Element element) {
         final StringBuilder strBuff = new StringBuilder(64);
         // The faces
         if (null != m_faces) {

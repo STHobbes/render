@@ -88,21 +88,15 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         m_strType = this.getClass().getName();
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------
-    // Accessor/Mutator functions
-    public IRtMaterial getMaterial() {
-        return m_mtl;
-    }
-
-    public void setMaterial(final IRtMaterial mtl) {
-        m_mtl = mtl;
-    }
-
     /**
-     * @param element
-     * @param refObjectList
-     * @return
-     * @throws DynXmlObjParseException
+     * A method to try to parse an element in an XML description of a geometry as a face (spatial clipping place). The loader for
+     * the geometry can call this method for elements that could be faces.
+     *
+     * @param element (not null, readonly) The XML element this method will try to parse as a face.
+     * @param refObjectList (nullable, readonly) The reference object list.
+     * @return Returns <tt>null</tt> if this element is NOT a dynamically face, otherwise
+     *  a reference to the dynamically loaded face.
+     * @throws DynXmlObjParseException Thrown if the XML description could not be parsed to initialize the object.
      */
     Face tryParseFace(@NotNull Element element, final LinkedList<INamedObject> refObjectList) throws DynXmlObjParseException {
         if (element.getTagName().equalsIgnoreCase(XML_TAG_FACE)) {
@@ -110,7 +104,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
             final String strPlane = element.getAttribute(XML_ATTR_FACE_PLANE);
             final StringTokenizer tokens = new StringTokenizer(strPlane, ",");
             if (tokens.countTokens() != 4) {
-                throw new IllegalArgumentException("face specification must be in the form <face plane=\"A,B,C,D\">");
+                throw new IllegalArgumentException("face specification must be in the form <face plane=\"A,B,C,D\" >");
             }
             final float fA = Float.parseFloat(tokens.nextToken().trim());
             final float fB = Float.parseFloat(tokens.nextToken().trim());
@@ -130,6 +124,17 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         }
         return null;
     }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    // Accessor/Mutator functions
+    public IRtMaterial getMaterial() {
+        return m_mtl;
+    }
+
+    public void setMaterial(final IRtMaterial mtl) {
+        m_mtl = mtl;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDynXmlObject interface implementation                                                                                     //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,7 +156,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
                 if (domNode instanceof Element) {
                     IRtMaterial mtl;
                     final Element element = (Element) domNode;
-                    if (!internalParseElement(element, refObjectList)) {
+                    if (!pkgParseElement(element, refObjectList)) {
                         if (null != (mtl = FrameLoader.tryParseMaterial(element, refObjectList, getType(), m_strName))) {
                             m_mtl = mtl;
                         } else {
@@ -161,7 +166,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
                 }
                 domNode = domNode.getNextSibling();
             }
-            internalFinishLoad();
+            pkgFinishLoad();
         } catch (final Throwable t) {
             if (t instanceof DynXmlObjParseException) {
                 throw (DynXmlObjParseException) t;
@@ -172,12 +177,17 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     }
 
     /**
+     * This method is called for every element in the XML description that is not a material specification for the
+     * object (common to all geometries and parsed by this abstract class)
+     *
      * @param element       (not null, readonly) The dom element to be parsed.
      * @param refObjectList A linked list if named objects (implementing the {@link INamedObject} interface)
      *                      that have already been loaded and can be used to resolve object references.
      * @return <tt>true</tt> if the element was parsed, <tt>false</tt> otherwise.
+     * @throws DynXmlObjParseException Thrown if there is an error in the scene description XML that cannot be parsed
+     *                                 by this object.
      */
-    protected boolean internalParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
+    boolean pkgParseElement(@NotNull Element element, final LinkedList<INamedObject> refObjectList)
             throws DynXmlObjParseException {
         return false;
     }
@@ -185,14 +195,15 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
     /**
      *
      */
-    protected void internalFinishLoad() {
+
+    void pkgFinishLoad() {
     }
 
     /**
      * Create the dynamically loaded object node with attributes and then calls
-     * {@link cip.render.raytrace.geometry.AGeometry#internalToXml(org.w3c.dom.Element)}.  This provides the
+     * {@link cip.render.raytrace.geometry.AGeometry#pkgToXml(org.w3c.dom.Element)}.  This provides the
      * dynamically loaded XML boilerplate for the object.  Derived classes should not override this function,
-     * but should override the {@link cip.render.raytrace.geometry.AGeometry#internalToXml(org.w3c.dom.Element)} to
+     * but should override the {@link cip.render.raytrace.geometry.AGeometry#pkgToXml(org.w3c.dom.Element)} to
      * add object-specific information to the XML node.
      */
     public void toChildXmlElement(final @NotNull Element parentEl) {
@@ -202,7 +213,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         element.setAttribute(DynXmlObjLoader.XML_ATTR_CLASS, this.getClass().getName());
         element.setAttribute(DynXmlObjLoader.XML_ATTR_NAME, m_strName);
         // this is the geometry specific stuff
-        internalToXml(element);
+        pkgToXml(element);
     }
 
     /**
@@ -213,7 +224,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      *                be overridden by the geometry implementation to be able to read the object-specific information set by
      *                the object here.
      */
-    protected void internalToXml(@NotNull final Element element) {
+    protected void pkgToXml(@NotNull final Element element) {
     }
 
     /**
@@ -226,7 +237,7 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
      * @return Returns the named geometry from the reference object list.
      * @throws DynXmlObjParseException Thrown if the geometry cannot be found in the reference object list.
      */
-    protected IRtGeometry resolveGeometryRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
+    IRtGeometry resolveGeometryRef(final String strName, final LinkedList refObjectList) throws DynXmlObjParseException {
         if (!strName.equals("") && (null != refObjectList)) {
             for (final Object obj : refObjectList) {
                 if ((obj instanceof IRtGeometry) && ((INamedObject) obj).getName().equals(strName)) {
@@ -237,7 +248,13 @@ public abstract class AGeometry implements IDynXmlObject, INamedObject, IRtGeome
         throw new DynXmlObjParseException(String.format("Referenced geometry \"%s\" was not found.", strName));
     }
 
-    void pkgThrowUnrecognizedXml(Element element) throws DynXmlObjParseException {
+    /**
+     * Throw are provide common messaging for an unrecognized tag in the XML object description.
+     *
+     * @param element (not null) The element being parsed.
+     * @throws DynXmlObjParseException The generated exception.
+     */
+    void pkgThrowUnrecognizedXml(@NotNull Element element) throws DynXmlObjParseException {
         throw new DynXmlObjParseException(String.format("Unrecognized %s XML description element <%s>",
                 m_strName, element.getTagName()));
     }

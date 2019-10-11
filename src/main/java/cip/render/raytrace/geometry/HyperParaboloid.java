@@ -176,7 +176,7 @@ public class HyperParaboloid extends AQuadricGeo {
         }
     }
 
-    protected void internalToXml(@NotNull final Element element) {
+    protected void pkgToXml(@NotNull final Element element) {
         // The radius
         final Element elRadius = element.getOwnerDocument().createElement(XML_TAG_RADIUS);
         element.appendChild(elRadius);

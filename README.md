@@ -3,15 +3,15 @@
 ![alt text](./resources/images/everything.jpg "sample image") 
   
 STATUS: currently porting from a moldy old project to github - cleanup and update as code and docs are added to the project.<br/> 
-VERSION: 0.60<br/> 
-PROGRESS: utilities libraries and assignments 1, 2, 3, and 4 posted. Simple ray tracing framework posted. Oversampling and
-distributed ray tracing are posted, a number of textures have been completed with tests, All quadric geometries are completed
-with tests.<br/> 
+VERSION: 0.65<br/> 
+PROGRESS: Added clipping planes (with testing environments)to spheres, ellipsoids, and cones. Code simplification and
+javadocs improvements.<br/> 
 TODO: see [TODO list](./TODO.md)
 
 ## Abstract
-This is old ray-tracing code in Java that is easily extensible (good for experimenting with), and makes good images in
-reasonable time on today's hardware. The ray-tracing framework supports single sample per pixel, pixel oversampling, and
+This is old ray-tracing code in Java that is easily extensible (good for teaching and/or experimenting with), and makes good
+images in reasonable time on today's hardware. This rendering framework was built for teaching, not production.
+The ray-tracing framework supports single sample per pixel, pixel oversampling, and
 distributed ray tracing (motion blur, depth of field, area lights, blurred reflection, etc).
 
 ### How do I Run this in the Comfort of my Very Own Home?
