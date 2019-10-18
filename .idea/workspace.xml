@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="Adding clipping planes for cones - working through the initial bugs&#10;with clipping planes on concave objects.">
+    <list default="true" id="708bf129-ea0d-41ee-a7a8-58e6999d419c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/cip/CSE581/assign1/Assignment1.html" afterDir="false" />
@@ -252,20 +250,12 @@
       <change beforePath="$PROJECT_DIR$/javadocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/overview-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javadocs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadocs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_cones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_cones.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_elliptical_cylinders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_elliptical_cylinders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/FrameLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AQuadricGeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/AQuadricGeo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Ellipsoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_hyperboloids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_hyperboloids.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_hyperparaboloids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_hyperparaboloids.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/test/geometries/test_paraboloids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/test/geometries/test_paraboloids.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/HyperParaboloid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Hyperboloid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Paraboloid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/PlanarPolyhedra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cip/render/raytrace/geometry/XfmGeometry.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -324,12 +314,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2561" />
-    <option name="y" value="101" />
-    <option name="width" value="2517" />
-    <option name="height" value="1335" />
-  </component>
   <component name="ProjectId" id="1QP4taTbpruvg7Bd1hms6jBEgcO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -385,7 +369,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RenderWindow - test - paraboloid">
+  <component name="RunManager" selected="Application.RenderWindow - test - hyperparaboloid">
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
@@ -919,7 +903,9 @@
       <workItem from="1570444579716" duration="3584000" />
       <workItem from="1570504108151" duration="1512000" />
       <workItem from="1570601793901" duration="8931000" />
-      <workItem from="1570683215503" duration="6895000" />
+      <workItem from="1570683215503" duration="8324000" />
+      <workItem from="1570939183803" duration="591000" />
+      <workItem from="1570976594351" duration="15565000" />
     </task>
     <task id="LOCAL-00001" summary="porting of CSE506 assignments 1 and 2 to github.">
       <created>1554352866757</created>
@@ -1075,7 +1061,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570418415688</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Clipping planes for quadrics progress, documentation and code cleanup&#10;in geometries, test environments adjusted to test clipping planes.">
+      <created>1570761143548</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1570761143548</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1126,7 +1119,8 @@
     <MESSAGE value="Documentation cleanup." />
     <MESSAGE value="Added clipping planes for spheres and cylinders," />
     <MESSAGE value="Adding clipping planes for cones - working through the initial bugs&#10;with clipping planes on concave objects." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding clipping planes for cones - working through the initial bugs&#10;with clipping planes on concave objects." />
+    <MESSAGE value="Clipping planes for quadrics progress, documentation and code cleanup&#10;in geometries, test environments adjusted to test clipping planes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Clipping planes for quadrics progress, documentation and code cleanup&#10;in geometries, test environments adjusted to test clipping planes." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1172,6 +1166,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/cip/render/raytrace/material/Whitted.java</url>
           <line>484</line>
           <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java</url>
+          <line>449</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cip/render/util3d/Quadric3f.java</url>
+          <line>424</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

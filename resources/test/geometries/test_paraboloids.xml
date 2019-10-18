@@ -98,11 +98,12 @@
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="paraboloid 2">
-        <position originAt="-1.0f,-1.25f,0.6f" altitude="90.0f"/>
+        <position originAt="-1.0f,-1.25f,0.6f" altitude="91.0f" azimuth="-15.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Paraboloid">
             <radius>0.25,0.2f</radius>
             <height>2.0f</height>
-            <MaterialByRef name="magenta"/>
+            <MaterialByRef name="glass sphere"/>
+            <face plane=" 0.0f,-0.7071f, 0.7071f,-1.50f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
@@ -112,6 +113,7 @@
             <radius>0.2f,0.4f</radius>
             <height>1.0f</height>
             <MaterialByRef name="glass sphere"/>
+            <face plane=" 0.0f,-0.7071f, 0.7071f,-1.0f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

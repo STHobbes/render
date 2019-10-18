@@ -91,13 +91,16 @@
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid" name="hyperboloid 1">
         <radius>0.25f,0.50f,0.75f</radius>
         <MaterialByRef name="blue"/>
+        <face plane=" 0.0f, 0.0f,-1.0f,-0.95f"/>
     </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="hyperboloid 2">
-        <position originAt="-1.0f,-1.25f,0.6f" altitude="90.0f"/>
+        <position originAt="-1.0f,-1.25f,0.6f" altitude="91.0f" azimuth="-15.0f"/>
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid">
             <radius>0.05f,0.10f,0.5f</radius>
-            <MaterialByRef name="magenta"/>
+            <MaterialByRef name="glass sphere"/>
+            <face plane=" 0.0f,-0.7071f, 0.7071f,-1.50f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-2.00f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
@@ -106,6 +109,8 @@
         <DynamicallyLoadedObject class="cip.render.raytrace.geometry.Hyperboloid">
             <radius>0.1f,0.2f,0.5f</radius>
             <MaterialByRef name="glass sphere"/>
+            <face plane=" 0.0f,-0.7071f, 0.7071f,-0.50f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.90f"/>
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 

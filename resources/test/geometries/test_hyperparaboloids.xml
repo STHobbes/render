@@ -53,6 +53,13 @@
             <transmittance>0.75</transmittance>
         </DynamicallyLoadedObject>
 
+        <DynamicallyLoadedObject class="cip.render.raytrace.material.Whitted" name="gold">
+            <colour rgb="0.9f,0.8f,0.4f"/>
+            <conductor/>
+            <beta>9</beta>
+            <opaque/>
+        </DynamicallyLoadedObject>
+
     </LibraryObjects>
 
     <!-- This is the scene description -->
@@ -88,9 +95,30 @@
         </DynamicallyLoadedObject>
     </DynamicallyLoadedObject>
 
-    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.HyperParaboloid" name="hyperboloid 1">
-        <radius>0.50f,1.2f,0.75f</radius>
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.HyperParaboloid" name="hyperParabboloid 1">
+        <radius>8.0f,16.0f,0.00001f</radius>
+        <!--        <radius>0.00001f,16.0f,8.0f</radius>-->
+        <!--        <radius>16.0f,0.00001f,8.0f</radius>-->
+        <!--        <radius>0.50f,1.2f,0.75f</radius>-->
         <MaterialByRef name="blue"/>
+        <!--        <face plane=" 1.0f, 0.0f, 0.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
+        <!--        <face plane="-1.0f, 0.0f, 0.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
+        <!--        <face plane=" 0.0f, 1.0f, 0.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
+        <!--        <face plane=" 0.0f,-1.0f, 0.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
+        <!--        <face plane=" 0.0f, 0.0f, 1.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
+        <!--        <face plane=" 0.0f, 0.0f,-1.0f,-0.80f">-->
+        <!--            <MaterialByRef name="gold"/>-->
+        <!--        </face>-->
     </DynamicallyLoadedObject>
 
     <!--    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="hyperboloid 2">-->
@@ -109,18 +137,18 @@
     <!--        </DynamicallyLoadedObject>-->
     <!--    </DynamicallyLoadedObject>-->
 
-    <!--    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="base">-->
-    <!--        <position originAt="0.0f,0.0f,-1.25f"/>-->
-    <!--        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">-->
-    <!--            <face plane=" 0.0f, 0.0f, 1.0f,-0.25f"/>-->
-    <!--            <face plane=" 0.0f,-1.0f, 0.0f,-2.0f"/>-->
-    <!--            <face plane=" 1.0f, 0.0f, 0.0f,-2.0f"/>-->
-    <!--            <face plane=" 0.0f, 1.0f, 0.0f,-2.0f"/>-->
-    <!--            <face plane="-1.0f, 0.0f, 0.0f,-2.0f"/>-->
-    <!--            <face plane=" 0.0f, 0.0f,-1.0f,-0.25f"/>-->
-    <!--            <MaterialByRef name="green"/>-->
-    <!--        </DynamicallyLoadedObject>-->
-    <!--    </DynamicallyLoadedObject>-->
+    <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="base">
+        <position originAt="0.0f,0.0f,-1.25f"/>
+        <DynamicallyLoadedObject class="cip.render.raytrace.geometry.PlanarPolyhedra">
+            <face plane=" 0.0f, 0.0f, 1.0f,-0.25f"/>
+            <face plane=" 0.0f,-1.0f, 0.0f,-2.0f"/>
+            <face plane=" 1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 1.0f, 0.0f,-2.0f"/>
+            <face plane="-1.0f, 0.0f, 0.0f,-2.0f"/>
+            <face plane=" 0.0f, 0.0f,-1.0f,-0.25f"/>
+            <MaterialByRef name="green"/>
+        </DynamicallyLoadedObject>
+    </DynamicallyLoadedObject>
 
     <DynamicallyLoadedObject class="cip.render.raytrace.geometry.XfmGeometry" name="gem">
         <position originAt="1.0f,-1.0f,-0.5f"/>
