@@ -102,6 +102,7 @@ public class RenderXml implements IRenderScene {
         int m_nY;
         int m_nSamp;
         int m_nRandom;
+        int m_nSampleCt = 0;
         Line3f m_ray = new Line3f();
         RayIntersection m_intersection = new RayIntersection();
 
@@ -122,6 +123,7 @@ public class RenderXml implements IRenderScene {
             // this is the actual rendering part.
             // render pixels while there are pixels to render
             while (m_parent.dispatchPixel(this)) {
+                m_nSampleCt++;
                 final Color clr = m_parent.getSampleColor(m_ray, m_intersection);
                 m_parent.setPixelColor(m_nX, m_nY, clr);
             }
@@ -129,9 +131,11 @@ public class RenderXml implements IRenderScene {
             // let the main thread know we are done
             synchronized (m_parent.m_threadLock) {
                 m_parent.m_threadCt--;
+                m_parent.m_nSampleCt += m_nSampleCt;
                 if (m_parent.m_threadCt <= 0) {
                     // this is the last thread still running - the image is
                     //  done - release the main thread
+                    logger.info(String.format("Frame samples computed: %d", m_parent.m_nSampleCt));
                     m_parent.m_threadLock.notify();
                 }
             }
@@ -171,6 +175,7 @@ public class RenderXml implements IRenderScene {
     // the thread synchronizer for when the image is done
     final byte[] m_threadLock = new byte[0];
     int m_threadCt = 0;
+    int m_nSampleCt = 0;
 
     // This is the image that pixels are drawn into as computation completes
     int m_pixArrayWidth = 0;

@@ -409,6 +409,7 @@ public class RenderXmlOS extends RenderXml {
             final RGBf rgbTmp = m_intersection.borrowRGB();
             // render pixels ahile there are pixels to render
             while (m_parent.dispatchPixel(this)) {
+                m_nSampleCt++;
                 m_parent.getSampleColor(rgb, m_ray, m_intersection, m_nSamp, m_nRandom);
                 m_parent.setSampleColor(m_nX, m_nY, m_nSamp, rgb, rgbTmp);
             }
@@ -418,9 +419,11 @@ public class RenderXmlOS extends RenderXml {
             // let the main thread know we are done
             synchronized (m_parent.m_threadLock) {
                 m_parent.m_threadCt--;
+                m_parent.m_nSampleCt += m_nSampleCt;
                 if (m_parent.m_threadCt <= 0) {
                     // this is the last thread still running - the image is
                     //  done - release the main thread
+                    logger.info(String.format("Frame samples computed: %d", m_parent.m_nSampleCt));
                     m_parent.m_threadLock.notify();
                 }
             }
